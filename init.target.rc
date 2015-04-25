@@ -249,6 +249,12 @@ service time_daemon /system/bin/time_daemon
 #service gnss-detect /system/vendor/bin/gnss.qca1530.sh detect
 #   class core
 #   oneshot
+service pd_mapper /system/vendor/bin/pd-mapper
+     class core
+     disabled
+
+on property:persist.sys.pd_enable=1
+     start pd_mapper
 #
 ## QCA1530 SoC late_start group trigger
 #service gnss-init /system/vendor/bin/gnss.qca1530.sh init
