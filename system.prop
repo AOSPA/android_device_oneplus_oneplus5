@@ -22,15 +22,15 @@ ro.telephony.default_network=5
 debug.sf.hw=0
 debug.egl.hw=0
 #debug.composition.type=c2d
-persist.hwc.mdpcomp.enable=true
-debug.mdpcomp.logs=0
+#persist.hwc.mdpcomp.enable=true
+#debug.mdpcomp.logs=0
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
 #ro.hdmi.enable=true
 #persist.speaker.prot.enable=false
-qcom.hw.aac.encoder=true
+#qcom.hw.aac.encoder=true
 #
 # system props for the cne module
 #
@@ -70,7 +70,12 @@ ro.opengles.version=196608
 bt.max.hfpclient.connections=1
 
 # System property for cabl
-ro.qualcomm.cabl=1
+ro.qualcomm.cabl=0
+debug.gralloc.map_fb_memory=1
+ro.kernel.qemu=1
+ro.config.low_ram=true
+ro.sf.lcd_density=240
+persist.sys.force_sw_gles=1
 
 #
 # System props for telephony
@@ -85,7 +90,7 @@ persist.fuse_sdcard=true
 qcom.bluetooth.soc=rome
 
 #system prop for A4WP profile support
-ro.bluetooth.a4wp=true
+ro.bluetooth.a4wp=false
 
 #system prop for wipower support
 ro.bluetooth.wipower=true
