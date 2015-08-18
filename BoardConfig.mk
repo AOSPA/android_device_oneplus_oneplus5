@@ -3,8 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_BOARD_PLATFORM := cobalt
-TARGET_BOOTLOADER_BOARD_NAME := cobalt
+TARGET_BOARD_PLATFORM := msmcobalt
+TARGET_BOOTLOADER_BOARD_NAME := msmcobalt
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
