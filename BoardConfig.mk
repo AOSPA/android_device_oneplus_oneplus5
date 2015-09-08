@@ -20,7 +20,8 @@ TARGET_2ND_CPU_VARIANT := cortex-a9
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
--include $(QCPATH)/common/cobalt/BoardConfigVendor.mk
+BOARD_PRESIL_BUILD := true
+-include $(QCPATH)/common/msmcobalt/BoardConfigVendor.mk
 MINIMAL_FONT_FOOTPRINT := true
 
 # Some framework code requires this to enable BT
@@ -72,7 +73,6 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_INIT_VENDOR_LIB := libinit_msm
 
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
-
 # Enable dex pre-opt to speed up initial boot
 ifeq ($(HOST_OS),linux)
     ifeq ($(WITH_DEXPREOPT),)
