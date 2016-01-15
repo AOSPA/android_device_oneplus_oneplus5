@@ -6,7 +6,7 @@ LOCAL_PATH := $(call my-dir)
 ifneq ($(strip $(TARGET_NO_BOOTLOADER)),true)
 
 # Compile
-include bootable/bootloader/lk/AndroidBoot.mk
+include bootable/bootloader/edk2/AndroidBoot.mk
 
 $(INSTALLED_BOOTLOADER_MODULE): $(TARGET_EMMC_BOOTLOADER) | $(ACP)
 	$(transform-prebuilt-to-target)
