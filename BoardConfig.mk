@@ -86,3 +86,9 @@ ifeq ($(HOST_OS),linux)
       endif
     endif
 endif
+
+#Enable SSC Feature
+TARGET_USES_SSC := true
+
+# Enable sensor multi HAL
+USE_SENSOR_MULTI_HAL := true
