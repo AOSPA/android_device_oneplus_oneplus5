@@ -75,6 +75,10 @@ TARGET_INIT_VENDOR_LIB := libinit_msm
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
+
+#Enable PD locater/notifier
+TARGET_PD_SERVICE_ENABLED := true
+
 # Enable dex pre-opt to speed up initial boot
 ifeq ($(HOST_OS),linux)
     ifeq ($(WITH_DEXPREOPT),)
