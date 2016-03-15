@@ -61,6 +61,11 @@ LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
+# Create symbolic links for WLAN
+$(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld; \
+ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
+$(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini)
+
 #----------------------------------------------------------------------
 # Radio image
 #----------------------------------------------------------------------
