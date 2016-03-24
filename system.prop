@@ -84,7 +84,7 @@ telephony.lteOnCdmaDevice=1
 persist.fuse_sdcard=true
 
 #system prop for Bluetooth SOC type
-qcom.bluetooth.soc=rome
+qcom.bluetooth.soc=cherokee
 
 #system prop for A4WP profile support
 ro.bluetooth.a4wp=false
