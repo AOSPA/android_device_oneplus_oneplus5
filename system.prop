@@ -19,11 +19,8 @@ DEVICE_PROVISIONED=1
 # Start in cdma mode
 ro.telephony.default_network=5
 
-debug.sf.hw=0
-debug.egl.hw=0
-#debug.composition.type=c2d
-#persist.hwc.mdpcomp.enable=true
-#debug.mdpcomp.logs=0
+debug.sf.hw=1
+debug.gralloc.enable_fb_ubwc=1
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -68,11 +65,7 @@ bt.max.hfpclient.connections=1
 
 # System property for cabl
 ro.qualcomm.cabl=0
-debug.gralloc.map_fb_memory=1
-ro.kernel.qemu=1
-ro.config.low_ram=true
 ro.sf.lcd_density=240
-persist.sys.force_sw_gles=1
 
 #
 # System props for telephony

@@ -29,7 +29,7 @@ MINIMAL_FONT_FOOTPRINT := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/generic/common/bluetooth
 
-#USE_OPENGL_RENDERER := true
+USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -54,7 +54,7 @@ ifeq ($(TARGET_KERNEL_VERSION),4.4)
 else
      BOARD_KERNEL_CMDLINE += console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0
 endif
-BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0xc1b0000 video=vfb:640x400,bpp=32,memsize=3072000 video=msmfb:off
+BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlycon=msm_hsl_uart,0xc1b0000
 endif
 
 BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
@@ -80,7 +80,7 @@ TARGET_NO_RPC := true
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_INIT_VENDOR_LIB := libinit_msm
 
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
