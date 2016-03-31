@@ -1,4 +1,4 @@
-# Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+# Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -293,18 +293,32 @@ on property:persist.sys.pd_enable=1
 #on property:sys.ims.DATA_DAEMON_STATUS=1
 #    start ims_rtp_daemon
 #
-#service ppd /system/bin/mm-pp-daemon
-#    class late_start
-#    disabled
-#    user system
-#    socket pps stream 0660 system system
-#    group system graphics
-#
-#on property:init.svc.surfaceflinger=stopped
-#    stop ppd
-#
-#on property:init.svc.surfaceflinger=running
-#    start ppd
+
+service ppd /system/vendor/bin/mm-pp-dpps
+    class late_start
+    user system
+    group system graphics
+    socket pps stream 0660 system system
+    disabled
+
+on property:init.svc.surfaceflinger=stopped
+    stop ppd
+
+on property:init.svc.surfaceflinger=running
+    start ppd
+
+on property:init.svc.surfaceflinger=restarting
+    stop ppd
+
+on property:init.svc.zygote=stopped
+    stop ppd
+
+on property:init.svc.zygote=running
+    start ppd
+
+on property:init.svc.zygote=restarting
+    stop ppd
+
 #
 #service nqs /system/bin/nqs
 #    class late_start
