@@ -22,7 +22,7 @@ ifeq ($(KERNEL_DEFCONFIG),)
     KERNEL_DEFCONFIG := msmcortex_defconfig
 endif
 
-include kernel/AndroidKernel.mk
+include kernel/msm-4.4/AndroidKernel.mk
 
 $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
