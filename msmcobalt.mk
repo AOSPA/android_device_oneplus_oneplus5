@@ -15,16 +15,7 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_PACKAGES += libGLES_android
 PRODUCT_BOOT_JARS += tcmiface
 # Audio configuration file
-PRODUCT_COPY_FILES += \
-    device/qcom/msmcobalt/audio_policy.conf:system/etc/audio_policy.conf \
-    device/qcom/msmcobalt/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/qcom/msmcobalt/mixer_paths.xml:system/etc/mixer_paths.xml \
-    device/qcom/msmcobalt/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
-    device/qcom/msmcobalt/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml
-
-# Listen configuration file
-PRODUCT_COPY_FILES += \
-    device/qcom/msmcobalt/listen_platform_info.xml:system/etc/listen_platform_info.xml
+-include $(TOPDIR)hardware/qcom/audio/configs/msmcobalt/msmcobalt.mk
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
