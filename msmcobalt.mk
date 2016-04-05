@@ -1,3 +1,4 @@
+TARGET_KERNEL_VERSION := 4.4
 #TARGET_ENABLE_QC_AV_ENHANCEMENTS := false # bring-up hack
 TARGET_USES_QTIC := false # bring-up hack
 $(call inherit-product, device/qcom/common/common64.mk)
