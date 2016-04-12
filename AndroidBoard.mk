@@ -22,7 +22,11 @@ ifeq ($(KERNEL_DEFCONFIG),)
     KERNEL_DEFCONFIG := msmcortex_defconfig
 endif
 
-include kernel/msm-4.4/AndroidKernel.mk
+ifeq ($(TARGET_KERNEL_SOURCE),)
+     TARGET_KERNEL_SOURCE := kernel
+endif
+
+include $(TARGET_KERNEL_SOURCE)/AndroidKernel.mk
 
 $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
@@ -60,6 +64,11 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
+
+# Create symbolic links for WLAN
+$(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld; \
+ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
+$(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini)
 
 #----------------------------------------------------------------------
 # Radio image
