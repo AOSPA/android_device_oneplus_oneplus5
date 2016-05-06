@@ -1,3 +1,4 @@
+DEVICE_PACKAGE_OVERLAYS := device/qcom/msmcobalt/overlay
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_QTIC := false # bring-up hack
