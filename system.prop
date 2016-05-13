@@ -65,7 +65,6 @@ bt.max.hfpclient.connections=1
 
 # System property for cabl
 ro.qualcomm.cabl=0
-ro.sf.lcd_density=240
 
 #
 # System props for telephony
