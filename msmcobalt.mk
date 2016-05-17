@@ -1,5 +1,6 @@
 TARGET_KERNEL_VERSION := 4.4
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+BOARD_HAVE_QCOM_FM := true
 TARGET_USES_QTIC := false # bring-up hack
 $(call inherit-product, device/qcom/common/common64.mk)
 
@@ -17,6 +18,11 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
 PRODUCT_BOOT_JARS += tcmiface
+
+ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
+PRODUCT_BOOT_JARS += qcom.fmradio
+endif #BOARD_HAVE_QCOM_FM
+
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msmcobalt/msmcobalt.mk
 
