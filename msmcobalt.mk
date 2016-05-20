@@ -40,6 +40,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/qcom/msmcobalt/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
+PRODUCT_PACKAGES += \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf
+
 # Sensor features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
