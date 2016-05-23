@@ -58,7 +58,6 @@ BOARD_KERNEL_CMDLINE += boot_cpus=0-3 androidboot.hardware=qcom user_debug=31 ms
 endif
 
 BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
-BOARD_KERNEL_SEPARATED_DT := true
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
