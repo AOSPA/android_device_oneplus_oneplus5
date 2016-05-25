@@ -130,3 +130,6 @@ config.disable_networktime=true
 config.disable_atlas=true
 debug.sf.nobootanimation=1
 debug.batt.no_battery=true
+
+# enable navigation bar
+qemu.hw.mainkeys=0
