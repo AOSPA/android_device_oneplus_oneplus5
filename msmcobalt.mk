@@ -18,6 +18,9 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
 PRODUCT_BOOT_JARS += tcmiface
+PRODUCT_BOOT_JARS += telephony-ext
+
+PRODUCT_PACKAGES += telephony-ext
 
 ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
 PRODUCT_BOOT_JARS += qcom.fmradio
