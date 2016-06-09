@@ -1,8 +1,8 @@
 TARGET_KERNEL_VERSION := 4.4
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_QTIC := false # bring-up hack
 $(call inherit-product, device/qcom/common/common64.mk)
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 PRODUCT_NAME := msmcobalt
 PRODUCT_DEVICE := msmcobalt
