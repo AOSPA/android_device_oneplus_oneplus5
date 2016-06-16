@@ -71,3 +71,8 @@ PRODUCT_COPY_FILES += \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+
+#for android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
+
