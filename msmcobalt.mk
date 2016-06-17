@@ -1,8 +1,14 @@
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_QTIC := false # bring-up hack
-$(call inherit-product, device/qcom/common/common64.mk)
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+# Video codec configuration files
+ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
+PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml
+endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
+
+$(call inherit-product, device/qcom/common/common64.mk)
 
 PRODUCT_NAME := msmcobalt
 PRODUCT_DEVICE := msmcobalt
@@ -25,12 +31,6 @@ PRODUCT_PACKAGES += telephony-ext
 ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
 PRODUCT_BOOT_JARS += qcom.fmradio
 endif #BOARD_HAVE_QCOM_FM
-
-# Video codec configuration files
-ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml
-endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msmcobalt/msmcobalt.mk
