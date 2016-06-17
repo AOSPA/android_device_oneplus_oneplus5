@@ -132,3 +132,6 @@ debug.batt.no_battery=true
 
 # enable navigation bar
 qemu.hw.mainkeys=0
+
+#Increase cached app limit
+ro.sys.fw.bg_apps_limit=60
