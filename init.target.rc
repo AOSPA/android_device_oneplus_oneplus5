@@ -64,6 +64,7 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
+    mkdir /data/misc/hbtp 0750 system system
 
 on boot
     start rmt_storage
@@ -142,6 +143,12 @@ service adsprpcd /system/bin/adsprpcd
    class main
    user media
    group media
+
+service hbtp /system/vendor/bin/hbtp_daemon
+    class main
+    user system
+    group system
+    disabled
 
 #service audiod /system/bin/audiod
 #   class late_start
