@@ -18,8 +18,8 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a9
 
-# QCClang configuration
-QCCLANG := true
+# SDClang configuration
+SDCLANG := true
 
 TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
