@@ -109,6 +109,8 @@ ifeq ($(HOST_OS),linux)
       endif
     endif
 endif
+#Enable peripheral manager
+TARGET_PER_MGR_ENABLED := true
 
 #Enable SSC Feature
 TARGET_USES_SSC := true
