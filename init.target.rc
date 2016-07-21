@@ -353,3 +353,9 @@ on property:init.svc.zygote=restarting
 #    socket vqtss stream 0660 system system
 #    user system
 #    group system
+
+service seempd /system/bin/seempd
+    class late_start
+    user system
+    group system
+    socket seempdw dgram 0666 system system
