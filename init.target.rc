@@ -70,6 +70,7 @@ on post-fs-data
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/misc/hbtp 0750 system system
+    mkdir /data/misc/seemp 0700 system system
 
 on boot
     start rmt_storage
