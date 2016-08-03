@@ -83,3 +83,9 @@ PRODUCT_COPY_FILES += device/qcom/msmcobalt/msm_irqbalance.conf:system/vendor/et
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# dm-verity configuration
+PRODUCT_SUPPORTS_VERITY := true
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+
+# List of AAPT configurations
+PRODUCT_AAPT_CONFIG += xlarge large
