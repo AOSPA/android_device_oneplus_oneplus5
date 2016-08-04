@@ -90,6 +90,7 @@ qcom.bluetooth.soc=cherokee
 ro.bluetooth.a4wp=false
 
 #system prop for wipower support
+ro.bluetooth.emb_wp_mode=true
 ro.bluetooth.wipower=true
 
 #
