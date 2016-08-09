@@ -49,6 +49,18 @@
         <item>0x42C10000</item> <!-- STORAGE CLK SCALING resource opcode-->
         <item>0x1</item>        <!-- STORAGE CLK SCALING resource value-->
     </integer-array>
+   <bool name="config_enableFreqAggr">true</bool>
+   <integer name="freqaggr_timeout_param">15000</integer>
+   <integer-array name="freqaggr_init_param_value">
+        <item>0x40C4C000</item> <!-- SCHED SET FREQ AGGR resource opcode-->
+        <item>0x1</item>        <!-- SCHED SET FREQ AGGR resource value-->
+        <item>0x40C50000</item> <!-- SCHED ENABLE THREAD GROUPING resource opcode-->
+        <item>0x1</item>        <!-- SCHED ENABLE THREAD GROUPING resource value-->
+    </integer-array>
+   <integer-array name="freqaggr_param_value">
+        <item>0x40C38000</item> <!-- SCHED ADD FREQ AGGR resource opcode-->
+        <item>0x1</item>        <!-- SCHED ADD FREQ AGGR resource value-->
+    </integer-array>
    <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
    <integer-array name="flingboost_param_value">
         <item>0x41800000</item> <!-- CPUBW_MIN_FREQ resource opcode-->
