@@ -379,3 +379,9 @@ service seempd /system/bin/seempd
     user system
     group system
     socket seempdw dgram 0666 system system
+
+service energy-awareness /system/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
