@@ -132,6 +132,11 @@ service qseecomd /system/bin/qseecomd
    user root
    group root
 
+service spdaemon /system/bin/spdaemon
+   class core
+   user system
+   group system
+
 #service mpdecision /system/bin/mpdecision --avg_comp
 #   user root
 #   disabled
