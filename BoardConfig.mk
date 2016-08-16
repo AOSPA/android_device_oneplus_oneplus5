@@ -127,3 +127,6 @@ USE_SENSOR_MULTI_HAL := true
 ADD_RADIO_FILES := true
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
+
+#Enable CPUSets
+ENABLE_CPUSETS := true
