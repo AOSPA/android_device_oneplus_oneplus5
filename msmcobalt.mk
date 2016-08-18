@@ -10,6 +10,9 @@ PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_
                       device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
+# Add support for whitelisted apps
+PRODUCT_COPY_FILES += device/qcom/msmcobalt/whitelistedapps.xml:system/etc/whitelistedapps.xml
+
 $(call inherit-product, device/qcom/common/common64.mk)
 
 PRODUCT_NAME := msmcobalt
