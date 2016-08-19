@@ -146,3 +146,9 @@ sched.colocate.enable=1
 ro.vendor.gt_library=libqti-gt.so
 ro.vendor.at_library=libqti-at.so
 sys.games.gt.prof=1
+
+#settings to enable PMD and Device Orientation Sensors
+ro.qti.sensors.dev_ori=true
+ro.qti.sensors.pmd=true
+ro.qti.sensors.sta_detect=true
+ro.qti.sensors.mot_detect=true
