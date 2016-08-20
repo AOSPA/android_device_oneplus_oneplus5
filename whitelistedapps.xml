@@ -47,5 +47,7 @@
             PackageName="com.vectorunit.redcmgeplaycn" />
         <AppAttributes
             PackageName="com.vectorunit.red" />
+        <AppAttributes
+            PackageName="com.gameloft.android.ANMP.GloftA8HM" />
     </GameColocateApps>
 </AppCatalog>
