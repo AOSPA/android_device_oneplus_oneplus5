@@ -10,8 +10,13 @@ PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_
                       device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
+
 # Add support for whitelisted apps
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/whitelistedapps.xml:system/etc/whitelistedapps.xml
+
+#QTIC flag
+-include $(QCPATH)/common/config/qtic-config.mk
+
 
 $(call inherit-product, device/qcom/common/common64.mk)
 
@@ -43,6 +48,9 @@ endif #BOARD_HAVE_QCOM_FM
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msmcobalt/msmcobalt.mk
+
+PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
+        $(PRODUCT_PACKAGE_OVERLAYS)
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
