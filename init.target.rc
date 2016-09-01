@@ -69,6 +69,7 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
+    mkdir /data/misc/qvop 0660 system system
     mkdir /data/misc/hbtp 0750 system system
     mkdir /data/misc/seemp 0700 system system
 
@@ -107,6 +108,10 @@ on property:sys.shutdown.requested=*
    insmod /system/lib/modules/msm-vidc-table-gov.ko
 
 ## import cne init file
+service qvop-daemon /system/bin/qvop-daemon
+    class late_start
+    user system
+    group system drmrpc
 #on post-fs
 #    export LD_PRELOAD /vendor/lib/libNimsWrap.so
 #
