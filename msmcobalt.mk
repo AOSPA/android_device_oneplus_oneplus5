@@ -27,9 +27,6 @@ PRODUCT_DEVICE := msmcobalt
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Cobalt for arm64
 
-# default is nosdcard, S/W button enabled in resource
-PRODUCT_CHARACTERISTICS := nosdcard
-
 # Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := true
 
