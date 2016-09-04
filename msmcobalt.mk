@@ -2,7 +2,6 @@ DEVICE_PACKAGE_OVERLAYS := device/qcom/msmcobalt/overlay
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := true
-TARGET_USES_QTIC := false # bring-up hack
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
@@ -17,16 +16,16 @@ PRODUCT_COPY_FILES += device/qcom/msmcobalt/whitelistedapps.xml:system/etc/white
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
 
-
+# Override heap growth limit due to high display density on device
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapgrowthlimit=256m
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common64.mk)
 
 PRODUCT_NAME := msmcobalt
 PRODUCT_DEVICE := msmcobalt
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := Cobalt for arm64
-
-# default is nosdcard, S/W button enabled in resource
-PRODUCT_CHARACTERISTICS := nosdcard
 
 # Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := true

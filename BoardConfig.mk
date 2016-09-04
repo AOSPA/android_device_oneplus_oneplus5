@@ -26,7 +26,6 @@ TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 
 -include $(QCPATH)/common/msmcobalt/BoardConfigVendor.mk
-MINIMAL_FONT_FOOTPRINT := true
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
@@ -89,9 +88,6 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
-#Enable Peripheral Manager
-#TARGET_PER_MGR_ENABLED := true
-
 #Enable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
 
@@ -114,6 +110,7 @@ ifeq ($(HOST_OS),linux)
       endif
     endif
 endif
+
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 

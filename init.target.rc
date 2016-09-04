@@ -69,12 +69,20 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
+    mkdir /data/misc/qvop 0660 system system
     mkdir /data/misc/hbtp 0750 system system
     mkdir /data/misc/seemp 0700 system system
 
+# For cpusets initialize for Silver Only first and then Silver + Gold
+# Silver Only configuration cannot work with 0-7
 on boot
     start rmt_storage
     start rfs_access
+    write /dev/cpuset/top-app/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
     write /dev/cpuset/top-app/cpus 0-7
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
@@ -107,6 +115,10 @@ on property:sys.shutdown.requested=*
    insmod /system/lib/modules/msm-vidc-table-gov.ko
 
 ## import cne init file
+service qvop-daemon /system/bin/qvop-daemon
+    class late_start
+    user system
+    group system drmrpc
 #on post-fs
 #    export LD_PRELOAD /vendor/lib/libNimsWrap.so
 #
@@ -154,6 +166,9 @@ service spdaemon /system/bin/spdaemon
 service thermal-engine /system/vendor/bin/thermal-engine
    class main
    user root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
    group root
 
 #service security-check1 /sbin/security_boot_check system
@@ -180,11 +195,11 @@ service hbtp /system/vendor/bin/hbtp_daemon
     group system
     disabled
 
-#service audiod /system/bin/audiod
-#   class late_start
-#   user system
-#   group system
-#
+service audiod /system/bin/audiod
+   class late_start
+   user system
+   group system
+
 #service usf_tester /system/bin/usf_tester
 #    user system
 #    group system inet
@@ -250,13 +265,13 @@ service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio net_raw log diag
+    group radio log diag
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet net_raw log diag net_admin
+    group system wifi radio inet log diag
     disabled
 #
 #service mdm_helper /system/bin/mdm_helper
@@ -322,13 +337,13 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
    user system
    socket ims_rtpd stream 0660 system radio
-   group radio net_raw diag inet log
+   group radio diag inet log
    disabled
 
 service imscmservice /system/bin/imscmservice
    class main
    user system
-   group radio net_raw diag diag log
+   group radio diag log
    disabled
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
@@ -391,3 +406,8 @@ service energy-awareness /system/bin/energy-awareness
     user root
     group system
     oneshot
+
+service mdtpd /system/vendor/bin/mdtpd
+    class late_start
+    user root
+    group system radio drmrpc
