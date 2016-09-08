@@ -89,6 +89,12 @@ on boot
     write /dev/cpuset/background/cpus 0-7
     write /dev/cpuset/system-background/cpus 0-7
 
+#install video modules
+   insmod /system/lib/modules/msm-vidc-vmem.ko
+   insmod /system/lib/modules/msm-vidc.ko
+   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
+   insmod /system/lib/modules/msm-vidc-table-gov.ko
+
 #Peripheral manager
 service per_mgr /system/bin/pm-service
     class core
@@ -107,12 +113,6 @@ on property:init.svc.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop per_proxy
-
-#install video modules
-   insmod /system/lib/modules/msm-vidc-vmem.ko
-   insmod /system/lib/modules/msm-vidc.ko
-   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
-   insmod /system/lib/modules/msm-vidc-table-gov.ko
 
 ## import cne init file
 service qvop-daemon /system/bin/qvop-daemon
