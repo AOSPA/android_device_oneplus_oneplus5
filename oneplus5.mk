@@ -45,6 +45,9 @@ PRODUCT_PACKAGE_OVERLAYS := \
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus5/sensors/hals.conf:system/etc/sensors/hals.conf
 
+# QPerformance
+PRODUCT_BOOT_JARS += QPerformance
+
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus5/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
