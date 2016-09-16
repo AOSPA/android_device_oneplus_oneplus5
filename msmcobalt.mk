@@ -3,6 +3,7 @@ TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+BOARD_FRP_PARTITION_NAME :=frp
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_profiles.xml \
