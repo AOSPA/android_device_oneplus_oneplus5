@@ -151,8 +151,16 @@ ro.vendor.gt_library=libqti-gt.so
 ro.vendor.at_library=libqti-at.so
 sys.games.gt.prof=1
 
-#settings to enable PMD and Device Orientation Sensors
+#Settings to enable sensors
+#Device Orientation sensor
 ro.qti.sensors.dev_ori=true
+#Persistent Motion Detector
 ro.qti.sensors.pmd=true
+#Stationary Detector
 ro.qti.sensors.sta_detect=true
+#Motion Detector
 ro.qti.sensors.mot_detect=true
+#Device Position Classifier
+ro.qti.sensors.dpc=true
+#MultiShake sensor
+ro.qti.sensors.multishake=true
