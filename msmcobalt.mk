@@ -89,6 +89,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:system/etc/permissions/android.hardware.sensor.relative_humidity.xml \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml
 
+# High performance VR feature
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
+
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
