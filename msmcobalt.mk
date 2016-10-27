@@ -74,6 +74,9 @@ PRODUCT_COPY_FILES += \
     device/qcom/msmcobalt/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/qcom/msmcobalt/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
 
+# MIDI feature
+PRODUCT_COPY_FILES += frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml
+
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
     p2p_supplicant_overlay.conf
