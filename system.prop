@@ -168,3 +168,6 @@ ro.qti.sensors.multishake=true
 
 #Enable stm events
 persist.debug.coresight.config=stm-events
+
+#Disable face beautification
+persist.ts.rtmakeup=false
