@@ -135,3 +135,5 @@ ENABLE_CPUSETS := true
 
 #Enable recovery
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
+
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
