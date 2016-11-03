@@ -17,7 +17,8 @@ TARGET_USE_UI_SVA := true
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml
+                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml \
+                      device/qcom/msmcobalt/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 
