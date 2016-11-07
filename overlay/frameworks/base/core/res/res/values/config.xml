@@ -54,6 +54,10 @@
    <integer-array name="lboostv2_param_value">
         <item>0x40C00000</item> <!-- SCHEDBOOST resource opcode-->
         <item>0x3</item>        <!-- SCHEDBOOST resource value-->
+        <item>0x40C58000</item> <!-- SCHED GROUP DOWNMIGRATE resource opcode -->
+        <item>0x5A</item>       <!-- SCHED GROUP DOWNMIGRATE resource value -->
+        <item>0x40C54000</item> <!-- SCHED GROUP UPMIGRATE resource opcode -->
+        <item>0x5F</item>       <!-- SCHED GROUP UPMIGRATE resource value -->
     </integer-array>
    <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
    <integer-array name="flingboost_param_value">
