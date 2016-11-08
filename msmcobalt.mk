@@ -2,12 +2,23 @@ DEVICE_PACKAGE_OVERLAYS := device/qcom/msmcobalt/overlay
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := true
+
+ifeq ($(TARGET_USES_NQ_NFC),true)
+# Flag to enable and support NQ3XX chipsets
+NQ3XX_PRESENT := true
+endif
+
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 BOARD_FRP_PARTITION_NAME :=frp
+
+# enable the SVA in UI area
+TARGET_USE_UI_SVA := true
+
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml
+                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml \
+                      device/qcom/msmcobalt/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 
@@ -93,6 +104,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
 
+# FBE support
+PRODUCT_COPY_FILES += \
+    device/qcom/msmcobalt/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh
+
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/msmcobalt/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
@@ -106,13 +121,3 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
-
--include $(QCPATH)/common/config/rendering-engine.mk
-ifneq (,$(strip $(wildcard $(PRODUCT_RENDERING_ENGINE_REVLIB))))
-    MULTI_LANG_ENGINE := REVERIE
-endif
-
-# Defined the locales
-PRODUCT_LOCALES += th_TH vi_VN tl_PH hi_IN ar_EG ru_RU tr_TR pt_BR bn_IN mr_IN ta_IN te_IN zh_HK \
-            in_ID my_MM km_KH sw_KE uk_UA pl_PL sr_RS sl_SI fa_IR kn_IN ml_IN ur_IN gu_IN or_IN
-
