@@ -1,4 +1,4 @@
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msmcobalt/overlay
+DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := true
@@ -16,14 +16,13 @@ TARGET_USE_UI_SVA := true
 
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msmcobalt/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msmcobalt/media_codecs.xml:system/etc/media_codecs.xml \
-                      device/qcom/msmcobalt/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += device/qcom/msm8998/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/qcom/msm8998/media_codecs.xml:system/etc/media_codecs.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 
 # Add support for whitelisted apps
-PRODUCT_COPY_FILES += device/qcom/msmcobalt/whitelistedapps.xml:system/etc/whitelistedapps.xml
+PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
 
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
@@ -34,10 +33,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common64.mk)
 
-PRODUCT_NAME := msmcobalt
-PRODUCT_DEVICE := msmcobalt
+PRODUCT_NAME := msm8998
+PRODUCT_DEVICE := msm8998
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := Cobalt for arm64
+PRODUCT_MODEL := MSM8998 for arm64
 
 # Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -60,19 +59,19 @@ PRODUCT_BOOT_JARS += qcom.fmradio
 endif #BOARD_HAVE_QCOM_FM
 
 # Audio configuration file
--include $(TOPDIR)hardware/qcom/audio/configs/msmcobalt/msmcobalt.mk
+-include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
 PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
         $(PRODUCT_PACKAGE_OVERLAYS)
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
-    device/qcom/msmcobalt/sensors/hals.conf:system/etc/sensors/hals.conf
+    device/qcom/msm8998/sensors/hals.conf:system/etc/sensors/hals.conf
 
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msmcobalt/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msmcobalt/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
+    device/qcom/msm8998/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/qcom/msm8998/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
 
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
@@ -106,10 +105,10 @@ PRODUCT_COPY_FILES += \
 
 # FBE support
 PRODUCT_COPY_FILES += \
-    device/qcom/msmcobalt/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh
+    device/qcom/msm8998/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/qcom/msmcobalt/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
