@@ -21,9 +21,6 @@ PRODUCT_COPY_FILES += device/qcom/msm8998/media_profiles.xml:system/etc/media_pr
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 
-# Add support for whitelisted apps
-PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
-
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
 
