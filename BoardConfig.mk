@@ -3,8 +3,8 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_BOARD_PLATFORM := msmcobalt
-TARGET_BOOTLOADER_BOARD_NAME := msmcobalt
+TARGET_BOARD_PLATFORM := msm8998
+TARGET_BOOTLOADER_BOARD_NAME := msm8998
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -25,7 +25,7 @@ TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 
--include $(QCPATH)/common/msmcobalt/BoardConfigVendor.mk
+-include $(QCPATH)/common/msm8998/BoardConfigVendor.mk
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
