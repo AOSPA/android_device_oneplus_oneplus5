@@ -18,9 +18,13 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
-ifneq ($(TARGET_USES_AOSP), true)
+ifeq ($(TARGET_USES_AOSP), true)
+TARGET_HW_DISK_ENCRYPTION := false
+else
 # SDClang configuration
 SDCLANG := true
+#Enable HW based full disk encryption
+TARGET_HW_DISK_ENCRYPTION := true
 endif
 
 TARGET_NO_BOOTLOADER := false
@@ -51,7 +55,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
-TARGET_USES_QCOM_BSP := true
 
 ifeq ($(BOARD_KERNEL_CMDLINE),)
 ifeq ($(TARGET_KERNEL_VERSION),4.4)
@@ -95,14 +98,8 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
-#Enable HW based full disk encryption
-TARGET_HW_DISK_ENCRYPTION := false
-
 #Enable PD locater/notifier
 TARGET_PD_SERVICE_ENABLED := true
-
-#Enable HW based full disk encryption
-TARGET_HW_DISK_ENCRYPTION := true
 
 TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw
 

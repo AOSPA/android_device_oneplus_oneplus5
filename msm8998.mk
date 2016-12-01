@@ -1,14 +1,24 @@
+TARGET_USES_AOSP := true
+TARGET_USES_QCOM_BSP := false
+
+ifeq ($(TARGET_USES_AOSP),true)
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
+TARGET_USES_QTIC := false
+else
 DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_USES_QTIC := true
+endif
+
 TARGET_KERNEL_VERSION := 4.4
-BOARD_HAVE_QCOM_FM := true
-TARGET_USES_NQ_NFC := true
+BOARD_HAVE_QCOM_FM := false
+TARGET_USES_NQ_NFC := false
 
 ifeq ($(TARGET_USES_NQ_NFC),true)
 # Flag to enable and support NQ3XX chipsets
 NQ3XX_PRESENT := true
 endif
 
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 BOARD_FRP_PARTITION_NAME :=frp
 
 # enable the SVA in UI area
@@ -39,17 +49,17 @@ PRODUCT_BRAND := Android
 PRODUCT_MODEL := MSM8998 for arm64
 
 # Enable features in video HAL that can compile only on this platform
-TARGET_USES_MEDIA_EXTENSIONS := true
+TARGET_USES_MEDIA_EXTENSIONS := false
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
-PRODUCT_BOOT_JARS += tcmiface
-PRODUCT_BOOT_JARS += telephony-ext
+#PRODUCT_BOOT_JARS += tcmiface
+#PRODUCT_BOOT_JARS += telephony-ext
 
 PRODUCT_PACKAGES += telephony-ext
 
 ifneq ($(strip $(QCPATH)),)
-PRODUCT_BOOT_JARS += WfdCommon
+#PRODUCT_BOOT_JARS += WfdCommon
 #Android oem shutdown hook
 PRODUCT_BOOT_JARS += oem-services
 endif
@@ -61,8 +71,8 @@ endif #BOARD_HAVE_QCOM_FM
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
-PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
-        $(PRODUCT_PACKAGE_OVERLAYS)
+#PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
+#        $(PRODUCT_PACKAGE_OVERLAYS)
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
