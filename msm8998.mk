@@ -21,9 +21,6 @@ PRODUCT_COPY_FILES += device/qcom/msm8998/media_profiles.xml:system/etc/media_pr
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 
-# Add support for whitelisted apps
-PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
-
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
 
@@ -47,6 +44,7 @@ PRODUCT_BOOT_JARS += tcmiface
 PRODUCT_BOOT_JARS += telephony-ext
 
 PRODUCT_PACKAGES += telephony-ext
+PRODUCT_PACKAGES += libqmiextservices
 
 ifneq ($(strip $(QCPATH)),)
 PRODUCT_BOOT_JARS += WfdCommon
@@ -72,6 +70,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/qcom/msm8998/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
+
+# MIDI feature
+PRODUCT_COPY_FILES += frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml
 
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
