@@ -142,6 +142,7 @@ echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-ret/idle_enabled
 echo N > /sys/module/lpm_levels/system/perf/perf-l2-dynret/idle_enabled
 echo N > /sys/module/lpm_levels/system/perf/perf-l2-ret/idle_enabled
 echo N > /sys/module/lpm_levels/parameters/sleep_disabled
+echo N > /sys/module/printk/parameters/console_suspend
 
 echo 0-1 > /dev/cpuset/background/cpus
 echo 0-2 > /dev/cpuset/system-background/cpus
