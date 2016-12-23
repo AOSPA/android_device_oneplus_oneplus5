@@ -182,7 +182,7 @@ PRODUCT_COPY_FILES += \
 
 # FBE support
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh
+    device/qcom/msm8998/init.qti.qseecomd.sh:system/bin/init.qti.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
