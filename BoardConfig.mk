@@ -139,3 +139,6 @@ ENABLE_SCHEDBOOST := true
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
 
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
+
+#Enabling IMS Feature
+TARGET_USES_IMS := true
