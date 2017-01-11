@@ -97,4 +97,7 @@
         <item>0x40800000</item> <!-- SCALING_MIN_FREQ big cluster resource opcode -->
         <item>0x4A6</item>      <!-- SCALING_MIN_FREQ of 1190 MHz big cluster resource value -->
    </integer-array>
+
+   <!-- Device supports Sustained Performance Mode-->
+   <bool name="config_sustainedPerformanceModeSupported">true</bool>
 </resources>
