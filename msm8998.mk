@@ -51,6 +51,9 @@ PRODUCT_MODEL := MSM8998 for arm64
 # Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := false
 
+# WLAN chipset
+WLAN_CHIPSET := qca_cld3
+
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
 #PRODUCT_BOOT_JARS += tcmiface
@@ -77,6 +80,11 @@ endif #BOARD_HAVE_QCOM_FM
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/sensors/hals.conf:system/etc/sensors/hals.conf
+
+# WLAN host driver
+ifneq ($(WLAN_CHIPSET),)
+PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
+endif
 
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
