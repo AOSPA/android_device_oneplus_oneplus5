@@ -64,6 +64,7 @@ endif #BOARD_HAVE_QCOM_FM
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
 PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
+        $(QCPATH)/qrdplus/globalization/multi-language/res-overlay \
         $(PRODUCT_PACKAGE_OVERLAYS)
 
 # Sensor HAL conf file
