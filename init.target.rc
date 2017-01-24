@@ -444,5 +444,8 @@ service qvrd /system/vendor/bin/qvrservice
 
 service qdmastatsd /system/bin/qdmastatsd
     class late_start
+
+service smcinvoked /system/vendor/bin/smcinvoked
+    class main
     user system
     group system
