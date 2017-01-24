@@ -182,11 +182,6 @@ service spdaemon /system/bin/spdaemon
    user system
    group system
 
-service splogger /system/bin/splogger
-   class core
-   user system
-   group system
-
 #service mpdecision /system/bin/mpdecision --avg_comp
 #   user root
 #   disabled
