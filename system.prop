@@ -49,9 +49,6 @@ persist.mm.enable.prefetch=true
 # Additional buffers shared between Camera and Video
 vidc.enc.dcvs.extra-buff-count=2
 
-# Set default power mode to low power for encoder
-vendor.vidc.debug.perf.mode=2
-
 #
 # system props for the data modules
 #
