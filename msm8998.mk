@@ -135,3 +135,11 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
+#A/B related packages
+PRODUCT_PACKAGES += update_engine \
+		    update_engine_client \
+		    update_verifier \
+		    bootctrl.msm8998 \
+		    brillo_update_payload
+#Boot control HAL test app
+PRODUCT_PACKAGES_DEBUG += bootctl
