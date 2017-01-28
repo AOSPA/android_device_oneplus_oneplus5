@@ -130,3 +130,8 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
+
+#for wlan
+PRODUCT_PACKAGES += \
+    wificond \
+    wifilogd
