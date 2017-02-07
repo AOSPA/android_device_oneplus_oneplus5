@@ -138,17 +138,17 @@ USE_SENSOR_MULTI_HAL := true
 
 #Add NON-HLOS files for ota upgrade
 ADD_RADIO_FILES := true
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 
 #Enable CPUSets
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-#Enable recovery
-TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
-
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 
 #Enabling IMS Feature
 TARGET_USES_IMS := true
+
+ifneq ($(AB_OTA_UPDATER),true)
+    TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
+endif
