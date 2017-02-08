@@ -128,6 +128,9 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
+on charger
+    start hvdcp_opti
+
 ## import cne init file
 service qvop-daemon /system/bin/qvop-daemon
     class late_start
