@@ -167,4 +167,4 @@ persist.ts.rtmakeup=false
 ro.cutoff_voltage_mv=3200
 
 #Expose aux camera for below packages
-camera.aux.packagelist=org.codeaurora.snapcam
+camera.aux.packagelist=org.codeaurora.snapcam,com.qualcomm.saltproject,com.qualcomm.saltproject2
