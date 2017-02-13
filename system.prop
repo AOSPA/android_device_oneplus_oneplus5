@@ -120,6 +120,9 @@ persist.sys.wfd.virtual=0
 # system prop for NFC DT
 ro.nfc.port=I2C
 
+#property for vendor specific library
+ro.vendor.at_library=libqti-at.so
+
 #min/max cpu in core control
 ro.core_ctl_min_cpu=2
 ro.core_ctl_max_cpu=4
