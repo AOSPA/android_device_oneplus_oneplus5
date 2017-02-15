@@ -48,9 +48,6 @@ persist.mm.enable.prefetch=true
 # Additional buffers shared between Camera and Video
 vidc.enc.dcvs.extra-buff-count=2
 
-# Set default power mode to low power for encoder
-vidc.debug.perf.mode=2
-
 #
 # system props for the data modules
 #
@@ -107,6 +104,13 @@ persist.data.df.agg.dl_size=4096
 persist.data.df.mux_count=8
 persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
+
+#
+# system property determining camera HAL to be used for a Video call
+#
+# 1 is camera1
+# 2 or anything else is camera2
+persist.radio.VT_CAM_INTERFACE=2
 
 #property to enable user to access Google WFD settings
 persist.debug.wfd.enable=1
