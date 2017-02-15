@@ -225,8 +225,14 @@ PRODUCT_PACKAGES += update_engine \
 #Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
 
+
 #Healthd packages
 PRODUCT_PACKAGES += android.hardware.health@1.0-impl \
 		    android.hardware.health@1.0-convert \
 		    android.hardware.health@1.0-service \
 		    libhealthd.msm
+
+#FEATURE_OPENGLES_EXTENSION_PACK support string config file
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+
