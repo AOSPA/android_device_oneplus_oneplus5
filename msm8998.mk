@@ -138,6 +138,12 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
+
+#for wlan
+PRODUCT_PACKAGES += \
+	wificond \
+	wifilogd
+
 #HIDLized HAL binaries/init scripts
 #Keymaster
 PRODUCT_PACKAGES += android.hardware.keymaster@3.0-impl
