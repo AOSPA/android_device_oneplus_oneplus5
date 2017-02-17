@@ -420,7 +420,7 @@ service seempd /system/bin/seempd
 
 service energy-awareness /system/bin/energy-awareness
     class main
-    user root
+    user system
     group system
     oneshot
 
