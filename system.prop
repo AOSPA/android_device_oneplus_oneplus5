@@ -160,6 +160,8 @@ ro.qti.sensors.mot_detect=true
 ro.qti.sensors.dpc=true
 #MultiShake sensor
 ro.qti.sensors.multishake=true
+#IOD sensor
+ro.qti.sensors.iod=true
 
 #Enable stm events
 persist.debug.coresight.config=stm-events
