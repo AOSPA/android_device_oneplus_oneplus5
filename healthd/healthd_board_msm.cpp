@@ -355,7 +355,7 @@ void healthd_board_mode_charger_init()
 
     ret = read_file(CHARGER_TYPE_PATH, buff, sizeof(buff));
     if (ret >= 0) {
-        if (strstr(buff, "USB"))
+        if (!strcmp(buff, "USB"))
             usb_type_is_sdp = true;
     }
     memset(buff, 0, sizeof(buff));
