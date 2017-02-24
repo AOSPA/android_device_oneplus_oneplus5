@@ -1836,6 +1836,30 @@ case "$target" in
             echo 614400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
             echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif
 
+            # bring all cores online
+            echo 1 > /sys/devices/system/cpu/cpu0/online
+            echo 1 > /sys/devices/system/cpu/cpu1/online
+            echo 1 > /sys/devices/system/cpu/cpu2/online
+            echo 1 > /sys/devices/system/cpu/cpu3/online
+            echo 1 > /sys/devices/system/cpu/cpu4/online
+            echo 1 > /sys/devices/system/cpu/cpu5/online
+            echo 1 > /sys/devices/system/cpu/cpu6/online
+            echo 1 > /sys/devices/system/cpu/cpu7/online
+
+            # configure LPM
+            echo N > /sys/module/lpm_levels/system/perf/cpu0/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/perf/cpu1/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/perf/cpu2/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/perf/cpu3/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/pwr/cpu4/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/pwr/cpu5/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/pwr/cpu6/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/pwr/cpu7/ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-dynret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/perf/perf-l2-dynret/idle_enabled
+            # enable LPM
+            echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
+
             # re-enable thermal and BCL hotplug
             echo 1 > /sys/module/msm_thermal/core_control/enabled
             for mode in /sys/devices/soc.0/qcom,bcl.*/mode
@@ -1855,9 +1879,6 @@ case "$target" in
                 echo -n enable > $mode
             done
 
-            # Enable low power modes
-            echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
-
             # Set Memory parameters
             configure_memory_parameters
 
@@ -1872,6 +1893,8 @@ case "$target" in
                 echo 50 > $cpubw/bw_hwmon/io_percent
                 echo 20 > $cpubw/bw_hwmon/hist_memory
                 echo 0  > $cpubw/bw_hwmon/hyst_length
+                echo 100 > $cpubw/bw_hwmon/decay_rate
+                echo 50 > $cpubw/bw_hwmon/bw_step
                 echo 80 > $cpubw/bw_hwmon/down_thres
                 echo 0  > $cpubw/bw_hwmon/low_power_ceil_mbps
                 echo 50 > $cpubw/bw_hwmon/low_power_io_percent
