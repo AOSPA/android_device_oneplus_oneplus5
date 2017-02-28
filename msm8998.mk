@@ -71,8 +71,14 @@ ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
 PRODUCT_BOOT_JARS += qcom.fmradio
 endif #BOARD_HAVE_QCOM_FM
 
+# add vendor manifest file
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8998/vintf.xml:system/vendor/manifest.xml
+
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
+
+PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
 #PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
 #        $(PRODUCT_PACKAGE_OVERLAYS)
