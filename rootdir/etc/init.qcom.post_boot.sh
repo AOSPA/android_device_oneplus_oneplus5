@@ -1890,7 +1890,7 @@ case "$target" in
                 echo 762 > $cpubw/min_freq
                 echo "1525 3143 4173 5195 5859 7759 9887 10327" > $cpubw/bw_hwmon/mbps_zones
                 echo 4  > $cpubw/bw_hwmon/sample_ms
-                echo 50 > $cpubw/bw_hwmon/io_percent
+                echo 85 > $cpubw/bw_hwmon/io_percent
                 echo 20 > $cpubw/bw_hwmon/hist_memory
                 echo 0  > $cpubw/bw_hwmon/hyst_length
                 echo 100 > $cpubw/bw_hwmon/decay_rate
