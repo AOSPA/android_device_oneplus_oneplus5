@@ -57,7 +57,9 @@ function set_density_by_fb() {
     if [ -z $fb_width ]; then
         setprop ro.sf.lcd_density 320
     else
-        if [ $fb_width -ge 1080 ]; then
+        if [ $fb_width -ge 1440 ]; then
+           setprop ro.sf.lcd_density 560
+        elif [ $fb_width -ge 1080 ]; then
            setprop ro.sf.lcd_density 480
         elif [ $fb_width -ge 720 ]; then
            setprop ro.sf.lcd_density 320 #for 720X1280 resolution
