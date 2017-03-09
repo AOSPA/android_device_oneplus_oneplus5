@@ -67,4 +67,27 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_CFLAGS := -Wno-unused-parameter -Wno-unused-variable
 include $(BUILD_SHARED_LIBRARY)
 
+
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := powerhintparser.c
+
+LOCAL_MODULE := powerhint.qti
+
+
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl libxml2
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_C_INCLUDES := external/libxml2/include \
+                    external/icu/icu4c/source/common
+
+
+LOCAL_CFLAGS := -Wno-unused-parameter -Wno-unused-variable
+
+LOCAL_MODULE_RELATIVE_PATH := hw
+
+include $(BUILD_SHARED_LIBRARY)
+
 endif

@@ -37,6 +37,7 @@
 #include <stdlib.h>
 
 #define LOG_TAG "QTI PowerHAL"
+
 #include <utils/Log.h>
 #include <hardware/hardware.h>
 #include <hardware/power.h>
@@ -47,6 +48,7 @@
 #include "performance.h"
 #include "power-common.h"
 #include "powerhintparser.h"
+#include "qti_power.h"
 
 static int sustained_mode_handle = 0;
 static int vr_mode_handle = 0;
@@ -58,20 +60,12 @@ static pthread_mutex_t s_interaction_lock = PTHREAD_MUTEX_INITIALIZER;
 static int process_sustained_perf_hint(void *data)
 {
     int duration = 0;
-    int *resource_values = NULL;
-    int resources = 0;
 
     pthread_mutex_lock(&s_interaction_lock);
     if (data && sustained_performance_mode == 0) {
         if (vr_mode == 0) { // Sustained mode only.
-            resource_values = getPowerhint(SUSTAINED_PERF_HINT_ID, &resources);
-            if (!resource_values) {
-                ALOGE("Can't get sustained perf hints from xml ");
-                pthread_mutex_unlock(&s_interaction_lock);
-                return HINT_NONE;
-            }
-            sustained_mode_handle = interaction_with_handle(
-                sustained_mode_handle, duration, resources, resource_values);
+            sustained_mode_handle = interaction_with_handle_HL(
+                sustained_mode_handle, duration, POWER_HINT_SUSTAINED_PERFORMANCE);
             if (!CHECK_HANDLE(sustained_mode_handle)) {
                 ALOGE("Failed interaction_with_handle for sustained_mode_handle");
                 pthread_mutex_unlock(&s_interaction_lock);
@@ -79,14 +73,8 @@ static int process_sustained_perf_hint(void *data)
             }
         } else if (vr_mode == 1) { // Sustained + VR mode.
             release_request(vr_mode_handle);
-            resource_values = getPowerhint(VR_MODE_SUSTAINED_PERF_HINT_ID, &resources);
-            if (!resource_values) {
-                ALOGE("Can't get VR mode sustained perf hints from xml ");
-                pthread_mutex_unlock(&s_interaction_lock);
-                return HINT_NONE;
-            }
-            sustained_mode_handle = interaction_with_handle(
-                sustained_mode_handle, duration, resources, resource_values);
+            sustained_mode_handle = interaction_with_handle_HL(sustained_mode_handle, duration,
+                    POWER_HINT_QTI_VR_SUSTAINED_PERFORMANCE );
             if (!CHECK_HANDLE(sustained_mode_handle)) {
                 ALOGE("Failed interaction_with_handle for sustained_mode_handle");
                 pthread_mutex_unlock(&s_interaction_lock);
@@ -97,14 +85,7 @@ static int process_sustained_perf_hint(void *data)
     } else if (sustained_performance_mode == 1) {
         release_request(sustained_mode_handle);
         if (vr_mode == 1) { // Switch back to VR Mode.
-            resource_values = getPowerhint(VR_MODE_HINT_ID, &resources);
-            if (!resource_values) {
-                ALOGE("Can't get VR mode perf hints from xml ");
-                pthread_mutex_unlock(&s_interaction_lock);
-                return HINT_NONE;
-            }
-            vr_mode_handle = interaction_with_handle(
-                vr_mode_handle, duration, resources, resource_values);
+            vr_mode_handle = interaction_with_handle_HL(vr_mode_handle, duration, POWER_HINT_VR_MODE);
             if (!CHECK_HANDLE(vr_mode_handle)) {
                 ALOGE("Failed interaction_with_handle for vr_mode_handle");
                 pthread_mutex_unlock(&s_interaction_lock);
@@ -120,20 +101,12 @@ static int process_sustained_perf_hint(void *data)
 static int process_vr_mode_hint(void *data)
 {
     int duration = 0;
-    int *resource_values = NULL;
-    int resources = 0;
 
     pthread_mutex_lock(&s_interaction_lock);
     if (data && vr_mode == 0) {
         if (sustained_performance_mode == 0) { // VR mode only.
-            resource_values = getPowerhint(VR_MODE_HINT_ID, &resources);
-            if (!resource_values) {
-                ALOGE("Can't get VR mode perf hints from xml ");
-                pthread_mutex_unlock(&s_interaction_lock);
-                return HINT_NONE;
-            }
-            vr_mode_handle = interaction_with_handle(
-                vr_mode_handle, duration, resources, resource_values);
+            vr_mode_handle = interaction_with_handle_HL(
+                vr_mode_handle, duration, POWER_HINT_VR_MODE);
             if (!CHECK_HANDLE(vr_mode_handle)) {
                 ALOGE("Failed interaction_with_handle for vr_mode_handle");
                 pthread_mutex_unlock(&s_interaction_lock);
@@ -141,14 +114,8 @@ static int process_vr_mode_hint(void *data)
             }
         } else if (sustained_performance_mode == 1) { // Sustained + VR mode.
             release_request(sustained_mode_handle);
-            resource_values = getPowerhint(VR_MODE_SUSTAINED_PERF_HINT_ID, &resources);
-            if (!resource_values) {
-                ALOGE("Can't get VR mode sustained perf hints from xml ");
-                pthread_mutex_unlock(&s_interaction_lock);
-                return HINT_NONE;
-            }
-            vr_mode_handle = interaction_with_handle(
-                vr_mode_handle, duration, resources, resource_values);
+            vr_mode_handle = interaction_with_handle_HL(
+                vr_mode_handle, duration, POWER_HINT_QTI_VR_SUSTAINED_PERFORMANCE );
             if (!CHECK_HANDLE(vr_mode_handle)) {
                 ALOGE("Failed interaction_with_handle for vr_mode_handle");
                 pthread_mutex_unlock(&s_interaction_lock);
@@ -159,14 +126,8 @@ static int process_vr_mode_hint(void *data)
     } else if (vr_mode == 1) {
         release_request(vr_mode_handle);
         if (sustained_performance_mode == 1) { // Switch back to sustained Mode.
-            resource_values = getPowerhint(SUSTAINED_PERF_HINT_ID, &resources);
-            if (!resource_values) {
-                ALOGE("Can't get sustained perf hints from xml ");
-                pthread_mutex_unlock(&s_interaction_lock);
-                return HINT_NONE;
-            }
-            sustained_mode_handle = interaction_with_handle(
-                sustained_mode_handle, duration, resources, resource_values);
+            sustained_mode_handle = interaction_with_handle_HL(
+                sustained_mode_handle, duration, POWER_HINT_SUSTAINED_PERFORMANCE);
             if (!CHECK_HANDLE(sustained_mode_handle)) {
                 ALOGE("Failed interaction_with_handle for sustained_mode_handle");
                 pthread_mutex_unlock(&s_interaction_lock);
@@ -185,6 +146,8 @@ static int process_video_encode_hint(void *metadata)
     char governor[80];
     struct video_encode_metadata_t video_encode_metadata;
 
+    ALOGE("Process Video encode Hint\n");
+
     if(!metadata)
        return HINT_NONE;
 
@@ -197,13 +160,15 @@ static int process_video_encode_hint(void *metadata)
     /* Initialize encode metadata struct fields */
     memset(&video_encode_metadata, 0, sizeof(struct video_encode_metadata_t));
     video_encode_metadata.state = -1;
-    video_encode_metadata.hint_id = DEFAULT_VIDEO_ENCODE_HINT_ID;
+    video_encode_metadata.hint_id = POWER_HINT_VIDEO_ENCODE;
 
     if (parse_video_encode_metadata((char *)metadata, &video_encode_metadata) ==
             -1) {
        ALOGE("Error occurred while parsing metadata.");
        return HINT_NONE;
     }
+
+    ALOGE("VIDEO ENCODE: Metadata state: %d, hint_id: %d",video_encode_metadata.state, video_encode_metadata.hint_id);
 
     if (video_encode_metadata.state == 1) {
           if (is_interactive_governor(governor)) {
@@ -212,10 +177,7 @@ static int process_video_encode_hint(void *metadata)
             int resources;
 
             /* extract perflock resources */
-            resource_values = getPowerhint(video_encode_metadata.hint_id, &resources);
-
-            if (resource_values != NULL)
-               perform_hint_action(video_encode_metadata.hint_id, resource_values, resources);
+            perform_hint_action_HL(video_encode_metadata.hint_id);
             ALOGI("Video Encode hint start");
             return HINT_HANDLED;
         }
