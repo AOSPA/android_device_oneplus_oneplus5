@@ -4,6 +4,7 @@ TARGET_USES_QCOM_BSP := false
 
 ifeq ($(TARGET_USES_AOSP),true)
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
+TARGET_DISABLE_DASH := true
 TARGET_USES_QTIC := false
 else
 DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
@@ -31,6 +32,9 @@ PRODUCT_COPY_FILES += device/qcom/msm8998/media_profiles.xml:system/etc/media_pr
                       device/qcom/msm8998/media_codecs.xml:system/etc/media_codecs.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
+ifneq ($(TARGET_DISABLE_DASH), true)
+    PRODUCT_BOOT_JARS += qcmediaplayer
+endif
 
 # Add support for whitelisted apps
 PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
