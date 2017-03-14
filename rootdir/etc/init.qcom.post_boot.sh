@@ -82,7 +82,7 @@ echo 1574400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
 echo "83 1881600:90 2035200:95" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
 echo 19000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
-echo 79000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
+echo 59000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
 echo 806400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction
