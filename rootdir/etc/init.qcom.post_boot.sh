@@ -1726,7 +1726,9 @@ case "$target" in
                 echo 762 > $cpubw/min_freq
                 echo "1525 3143 5859 7759 9887 10327 11863 13763" > $cpubw/bw_hwmon/mbps_zones
                 echo 4 > $cpubw/bw_hwmon/sample_ms
-                echo 50 > $cpubw/bw_hwmon/io_percent
+                echo 85 > $cpubw/bw_hwmon/io_percent
+                echo 100 > $cpubw/bw_hwmon/decay_rate
+                echo 50 > $cpubw/bw_hwmon/bw_step
                 echo 20 > $cpubw/bw_hwmon/hist_memory
                 echo 0 > $cpubw/bw_hwmon/hyst_length
                 echo 80 > $cpubw/bw_hwmon/down_thres
@@ -1890,7 +1892,7 @@ case "$target" in
                 echo 762 > $cpubw/min_freq
                 echo "1525 3143 4173 5195 5859 7759 9887 10327" > $cpubw/bw_hwmon/mbps_zones
                 echo 4  > $cpubw/bw_hwmon/sample_ms
-                echo 50 > $cpubw/bw_hwmon/io_percent
+                echo 85 > $cpubw/bw_hwmon/io_percent
                 echo 20 > $cpubw/bw_hwmon/hist_memory
                 echo 0  > $cpubw/bw_hwmon/hyst_length
                 echo 100 > $cpubw/bw_hwmon/decay_rate
@@ -2422,12 +2424,27 @@ case "$target" in
 		 platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
 	fi
 
+	if [ -f /sys/devices/soc0/platform_version ]; then
+		platform_version=`cat /sys/devices/soc0/platform_version`
+		platform_major_version=$((10#${platform_version}>>16))
+	fi
+
 	case "$soc_id" in
 		"292") #msm8998
 		# Start Host based Touch processing
 		case "$hw_platform" in
 		"QRD")
-			start hbtp
+			case "$platform_subtype_id" in
+				"0")
+					start hbtp
+					;;
+				"16")
+					if [ $platform_major_version -lt 6 ]; then
+						start hbtp
+					fi
+					;;
+			esac
+
 			echo 0 > /sys/class/graphics/fb1/hpd
 			;;
 		"Surf")
