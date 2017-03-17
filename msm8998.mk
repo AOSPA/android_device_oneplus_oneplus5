@@ -85,7 +85,7 @@ endif #BOARD_HAVE_QCOM_FM
 
 # add vendor manifest file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/vintf.xml:system/vendor/manifest.xml
+    device/qcom/msm8998/vintf.xml:$(TARGET_OUT_VENDOR)/manifest.xml
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
@@ -160,7 +160,7 @@ PRODUCT_COPY_FILES += \
     device/qcom/msm8998/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:$(TARGET_OUT_VENDOR_ETC)/msm_irqbalance.conf
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
