@@ -55,8 +55,8 @@ on fs
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
 
-    wait /dev/block/bootdevice/by-name/dsp
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/dsp_a /dsp ro nosuid nodev barrier=1
 
 on post-fs
     start qseecomd
@@ -77,6 +77,7 @@ on post-fs-data
     mkdir /data/misc/qvr 0770 system system
     mkdir /data/misc/qdmastats 0700 system system
     mkdir /data/misc/qdma 0770 system system
+    mkdir /data/misc/iris 0770 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
@@ -446,3 +447,13 @@ service qdmastatsd /system/bin/qdmastatsd
     class late_start
     user system
     group system
+
+service smcinvoked /system/vendor/bin/smcinvoked
+    class main
+    user system
+    group system
+
+service irisd /system/bin/irisdaemon
+    class late_start
+    user system
+    group camera system inet
