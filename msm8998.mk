@@ -10,6 +10,17 @@ DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 endif
 
+# Default vendor configuration.
+ifeq ($(ENABLE_VENDOR_IMAGE),)
+ENABLE_VENDOR_IMAGE := false
+endif
+
+# Disable QTIC until it's brought up in split system/vendor
+# configuration to avoid compilation breakage.
+ifeq ($(ENABLE_VENDOR_IMAGE), true)
+TARGET_USES_QTIC := false
+endif
+
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := false
 TARGET_USES_NQ_NFC := false
@@ -34,12 +45,9 @@ ifneq ($(TARGET_DISABLE_DASH), true)
     PRODUCT_BOOT_JARS += qcmediaplayer
 endif
 # video seccomp policy files
-# copy to system/vendor as well (since some devices may symlink to system/vendor and not create an actual partition for vendor)
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/seccomp/mediacodec-seccomp.policy:vendor/etc/seccomp_policy/mediacodec.policy \
-    device/qcom/msm8998/seccomp/mediaextractor-seccomp.policy:vendor/etc/seccomp_policy/mediaextractor.policy \
-    device/qcom/msm8998/seccomp/mediacodec-seccomp.policy:system/vendor/etc/seccomp_policy/mediacodec.policy \
-    device/qcom/msm8998/seccomp/mediaextractor-seccomp.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy
+    device/qcom/msm8998/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
+    device/qcom/msm8998/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # Add support for whitelisted apps
 PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
@@ -83,7 +91,7 @@ endif #BOARD_HAVE_QCOM_FM
 
 # add vendor manifest file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/vintf.xml:$(TARGET_OUT_VENDOR)/manifest.xml
+    device/qcom/msm8998/vintf.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
@@ -158,7 +166,7 @@ PRODUCT_COPY_FILES += \
     device/qcom/msm8998/init.qcom.qseecomd.sh:system/bin/init.qcom.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:$(TARGET_OUT_VENDOR_ETC)/msm_irqbalance.conf
+PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
@@ -167,6 +175,9 @@ PRODUCT_PACKAGES += \
 # dm-verity configuration
 PRODUCT_SUPPORTS_VERITY := true
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+ifeq ($(ENABLE_VENDOR_IMAGE), true)
+PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/bootdevice/by-name/vendor
+endif
 
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
