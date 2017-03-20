@@ -279,6 +279,7 @@ INIT += init.mdm.sh
 INIT += init.qcom.uicc.sh
 INIT += fstab.qcom
 INIT += init.qcom.sensors.sh
+INIT += init.qcom.crashdata.sh
 
 #IPROUTE2
 IPROUTE2 := ip
