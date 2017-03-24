@@ -49,3 +49,11 @@ on property:sys.dbg.coresight.enable=1
 
 on property:sys.dbg.coresight.enable=0
     write /persist/coresight/enable 0
+
+# Enable coredump generation
+# on userdebug/eng build
+on post-fs-data
+    # Create directory for coredump-generation.
+    mkdir /data/misc/core 0777 root root
+    # Write core-pattern to generate core file in /data/misc/core
+    write /proc/sys/kernel/core_pattern "/data/misc/core/%E.%p.%e"
