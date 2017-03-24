@@ -2432,12 +2432,11 @@ case "$target" in
 					;;
 				"16")
 					if [ $platform_major_version -lt 6 ]; then
+						echo 0 > /sys/class/graphics/fb1/hpd
 						start hbtp
 					fi
 					;;
 			esac
-
-			echo 0 > /sys/class/graphics/fb1/hpd
 			;;
 		"Surf")
 			case "$platform_subtype_id" in
