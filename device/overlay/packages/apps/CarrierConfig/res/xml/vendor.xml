@@ -516,6 +516,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true"/>
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
         <boolean name="add_multi_participants_enabled" value="true" />
+        <boolean name="add_participant_only_in_conference" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="01">
@@ -537,6 +538,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true"/>
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
         <boolean name="add_multi_participants_enabled" value="true" />
+        <boolean name="add_participant_only_in_conference" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="03">
@@ -575,6 +577,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true"/>
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
         <boolean name="add_multi_participants_enabled" value="true" />
+        <boolean name="add_participant_only_in_conference" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="08">
@@ -589,6 +592,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true"/>
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
         <boolean name="add_multi_participants_enabled" value="true" />
+        <boolean name="add_participant_only_in_conference" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="09">
