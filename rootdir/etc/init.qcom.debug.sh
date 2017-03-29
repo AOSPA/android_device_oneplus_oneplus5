@@ -484,7 +484,7 @@ enable_sdm660_dcc_config()
     echo 0x0162000C > $DCC_PATH/config   #SNOC_OBS_ERRVLD
     echo 0x01620014 6 > $DCC_PATH/config
     echo 0x01620108 4 > $DCC_PATH/config  # SNOC_SBM_FAULTSTATUS
-	echo 0x016201B0 >  $DCC_PATH/config  # SNOC_SBM_SENSEIN0  
+    echo 0x016201B0 >  $DCC_PATH/config  # SNOC_SBM_SENSEIN0
 
     #CCI_SAW4_1_1_SPM
     echo 0x179D2000 > $DCC_PATH/config    #SPM_CTL
@@ -619,7 +619,6 @@ enable_sdm660_dcc_config()
     echo 0x10350b0 4 > $DCC_PATH/config
 
     echo  0x10400b8 1 > $DCC_PATH/config 	##BIMC_S_DDR1_DPE_INTERRUPT_STATUS
-    echo  0x104008c 1 > $DCC_PATH/config 	##BIMC_S_DDR1_DPE_DRAM_STATUS_0
     echo  0x1041074 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SHKE_DRAM_STATUS
 
     ##BIMC_S_DDR1_SHKE_PERIODIC_MRR_RDATA
@@ -633,56 +632,220 @@ enable_sdm660_dcc_config()
     echo  0x1018100 1 > $DCC_PATH/config 	##BIMC_M_PIMEM_MPORT_INTERRUPT_STATUS
     echo  0x1014100 1 > $DCC_PATH/config 	##BIMC_M_SYS_MPORT_INTERRUPT_STATUS
 
-    ##BIMC_M_APP_MPORT_STATUS
-    echo  0x1008420 2 > $DCC_PATH/config
 
-    ##BIMC_M_CDSP_MPORT_STATUS
-    echo  0x1020420 2 > $DCC_PATH/config
 
-    ##BIMC_M_GPU_MPORT_STATUS
-    echo  0x100c420 2 > $DCC_PATH/config
+    echo  0x1030100 1 > $DCC_PATH/config     ##BIMC_S_DDR0_SCMO_INTERRUPT_STATUS
+    echo  0x1030124 1 > $DCC_PATH/config     ##BIMC_S_DDR0_SCMO_ESYN_ADDR1
+    echo  0x103012c 1 > $DCC_PATH/config     ##BIMC_S_DDR0_SCMO_ESYN_APACKET_1
+    echo  0x1030130 1 > $DCC_PATH/config     ##BIMC_S_DDR0_SCMO_ESYN_APACKET_2
+    echo  0x103c100 1 > $DCC_PATH/config     ##BIMC_S_DDR1_SCMO_INTERRUPT_STATUS
+    echo  0x103c124 1 > $DCC_PATH/config     ##BIMC_S_DDR1_SCMO_ESYN_ADDR1
+    echo  0x103c12c 1 > $DCC_PATH/config     ##BIMC_S_DDR1_SCMO_ESYN_APACKET_1
+    echo  0x103c130 1 > $DCC_PATH/config     ##BIMC_S_DDR1_SCMO_ESYN_APACKET_2
 
-    ##BIMC_M_MDSP_MPORT_STATUS
-    echo  0x101c420 2 > $DCC_PATH/config
+    echo 0x01FC0804 1 > $DCC_PATH/config
+    echo 0x00149024 1 > $DCC_PATH/config
 
-    ##BIMC_M_MMSS_MPORT_STATUS
-    echo  0x1010420 2 > $DCC_PATH/config
+    echo 0x7ba0078  4 > $DCC_PATH/config
+    echo 0x7ba00A0  3 > $DCC_PATH/config
+    echo 0x7ba4150  3 > $DCC_PATH/config
+    echo 0x7ba4250  3 > $DCC_PATH/config
 
-    ##BIMC_M_PIMEM_MPORT_STATUS
-    echo  0x1018420 2 > $DCC_PATH/config
+    echo 0x1008260  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_PIPE0_GATHERING
+    echo 0x1008264  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_PIPE1_GATHERING
+    echo 0x1008268  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_PIPE2_GATHERING
+    echo 0x1008400  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_0A
+    echo 0x1008404  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_0B
+    echo 0x1008410  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_1A
+    echo 0x1008420  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_2A
+    echo 0x1008424  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_2B
+    echo 0x1008430  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_3A
+    echo 0x1008434  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_3B
+    echo 0x1008440  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_4A
+    echo 0x1008444  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_4B
+    echo 0x1008450  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_5A
+    echo 0x1008454  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_5B
+    echo 0x1008460  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_6A
+    echo 0x1008464  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_6B
+    echo 0x1008470  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_7A
+    echo 0x1008474  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_7B
+    echo 0x1008480  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_8A
+    echo 0x1008484  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_8B
+    echo 0x1008490  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_9A
+    echo 0x1008494  1 > $DCC_PATH/config     ##BIMC_M_APP_MPORT_STATUS_9B
 
-    ##BIMC_M_SYS_MPORT_STATUS
-    echo  0x1014420 2 > $DCC_PATH/config
+    echo 0x100c260  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_PIPE0_GATHERING
+    echo 0x100c264  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_PIPE1_GATHERING
+    echo 0x100c268  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_PIPE2_GATHERING
+    echo 0x100c400  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_0A
+    echo 0x100c404  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_0B
+    echo 0x100c410  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_1A
+    echo 0x100c420  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_2A
+    echo 0x100c424  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_2B
+    echo 0x100c430  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_3A
+    echo 0x100c434  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_3B
+    echo 0x100c440  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_4A
+    echo 0x100c444  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_4B
+    echo 0x100c450  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_5A
+    echo 0x100c454  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_5B
+    echo 0x100c460  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_6A
+    echo 0x100c464  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_6B
+    echo 0x100c470  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_7A
+    echo 0x100c474  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_7B
+    echo 0x100c480  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_8A
+    echo 0x100c484  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_8B
+    echo 0x100c490  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_9A
+    echo 0x100c494  1 > $DCC_PATH/config     ##BIMC_M_GPU_MPORT_STATUS_9B
 
-    #BIMC_M_APP_MPORT_STATUS
-    echo  0x1008430 2 > $DCC_PATH/config
+    echo 0x1010260  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_PIPE0_GATHERING
+    echo 0x1010264  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_PIPE1_GATHERING
+    echo 0x1010268  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_PIPE2_GATHERING
+    echo 0x1010400  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_0A
+    echo 0x1010404  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_0B
+    echo 0x1010410  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_1A
+    echo 0x1010420  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_2A
+    echo 0x1010424  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_2B
+    echo 0x1010430  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_3A
+    echo 0x1010434  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_3B
+    echo 0x1010440  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_4A
+    echo 0x1010444  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_4B
+    echo 0x1010450  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_5A
+    echo 0x1010454  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_5B
+    echo 0x1010460  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_6A
+    echo 0x1010464  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_6B
+    echo 0x1010470  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_7A
+    echo 0x1010474  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_7B
+    echo 0x1010480  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_8A
+    echo 0x1010484  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_8B
+    echo 0x1010490  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_9A
+    echo 0x1010494  1 > $DCC_PATH/config     ##BIMC_M_MMSS_MPORT_STATUS_9B
 
-    ##BIMC_M_CDSP_MPORT_STATUS
-    echo  0x1020430 2 > $DCC_PATH/config
+    echo 0x1014260  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_PIPE0_GATHERING
+    echo 0x1014264  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_PIPE1_GATHERING
+    echo 0x1014268  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_PIPE2_GATHERING
+    echo 0x1014400  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_0A
+    echo 0x1014404  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_0B
+    echo 0x1014410  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_1A
+    echo 0x1014420  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_2A
+    echo 0x1014424  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_2B
+    echo 0x1014430  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_3A
+    echo 0x1014434  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_3B
+    echo 0x1014440  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_4A
+    echo 0x1014444  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_4B
+    echo 0x1014450  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_5A
+    echo 0x1014454  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_5B
+    echo 0x1014460  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_6A
+    echo 0x1014464  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_6B
+    echo 0x1014470  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_7A
+    echo 0x1014474  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_7B
+    echo 0x1014480  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_8A
+    echo 0x1014484  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_8B
+    echo 0x1014490  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_9A
+    echo 0x1014494  1 > $DCC_PATH/config     ##BIMC_M_SYS_MPORT_STATUS_9B
 
-    ##BIMC_M_GPU_MPORT_STATUS
-    echo  0x100c430 2 > $DCC_PATH/config
+    echo 0x1018260  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_PIPE0_GATHERING
+    echo 0x1018264  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_PIPE1_GATHERING
+    echo 0x1018268  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_PIPE2_GATHERING
+    echo 0x1018400  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_0A
+    echo 0x1018404  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_0B
+    echo 0x1018410  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_1A
+    echo 0x1018420  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_2A
+    echo 0x1018424  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_2B
+    echo 0x1018430  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_3A
+    echo 0x1018434  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_3B
+    echo 0x1018440  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_4A
+    echo 0x1018444  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_4B
+    echo 0x1018450  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_5A
+    echo 0x1018454  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_5B
+    echo 0x1018460  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_6A
+    echo 0x1018464  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_6B
+    echo 0x1018470  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_7A
+    echo 0x1018474  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_7B
+    echo 0x1018480  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_8A
+    echo 0x1018484  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_8B
+    echo 0x1018490  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_9A
+    echo 0x1018494  1 > $DCC_PATH/config     ##BIMC_M_PIMEM_MPORT_STATUS_9B
 
-    ##BIMC_M_MDSP_MPORT_STATUS
-    echo  0x101c430 2 > $DCC_PATH/config
+    echo 0x101c260  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_PIPE0_GATHERING
+    echo 0x101c264  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_PIPE1_GATHERING
+    echo 0x101c268  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_PIPE2_GATHERING
+    echo 0x101c400  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_0A
+    echo 0x101c404  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_0B
+    echo 0x101c410  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_1A
+    echo 0x101c420  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_2A
+    echo 0x101c424  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_2B
+    echo 0x101c430  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_3A
+    echo 0x101c434  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_3B
+    echo 0x101c440  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_4A
+    echo 0x101c444  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_4B
+    echo 0x101c450  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_5A
+    echo 0x101c454  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_5B
+    echo 0x101c460  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_6A
+    echo 0x101c464  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_6B
+    echo 0x101c470  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_7A
+    echo 0x101c474  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_7B
+    echo 0x101c480  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_8A
+    echo 0x101c484  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_8B
+    echo 0x101c490  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_9A
+    echo 0x101c494  1 > $DCC_PATH/config     ##BIMC_M_MDSP_MPORT_STATUS_9B
 
-    ##BIMC_M_MMSS_MPORT_STATUS
-    echo  0x1010430 2 > $DCC_PATH/config
+    echo 0x1020260  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_PIPE0_GATHERING
+    echo 0x1020264  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_PIPE1_GATHERING
+    echo 0x1020268  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_PIPE2_GATHERING
+    echo 0x1020400  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_0A
+    echo 0x1020404  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_0B
+    echo 0x1020410  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_1A
+    echo 0x1020420  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_2A
+    echo 0x1020424  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_2B
+    echo 0x1020430  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_3A
+    echo 0x1020434  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_3B
+    echo 0x1020440  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_4A
+    echo 0x1020444  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_4B
+    echo 0x1020450  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_5A
+    echo 0x1020454  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_5B
+    echo 0x1020460  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_6A
+    echo 0x1020464  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_6B
+    echo 0x1020470  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_7A
+    echo 0x1020474  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_7B
+    echo 0x1020480  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_8A
+    echo 0x1020484  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_8B
+    echo 0x1020490  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_9A
+    echo 0x1020494  1 > $DCC_PATH/config     ##BIMC_M_CDSP_MPORT_STATUS_9B
 
-    ##BIMC_M_PIMEM_MPORT_STATUS
-    echo  0x1018430 2 > $DCC_PATH/config
-
-    ##BIMC_M_SYS_MPORT_STATUS
-    echo  0x1014430 2 > $DCC_PATH/config
-
-    echo  0x1030100 1 > $DCC_PATH/config 	##BIMC_S_DDR0_SCMO_INTERRUPT_STATUS
-    echo  0x1030124 1 > $DCC_PATH/config 	##BIMC_S_DDR0_SCMO_ESYN_ADDR1
-    echo  0x103012c 1 > $DCC_PATH/config 	##BIMC_S_DDR0_SCMO_ESYN_APACKET_1
-    echo  0x1030130 1 > $DCC_PATH/config 	##BIMC_S_DDR0_SCMO_ESYN_APACKET_2
-    echo  0x103c100 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_INTERRUPT_STATUS
-    echo  0x103c124 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_ESYN_ADDR1
-    echo  0x103c12c 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_ESYN_APACKET_1
-    echo  0x103c130 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_ESYN_APACKET_2
+    echo 0x1049800  1 > $DCC_PATH/config     ##BIMC_S_APP_ARB_STATUS_0A
+    echo 0x1051800  1 > $DCC_PATH/config     ##BIMC_S_SYS0_ARB_STATUS_0A
+    echo 0x1031800  1 > $DCC_PATH/config     ##BIMC_S_DDR0_ARB_STATUS_0A
+    echo 0x103d800  1 > $DCC_PATH/config     ##BIMC_S_DDR1_ARB_STATUS_0A
+    echo 0x1048400  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_0A
+    echo 0x1050400  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_0A
+    echo 0x1048404  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_0B
+    echo 0x1048408  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_0C
+    echo 0x104840c  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_0D
+    echo 0x1048410  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_1A
+    echo 0x1048414  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_1B
+    echo 0x1048418  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_1C
+    echo 0x1048420  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_2A
+    echo 0x1048424  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_2B
+    echo 0x1048428  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_2C
+    echo 0x104842c  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_2D
+    echo 0x1048430  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_3A
+    echo 0x1048434  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_3B
+    echo 0x1048438  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_3C
+    echo 0x104843c  1 > $DCC_PATH/config     ##BIMC_S_APP_SWAY_STATUS_3D
+    echo 0x1050404  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_0B
+    echo 0x1050408  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_0C
+    echo 0x105040c  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_0D
+    echo 0x1050410  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_1A
+    echo 0x1050414  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_1B
+    echo 0x1050418  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_1C
+    echo 0x1050420  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_2A
+    echo 0x1050424  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_2B
+    echo 0x1050428  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_2C
+    echo 0x105042c  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_2D
+    echo 0x1050430  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_3A
+    echo 0x1050434  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_3B
+    echo 0x1050438  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_3C
+    echo 0x105043c  1 > $DCC_PATH/config     ##BIMC_S_SYS0_SWAY_STATUS_3D
 
     ##PIMEM registers
     echo 0x00610070 9 > $DCC_PATH/config
