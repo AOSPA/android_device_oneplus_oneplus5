@@ -59,12 +59,12 @@ function configure_memory_parameters() {
     # Hence add 6 considering a worst case of 0.9 conversion to INT (0.9*6).
     set_almk_ppr_adj=$(((set_almk_ppr_adj * 6) + 6))
 
-    #AMK is enabled for all configurations
+    # ALMK is enabled for all configurations
     echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
     echo 80 > /sys/module/vmpressure/parameters/allocstall_threshold
     echo $set_almk_ppr_adj > /sys/module/lowmemorykiller/parameters/adj_max_shift
 
-    #LMK and ALMK confguration changes based on arch type and total RAM size
+    # LMK and ALMK confguration changes based on arch type and total RAM size
     if [ "$arch_type" == "aarch64" ] && [ $MemTotal -gt 2097152 ]; then
         echo "18432,23040,27648,32256,55296,80640" > /sys/module/lowmemorykiller/parameters/minfree
         echo 81250 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
@@ -84,20 +84,12 @@ function configure_memory_parameters() {
         echo 70 > /sys/module/process_reclaim/parameters/pressure_max
         echo 30 > /sys/module/process_reclaim/parameters/swap_opt_eff
         echo 512 > /sys/module/process_reclaim/parameters/per_swap_size
-        #Enable B service adj transition for 3.5 GB or less memory
-        setprop ro.sys.fw.bservice_enable true
-        setprop ro.sys.fw.bservice_limit 5
-        setprop ro.sys.fw.bservice_age 5000
-        #Enable Delay Service Restart for 3.5 GB or less memory
-        setprop ro.am.reschedule_service true
         echo 100 > /proc/sys/vm/swappiness
     else
-        # Set background app limit to 60 for config with memory greater than 3.5 GB
         # Set swappiness to 60
         # Disable process reclaim for config with memory greater than 3.5 GB
-        setprop ro.sys.fw.bg_apps_limit 60
-        echo 60 > /proc/sys/vm/swappiness
         echo 0 > /sys/module/process_reclaim/parameters/enable_process_reclaim
+        echo 60 > /proc/sys/vm/swappiness
     fi
 
 
@@ -2318,6 +2310,36 @@ case "$target" in
 esac
 
 case "$target" in
+    "msmskunk")
+	# Core control parameters
+	echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
+	echo 60 > /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres
+	echo 30 > /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres
+	echo 100 > /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms
+	echo 1 > /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster
+	echo 4 > /sys/devices/system/cpu/cpu4/core_ctl/task_thres
+
+	# Setting b.L scheduler parameters
+	echo 95 > /proc/sys/kernel/sched_upmigrate
+	echo 90 > /proc/sys/kernel/sched_downmigrate
+	echo 100 > /proc/sys/kernel/sched_group_upmigrate
+	echo 95 > /proc/sys/kernel/sched_group_downmigrate
+	echo 0 > /proc/sys/kernel/sched_select_prev_cpu_us
+	echo 400000 > /proc/sys/kernel/sched_freq_inc_notify
+	echo 400000 > /proc/sys/kernel/sched_freq_dec_notify
+	echo 5 > /proc/sys/kernel/sched_spill_nr_run
+	echo 1 > /proc/sys/kernel/sched_restrict_cluster_spill
+
+	# cpuset parameters
+        echo 0 > /dev/cpuset/background/cpus
+        echo 0-2 > /dev/cpuset/system-background/cpus
+
+	# Turn off scheduler boost at the end
+        echo 0 > /proc/sys/kernel/sched_boost
+    ;;
+esac
+
+case "$target" in
     "msm8998")
 
 	echo 2 > /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
@@ -2440,12 +2462,11 @@ case "$target" in
 					;;
 				"16")
 					if [ $platform_major_version -lt 6 ]; then
+						echo 0 > /sys/class/graphics/fb1/hpd
 						start hbtp
 					fi
 					;;
 			esac
-
-			echo 0 > /sys/class/graphics/fb1/hpd
 			;;
 		"Surf")
 			case "$platform_subtype_id" in
