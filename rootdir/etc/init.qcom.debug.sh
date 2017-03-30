@@ -255,20 +255,18 @@ enable_sdm660_dcc_config()
     echo 0x179C7AA4 1 > $DCC_PATH/config
 
     #APCS_ALIAS0_APSS_ACS
-    echo 0x17988004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x17988008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x17988004 2 > $DCC_PATH/config    #CPU_PWR_CTL and APC_PWR_STATUS
     echo 0x17988064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS0_SAW4_1_1_SPM
     echo 0x17989000 > $DCC_PATH/config    #SPM_CTL
     #APCS_ALIAS0_SAW4_1_1_STS
-    echo 0x17989C0C > $DCC_PATH/config    #SPM_STS
+    echo 0x17989C0C 2 > $DCC_PATH/config    #SPM_STS
     echo 0x17989C10 > $DCC_PATH/config    #SPM_STS2
     echo 0x17989C20 > $DCC_PATH/config    #SPM_STS3
     echo 0x17989C18 > $DCC_PATH/config    #PMIC_STS
 
     #APCS_ALIAS1_APSS_ACS
-    echo 0x17998004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x17998008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x17998004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x17998064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS1_SAW4_1_1_SPM
     echo 0x17999000 > $DCC_PATH/config    #SPM_CTL
@@ -278,8 +276,7 @@ enable_sdm660_dcc_config()
     echo 0x17999C20 > $DCC_PATH/config    #SPM_STS3
 
     #APCS_ALIAS2_APSS_ACS
-    echo 0x179A8004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x179A8008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x179A8004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x179A8064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS2_SAW4_1_1_SPM
     echo 0x179A9000 > $DCC_PATH/config    #SPM_CTL
@@ -289,8 +286,7 @@ enable_sdm660_dcc_config()
     echo 0x179A9C20 > $DCC_PATH/config    #SPM_STS3
 
     #APCS_ALIAS3_APSS_ACS
-    echo 0x179B8004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x179B8008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x179B8004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x179B8064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS3_SAW4_1_1_SPM
     echo 0x179B9000 > $DCC_PATH/config    #SPM_CTL
@@ -300,66 +296,55 @@ enable_sdm660_dcc_config()
     echo 0x179B9C20 > $DCC_PATH/config    #SPM_STS3
 
     #APCS_ALIAS0_APSS_GLB
-    echo 0x17911014 > $DCC_PATH/config    #L2_PWR_CTL
-    echo 0x17911018 > $DCC_PATH/config    #L2_PWR_STATUS
+    echo 0x17911014 2 > $DCC_PATH/config    #L2_PWR_CTL and #L2_PWR_STATUS
     echo 0x17911210 > $DCC_PATH/config    #L2_SPM_QCHANNEL_CFG
     echo 0x17911218 > $DCC_PATH/config    #L2_FLUSH_CTL
     echo 0x17911234 > $DCC_PATH/config    #L2_FLUSH_STS
     echo 0x17911290 > $DCC_PATH/config    #DX_FSM_STATUS
     #APCLUS0_L2_SAW4_1_1_SPM
-    echo 0x17912000 > $DCC_PATH/config    #SPM_CTL
-    echo 0x17912004 > $DCC_PATH/config    #SPM_DLY
+    echo 0x17912000 2 > $DCC_PATH/config    #SPM_CTL and #SPM_DLY
     echo 0x1791200C > $DCC_PATH/config    #SPM_CFG
     #APCLUS0_L2_SAW4_1_1_STS
-    echo 0x17912C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x17912C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x17912C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x17912C20 > $DCC_PATH/config    #SPM_STS3
     echo 0x17912C18 > $DCC_PATH/config    #PMIC_STS
 
 
     #APCS_ALIAS4_APSS_ACS
-    echo 0x17888004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x17888008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x17888004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x17888064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS4_SAW4_1_1_SPM
     echo 0x17889000 > $DCC_PATH/config    #SPM_CTL
     #APCS_ALIAS4_SAW4_1_1_STS
-    echo 0x17889C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x17889C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x17889C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x17889C20 > $DCC_PATH/config    #SPM_STS3
     echo 0x17889C18 > $DCC_PATH/config    #PMIC_STS
 
     #APCS_ALIAS5_APSS_ACS
-    echo 0x17898004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x17898008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x17898004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x17898064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS5_SAW4_1_1_SPM
     echo 0x17899000 > $DCC_PATH/config    #SPM_CTL
     #APCS_ALIAS5_SAW4_1_1_STS
-    echo 0x17899C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x17899C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x17899C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x17899C20 > $DCC_PATH/config    #SPM_STS3
 
     #APCS_ALIAS6_APSS_ACS
-    echo 0x178A8004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x178A8008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x178A8004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x178A8064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS6_SAW4_1_1_SPM
     echo 0x178A9000 > $DCC_PATH/config    #SPM_CTL
     #APCS_ALIAS6_SAW4_1_1_STS
-    echo 0x178A9C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x178A9C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x178A9C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x178A9C20 > $DCC_PATH/config    #SPM_STS3
 
     #APCS_ALIAS7_APSS_ACS
-    echo 0x178B8004 > $DCC_PATH/config    #CPU_PWR_CTL
-    echo 0x178B8008 > $DCC_PATH/config    #APC_PWR_STATUS
+    echo 0x178B8004 2 > $DCC_PATH/config    #CPU_PWR_CTL and #APC_PWR_STATUS
     echo 0x178B8064 > $DCC_PATH/config    #SPM_QCHANNEL_CFG
     #APCS_ALIAS7_SAW4_1_1_SPM
     echo 0x178B9000 > $DCC_PATH/config    #SPM_CTL
     #APCS_ALIAS7_SAW4_1_1_STS
-    echo 0x178B9C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x178B9C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x178B9C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x178B9C20 > $DCC_PATH/config    #SPM_STS3
 
     #APCS_ALIAS1_APSS_GLB
@@ -370,46 +355,146 @@ enable_sdm660_dcc_config()
     echo 0x17811234 > $DCC_PATH/config    #L2_FLUSH_STS
     echo 0x17811290 > $DCC_PATH/config    #DX_FSM_STATUS
     #APCLUS1_L2_SAW4_1_1_SPM
-    echo 0x17812000 > $DCC_PATH/config    #SPM_CTL
-    echo 0x17812004 > $DCC_PATH/config    #SPM_DLY
+    echo 0x17812000 2 > $DCC_PATH/config    #SPM_CTL and #SPM_DLY
     echo 0x1781200C > $DCC_PATH/config    #SPM_CFG
     #APCLUS1_L2_SAW4_1_1_STS
-    echo 0x17812C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x17812C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x17812C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x17812C20 > $DCC_PATH/config    #SPM_STS3
     echo 0x17812C18 > $DCC_PATH/config    #PMIC_STS
 
     #APCS_CCI_GLADIATOR
-    echo 0x17900008 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_CFGIO
-    echo 0x17900078 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_CFGDUT
-    echo 0x17901014 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRVLD
-    echo 0x17901018 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRCLR
-    echo 0x1790101C > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG0
-    echo 0x17901020 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG1
-    echo 0x17901024 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG2
-    echo 0x17901028 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG3
-    echo 0x1790102C > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG4
-    echo 0x17901030 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG5
-    echo 0x17901034 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG6
-    echo 0x1790103C > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_ERRLOG8
-    echo 0x17904008 > $DCC_PATH/config    #APCS_CCI_PD_GNOC_MAIN_PROGPOWERCONTROLLER_TARGET0
-    echo 0x1790400C > $DCC_PATH/config    #APCS_CCI_PD_GNOC_MAIN_PROGPOWERCONTROLLER_TARGET1
-    echo 0x17904010 > $DCC_PATH/config    #APCS_CCI_PD_GNOC_MAIN_PROGPOWERCONTROLLER_TARGET2
-    echo 0x17904014 > $DCC_PATH/config    #APCS_CCI_PD_GNOC_MAIN_PROGPOWERCONTROLLER_TARGET3
+    echo 0x07BA0008 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_CFGIO
+    echo 0x07BA0078 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_CFGDUT
+    echo 0x07BA0080 3 > $DCC_PATH/config  #GNOC ACE0 Status
+    echo 0x07BA00A0 3 > $DCC_PATH/config  #GNOC ACE1 Status
+    echo 0x07BA1014 11 > $DCC_PATH/config    #APCS_CCI_GLADIATOR_MAIN_CRIXUS_MAIN ERRORS
+    echo 0x07BA4008 4 > $DCC_PATH/config    #APCS_CCI_PD_GNOC_MAIN_PROGPOWERCONTROLLER_TARGET0
+    echo 0x07BA800C 12 > $DCC_PATH/config #APCS_CCI_TRACE_MAIN ERRORS
+    echo 0x07BA82B0 > $DCC_PATH/config    #APCS_CCI_PORT_STATUS
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1000 4 > $DCC_PATH/config    #GLADIATOR STALLED TRANSACTION READ 8 TIMES
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config    #Read Same addresses 100 times
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+    echo 0x07BA1008 2 > $DCC_PATH/config
+
+    #SNOC Fault/Error registers
+    echo 0x0162000C > $DCC_PATH/config   #SNOC_OBS_ERRVLD
+    echo 0x01620014 6 > $DCC_PATH/config
+    echo 0x01620108 4 > $DCC_PATH/config  # SNOC_SBM_FAULTSTATUS
+	echo 0x016201B0 >  $DCC_PATH/config  # SNOC_SBM_SENSEIN0  
 
     #CCI_SAW4_1_1_SPM
     echo 0x179D2000 > $DCC_PATH/config    #SPM_CTL
     #CCI_SAW4_1_1_STS
-    echo 0x179D2C0C > $DCC_PATH/config    #SPM_STS
-    echo 0x179D2C10 > $DCC_PATH/config    #SPM_STS2
+    echo 0x179D2C0C 2 > $DCC_PATH/config    #SPM_STS and #SPM_STS2
     echo 0x179D2C20 > $DCC_PATH/config    #SPM_STS3
     echo 0x179D2C18 > $DCC_PATH/config    #PMIC_STS
 
     #BIMC_GLOBAL2
-    echo 0x010021F0 > $DCC_PATH/config    #BIMC_BRIC_DEFAULT_SEGMENT
-    echo 0x010021F4 > $DCC_PATH/config    #BIMC_BRIC_REDIRECT_CTRL
-    echo 0x010021F8 > $DCC_PATH/config    #BIMC_BRIC_REDIRECT_MSTR_EN
-    echo 0x010021FC > $DCC_PATH/config    #BIMC_BRIC_REDIRECT_CTRL_STATUS
+    echo 0x010021F0 4 > $DCC_PATH/config    #BIMC_BRIC_DEFAULT_SEGMENT
 
     #GCC_GPLL0
     echo 0x100000 10 > $DCC_PATH/config
@@ -598,6 +683,31 @@ enable_sdm660_dcc_config()
     echo  0x103c124 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_ESYN_ADDR1
     echo  0x103c12c 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_ESYN_APACKET_1
     echo  0x103c130 1 > $DCC_PATH/config 	##BIMC_S_DDR1_SCMO_ESYN_APACKET_2
+
+    ##PIMEM registers
+    echo 0x00610070 9 > $DCC_PATH/config
+    echo 0x006100D0 2 > $DCC_PATH/config
+
+    ##GIC registers
+    echo 0x17A00100 20 > $DCC_PATH/config
+    echo 0x17A00200 20 > $DCC_PATH/config
+    echo 0x17B10100 > $DCC_PATH/config
+    echo 0x17B10200 > $DCC_PATH/config
+    echo 0x17B30100 > $DCC_PATH/config
+    echo 0x17B30200 > $DCC_PATH/config
+    echo 0x17B50100 > $DCC_PATH/config
+    echo 0x17B50200 > $DCC_PATH/config
+    echo 0x17B70100 > $DCC_PATH/config
+    echo 0x17B70200 > $DCC_PATH/config
+    echo 0x17B90100 > $DCC_PATH/config
+    echo 0x17B90200 > $DCC_PATH/config
+    echo 0x17B90100 > $DCC_PATH/config
+    echo 0x17BB0200 > $DCC_PATH/config
+    echo 0x17BB0100 > $DCC_PATH/config
+    echo 0x17BD0200 > $DCC_PATH/config
+    echo 0x17BD0100 > $DCC_PATH/config
+    echo 0x17BF0200 > $DCC_PATH/config
+    echo 0x17BF0100 > $DCC_PATH/config
 
     echo  1 > $DCC_PATH/enable
 }
