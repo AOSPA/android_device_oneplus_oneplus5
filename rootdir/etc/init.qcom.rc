@@ -549,6 +549,7 @@ service fmhal_service /system/bin/fmhal_service
     user bluetooth
     group bluetooth net_bt_admin
     disabled
+    oneshot
 
 service config_bt_addr /system/bin/btnvtool -O
     class core
