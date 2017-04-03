@@ -1701,6 +1701,8 @@ case "$target" in
             echo N > /sys/module/lpm_levels/system/perf/cpu7/ret/idle_enabled
             echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-dynret/idle_enabled
             echo N > /sys/module/lpm_levels/system/perf/perf-l2-dynret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-ret/idle_enabled
+            echo N > /sys/module/lpm_levels/system/perf/perf-l2-ret/idle_enabled
             # enable LPM
             echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
 
