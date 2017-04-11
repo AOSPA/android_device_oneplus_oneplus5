@@ -143,7 +143,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- bluetooth -->
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
-        <transport arch="32+64">toggled</transport>
+        <transport arch="32+64">hwbinder</transport>
         <impl level="generic"></impl>
         <version>1.0</version>
     </hal>
