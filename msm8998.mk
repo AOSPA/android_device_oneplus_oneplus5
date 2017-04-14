@@ -1,14 +1,13 @@
 TARGET_USES_AOSP := true
-TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
-ifeq ($(TARGET_USES_AOSP),true)
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
-TARGET_DISABLE_DASH := true
-else
+ifneq ($(TARGET_USES_AOSP),true)
 DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 endif
+
+TARGET_USES_AOSP_FOR_AUDIO := false
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_DISABLE_DASH := true
 
 # Default vendor configuration.
 ifeq ($(ENABLE_VENDOR_IMAGE),)
