@@ -160,39 +160,73 @@ error_handle:
 }
 
 /**
- *  Allocate a new struct config_instance for modifying the disable field
- */
-static struct config_instance *allocate_config_instance(){
-    struct config_instance *config = (struct config_instance *)malloc(sizeof(struct config_instance));
-    memset(config, 0, sizeof(*config));
-
-    config->cfg_desc = (char *)malloc(sizeof(char) * max_string_size);
-    memset(config->cfg_desc, 0, sizeof(char)*max_string_size);
-
-    config->algo_type = (char *)malloc(sizeof(char) * max_string_size);
-    memset(config->algo_type, 0, sizeof(char) * max_string_size);
-
-    config->fields = (struct field_data *)malloc(sizeof(struct field_data));
-    memset(config->fields, 0, sizeof(*config->fields));
-
-    config->fields[0].field_name = (char*)malloc(sizeof(char) * max_string_size);
-    memset(config->fields[0].field_name, 0, sizeof(char) * max_string_size);
-
-    config->fields[0].data = (void*)malloc(sizeof(int));
-
-    return config;
-}
-/**
  *  Free the config_instance as allocated in allocate_config_instance
  */
 static void free_config_instance(struct config_instance *config){
 
-    free(config->fields[0].data);
-    free(config->fields[0].field_name);
-    free(config->fields);
-    free(config->algo_type);
-    free(config->cfg_desc);
-    free(config);
+    if (config) {
+        if (config->fields) {
+            free(config->fields[0].data);
+            free(config->fields[0].field_name);
+            free(config->fields);
+        }
+        free(config->algo_type);
+        free(config->cfg_desc);
+        free(config);
+    }
+}
+
+/**
+ *  Allocate a new struct config_instance for modifying the disable field
+ */
+static struct config_instance *allocate_config_instance(){
+    struct config_instance *config = (struct config_instance *)malloc(sizeof(struct config_instance));
+    if (!config) {
+        ALOGE("Unable to allocate memory for config");
+        return NULL;
+    }
+    memset(config, 0, sizeof(*config));
+
+    config->cfg_desc = (char *)malloc(sizeof(char) * max_string_size);
+    if (!config->cfg_desc) {
+        free_config_instance(config);
+        ALOGE("Unable to allocate memory for config->cfg_desc");
+        return NULL;
+    }
+    memset(config->cfg_desc, 0, sizeof(char)*max_string_size);
+
+    config->algo_type = (char *)malloc(sizeof(char) * max_string_size);
+    if (!config->algo_type) {
+        free_config_instance(config);
+        ALOGE("Unable to allocate memory for config->algo_type");
+        return NULL;
+    }
+    memset(config->algo_type, 0, sizeof(char) * max_string_size);
+
+    config->fields = (struct field_data *)malloc(sizeof(struct field_data));
+    if (!config->fields) {
+        free_config_instance(config);
+        ALOGE("Unable to allocate memory for config->fields");
+        return NULL;
+    }
+    memset(config->fields, 0, sizeof(*config->fields));
+
+    config->fields[0].field_name = (char*)malloc(sizeof(char) * max_string_size);
+    if (!config->fields[0].field_name) {
+        free_config_instance(config);
+        ALOGE("Unable to allocate memory for config->fields[0].field_name");
+        return NULL;
+    }
+    memset(config->fields[0].field_name, 0, sizeof(char) * max_string_size);
+
+    config->fields[0].data = (void*)malloc(sizeof(int));
+    if (!config->fields[0].data) {
+        free_config_instance(config);
+        ALOGE("Unable to allocate memory for config->fields[0].data");
+        return NULL;
+    }
+
+    return config;
 }
 
 /**
@@ -205,6 +239,9 @@ static int disable_config(char *config_name, char *algo_type){
         return 0;
     }
     struct config_instance *config = allocate_config_instance();
+    if (!config) {
+        return 0;
+    }
     strlcpy(config->cfg_desc, config_name, max_string_size);
     strlcpy(config->algo_type, algo_type, max_string_size);
     strlcpy(config->fields[0].field_name, "disable", max_string_size);
@@ -235,6 +272,9 @@ static int enable_config(char *config_name, char *algo_type){
         return 0;
     }
     struct config_instance *config = allocate_config_instance();
+    if (!config) {
+        return 0;
+    }
     strlcpy(config->cfg_desc, config_name, max_string_size);
     strlcpy(config->algo_type, algo_type, max_string_size);
     strlcpy(config->fields[0].field_name, "disable", max_string_size);
