@@ -60,7 +60,7 @@ const char *CPU_LABEL[] = {"CPU0", "CPU1", "CPU2", "CPU3", "CPU4", "CPU5", "CPU6
 
 const char *get_cpu_label(unsigned int cpu_num) {
 
-    if(cpu_num > CPU_NUM)
+    if(cpu_num >= CPU_NUM)
         return NULL;
 
     return CPU_LABEL[cpu_num];

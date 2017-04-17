@@ -493,6 +493,32 @@ enable_sdm660_dcc_config()
     echo 0x179D2C20 > $DCC_PATH/config    #SPM_STS3
     echo 0x179D2C18 > $DCC_PATH/config    #PMIC_STS
 
+    #LMH_PERF
+    echo 0x179CD0C0 > $DCC_PATH/config  #TSense0_Reg
+    echo 0x179CD0C4 > $DCC_PATH/config  #Tsense1_Reg
+    echo 0x179CD0CC > $DCC_PATH/config  #Tsense2_Reg
+    echo 0x179CD0CD > $DCC_PATH/config  #Tsense3_Reg
+    echo 0x179CD03C > $DCC_PATH/config  #TTL_WORD_REG
+    echo 0x179CD300 > $DCC_PATH/config  #FIFO0
+    echo 0x179CD310 > $DCC_PATH/config  #FIFO1
+    echo 0x179CD320 > $DCC_PATH/config  #FIFO2
+    echo 0x179CD330 > $DCC_PATH/config  #FIFO2
+    echo 0x179CD810 > $DCC_PATH/config  #LMH_DCVS_CS_STATUS
+    echo 0x179CD814 > $DCC_PATH/config  #LMH_DCVS_THERMAL_STATUS
+    echo 0x179CD81C > $DCC_PATH/config  #LMH_DCVS_BCL_STATUS
+
+    #LMH_PWR
+    echo 0x179CF0C0 > $DCC_PATH/config  #TSense0_Reg
+    echo 0x179CF0C4 > $DCC_PATH/config  #Tsense1_Reg
+    echo 0x179CF03C > $DCC_PATH/config  #TTL_WORD_REG
+    echo 0x179CF300 > $DCC_PATH/config  #FIFO0
+    echo 0x179CF310 > $DCC_PATH/config  #FIFO1
+    echo 0x179CF814 > $DCC_PATH/config  #LMH_DCVS_THERMAL_STATUS
+
+    #ISENSE
+    echo 0x179DC10C > $DCC_PATH/config  #Isense core01
+    echo 0x179DC110 > $DCC_PATH/config  #Isense core23
+
     #BIMC_GLOBAL2
     echo 0x010021F0 4 > $DCC_PATH/config    #BIMC_BRIC_DEFAULT_SEGMENT
 
