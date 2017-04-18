@@ -496,7 +496,6 @@ on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
     start wcnss-service
     start cnss_diag
-    start icm
 
 
 service cnd /system/bin/cnd
@@ -810,12 +809,6 @@ service cnss_diag /system/bin/cnss_diag -q -f -b 128
     class main
     user system
     group system wifi inet net_admin sdcard_rw media_rw diag
-    oneshot
-
-service icm /system/bin/icm -c cfg
-    class main
-    user root
-    group root
     oneshot
 
 service cnss-daemon /system/bin/cnss-daemon -n -l
