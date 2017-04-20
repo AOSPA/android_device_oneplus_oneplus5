@@ -515,6 +515,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="show_data_usage_toast" value="false"/>
         <boolean name="config_enable_vt_with_mobile_data_off" value="true" />
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
+        <boolean name="add_multi_participants_enabled" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="01">
@@ -535,6 +536,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="show_data_usage_toast" value="false"/>
         <boolean name="config_enable_vt_with_mobile_data_off" value="true" />
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
+        <boolean name="add_multi_participants_enabled" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="03">
@@ -570,6 +572,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="show_data_usage_toast" value="false"/>
         <boolean name="config_enable_vt_with_mobile_data_off" value="true" />
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
+        <boolean name="add_multi_participants_enabled" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="08">
@@ -583,6 +586,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="show_data_usage_toast" value="false"/>
         <boolean name="config_enable_vt_with_mobile_data_off" value="true" />
         <boolean name="hide_held_call_when_end_conf_call" value="true" />
+        <boolean name="add_multi_participants_enabled" value="true" />
     </carrier_config>
 
     <carrier_config mcc="460" mnc="09">
