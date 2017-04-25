@@ -21,7 +21,7 @@ ifeq ($(ENABLE_VENDOR_IMAGE), true)
 endif
 
 TARGET_KERNEL_VERSION := 4.4
-BOARD_HAVE_QCOM_FM := false
+BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := false
 
 ifeq ($(TARGET_USES_NQ_NFC),true)
