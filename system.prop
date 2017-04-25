@@ -69,7 +69,7 @@ ro.opengles.version=196610
 # system property for maximum number of HFP client connections
 bt.max.hfpclient.connections=1
 #force disable Bluetooth AAC by default
-persist.bt.a2dp.aac_disable=true
+persist.bt.a2dp.aac_disable=false
 
 # System property for cabl
 ro.qualcomm.cabl=2
