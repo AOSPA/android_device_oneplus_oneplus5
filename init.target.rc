@@ -49,13 +49,8 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     restorecon_recursive /persist
     mkdir /persist/data 0700 system system
-
-    wait /dev/block/bootdevice/by-name/dsp
-    mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
 
 on post-fs
     start qseecomd

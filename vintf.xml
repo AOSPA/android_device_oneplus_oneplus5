@@ -166,4 +166,39 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <impl level="generic"></impl>
         <version>1.0</version>
     </hal>
+   <!-- RIL -->
+   <hal format="hidl">
+       <name>android.hardware.radio</name>
+       <transport>hwbinder</transport>
+       <impl level="generic"></impl>
+       <version>1.0</version>
+    <interface>
+       <name>IRadio</name>
+       <instance>rild</instance>
+       <instance>rild2</instance>
+    </interface>
+   </hal>
+   <!-- RIL OEM HOOK -->
+   <hal format="hidl">
+       <name>android.hardware.radio.deprecated</name>
+       <transport>hwbinder</transport>
+       <impl level="generic"></impl>
+       <version>1.0</version>
+    <interface>
+       <name>IOemHook</name>
+       <instance>oemhook</instance>
+       <instance>oemhook2</instance>
+    </interface>
+   </hal>
+    <!-- gnss -->
+    <hal format="hidl">
+        <name>android.hardware.gnss</name>
+        <transport>hwbinder</transport>
+        <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>IGnss</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </manifest>
