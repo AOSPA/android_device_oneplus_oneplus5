@@ -174,8 +174,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
        <version>1.0</version>
     <interface>
        <name>IRadio</name>
-       <instance>rild</instance>
-       <instance>rild2</instance>
+       <instance>slot1</instance>
+       <instance>slot2</instance>
     </interface>
    </hal>
    <!-- RIL OEM HOOK -->
@@ -186,9 +186,20 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
        <version>1.0</version>
     <interface>
        <name>IOemHook</name>
-       <instance>oemhook</instance>
-       <instance>oemhook2</instance>
+       <instance>slot1</instance>
+       <instance>slot2</instance>
     </interface>
+   </hal>
+   <!-- RIL AUDIO HAL -->
+   <hal format="hidl">
+       <name>vendor.qti.qcril.am</name>
+       <transport>hwbinder</transport>
+       <impl level="generic"></impl>
+       <version>1.0</version>
+       <interface>
+           <name>IQcRilAudio</name>
+           <instance>default</instance>
+       </interface>
    </hal>
     <!-- gnss -->
     <hal format="hidl">
