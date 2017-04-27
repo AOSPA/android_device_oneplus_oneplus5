@@ -898,6 +898,17 @@ enable_sdm660_dcc_config()
     echo 0x17BF0200 > $DCC_PATH/config
     echo 0x17BF0100 > $DCC_PATH/config
 
+    #ADSP SPM registers
+    echo 0x157B0C0C > $DCC_PATH/config
+    echo 0x157B0C10 > $DCC_PATH/config
+    echo 0x157B0000 > $DCC_PATH/config
+    echo 0x15787050 > $DCC_PATH/config
+
+    #CDSP SPM registers
+    echo 0x1A3B0000 > $DCC_PATH/config
+    echo 0x1A3B0C0C > $DCC_PATH/config
+    echo 0x1A3B0C10 > $DCC_PATH/config
+
     echo  1 > $DCC_PATH/enable
 }
 
