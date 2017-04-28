@@ -124,7 +124,7 @@ PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:system/vendor/etc/
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
-device/qcom/msm8998/powerhint.xml:system/etc/powerhint.xml
+device/qcom/msm8998/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
