@@ -40,6 +40,7 @@
 #include "power-common.h"
 
 #define LOG_TAG "QCOM PowerHAL"
+
 #include <utils/Log.h>
 
 char scaling_gov_path[4][80] ={
@@ -52,6 +53,7 @@ char scaling_gov_path[4][80] ={
 static void *qcopt_handle;
 static int (*perf_lock_acq)(unsigned long handle, int duration,
     int list[], int numArgs);
+static int (*perf_lock_acq_hl)(unsigned long handle, int duration, int hint_id);
 static int (*perf_lock_rel)(unsigned long handle);
 static struct list_node active_hint_list_head;
 
@@ -91,6 +93,11 @@ static void __attribute__ ((constructor)) initialize(void)
             ALOGE("Unable to get perf_lock_acq function handle.\n");
         }
 
+        perf_lock_acq_hl = dlsym(qcopt_handle, "perf_lock_acq_hl");
+
+        if (!perf_lock_acq_hl) {
+            ALOGE("Unable to get perf_lock_acq_hl function handle.\n");
+        }
         perf_lock_rel = dlsym(qcopt_handle, "perf_lock_rel");
 
         if (!perf_lock_rel) {
@@ -236,6 +243,51 @@ int interaction_with_handle(int lock_handle, int duration, int num_args, int opt
     }
     return lock_handle;
 }
+/* _HL versions of these functions are created to help transition to
+ * having perfd do the translation from hint_id to resource list. They use
+ * perf_lock_acq_hl instead of perf_lock_acq
+ */
+
+
+void interaction_HL(int duration, int hint_id)
+{
+#ifdef INTERACTION_BOOST
+    static int lock_handle = 0;
+
+    if (duration < 0 )
+        return;
+
+    if (qcopt_handle) {
+        if (perf_lock_acq_hl) {
+            lock_handle = perf_lock_acq_hl(lock_handle, duration, hint_id);
+            if (lock_handle == -1)
+                ALOGE("Failed to acquire lock.");
+        }
+    }
+#endif
+}
+
+int interaction_with_handle_HL(int lock_handle, int duration, int hint_id)
+{
+
+#if ADEBUG
+    ALOGE("Interaction with handle HL\n");
+#endif
+
+
+    if (duration < 0)
+        return 0;
+
+    if (qcopt_handle) {
+        if (perf_lock_acq_hl) {
+            lock_handle = perf_lock_acq_hl(lock_handle, duration, hint_id);
+            if (lock_handle == -1)
+                ALOGE("Failed to acquire lock.");
+        }
+    }
+    return lock_handle;
+}
+
 
 void release_request(int lock_handle) {
     if (qcopt_handle && perf_lock_rel)
@@ -249,6 +301,59 @@ void perform_hint_action(int hint_id, int resource_values[], int num_resources)
             /* Acquire an indefinite lock for the requested resources. */
             int lock_handle = perf_lock_acq(0, 0, resource_values,
                     num_resources);
+
+            if (lock_handle == -1) {
+                ALOGE("Failed to acquire lock.");
+            } else {
+                /* Add this handle to our internal hint-list. */
+                struct hint_data *new_hint =
+                    (struct hint_data *)malloc(sizeof(struct hint_data));
+
+                if (new_hint) {
+                    if (!active_hint_list_head.compare) {
+                        active_hint_list_head.compare =
+                            (int (*)(void *, void *))hint_compare;
+                        active_hint_list_head.dump = (void (*)(void *))hint_dump;
+                    }
+
+                    new_hint->hint_id = hint_id;
+                    new_hint->perflock_handle = lock_handle;
+
+                    if (add_list_node(&active_hint_list_head, new_hint) == NULL) {
+                        free(new_hint);
+                        /* Can't keep track of this lock. Release it. */
+                        if (perf_lock_rel)
+                            perf_lock_rel(lock_handle);
+
+                        ALOGE("Failed to process hint.");
+                    }
+                } else {
+                    /* Can't keep track of this lock. Release it. */
+                    if (perf_lock_rel)
+                        perf_lock_rel(lock_handle);
+
+                    ALOGE("Failed to process hint.");
+                }
+            }
+        }
+    }
+}
+
+/* _HL versions of this functions are created to help transition to
+ * having perfd do the translation from hint_id to resource list, it uses
+ * perf_lock_acq_hl instead of perf_lock_acq
+ */
+void perform_hint_action_HL(int hint_id)
+{
+
+#if ADEBUG
+    ALOGE("perform hint action HL\n");
+#endif
+
+    if (qcopt_handle) {
+        if (perf_lock_acq_hl) {
+            /* Acquire an indefinite lock for the requested resources. */
+            int lock_handle = perf_lock_acq_hl(0, 0, hint_id);
 
             if (lock_handle == -1) {
                 ALOGE("Failed to acquire lock.");

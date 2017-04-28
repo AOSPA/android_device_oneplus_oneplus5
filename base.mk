@@ -534,6 +534,7 @@ LIBQDMETADATA := libqdMetaData
 
 #LIBPOWER
 LIBPOWER := power.qcom
+LIBPOWER += powerhint.qti
 
 #LIBTHERMAL
 LIBTHERMAL := thermal.msm8998
