@@ -85,6 +85,9 @@ enable_sdm660_stm_events()
     echo 1 > /sys/kernel/debug/tracing/events/cpufreq_interactive/enable
     # power
     echo 1 > /sys/kernel/debug/tracing/events/msm_low_power/enable
+    # Disable cluster entry/exit LPM events
+    echo 0 > /sys/kernel/debug/tracing/events/msm_low_power/cluster_enter/enable
+    echo 0 > /sys/kernel/debug/tracing/events/msm_low_power/cluster_exit/enable
     #thermal
     echo 1 > /sys/kernel/debug/tracing/events/thermal/thermal_pre_core_offline/enable
     echo 1 > /sys/kernel/debug/tracing/events/thermal/thermal_post_core_offline/enable

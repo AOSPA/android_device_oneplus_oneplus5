@@ -44,3 +44,12 @@ void perform_hint_action(int hint_id, int resource_values[],
 void undo_hint_action(int hint_id);
 void release_request(int lock_handle);
 int interaction_with_handle(int lock_handle, int duration, int num_args, int opt_list[]);
+
+
+void perform_hint_action_HL(int hint_id);
+
+
+int interaction_with_handle_HL(int lock_handle, int duration, int hint_id);
+
+
+void interaction_HL(int duration, int hint_id);
