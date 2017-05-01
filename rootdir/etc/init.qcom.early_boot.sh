@@ -26,7 +26,13 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+HERE=/system/etc
+source $HERE/init.qti.dcc.sh
+
 export PATH=/system/bin
+
+#enable DCC
+enable_dcc_config
 
 # Set platform variables
 if [ -f /sys/devices/soc0/hw_platform ]; then
