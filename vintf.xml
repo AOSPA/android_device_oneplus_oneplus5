@@ -198,7 +198,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
        <version>1.0</version>
        <interface>
            <name>IQcRilAudio</name>
-           <instance>default</instance>
+           <instance>slot1</instance>
+           <instance>slot2</instance>
        </interface>
    </hal>
     <!-- gnss -->
