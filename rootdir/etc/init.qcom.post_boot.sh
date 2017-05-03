@@ -1777,7 +1777,10 @@ case "$target" in
             # Start Host based Touch processing
                 case "$hw_platform" in
                         "MTP" | "Surf" | "RCM" | "QRD" )
-                        start hbtp
+                        bootmode=`getprop ro.bootmode`
+                        if [ "$bootmode" != "charger" ]; then
+                                start hbtp
+                        fi
                         ;;
                 esac
             ;;
@@ -1789,7 +1792,10 @@ case "$target" in
             # Start Host based Touch processing
             case "$hw_platform" in
                 "MTP" | "Surf" | "RCM" | "QRD" )
-                start hbtp
+                bootmode=`getprop ro.bootmode`
+                if [ "$bootmode" != "charger" ]; then
+                        start hbtp
+                fi
                 ;;
             esac
 
