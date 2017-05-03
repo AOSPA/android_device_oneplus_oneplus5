@@ -124,7 +124,6 @@ Only the three quirks included above are recognized at this point:
         <!-- Video Hardware  -->
         <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation" />
             <Limit name="size" min="96x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
@@ -150,7 +149,6 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation"/>
             <Limit name="size" min="96x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -162,7 +160,6 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation" />
             <Limit name="size" min="96x64" max="864x480" />
             <Limit name="alignment" value="2x2" />
@@ -174,7 +171,6 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.vp8" type="video/x-vnd.on2.vp8" >
             <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation" />
             <Limit name="size" min="96x64" max="3840x2160" />
             <Limit name="alignment" value="2x2" />
@@ -186,7 +182,6 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.hevc" type="video/hevc" >
             <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="requires-loaded-to-idle-after-allocation" />
             <Limit name="size" min="162x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
@@ -200,7 +195,6 @@ Only the three quirks included above are recognized at this point:
     <Decoders>
        <!-- Video Hardware  -->
         <MediaCodec name="OMX.qcom.video.decoder.avc" type="video/avc" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
@@ -217,7 +211,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.avc.secure" type="video/avc" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
@@ -230,7 +223,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="6" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg4" type="video/mp4v-es" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports"/>
             <Limit name="size" min="64x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -242,7 +234,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg2" type="video/mpeg2" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="96x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -254,7 +245,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg2.secure" type="video/mpeg2" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="96x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -267,7 +257,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="6" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.h263" type="video/3gpp" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="864x480" />
             <Limit name="alignment" value="2x2" />
@@ -279,7 +268,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vc1" type="video/x-ms-wmv" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -291,7 +279,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vc1.secure" type="video/x-ms-wmv" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -304,7 +291,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="6" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.divx" type="video/divx" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -316,7 +302,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.divx311" type="video/divx311" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="720x480" />
             <Limit name="alignment" value="2x2" />
@@ -328,7 +313,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.divx4" type="video/divx4" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="1920x1088" />
             <Limit name="alignment" value="2x2" />
@@ -340,7 +324,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vp8" type="video/x-vnd.on2.vp8" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="3840x2160" />
             <Limit name="alignment" value="2x2" />
@@ -352,7 +335,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vp9" type="video/x-vnd.on2.vp9" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="3840x2160" />
             <Limit name="alignment" value="2x2" />
@@ -364,7 +346,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vp9.secure" type="video/x-vnd.on2.vp9" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="3840x2160" />
             <Limit name="alignment" value="2x2" />
@@ -377,7 +358,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="6" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
@@ -389,7 +369,6 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="16" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.hevc.secure" type="video/hevc" >
-            <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="size" min="64x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
