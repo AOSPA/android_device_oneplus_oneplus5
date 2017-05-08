@@ -17,7 +17,7 @@ endif
 # Disable QTIC until it's brought up in split system/vendor
 # configuration to avoid compilation breakage.
 ifeq ($(ENABLE_VENDOR_IMAGE), true)
-TARGET_USES_QTIC := false
+#TARGET_USES_QTIC := false
 endif
 
 TARGET_KERNEL_VERSION := 4.4
