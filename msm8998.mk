@@ -131,6 +131,10 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
+# Exclude TOF sensor from InputManager
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8998/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
 PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
