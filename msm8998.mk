@@ -72,6 +72,10 @@ PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/sensors/hals.conf:system/etc/sensors/hals.conf
 
+# Exclude TOF sensor from InputManager
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8998/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
 PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
