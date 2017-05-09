@@ -147,17 +147,17 @@ sys.games.gt.prof=1
 
 #Settings to enable sensors
 #Device Orientation sensor
-ro.qti.sensors.dev_ori=true
+ro.vendor.sensors.dev_ori=true
 #Persistent Motion Detector
-ro.qti.sensors.pmd=true
+ro.vendor.sensors.pmd=true
 #Stationary Detector
-ro.qti.sensors.sta_detect=true
+ro.vendor.sensors.sta_detect=true
 #Motion Detector
-ro.qti.sensors.mot_detect=true
+ro.vendor.sensors.mot_detect=true
 #Device Position Classifier
-ro.qti.sensors.dpc=true
+ro.vendor.sensors.dpc=true
 #MultiShake sensor
-ro.qti.sensors.multishake=true
+ro.vendor.sensors.multishake=true
 
 #Enable stm events
 persist.debug.coresight.config=stm-events
