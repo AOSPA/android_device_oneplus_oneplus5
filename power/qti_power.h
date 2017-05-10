@@ -1,9 +1,10 @@
-/* Copyright (c) 2016, The Linux Foundation. All rights reserved.
+/*
+ * Copyright (c) 2017, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
  * met:
- *     * Redistributions of source code must retain the above copyright
+ * *    * Redistributions of source code must retain the above copyright
  *       notice, this list of conditions and the following disclaimer.
  *     * Redistributions in binary form must reproduce the above
  *       copyright notice, this list of conditions and the following
@@ -24,26 +25,9 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
  */
 
-#ifndef __POWERHINTPARSER__
-#define __POWERHINTPARSER__
-
-#define POWERHINT_XML       "/system/etc/powerhint.xml"
-#define MAX_LIB_PATH        39
-#define MAX_HINT            30
-#define MAX_PARAM           30
-
-typedef struct perflock_param_t {
-    int type;
-    int numParams;
-    int paramList[MAX_PARAM];//static limit on number of hints - 15
-}perflock_param_t;
-
-static perflock_param_t powerhint[MAX_HINT];
-
-int parsePowerhintXML();
-int *getPowerhint(int, int*);
-
-#endif /* __POWERHINTPARSER__ */
+typedef enum {
+    POWER_HINT_QTI_CAM_PREVIEW = 0xF0000001,
+    POWER_HINT_QTI_VR_SUSTAINED_PERFORMANCE = 0xF0000002
+} qti_power_hint_t;

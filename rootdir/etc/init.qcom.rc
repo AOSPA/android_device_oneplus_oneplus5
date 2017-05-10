@@ -549,6 +549,7 @@ service fmhal_service /system/bin/fmhal_service
     user bluetooth
     group bluetooth net_bt_admin
     disabled
+    oneshot
 
 service config_bt_addr /system/bin/btnvtool -O
     class core
@@ -832,6 +833,12 @@ service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet qcom_diag wifi
+
+service mlid /system/bin/mlid
+    class late_start
+    user gps
+    group gps
+    socket mlid stream 0666 gps gps
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     class late_start
