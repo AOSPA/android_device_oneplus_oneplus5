@@ -91,7 +91,7 @@ static ssize_t read_temperature(int sensor_num, int type, const char *name, floa
     char file_name[MAX_LENGTH];
     float temp;
 
-    sprintf(file_name, TEMPERATURE_FILE_FORMAT, sensor_num);
+    snprintf(file_name, sizeof(file_name), TEMPERATURE_FILE_FORMAT, sensor_num);
     file = fopen(file_name, "r");
     if (file == NULL) {
         ALOGE("%s: failed to open: %s", __func__, strerror(errno));
