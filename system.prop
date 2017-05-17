@@ -26,6 +26,9 @@ dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_partial_split=1
 
+#property to specify the number of frames to skip before setting hint
+sdm.perf_hint_window=50
+
 #ro.hdmi.enable=true
 #
 # system props for the cne module
