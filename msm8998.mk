@@ -11,13 +11,13 @@ TARGET_DISABLE_DASH := true
 
 # Default vendor configuration.
 ifeq ($(ENABLE_VENDOR_IMAGE),)
-ENABLE_VENDOR_IMAGE := false
+ENABLE_VENDOR_IMAGE := true
 endif
 
 # Disable QTIC until it's brought up in split system/vendor
 # configuration to avoid compilation breakage.
 ifeq ($(ENABLE_VENDOR_IMAGE), true)
-TARGET_USES_QTIC := false
+#TARGET_USES_QTIC := false
 endif
 
 TARGET_KERNEL_VERSION := 4.4
@@ -36,8 +36,11 @@ TARGET_USE_UI_SVA := true
 
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8998/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8998/media_codecs.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8998/media_profiles.xml:system/etc/media_profiles.xml \
+    device/qcom/msm8998/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
+    device/qcom/msm8998/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    device/qcom/msm8998/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 ifneq ($(TARGET_DISABLE_DASH), true)
@@ -84,7 +87,7 @@ PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 
 ifneq ($(strip $(QCPATH)),)
-#PRODUCT_BOOT_JARS += WfdCommon
+PRODUCT_BOOT_JARS += WfdCommon
 #Android oem shutdown hook
 PRODUCT_BOOT_JARS += oem-services
 endif
@@ -143,6 +146,14 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     android.hardware.configstore@1.0-service
 
+PRODUCT_PACKAGES += \
+    vendor.display.color@1.0-service \
+    vendor.display.color@1.0-impl
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service \
 
 # Camera configuration file. Shared by passthrough/binderized camera HAL
 PRODUCT_PACKAGES += camera.device@3.2-impl
