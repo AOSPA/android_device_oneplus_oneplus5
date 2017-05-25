@@ -22,7 +22,7 @@ endif
 
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
-TARGET_USES_NQ_NFC := false
+TARGET_USES_NQ_NFC := true
 
 ifeq ($(TARGET_USES_NQ_NFC),true)
 # Flag to enable and support NQ3XX chipsets
