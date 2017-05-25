@@ -54,7 +54,7 @@ on fs
 
 on post-fs
     start qseecomd
-    exec - system system -- /system/bin/init.qti.qseecomd.sh
+    exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
 on post-fs-data
@@ -169,7 +169,7 @@ service qvop-daemon /system/bin/qvop-daemon
 #on property:sys.boot_completed=1
 #    start qrngp
 #
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
    class core
    user root
    group root
