@@ -419,7 +419,7 @@ service seempd /system/bin/seempd
     group system
     socket seempdw dgram 0666 system system
 
-service energy-awareness /system/bin/energy-awareness
+service energy-awareness /system/vendor/bin/energy-awareness
     class main
     user root
     group system
