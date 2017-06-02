@@ -152,6 +152,9 @@ WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
 WIFI_DRIVER_STATE_ON := "ON"
 WIFI_DRIVER_STATE_OFF := "OFF"
 
+VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
+
 TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/recovery/recovery.fstab
 
 BOARD_SEPOLICY_DIRS += device/oneplus/oneplus5/sepolicy
