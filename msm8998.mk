@@ -210,9 +210,6 @@ PRODUCT_PACKAGES += \
 	wificond \
 	wifilogd
 
-#HIDLized HAL binaries/init scripts
-#Keymaster
-PRODUCT_PACKAGES += android.hardware.keymaster@3.0-impl
 #A/B related packages
 PRODUCT_PACKAGES += update_engine \
 		    update_engine_client \
