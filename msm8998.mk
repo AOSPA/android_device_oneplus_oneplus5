@@ -180,6 +180,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:system/etc/permissions/android.hardware.sensor.relative_humidity.xml \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml
 
+PRODUCT_PACKAGES += libsensor1_system
+PRODUCT_PACKAGES += libsensor_reg_system
+PRODUCT_PACKAGES += libqmi_cci_system
+PRODUCT_PACKAGES += libdiag_system
+
 # High performance VR feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
