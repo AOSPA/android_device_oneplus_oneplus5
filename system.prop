@@ -19,6 +19,7 @@ DEVICE_PROVISIONED=1
 # Set network mode to (T/L/G/W/1X/EVDO, T/G/W/L) for 7+5 mode device on DSDS mode
 ro.telephony.default_network=22,20
 
+debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
 debug.gralloc.enable_fb_ubwc=1
 dalvik.vm.heapsize=36m
