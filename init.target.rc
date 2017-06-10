@@ -173,7 +173,7 @@ service spdaemon /vendor/bin/spdaemon
    user system
    group system
 
-#service mpdecision /system/bin/mpdecision --avg_comp
+#service mpdecision /system/vendor/bin/mpdecision --avg_comp
 #   user root
 #   disabled
 #
@@ -215,7 +215,7 @@ service hbtp /system/vendor/bin/hbtp_daemon
     group system
     disabled
 
-service audiod /system/bin/audiod
+service audiod /system/vendor/bin/audiod
    class late_start
    user system
    group system
@@ -395,7 +395,7 @@ on property:init.svc.zygote=restarting
 #    user system
 #    group drmrpc
 #
-#service adsprpcd /system/bin/adsprpcd
+#service adsprpcd /system/vendor/bin/adsprpcd
 #   class main
 #   user media
 #   group media
