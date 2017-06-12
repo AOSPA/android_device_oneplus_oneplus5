@@ -242,9 +242,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    </hal>
    <!-- RIL AUDIO HAL -->
    <hal format="hidl">
-       <name>vendor.qti.qcril.am</name>
+       <name>vendor.qti.hardware.radio.am</name>
        <transport>hwbinder</transport>
-       <impl level="generic"></impl>
        <version>1.0</version>
        <interface>
            <name>IQcRilAudio</name>
@@ -275,9 +274,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </hal>
     <!-- atfwd -->
     <hal format="hidl">
-        <name>vendor.qti.atcmdfwd</name>
+        <name>vendor.qti.hardware.radio.atcmdfwd</name>
         <transport>hwbinder</transport>
-        <impl level="generic"></impl>
         <version>1.0</version>
         <interface>
             <name>IAtCmdFwd</name>
@@ -352,4 +350,35 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.ims</name>
+           <transport>hwbinder</transport>
+           <version>1.0</version>
+           <interface>
+               <name>IImsRadio</name>
+               <instance>imsradio0</instance>
+               <instance>imsradio1</instance>
+           </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.qcrilhook</name>
+           <transport>hwbinder</transport>
+           <version>1.0</version>
+           <interface>
+               <name>IQtiOemHook</name>
+               <instance>oemhook0</instance>
+               <instance>oemhook1</instance>
+           </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.config</name>
+           <transport>hwbinder</transport>
+           <version>1.0</version>
+           <interface>
+               <name>IConfig</name>
+               <instance>radioconfig0</instance>
+               <instance>radioconfig1</instance>
+           </interface>
+    </hal>
+
 </manifest>
