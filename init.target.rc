@@ -438,6 +438,8 @@ service qvrd /system/vendor/bin/qvrservice
     user system
     group system camera graphics
     socket qvrservice stream 0666 system system
+    socket qvrservice_camera stream 0666 system system
+    socket qvrservice_hvx_camera stream 0660 system system
 
 service qdmastatsd /system/bin/qdmastatsd
     class late_start
