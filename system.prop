@@ -19,6 +19,7 @@ DEVICE_PROVISIONED=1
 # Set network mode to (T/L/G/W/1X/EVDO, T/G/W/L) for 7+5 mode device on DSDS mode
 ro.telephony.default_network=22,20
 
+debug.sf.enable_hwc_vds=1
 debug.sf.hw=1
 debug.gralloc.enable_fb_ubwc=1
 dalvik.vm.heapsize=36m
@@ -47,9 +48,6 @@ persist.mm.enable.prefetch=true
 
 # Additional buffers shared between Camera and Video
 vidc.enc.dcvs.extra-buff-count=2
-
-# Set default power mode to low power for encoder
-vidc.debug.perf.mode=2
 
 #
 # system props for the data modules
@@ -147,17 +145,17 @@ sys.games.gt.prof=1
 
 #Settings to enable sensors
 #Device Orientation sensor
-ro.qti.sensors.dev_ori=true
+ro.vendor.sensors.dev_ori=true
 #Persistent Motion Detector
-ro.qti.sensors.pmd=true
+ro.vendor.sensors.pmd=true
 #Stationary Detector
-ro.qti.sensors.sta_detect=true
+ro.vendor.sensors.sta_detect=true
 #Motion Detector
-ro.qti.sensors.mot_detect=true
+ro.vendor.sensors.mot_detect=true
 #Device Position Classifier
-ro.qti.sensors.dpc=true
+ro.vendor.sensors.dpc=true
 #MultiShake sensor
-ro.qti.sensors.multishake=true
+ro.vendor.sensors.multishake=true
 
 #Enable stm events
 persist.debug.coresight.config=stm-events

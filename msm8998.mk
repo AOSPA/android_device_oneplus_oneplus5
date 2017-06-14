@@ -21,7 +21,7 @@ ifeq ($(ENABLE_VENDOR_IMAGE), true)
 endif
 
 TARGET_KERNEL_VERSION := 4.4
-BOARD_HAVE_QCOM_FM := false
+BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := false
 
 ifeq ($(TARGET_USES_NQ_NFC),true)
@@ -81,7 +81,7 @@ WLAN_CHIPSET := qca_cld3
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
-#PRODUCT_BOOT_JARS += tcmiface
+PRODUCT_BOOT_JARS += tcmiface
 PRODUCT_BOOT_JARS += telephony-ext
 
 PRODUCT_PACKAGES += telephony-ext
@@ -110,7 +110,7 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/sensors/hals.conf:system/etc/sensors/hals.conf
+    device/qcom/msm8998/sensors/hals.conf:vendor/etc/sensors/hals.conf
 
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
@@ -225,8 +225,14 @@ PRODUCT_PACKAGES += update_engine \
 #Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
 
+
 #Healthd packages
 PRODUCT_PACKAGES += android.hardware.health@1.0-impl \
 		    android.hardware.health@1.0-convert \
 		    android.hardware.health@1.0-service \
 		    libhealthd.msm
+
+#FEATURE_OPENGLES_EXTENSION_PACK support string config file
+PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+

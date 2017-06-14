@@ -25,7 +25,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
-<manifest version="1.0">
+<manifest version="1.0" type="device">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -60,6 +60,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <transport>hwbinder</transport>
         <impl level="generic"></impl>
         <version>1.0</version>
+        <interface>
+            <name>IOmx</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IOmxStore</name>
+            <instance>default</instance>
+        </interface>
     </hal>
     <!-- /video omx hal -->
     <!-- display -->
@@ -152,7 +160,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
-        <transport arch="32+64">toggled</transport>
+        <transport>hwbinder</transport>
         <impl level="generic"></impl>
         <version>2.4</version>
         <interface>
@@ -163,7 +171,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <!-- bluetooth -->
     <hal format="hidl">
         <name>android.hardware.bluetooth</name>
-        <transport arch="32+64">hwbinder</transport>
+        <transport>hwbinder</transport>
         <impl level="generic"></impl>
         <version>1.0</version>
     </hal>
@@ -178,6 +186,18 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <!-- bluetooth -->
+    <!--ANT-->
+    <hal format="hidl">
+        <name>com.qualcomm.qti.ant</name>
+        <transport>hwbinder</transport>
+        <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>IAntHci</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <!--ANT-->
     <hal format="hidl">
         <name>android.hardware.power</name>
         <transport arch="32+64">passthrough</transport>
@@ -222,9 +242,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    </hal>
    <!-- RIL AUDIO HAL -->
    <hal format="hidl">
-       <name>vendor.qti.qcril.am</name>
+       <name>vendor.qti.hardware.radio.am</name>
        <transport>hwbinder</transport>
-       <impl level="generic"></impl>
        <version>1.0</version>
        <interface>
            <name>IQcRilAudio</name>
@@ -243,11 +262,20 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
         </interface>
     </hal>
-    <!-- atfwd -->
     <hal format="hidl">
-        <name>vendor.qti.atcmdfwd</name>
+        <name>vendor.qti.gnss</name>
         <transport>hwbinder</transport>
         <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>ILocHidlGnss</name>
+            <instance>gnss_vendor</instance>
+        </interface>
+    </hal>
+    <!-- atfwd -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.atcmdfwd</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IAtCmdFwd</name>
@@ -287,5 +315,70 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>IRTPService</name>
             <instance>imsrtpservice</instance>
         </interface>
+    </hal>
+
+    <!-- Perf HAL service -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.perf</name>
+        <transport>hwbinder</transport>
+        <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>IPerf</name>
+            <instance>default</instance>
+        </interface>
     </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.qtiradio</name>
+        <transport>hwbinder</transport>
+        <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>IQtiRadio</name>
+            <instance>slot1</instance>
+            <instance>slot2</instance>
+        </interface>
+    </hal>
+    <!-- fm -->
+    <hal format="hidl">
+        <name>vendor.qti.hardware.fm</name>
+        <transport>hwbinder</transport>
+        <impl level="generic"></impl>
+        <version>1.0</version>
+        <interface>
+            <name>IFmHci</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.ims</name>
+           <transport>hwbinder</transport>
+           <version>1.0</version>
+           <interface>
+               <name>IImsRadio</name>
+               <instance>imsradio0</instance>
+               <instance>imsradio1</instance>
+           </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.qcrilhook</name>
+           <transport>hwbinder</transport>
+           <version>1.0</version>
+           <interface>
+               <name>IQtiOemHook</name>
+               <instance>oemhook0</instance>
+               <instance>oemhook1</instance>
+           </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.radio.config</name>
+           <transport>hwbinder</transport>
+           <version>1.0</version>
+           <interface>
+               <name>IConfig</name>
+               <instance>radioconfig0</instance>
+               <instance>radioconfig1</instance>
+           </interface>
+    </hal>
+
 </manifest>
