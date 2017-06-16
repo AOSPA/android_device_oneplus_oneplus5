@@ -144,7 +144,8 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service \
-    android.hardware.configstore@1.0-service
+    android.hardware.configstore@1.0-service \
+    android.hardware.broadcastradio@1.0-impl
 
 PRODUCT_PACKAGES += \
     vendor.display.color@1.0-service \
@@ -202,6 +203,8 @@ ifeq ($(ENABLE_VENDOR_IMAGE), true)
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/bootdevice/by-name/vendor
 endif
 
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
 
@@ -210,9 +213,6 @@ PRODUCT_PACKAGES += \
 	wificond \
 	wifilogd
 
-#HIDLized HAL binaries/init scripts
-#Keymaster
-PRODUCT_PACKAGES += android.hardware.keymaster@3.0-impl
 #A/B related packages
 PRODUCT_PACKAGES += update_engine \
 		    update_engine_client \
