@@ -122,8 +122,8 @@ endif
 
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msm8998/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
+    device/qcom/msm8998/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/qcom/msm8998/wifi_concurrency_cfg.txt:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wifi_concurrency_cfg.txt
 
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
