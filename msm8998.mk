@@ -14,6 +14,9 @@ ifeq ($(ENABLE_VENDOR_IMAGE),)
 ENABLE_VENDOR_IMAGE := true
 endif
 
+# Default A/B configuration.
+ENABLE_AB ?= true
+
 # Disable QTIC until it's brought up in split system/vendor
 # configuration to avoid compilation breakage.
 ifeq ($(ENABLE_VENDOR_IMAGE), true)
@@ -213,6 +216,7 @@ PRODUCT_PACKAGES += \
 	wificond \
 	wifilogd
 
+ifeq ($(ENABLE_AB), true)
 #A/B related packages
 PRODUCT_PACKAGES += update_engine \
 		    update_engine_client \
@@ -224,6 +228,7 @@ PRODUCT_PACKAGES += update_engine \
 
 #Boot control HAL test app
 PRODUCT_PACKAGES_DEBUG += bootctl
+endif
 
 
 #Healthd packages

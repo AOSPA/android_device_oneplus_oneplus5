@@ -69,11 +69,12 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := fstab.qcom
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := $(LOCAL_MODULE)
-LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)
-ifeq ($(ENABLE_VENDOR_IMAGE), true)
-LOCAL_POST_INSTALL_CMD := echo $(VENDOR_FSTAB_ENTRY) >> $(LOCAL_MODULE_PATH)/$(LOCAL_MODULE)
+ifeq ($(ENABLE_AB), true)
+LOCAL_SRC_FILES    := fstab_AB_variant.qcom
+else
+LOCAL_SRC_FILES    := fstab_non_AB_variant.qcom
 endif
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR_ETC)
 include $(BUILD_PREBUILT)
 
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
