@@ -25,7 +25,7 @@ endif
 
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
-TARGET_USES_NQ_NFC := false
+TARGET_USES_NQ_NFC := true
 
 ifeq ($(TARGET_USES_NQ_NFC),true)
 # Flag to enable and support NQ3XX chipsets
@@ -41,7 +41,7 @@ TARGET_USE_UI_SVA := true
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/media_profiles.xml:system/etc/media_profiles.xml \
-    device/qcom/msm8998/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles.xml \
+    device/qcom/msm8998/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     device/qcom/msm8998/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     device/qcom/msm8998/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
@@ -180,6 +180,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.relative_humidity.xml:system/etc/permissions/android.hardware.sensor.relative_humidity.xml \
     frameworks/native/data/etc/android.hardware.sensor.hifi_sensors.xml:system/etc/permissions/android.hardware.sensor.hifi_sensors.xml
 
+PRODUCT_PACKAGES += libsensor1_system
+PRODUCT_PACKAGES += libsensor_reg_system
+PRODUCT_PACKAGES += libqmi_cci_system
+PRODUCT_PACKAGES += libdiag_system
+
 # High performance VR feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
@@ -192,8 +197,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # Powerhint configuration file
-PRODUCT_COPY_FILES += \
-device/qcom/msm8998/powerhint.xml:system/etc/powerhint.xml
+PRODUCT_COPY_FILES += device/qcom/msm8998/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
