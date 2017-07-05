@@ -65,6 +65,10 @@ PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whiteli
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
 
+# Add soft home, back and multitask keys
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
+
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
