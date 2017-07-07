@@ -19,10 +19,6 @@ PRODUCT_COPY_FILES += \
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
 
-# Override heap growth limit due to high display density on device
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=256m
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/oneplus/oneplus5/common64.mk)
 
 # Enable features in video HAL that can compile only on this platform
