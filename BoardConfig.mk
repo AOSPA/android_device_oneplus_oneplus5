@@ -74,6 +74,9 @@ SF_VSYNC_EVENT_PHASE_OFFSET_NS := 0
 # Enable Adreno RS driver
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
+# Set C2D flag to allow copybit to compile
+TARGET_USES_C2D_COMPOSITION := true
+
 BOARD_USES_GENERIC_AUDIO := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_NO_RPC := true
