@@ -157,7 +157,7 @@ BT += libbt-vendor
 BT += libbthost_if
 BT += libbt-logClient
 BT += bt_logger
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/qcom/common
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/oneplus5
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
@@ -938,7 +938,7 @@ PRODUCT_COPY_FILES := \
 
 # gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/common/sec_config:system/etc/sec_config
+    device/oneplus/oneplus5/sec_config:system/etc/sec_config
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -958,10 +958,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level-0.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version-1_0_3.xml \
 
-# enable overlays to use our version of
-# source/resources etc.
-DEVICE_PACKAGE_OVERLAYS += device/qcom/common/device/overlay
-PRODUCT_PACKAGE_OVERLAYS += device/qcom/common/product/overlay
 # Set up flags to determine the kernel version
 ifeq ($(TARGET_KERNEL_VERSION),)
      TARGET_KERNEL_VERSION := 3.18
@@ -976,8 +972,6 @@ else
      KERNEL_TO_BUILD_ROOT_OFFSET := ../../
      TARGET_KERNEL_SOURCE := kernel/msm-$(TARGET_KERNEL_VERSION)
 endif
-# include additional build utilities
--include device/qcom/common/utils.mk
 
 #Enabling Ring Tones
 #include frameworks/base/data/sounds/OriginalAudio.mk

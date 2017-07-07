@@ -1,4 +1,4 @@
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
+DEVICE_PACKAGE_OVERLAYS := device/oneplus/oneplus5/overlay
 TARGET_KERNEL_VERSION := 4.4
 BOARD_HAVE_QCOM_FM := true
 TARGET_USES_NQ_NFC := true
@@ -16,9 +16,9 @@ TARGET_USE_UI_SVA := true
 
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += device/qcom/msm8998/media/media_profiles.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8998/media/media_codecs.xml:system/etc/media_codecs.xml \
-                      device/qcom/msm8998/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += device/oneplus/oneplus5/media/media_profiles.xml:system/etc/media_profiles.xml \
+                      device/oneplus/oneplus5/media/media_codecs.xml:system/etc/media_codecs.xml \
+                      device/oneplus/oneplus5/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 #QTIC flag
@@ -28,7 +28,7 @@ endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/qcom/common/common64.mk)
+$(call inherit-product, device/oneplus/oneplus5/common64.mk)
 
 PRODUCT_NAME := msm8998
 PRODUCT_DEVICE := msm8998
@@ -68,11 +68,11 @@ PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/sensors/hals.conf:system/etc/sensors/hals.conf
+    device/oneplus/oneplus5/sensors/hals.conf:system/etc/sensors/hals.conf
 
 # Exclude TOF sensor from InputManager
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    device/oneplus/oneplus5/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
@@ -81,8 +81,8 @@ endif
 
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msm8998/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
+    device/oneplus/oneplus5/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/oneplus/oneplus5/wifi_concurrency_cfg.txt:system/etc/wifi/wifi_concurrency_cfg.txt
 
 # MIDI feature
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml
@@ -119,14 +119,14 @@ PRODUCT_COPY_FILES += \
 
 # FBE support
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/init.qti.qseecomd.sh:system/bin/init.qti.qseecomd.sh
+    device/oneplus/oneplus5/init.qti.qseecomd.sh:system/bin/init.qti.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += device/qcom/msm8998/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+PRODUCT_COPY_FILES += device/oneplus/oneplus5/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
-device/qcom/msm8998/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
+device/oneplus/oneplus5/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
