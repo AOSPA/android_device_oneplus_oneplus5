@@ -216,6 +216,8 @@ endif
 
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 
+PRODUCT_VENDOR_MOVE_ENABLED := true
+
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
 
