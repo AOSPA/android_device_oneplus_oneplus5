@@ -152,7 +152,6 @@ BSON := libbson
 #BT
 BT := javax.btobex
 BT += libattrib_static
-BT += hcidump.sh
 BT += libbt-vendor
 BT += libbthost_if
 BT += libbt-logClient
@@ -244,42 +243,23 @@ I420CC := libI420colorconvert
 INIT := init.qcom.composition_type.sh
 INIT += init.target.8x25.sh
 INIT += init.qcom.mdm_links.sh
-INIT += init.qcom.modem_links.sh
 INIT += init.qcom.sensor.sh
 INIT += init.target.rc
-INIT += init.qti.ims.sh
 INIT += init.qcom.bt.sh
-INIT += hsic.control.bt.sh
-INIT += init.qcom.coex.sh
-INIT += init.qcom.fm.sh
 INIT += init.qcom.early_boot.sh
 INIT += init.qcom.post_boot.sh
-INIT += init.qcom.syspart_fixup.sh
 INIT += init.qcom.rc
-INIT += init.qcom.factory.rc
-INIT += init.qcom.sdio.sh
 INIT += init.qcom.sh
-INIT += init.qcom.class_core.sh
 INIT += init.class_main.sh
-INIT += init.qcom.wifi.sh
 INIT += vold.fstab
 INIT += init.qcom.ril.path.sh
 INIT += init.qcom.usb.rc
-INIT += init.msm.usb.configfs.rc
 INIT += init.qcom.usb.sh
-INIT += usf_post_boot.sh
-INIT += init.qcom.efs.sync.sh
 INIT += ueventd.qcom.rc
-INIT += init.ath3k.bt.sh
-INIT += qca6234-service.sh
-INIT += init.qcom.audio.sh
 INIT += ssr_setup
 INIT += enable_swap.sh
-INIT += init.mdm.sh
-INIT += init.qcom.uicc.sh
 INIT += fstab.qcom
 INIT += init.qcom.sensors.sh
-INIT += init.qcom.crashdata.sh
 
 #IPROUTE2
 IPROUTE2 := ip
@@ -321,7 +301,6 @@ KEYPAD += cyttsp-i2c.kl
 KEYPAD += ft5x06_ts.kl
 KEYPAD += ffa-keypad.kl
 KEYPAD += fluid-keypad.kl
-KEYPAD += gpio-keys.kl
 KEYPAD += qpnp_pon.kl
 KEYPAD += keypad_8960.kl
 KEYPAD += keypad_8960_liquid.kl
@@ -710,7 +689,6 @@ CRDA := crda
 CRDA += regdbdump
 CRDA += regulatory.bin
 CRDA += linville.key.pub.pem
-CRDA += init.crda.sh
 
 #WLAN
 WLAN := prima_wlan.ko
@@ -893,13 +871,6 @@ PRODUCT_PACKAGES += libhealthd.msm
 
 # UI Enhancements for ECT and Deflect feature
 PRODUCT_PACKAGES += qtiImsInCallUi
-
-#intialise PRODUCT_PACKAGES_DEBUG list for debug modules
-PRODUCT_PACKAGES_DEBUG := init.qcom.testscripts.sh
-
-#Add init.qcom.test.rc to PRODUCT_PACKAGES_DEBUG list
-PRODUCT_PACKAGES_DEBUG += init.qcom.test.rc
-PRODUCT_PACKAGES_DEBUG += init.qcom.debug.sh
 
 #NANOPB_LIBRARY_NAME := libnanopb-c-2.8.0
 

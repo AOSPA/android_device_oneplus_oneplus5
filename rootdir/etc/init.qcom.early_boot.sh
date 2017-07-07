@@ -27,7 +27,6 @@
 #
 
 HERE=/system/etc
-source $HERE/init.qti.dcc.sh
 
 export PATH=/system/bin
 

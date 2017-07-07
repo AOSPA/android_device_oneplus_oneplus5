@@ -51,7 +51,6 @@ on fs
 
 on post-fs
     start qseecomd
-    exec - root root root -- /system/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
 on init
@@ -329,10 +328,6 @@ service imsdatadaemon /system/bin/imsdatadaemon
 #service mdm_helper_proxy /system/bin/mdm_helper_proxy
 #    class core
 #    disabled
-#
-#service mdm_launcher /system/bin/sh /init.mdm.sh
-#    class main
-#    oneshot
 #
 #service qcamerasvr /system/bin/mm-qcamera-daemon
 #    class late_start

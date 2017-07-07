@@ -70,10 +70,6 @@ PRODUCT_PACKAGE_OVERLAYS := $(QCPATH)/qrdplus/Extension/res \
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus5/sensors/hals.conf:system/etc/sensors/hals.conf
 
-# Exclude TOF sensor from InputManager
-PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
-
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
 PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
@@ -116,10 +112,6 @@ PRODUCT_COPY_FILES += \
 # High performance VR feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
-
-# FBE support
-PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/init.qti.qseecomd.sh:system/bin/init.qti.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += device/oneplus/oneplus5/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf

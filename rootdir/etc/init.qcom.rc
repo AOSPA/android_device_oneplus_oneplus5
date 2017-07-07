@@ -26,10 +26,7 @@
 #
 
 import init.qcom.usb.rc
-import init.msm.usb.configfs.rc
 import init.target.rc
-import init.qcom.factory.rc
-import init.qcom.test.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -439,7 +436,6 @@ on property:persist.sys.ssr.enable_ramdumps=0
     write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
 
 on property:sys.boot_completed=1
-    exec u:r:qti_init_shell:s0 -- /init.qcom.crashdata.sh
     write /dev/kmsg "Boot completed "
     #Reset read ahead for dm-0 and dm-1 to 512kb
     write /sys/block/dm-0/queue/read_ahead_kb 512
@@ -483,11 +479,6 @@ on property:bluetooth.startbtlogger=true
 
 on property:bluetooth.startbtlogger=false
     stop bt_logger
-
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
 
 service qcom-c_main-sh /system/bin/sh /init.class_main.sh
     class main
@@ -578,13 +569,6 @@ on property:bluetooth.hciattach=true
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
-
-service hciattach_ath3k /system/bin/sh /system/etc/init.ath3k.bt.sh
-     class late_start
-     user bluetooth
-     group system bluetooth net_bt_admin misc
-     disabled
-     oneshot
 
 service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
     class late_start
@@ -844,13 +828,6 @@ service mlid /system/bin/mlid
     group gps
     socket mlid stream 0666 gps gps
 
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    class late_start
-    user system
-    group system
-    disabled
-    oneshot
-
 on property:crypto.driver.load=1
      insmod /system/lib/modules/qce.ko
      insmod /system/lib/modules/qcedev.ko
@@ -883,28 +860,8 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     disabled
     oneshot
 
-service qti-testscripts /system/bin/sh /system/etc/init.qcom.testscripts.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-    seclabel u:r:qti-testscripts:s0
-
-service wifi-sdio-on /system/bin/sh /system/etc/init.qcom.sdio.sh
-    class late_start
-    group wifi inet
-    disabled
-    oneshot
-
-service wifi-crda /system/bin/sh /system/etc/init.crda.sh
-   class late_start
-   user root
-   disabled
-   oneshot
-
 on property:sys.boot_completed=1
     start qcom-post-boot
-    start qti-testscripts
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -960,35 +917,17 @@ service ril-daemon3 /system/bin/rild -c 3
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag diag log
 
-service usb_uicc_enable /system/bin/sh /system/etc/init.qcom.uicc.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
 service usb_uicc_daemon /system/bin/usb_uicc_client
     class main
     user system
     group system log net_raw
     oneshot
 
-on property:sys.usb_uicc.enabled=1
-    start usb_uicc_enable
-
-on property:sys.usb_uicc.enabled=0
-    start usb_uicc_enable
-
 service profiler_daemon /system/bin/profiler_daemon
     class late_start
     user root
     group root
     disabled
-
-service hcidump /system/bin/sh /system/etc/hcidump.sh
-    user bluetooth
-    group bluetooth system net_bt_admin net_admin
-    disabled
-    oneshot
 
 service charger /charger
     class charger
