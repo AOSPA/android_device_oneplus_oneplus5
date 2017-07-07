@@ -158,3 +158,6 @@ persist.ts.rtmakeup=false
 
 #Property to enable display default color mode
 vendor.display.enable_default_color_mode=true
+
+#enable IZat OptInApp overlay
+persist.vendor.overlay.izat.optin=rro
