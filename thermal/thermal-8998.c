@@ -33,10 +33,10 @@
 #define TEMPERATURE_FILE_FORMAT       "/sys/class/thermal/thermal_zone%d/temp"
 
 #define BATTERY_SENSOR_NUM            29
-#define GPU_SENSOR_NUM                16
+#define GPU_SENSOR_NUM                21
 #define SKIN_SENSOR_NUM               5
 
-const int CPU_SENSORS[] = {7, 8, 9, 10, 11, 12, 13, 14};
+const int CPU_SENSORS[] = {11, 12, 13, 14, 15, 16, 17, 18};
 
 #define CPU_NUM                       (sizeof(CPU_SENSORS) / sizeof(int))
 // Sum of CPU_NUM + 3 for GPU, BATTERY, and SKIN.
