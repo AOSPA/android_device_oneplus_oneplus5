@@ -117,7 +117,6 @@ AUDIO_POLICY += audio_policy.msm7627a
 AUDIO_POLICY += audio_policy.msm7630_surf
 AUDIO_POLICY += audio_policy.msm7630_fusion
 #AUDIO_POLICY += audio_policy.default
-AUDIO_POLICY += audio_policy.conf
 AUDIO_POLICY += audio_policy_8064.conf
 AUDIO_POLICY += audio_policy.msm8916
 AUDIO_POLICY += audio_policy.msm8909
