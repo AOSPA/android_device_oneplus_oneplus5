@@ -18,9 +18,6 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a9
 
-# SDClang configuration
-SDCLANG := true
-
 TARGET_NO_BOOTLOADER := false
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
@@ -29,7 +26,6 @@ TARGET_NO_KERNEL := false
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
-BOARD_USES_WIPOWER := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/qcom/common
 
 USE_OPENGL_RENDERER := true
@@ -68,10 +64,6 @@ endif
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
 endif
 
-BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
-
-BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
-
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -96,7 +88,6 @@ BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_NO_RPC := true
 
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_INIT_VENDOR_LIB := libinit_msm
 
 TARGET_INIT_COLDBOOT_TIMEOUT := 8
 
@@ -115,18 +106,6 @@ TARGET_HW_DISK_ENCRYPTION := true
 
 TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw
 
-# Enable dex pre-opt to speed up initial boot
-ifeq ($(HOST_OS),linux)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      WITH_DEXPREOPT_PIC := true
-      ifneq ($(TARGET_BUILD_VARIANT),user)
-        # Retain classes.dex in APK's for non-user builds
-        DEX_PREOPT_DEFAULT := nostripping
-      endif
-    endif
-endif
-
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
@@ -138,7 +117,6 @@ USE_SENSOR_MULTI_HAL := true
 
 #Add NON-HLOS files for ota upgrade
 ADD_RADIO_FILES := true
-TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
 
 #Enable CPUSets
 ENABLE_CPUSETS := true
@@ -149,6 +127,4 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 #Enabling IMS Feature
 TARGET_USES_IMS := true
 
-ifneq ($(AB_OTA_UPDATER),true)
-    TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
-endif
+TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/fstab.qcom
