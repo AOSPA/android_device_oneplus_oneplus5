@@ -30,11 +30,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/oneplus/oneplus5/common64.mk)
 
-PRODUCT_NAME := msm8998
-PRODUCT_DEVICE := msm8998
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := MSM8998 for arm64
-
 # Enable features in video HAL that can compile only on this platform
 TARGET_USES_MEDIA_EXTENSIONS := true
 
