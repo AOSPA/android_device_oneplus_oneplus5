@@ -21,7 +21,6 @@ ro.telephony.default_network=22,20
 
 debug.sf.hw=1
 debug.gralloc.enable_fb_ubwc=1
-dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_partial_split=1
@@ -75,7 +74,7 @@ bt.max.hfpclient.connections=1
 persist.bt.a2dp.aac_disable=false
 
 # System property for cabl
-ro.qualcomm.cabl=2
+ro.qualcomm.cabl=0
 
 #
 # System props for telephony
@@ -126,9 +125,6 @@ persist.sys.wfd.virtual=0
 # system prop for NFC DT
 ro.nfc.port=I2C
 
-#property for vendor specific library
-ro.vendor.at_library=libqti-at.so
-
 #min/max cpu in core control
 ro.core_ctl_min_cpu=2
 ro.core_ctl_max_cpu=4
@@ -171,9 +167,6 @@ ro.qti.sensors.dpc=true
 ro.qti.sensors.multishake=true
 #IOD sensor
 ro.qti.sensors.iod=true
-
-#Enable stm events
-persist.debug.coresight.config=stm-events
 
 #Disable face beautification
 persist.ts.rtmakeup=false
