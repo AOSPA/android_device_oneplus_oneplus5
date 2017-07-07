@@ -448,12 +448,12 @@ etc/permissions/com.qualcomm.location.xml
 etc/permissions/izat.xt.srv.xml
 etc/cacert_location.pem
 etc/xtra_root_cert.pem
-framework/com.qti.location.sdk.jar
-framework/com.qualcomm.location.vzw_library.jar
+framework/com.qti.location.sdk.jar|4220af51ead87ff8d03c877d61b9248ab1b5f260
+framework/com.qualcomm.location.vzw_library.jar|4f700fa54e2b27b75cd5f4dbfd20fa9da85a2112
 framework/izat.xt.srv.jar
 -lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk|731081fd3f05053d5c7d1b5afd9f74bb20feccdf
 vendor/bin/slim_daemon
 vendor/lib64/hw/flp.default.so
 vendor/lib64/libalarmservice_jni.so
@@ -586,7 +586,7 @@ vendor/firmware/libpn553_fw.so
 bin/energy-awareness
 bin/iop
 bin/msm_irqbalance
--framework/QPerformance.jar
+-framework/QPerformance.jar|05f0d0407f5feaa7c369f7b076c68f80c93526bf
 vendor/bin/perfd
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf
@@ -653,11 +653,11 @@ vendor/lib64/libqmiservices.so
 vendor/lib64/libsmemlog.so
 
 # Radio
--app/datastatusnotification/datastatusnotification.apk
+-app/datastatusnotification/datastatusnotification.apk|9fb691120eaa881e5cd51ecfc1e983e906abe649
 -app/embms/embms.apk
--app/QtiTelephonyService/QtiTelephonyService.apk
--app/shutdownlistener/shutdownlistener.apk
--app/SimSettings/SimSettings.apk
+-app/QtiTelephonyService/QtiTelephonyService.apk|a6f6c0c892a109744b51923661e76909620fa0dc
+-app/shutdownlistener/shutdownlistener.apk|c89295c6163e69ed5a05fa15462f43ddf781e8b0
+-app/SimSettings/SimSettings.apk|d5cb89ee3bfa4c37e7a1d0a3ef51175fcdef6fa3
 bin/ipacm-diag
 bin/netmgrd
 bin/radish
@@ -672,9 +672,9 @@ etc/permissions/telephonyservice.xml
 framework/embmslibrary.jar
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
-framework/qti-telephony-common.jar
-framework/QtiTelephonyServicelibrary.jar
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+framework/qti-telephony-common.jar|391eaa7a20445ade1cea3739162e39a884359a47
+framework/QtiTelephonyServicelibrary.jar|0794320c516e426a008a09b38996b1f7a411cbde
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|ebfee04cc87dd5945d9af04084f8ef57766fe278
 vendor/bin/qti
 vendor/lib/libmdmdetect.so
 vendor/lib64/libconfigdb.so
@@ -703,9 +703,9 @@ etc/permissions/imscm.xml
 etc/permissions/qti-vzw-ims-internal.xml
 framework/imscmlibrary.jar
 framework/rcsimssettings.jar
--vendor/app/ims/ims.apk
--vendor/app/imssettings/imssettings.apk
-vendor/framework/qti-vzw-ims-internal.jar
+-vendor/app/ims/ims.apk|c0b94bd775f3521a3db6d3d102c64d2d047f6aa0
+-vendor/app/imssettings/imssettings.apk|40e12bcbcbacebea6269fb0e63706aec6c1e8306
+vendor/framework/qti-vzw-ims-internal.jar|334081ff4f69a8d34101914524917c02dcb488db
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imscamera.so
@@ -773,7 +773,7 @@ vendor/bin/thermal-engine
 vendor/lib64/libthermalioctl.so
 
 # Time services
--app/TimeService/TimeService.apk
+-app/TimeService/TimeService.apk|d24441267f1b9b83a31b763e1c77aca8724c7daa
 bin/time_daemon
 -vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
