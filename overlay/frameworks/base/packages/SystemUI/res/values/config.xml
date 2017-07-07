@@ -65,5 +65,9 @@
         <item>-105</item>
         <item>-44</item>
     </integer-array>
+
+    <!-- Enable doze mode -->
+    <bool name="doze_display_state_supported">true</bool>
+
 </resources>
 
