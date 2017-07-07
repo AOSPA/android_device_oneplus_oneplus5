@@ -150,3 +150,8 @@ PRODUCT_PACKAGES_DEBUG += bootctl
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+
+# Audio Configuration
+PRODUCT_COPY_FILES += \
+    device/oneplus/oneplus5/audio/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml \
+    device/oneplus/oneplus5/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
