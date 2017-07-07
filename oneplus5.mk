@@ -31,19 +31,7 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 # WLAN chipset
 WLAN_CHIPSET := qca_cld3
 
-#Android EGL implementation
-PRODUCT_PACKAGES += libGLES_android
-PRODUCT_BOOT_JARS += tcmiface
-PRODUCT_BOOT_JARS += telephony-ext
-
-PRODUCT_PACKAGES += telephony-ext
 PRODUCT_PACKAGES += libqmiextservices
-
-ifneq ($(strip $(QCPATH)),)
-PRODUCT_BOOT_JARS += WfdCommon
-#Android oem shutdown hook
-PRODUCT_BOOT_JARS += oem-services
-endif
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk

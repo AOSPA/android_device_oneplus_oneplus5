@@ -10,7 +10,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 PRODUCT_BRAND := qcom
 PRODUCT_AAPT_CONFIG += hdpi mdpi
 
-PRODUCT_MANUFACTURER := QUALCOMM
+PRODUCT_MANUFACTURER := OnePlus
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=libqti-perfd-client.so \
@@ -29,5 +29,3 @@ else
 endif
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-#$(call inherit-product, frameworks/base/data/fonts/fonts.mk)
-#$(call inherit-product, frameworks/base/data/keyboards/keyboards.mk)
