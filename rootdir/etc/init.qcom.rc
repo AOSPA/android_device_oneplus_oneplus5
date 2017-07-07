@@ -798,6 +798,7 @@ service cnss_diag /system/bin/cnss_diag -q -f -b 128
     user system
     group system wifi inet net_admin sdcard_rw media_rw diag
     oneshot
+    disabled
 
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
