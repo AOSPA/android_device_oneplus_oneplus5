@@ -101,3 +101,6 @@ PRODUCT_AAPT_CONFIG += xlarge large
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+
+# Call the proprietary setup
+$(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
