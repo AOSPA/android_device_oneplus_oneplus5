@@ -122,7 +122,7 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 #Enabling IMS Feature
 TARGET_USES_IMS := true
 
-TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/rootdir/etc/fstab.qcom
 
 CAMERA_DAEMON_NOT_PRESENT := true
 BOARD_USES_QCNE := true
