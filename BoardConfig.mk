@@ -94,9 +94,6 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 
-#Enable HW based full disk encryption
-TARGET_HW_DISK_ENCRYPTION := false
-
 #Enable PD locater/notifier
 TARGET_PD_SERVICE_ENABLED := true
 
