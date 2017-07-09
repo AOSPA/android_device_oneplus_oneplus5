@@ -149,3 +149,6 @@ BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET := false
 WIFI_DRIVER_STATE_CTRL_PARAM := "/dev/wlan"
 WIFI_DRIVER_STATE_ON := "ON"
 WIFI_DRIVER_STATE_OFF := "OFF"
+
+# inherit from the proprietary version
+-include vendor/oneplus/oneplus5/BoardConfigVendor.mk
