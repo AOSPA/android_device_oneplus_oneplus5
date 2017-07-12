@@ -41,7 +41,7 @@ TARGET_USE_UI_SVA := true
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/media_profiles.xml:system/etc/media_profiles.xml \
-    device/qcom/msm8998/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
+    device/qcom/msm8998/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
     device/qcom/msm8998/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     device/qcom/msm8998/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
@@ -64,6 +64,10 @@ PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whiteli
 
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk
+
+# Add soft home, back and multitask keys
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -113,7 +117,7 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
 # Sensor HAL conf file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/sensors/hals.conf:vendor/etc/sensors/hals.conf
+    device/qcom/msm8998/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
@@ -211,6 +215,8 @@ PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/bootdevice/by-name/vendor
 endif
 
 PRODUCT_FULL_TREBLE_OVERRIDE := true
+
+PRODUCT_VENDOR_MOVE_ENABLED := true
 
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
