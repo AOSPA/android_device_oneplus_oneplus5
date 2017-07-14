@@ -149,7 +149,6 @@ BT += libbt-vendor
 BT += libbthost_if
 BT += libbt-logClient
 BT += bt_logger
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/oneplus5
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
