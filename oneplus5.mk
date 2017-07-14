@@ -70,7 +70,8 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libjson
+    libjson \
+    libtinyxml
 
 # GPS
 PRODUCT_PACKAGES += \
