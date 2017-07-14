@@ -68,6 +68,10 @@ PRODUCT_PACKAGES += \
     antradio_app \
     libvolumelistener
 
+# Display
+PRODUCT_PACKAGES += \
+    libjson
+
 # Sensor features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
