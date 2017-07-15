@@ -32,6 +32,13 @@ PRODUCT_PACKAGES += libqmiextservices
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
 
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.r_submix.default \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
+
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus5/audio/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml \
     device/oneplus/oneplus5/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml
