@@ -47,14 +47,9 @@ on fs
     mount_all fstab.qcom
     swapon_all fstab.qcom
 
-    wait /dev/block/bootdevice/by-name/persist
-    exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     mkdir /persist/data 0700 system system
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
-
-    mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
 
 on post-fs
     start qseecomd
