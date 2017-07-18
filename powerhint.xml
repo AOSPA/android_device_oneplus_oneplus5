@@ -75,38 +75,38 @@
         <!-- L CPU - Cluster min freq uncapped -->
         <!-- B CPU - Cluster max freq ~1.2 GHz -->
         <!-- L CPU - Cluster max freq ~1.2 Ghz -->
-        <!-- GPU - min freq 180 Mhz -->
-        <!-- GPU - max freq 342 Mhz -->
+        <!-- GPU - min pwrlevel 6 -->
+        <!-- GPU - max pwrlevel 5 -->
         <!-- GPUBW freq uncapped -->
         <Config
             Id="0x00001206" Enable="true" Target="msm8998"
             Resources="0x40800000, 0x0, 0x40800100, 0x0, 0x40804000, 0x4E0, 0x40804100, 0x4E0,
-            0x4280C000, 0xB4, 0x42810000, 0x156, 0x42814000, 0x0"/>
+            0X42804000, 0x6, 0X42808000, 0x5, 0x42814000, 0x0"/>
         <!--vr mode-->
         <!-- B CPU - Cluster min freq ~1.4 Ghz -->
         <!-- L CPU - Cluster min freq ~1.4 Ghz -->
         <!-- B CPU - Cluster max freq ~1.4 Ghz -->
         <!-- L CPU - Cluster max freq ~1.4 Ghz -->
-        <!-- GPU - min freq 510 Mhz -->
-        <!-- GPU - max freq 510 Mhz -->
+        <!-- GPU - min pwrlevel 3 -->
+        <!-- GPU - max pwrlevel 3 -->
         <!-- GPUBW freq 775 Mhz-->
         <Config
             Id="0x00001207" Enable="true" Target="msm8998"
             Resources="0x40800000, 0x579, 0x40800100, 0x579, 0x40804000, 0x579, 0x40804100, 0x579,
-            0x4280C000, 0x203, 0x42810000, 0x203, 0x42814000, 0x1E4F"/>
+            0X42804000, 0x3, 0X42808000, 0x3, 0x42814000, 0x1E4F"/>
 
         <!--vr mode sustained performance-->
         <!-- B CPU - Cluster min freq ~1.2 Ghz -->
         <!-- L CPU - Cluster min freq ~1.2 Ghz -->
         <!-- B CPU - Cluster max freq ~1.2 Ghz -->
         <!-- L CPU - Cluster max freq ~1.2 Ghz -->
-        <!-- GPU - min freq 342 Mhz -->
-        <!-- GPU - max freq 342 Mhz -->
+        <!-- GPU - min pwrlevel 5 -->
+        <!-- GPU - max pwrlevel 5 -->
         <!-- GPUBW freq 775 Mhz -->
         <Config
             Id="0x00001301" Enable="true" Target="msm8998"
-            Resources="0x40800000, 0x4E0, 0x40800100, 0x4E0, 0x40804000, 0x4E0, 0x40804100, 0x4E0, 0x4280C000, 0x156,
-            0x42810000, 0x156, 0x42814000, 0x1E4F"/>
+            Resources="0x40800000, 0x4E0, 0x40800100, 0x4E0, 0x40804000, 0x4E0, 0x40804100, 0x4E0, 0X42804000, 0x5,
+            0X42808000, 0x5, 0x42814000, 0x1E4F"/>
     </Powerhint>
 </HintConfigs>
 
