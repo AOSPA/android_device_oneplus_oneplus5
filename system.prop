@@ -140,6 +140,10 @@ ro.vendor.gt_library=libqti-gt.so
 ro.vendor.at_library=libqti-at.so
 sys.games.gt.prof=1
 
+#min/max cpu in core control
+ro.vendor.qti.core_ctl_min_cpu=2
+ro.vendor.qti.core_ctl_max_cpu=4
+
 #Settings to enable sensors
 #Device Orientation sensor
 ro.vendor.sensors.dev_ori=true
