@@ -167,3 +167,5 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 ifneq ($(AB_OTA_UPDATER),true)
     TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
 endif
+
+TARGET_FS_CONFIG_GEN := device/qcom/msm8998/config.fs
