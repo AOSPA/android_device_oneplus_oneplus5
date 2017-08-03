@@ -107,9 +107,8 @@ ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
 PRODUCT_BOOT_JARS += qcom.fmradio
 endif #BOARD_HAVE_QCOM_FM
 
-# add vendor manifest file
-PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/manifest.xml:$(TARGET_COPY_OUT_VENDOR)/manifest.xml
+DEVICE_MANIFEST_FILE := device/qcom/msm8998/manifest.xml
+DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
