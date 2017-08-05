@@ -56,6 +56,9 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service \
     android.hardware.power@1.0-impl
 
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
 # Add support for whitelisted apps
 PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
 
