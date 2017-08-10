@@ -501,6 +501,16 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
            </interface>
     </hal>
 
+    <hal format="hidl">
+        <name>android.hardware.usb</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IUsb</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+
     <!-- Alarm HAL service -->
     <hal format="hidl">
         <name>vendor.qti.hardware.alarm</name>
@@ -621,6 +631,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <version>1.0</version>
         <interface>
             <name>ISuppTunnelProvider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.qti.esepowermanager</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IEsePowerManager</name>
             <instance>default</instance>
         </interface>
     </hal>

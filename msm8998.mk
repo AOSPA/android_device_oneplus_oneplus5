@@ -1,9 +1,6 @@
 TARGET_USES_AOSP := true
 TARGET_USES_QCOM_BSP := false
-
-ifneq ($(TARGET_USES_AOSP),true)
 DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8998/overlay
-endif
 
 TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -59,6 +56,9 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service \
     android.hardware.power@1.0-impl
 
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
 # Add support for whitelisted apps
 PRODUCT_COPY_FILES += device/qcom/msm8998/whitelistedapps.xml:system/etc/whitelistedapps.xml
 
@@ -74,6 +74,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common64.mk)
+
+
+# system prop for opengles version
+#
+# 196608 is decimal for 0x30000 to report version 3
+# 196609 is decimal for 0x30001 to report version 3.1
+# 196610 is decimal for 0x30002 to report version 3.2
+PRODUCT_PROPERTY_OVERRIDES  += \
+    ro.opengles.version=196610
 
 PRODUCT_NAME := msm8998
 PRODUCT_DEVICE := msm8998
