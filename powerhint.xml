@@ -75,8 +75,8 @@
         <!-- L CPU - Cluster min freq uncapped -->
         <!-- B CPU - Cluster max freq ~1.2 GHz -->
         <!-- L CPU - Cluster max freq ~1.2 Ghz -->
-        <!-- GPU - min pwrlevel 6 -->
-        <!-- GPU - max pwrlevel 5 -->
+        <!-- GPU - min pwrlevel 6 (freq 342 MHz)-->
+        <!-- GPU - max pwrlevel 5 (freq 414 MHz)-->
         <!-- GPUBW freq uncapped -->
         <Config
             Id="0x00001206" Enable="true" Target="msm8998"
@@ -87,8 +87,8 @@
         <!-- L CPU - Cluster min freq ~1.4 Ghz -->
         <!-- B CPU - Cluster max freq ~1.4 Ghz -->
         <!-- L CPU - Cluster max freq ~1.4 Ghz -->
-        <!-- GPU - min pwrlevel 3 -->
-        <!-- GPU - max pwrlevel 3 -->
+        <!-- GPU - min pwrlevel 3 (freq 596 MHz)-->
+        <!-- GPU - max pwrlevel 3 (freq 596 MHz)-->
         <!-- GPUBW freq 775 Mhz-->
         <Config
             Id="0x00001207" Enable="true" Target="msm8998"
@@ -100,13 +100,130 @@
         <!-- L CPU - Cluster min freq ~1.2 Ghz -->
         <!-- B CPU - Cluster max freq ~1.2 Ghz -->
         <!-- L CPU - Cluster max freq ~1.2 Ghz -->
-        <!-- GPU - min pwrlevel 5 -->
-        <!-- GPU - max pwrlevel 5 -->
+        <!-- GPU - min pwrlevel 5 (freq 414 MHz)-->
+        <!-- GPU - max pwrlevel 5 (freq 414 MHz)-->
         <!-- GPUBW freq 775 Mhz -->
         <Config
             Id="0x00001301" Enable="true" Target="msm8998"
             Resources="0x40800000, 0x4E0, 0x40800100, 0x4E0, 0x40804000, 0x4E0, 0x40804100, 0x4E0, 0X42804000, 0x5,
             0X42808000, 0x5, 0x42814000, 0x1E4F"/>
+
+        <!--qvr level cpu1 gpu1 -->
+        <!-- B CPU - Cluster min freq ~1.19 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~.883 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 257 Mhz -->
+        <!-- GPU - max freq 414 Mhz -->
+        <Config
+            Id="0x0000130A" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4A6, 0x40804000, 0x900, 0x40800100, 0x373, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x6, 0x42808000, 0x4"/>
+
+        <!--qvr level cpu1 gpu2 -->
+        <!-- B CPU - Cluster min freq ~1.19 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~.883 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 414 Mhz -->
+        <!-- GPU - max freq 515 Mhz -->
+        <Config
+            Id="0x0000130B" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4A6, 0x40804000, 0x900, 0x40800100, 0x373, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x4, 0x42808000, 0x3"/>
+
+        <!--qvr level cpu1 gpu3 -->
+        <!-- B CPU - Cluster min freq ~1.19 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~.883 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 515 Mhz -->
+        <!-- GPU - max freq 670 Mhz -->
+        <Config
+            Id="0x0000130C" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4A6, 0x40804000, 0x900, 0x40800100, 0x373, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x3, 0x42808000, 0x1"/>
+
+        <!--qvr level cpu2 gpu1 -->
+        <!-- B CPU - Cluster min freq ~1.19 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~1.17 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 257 Mhz -->
+        <!-- GPU - max freq 414 Mhz -->
+        <Config
+            Id="0x0000130D" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4A6, 0x40804000, 0x900, 0x40800100, 0x493, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x6, 0x42808000, 0x4"/>
+
+        <!--qvr level cpu2 gpu2 -->
+        <!-- B CPU - Cluster min freq ~1.19 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~1.17 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 414 Mhz -->
+        <!-- GPU - max freq 515 Mhz -->
+        <Config
+            Id="0x0000130E" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4A6, 0x40804000, 0x900, 0x40800100, 0x493, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x4, 0x42808000, 0x3"/>
+
+        <!--qvr level cpu2 gpu3 -->
+        <!-- B CPU - Cluster min freq ~1.19 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~1.17 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 515 Mhz -->
+        <!-- GPU - max freq 670 Mhz -->
+        <Config
+            Id="0x0000130F" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4A6, 0x40804000, 0x900, 0x40800100, 0x493, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x3, 0x42808000, 0x1"/>
+
+        <!--qvr level cpu3 gpu1 -->
+        <!-- B CPU - Cluster min freq ~1.26 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~1.24 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 257 Mhz -->
+        <!-- GPU - max freq 414 Mhz -->
+        <Config
+            Id="0x00001310" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4F3, 0x40804000, 0x900, 0x40800100, 0x4E0, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x6, 0x42808000, 0x4"/>
+
+        <!--qvr level cpu3 gpu2 -->
+        <!-- B CPU - Cluster min freq ~1.26 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~1.24 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 414 Mhz -->
+        <!-- GPU - max freq 515 Mhz -->
+        <Config
+            Id="0x00001311" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4F3, 0x40804000, 0x900, 0x40800100, 0x4E0, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x4, 0x42808000, 0x3"/>
+
+        <!--qvr level cpu3 gpu3 -->
+        <!-- B CPU - Cluster min freq ~1.26 Ghz -->
+        <!-- B CPU - Cluster max freq ~2.30 Ghz -->
+        <!-- L CPU - Cluster min freq ~1.24 Ghz -->
+        <!-- L CPU - Cluster max freq ~1.90 Ghz -->
+        <!-- Disable L2 power collapse -->
+        <!-- GPU - min freq 515 Mhz -->
+        <!-- GPU - max freq 670 Mhz -->
+        <Config
+            Id="0x00001312" Enable="true" Target="msm8998"
+            Resources="0x40800000, 0x4F3, 0x40804000, 0x900, 0x40800100, 0x4E0, 0x40804100, 0x76C, 0x40404000, 0x0,
+            0x42804000, 0x3, 0x42808000, 0x1"/>
     </Powerhint>
 </HintConfigs>
 
