@@ -286,3 +286,9 @@ PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.
 # Change to dlkm when dlkm feature is fully enabled
 KERNEL_MODULES_INSTALL := system
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
+#VR
+PRODUCT_PACKAGES += android.hardware.vr@1.0-impl \
+                    android.hardware.vr@1.0-service
+#Thermal
+PRODUCT_PACKAGES += android.hardware.thermal@1.0-impl \
+                    android.hardware.thermal@1.0-service
