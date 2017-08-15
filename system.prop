@@ -159,5 +159,8 @@ persist.ts.rtmakeup=false
 #Property to enable display default color mode
 vendor.display.enable_default_color_mode=true
 
+#Expose aux camera for below packages
+vendor.camera.aux.packagelist=org.codeaurora.snapcam
+
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
