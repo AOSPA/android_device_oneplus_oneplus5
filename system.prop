@@ -164,3 +164,6 @@ vendor.camera.aux.packagelist=org.codeaurora.snapcam
 
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
+
+# Property for backup NTP Server
+persist.backup.ntpServer="0.pool.ntp.org"
