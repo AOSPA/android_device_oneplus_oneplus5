@@ -174,6 +174,11 @@ PRODUCT_PACKAGES += \
     vendor.display.color@1.0-service \
     vendor.display.color@1.0-impl
 
+# Android_net
+PRODUCT_PACKAGES += \
+    libandroid_net \
+    libandroid_net_32
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
