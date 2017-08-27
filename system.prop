@@ -117,14 +117,14 @@ ro.hwui.texture_cache_flushrate=0.4
 ro.hwui.text_small_cache_width=1024
 ro.hwui.text_small_cache_height=1024
 ro.hwui.text_large_cache_width=2048
-ro.hwui.text_large_cache_height=1024
+ro.hwui.text_large_cache_height=4096
 
 #property to enable VDS WFD solution
 persist.hwc.enable_vds=1
 
 
 #Increase cached app limit
-ro.sys.fw.bg_apps_limit=60
+ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # Property to enable sched colocation, app trigger, game trigger
 sched.colocate.enable=1
@@ -158,3 +158,12 @@ persist.ts.rtmakeup=false
 
 #Property to enable display default color mode
 vendor.display.enable_default_color_mode=true
+
+#Expose aux camera for below packages
+vendor.camera.aux.packagelist=org.codeaurora.snapcam
+
+#enable IZat OptInApp overlay
+persist.vendor.overlay.izat.optin=rro
+
+# Property for backup NTP Server
+persist.backup.ntpServer="0.pool.ntp.org"

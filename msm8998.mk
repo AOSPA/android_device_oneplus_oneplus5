@@ -281,3 +281,8 @@ PRODUCT_PACKAGES += android.hardware.gatekeeper@1.0-impl \
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
+
+# Kernel modules install path
+# Change to dlkm when dlkm feature is fully enabled
+KERNEL_MODULES_INSTALL := system
+KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules

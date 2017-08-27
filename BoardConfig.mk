@@ -82,6 +82,11 @@ TARGET_COPY_OUT_VENDOR := vendor
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 endif
 
+BOARD_VENDOR_KERNEL_MODULES := \
+    $(KERNEL_MODULES_OUT)/wil6210.ko \
+    $(KERNEL_MODULES_OUT)/msm_11ad_proxy.ko \
+    $(KERNEL_MODULES_OUT)/qca_cld3_wlan.ko
+
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_HWC2 := true
@@ -167,5 +172,3 @@ BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 ifneq ($(AB_OTA_UPDATER),true)
     TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
 endif
-
-TARGET_FS_CONFIG_GEN := device/qcom/msm8998/config.fs
