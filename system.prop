@@ -27,6 +27,9 @@ dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 
+#property to specify the number of frames to skip before setting hint
+sdm.perf_hint_window=50
+
 #ro.hdmi.enable=true
 #
 # system props for the cne module
@@ -157,7 +160,7 @@ persist.debug.coresight.config=stm-events
 persist.ts.rtmakeup=false
 
 #Property to enable display default color mode
-vendor.display.enable_default_color_mode=true
+vendor.display.enable_default_color_mode=1
 
 #Expose aux camera for below packages
 vendor.camera.aux.packagelist=org.codeaurora.snapcam

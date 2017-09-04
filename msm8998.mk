@@ -131,6 +131,10 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 PRODUCT_COPY_FILES += \
     device/qcom/msm8998/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
 
+# Exclude TOF sensor from InputManager
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8998/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+
 # WLAN host driver
 ifneq ($(WLAN_CHIPSET),)
 PRODUCT_PACKAGES += $(WLAN_CHIPSET)_wlan.ko
@@ -173,6 +177,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.display.color@1.0-service \
     vendor.display.color@1.0-impl
+
+# Android_net
+PRODUCT_PACKAGES += \
+    libandroid_net \
+    libandroid_net_32
 
 # Vibrator
 PRODUCT_PACKAGES += \
