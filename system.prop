@@ -170,3 +170,6 @@ persist.vendor.overlay.izat.optin=rro
 
 # Property for backup NTP Server
 persist.backup.ntpServer="0.pool.ntp.org"
+
+#Disable Skip Validate
+sdm.debug.disable_skip_validate=1
