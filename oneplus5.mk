@@ -103,7 +103,10 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
-    p2p_supplicant_overlay.conf
+    p2p_supplicant_overlay.conf \
+    libcld80211 \
+    wpa_supplicant.conf \
+    android.hardware.wifi@1.0-service
 
 #ANT+ stack
 PRODUCT_PACKAGES += \
