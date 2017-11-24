@@ -22,6 +22,8 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 
+TARGET_OTA_ASSERT_DEVICE := OnePlus5,oneplus5,OnePlus5T,oneplus5t
+
 -include $(QCPATH)/common/msm8998/BoardConfigVendor.mk
 
 # Some framework code requires this to enable BT
@@ -122,6 +124,10 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 #Enabling IMS Feature
 TARGET_USES_IMS := true
+
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/oneplus/oneplus5/init/init_oneplus5.cpp
 
 TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/rootdir/etc/fstab.qcom
 
