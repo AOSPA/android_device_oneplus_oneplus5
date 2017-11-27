@@ -5,9 +5,14 @@ LOCAL_PATH := $(call my-dir)
 #----------------------------------------------------------------------
 
 # Create symbolic links for WLAN
-$(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/qca_cld; \
-	ln -sf /system/etc/wifi/WCNSS_qcom_cfg.ini \
-	$(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini)
+$(shell mkdir -p $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld; \
+ln -sf /vendor/etc/wifi/WCNSS_qcom_cfg.ini \
+$(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini)
+
+endif
+
+#Create dsp directory
+$(shell mkdir -p $(TARGET_OUT_VENDOR)/lib/dsp)
 
 # Create symbolic links for msadp
 $(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \

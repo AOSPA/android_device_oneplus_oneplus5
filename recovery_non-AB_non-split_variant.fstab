@@ -24,11 +24,15 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# Empty content Android.mk to step Android build
-# system from scanning deeper into subdirectories
-# for Android.mk's
-#
-# This file will be linked from any directories
-# where scanning should be stopped as Android.mk
-$(info Skipping Android.mk under $(call my-dir))
+
+# Non A/B, non-split(no vendor.img) recovery.fstab variant.
+
+#device         mount point      fstype        [device2] [length=]
+
+/dev/block/bootdevice/by-name/system       /system         ext4    ro,barrier=1                                                    wait,verify
+/dev/block/bootdevice/by-name/cache        /cache          ext4    noatime,nosuid,nodev,barrier=1,data=ordered                     wait,check
+/dev/block/bootdevice/by-name/userdata     /data           ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc     wait,check,encryptable=footer
+/dev/block/mmcblk0p1                       /sdcard         vfat    nosuid,nodev                                                    wait
+/dev/block/bootdevice/by-name/boot         /boot           emmc    defaults                                                        defaults
+/dev/block/bootdevice/by-name/recovery     /recovery       emmc    defaults                                                        defaults
+/dev/block/bootdevice/by-name/misc         /misc           emmc    defaults                                                        defaults
