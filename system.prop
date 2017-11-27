@@ -190,6 +190,9 @@ vendor.display.enable_default_color_mode=1
 #Expose aux camera for below packages
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,com.android.engineeringmode
 
+# Disable EIS
+persist.vendor.camera.eis.enable=0
+
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
 
