@@ -106,6 +106,7 @@ else
 	soc_id=`cat /sys/devices/system/soc/soc0/id`
 fi
 
+
 #
 # Allow USB enumeration with default PID/VID
 #
@@ -163,10 +164,10 @@ case "$usb_config" in
 		          setprop persist.sys.usb.config diag,serial_smd,rmnet_ipa,adb
 		      ;;
 	              "msm8998" | "sdm660" | "apq8098_latv")
-		          setprop persist.sys.usb.config diag,serial_cdev,rmnet,adb
+		          # setprop persist.sys.usb.config diag,serial_cdev,rmnet,adb
 		      ;;
 	              "sdm845")
-		          setprop persist.sys.usb.config diag,serial_cdev,rmnet,dpl,adb
+		          # setprop persist.sys.usb.config diag,serial_cdev,rmnet,dpl,adb
 		      ;;
 	              *)
 		          setprop persist.sys.usb.config diag,adb
@@ -217,7 +218,12 @@ if [ -d /config/usb_gadget ]; then
 	msm_serial=`cat /sys/devices/soc0/serial_number`;
 	msm_serial_hex=`printf %08X $msm_serial`
 	machine_type=`cat /sys/devices/soc0/machine`
-	product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
+#ifdef VENDOR_EDIT
+#david.liu@bsp, 20170505 Fix product name for Android Auto
+	product_string=`getprop ro.product.brand`
+#else
+#	product_string="$machine_type-$soc_hwplatform _SN:$msm_serial_hex"
+#endif
 	echo "$product_string" > /config/usb_gadget/g1/strings/0x409/product
 
 	# ADB requires valid iSerialNumber; if ro.serialno is missing, use dummy

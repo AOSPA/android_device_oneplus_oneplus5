@@ -55,15 +55,20 @@ on fs
     # results in failure to launch late-start class.
 
     restorecon_recursive /persist
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     mkdir /persist/data 0700 system system
+#ifdef VENDOR_EDIT
+#### zhiguang.su,make adsp boot faster.
+	write /sys/kernel/boot_adsp/boot 1
+#endif
 
+    mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/dsp_a /dsp ro nosuid nodev barrier=1
 on post-fs
     start qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
-
-on init
-    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
@@ -77,13 +82,6 @@ on post-fs-data
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
-
-    mkdir /data/fpc_images 0770 system system
-    mkdir /data/fpc_images/verify 0770 system system
-    mkdir /data/fpc_images/enroll 0770 system system
-    mkdir /data/fpc 0770 system system
-    mkdir /data/coredump  0777 system system
-
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-3
@@ -100,7 +98,7 @@ on boot
    # Add a cpuset for the camera daemon
    # We want all cores for camera
    mkdir /dev/cpuset/camera-daemon
-   write /dev/cpuset/camera-daemon/cpus 0-3
+   write /dev/cpuset/camera-daemon/cpus 0-7
    write /dev/cpuset/camera-daemon/mems 0
    chown cameraserver cameraserver /dev/cpuset/camera-daemon
    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
@@ -123,37 +121,29 @@ on boot
    chown system system /persist/speccfg/vendor_persist.prop
    chown system system /persist/speccfg/submask
    chown system system /persist/speccfg/partition
+#ifdef VENDOR_EDIT
+   chmod 0666 /sys/devices/virtual/graphics/fb0/SRGB
+   chmod 0666 /sys/devices/virtual/graphics/fb0/DCI_P3
+   chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
+   chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
+   chmod 0666 /sys/devices/virtual/graphics/fb0/panel_serial_number
+   chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
+#endif
 
-    chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/sensor_version
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/sensor_version
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
 
-   setprop ro.nfc.port "I2C"
-   chmod 0666 /dev/pn544
-   chown nfc nfc /dev/pn544
+#ifdef VENDOR_EDIT
+  setprop vendor.camera.aux.packagelist "org.codeaurora.snapcam,com.oneplus.camera,com.android.engineeringmode"									
+#endif
 
-#fingerprint service
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group system
-
-service ifaadaemon /system/bin/ifaadaemon
-    class late_start
-    user system
-    group system
+#install video modules
+   insmod /system/lib/modules/msm-vidc-vmem.ko
+   insmod /system/lib/modules/msm-vidc.ko
+   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
+   insmod /system/lib/modules/msm-vidc-table-gov.ko
 
 #Load WLAN driver
-   insmod /vendor/lib/modules/qca_cld3_wlan.ko
+#   insmod /wlan_aging.ko
+#   insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
@@ -175,7 +165,7 @@ on property:sys.shutdown.requested=*
     stop per_proxy
 
 on charger
-    start hvdcp_opti
+#    start hvdcp_opti
     setprop sys.usb.configfs 1
 
 #on post-fs
@@ -339,6 +329,10 @@ service imsdatadaemon /system/vendor/bin/imsdatadaemon
 #    class core
 #    disabled
 #
+#service mdm_launcher /system/bin/sh /init.mdm.sh
+#    class main
+#    oneshot
+#
 #service qcamerasvr /system/bin/mm-qcamera-daemon
 #    class late_start
 #    user camera
@@ -439,7 +433,7 @@ on property:init.svc.hwcomposer-2-1=restarting
 
 service energy-awareness /system/vendor/bin/energy-awareness
     class main
-    user system
+    user root
     group system
     oneshot
 
@@ -459,3 +453,29 @@ service qvrd /system/bin/qvrservice
     group system camera graphics
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
+	
+#ifdef VENDOR_EDIT
+on property:sys.srgb=1
+   write /sys/devices/virtual/graphics/fb0/SRGB 1
+on property:sys.srgb=0
+   write /sys/devices/virtual/graphics/fb0/SRGB 0
+
+on property:sys.dci3p=1
+   write /sys/devices/virtual/graphics/fb0/DCI_P3 1
+on property:sys.dci3p=0
+   write /sys/devices/virtual/graphics/fb0/DCI_P3 0
+
+on property:sys.hbm=1
+   write /sys/devices/virtual/graphics/fb0/hbm 1
+on property:sys.hbm=0
+   write /sys/devices/virtual/graphics/fb0/hbm 0
+
+on property:sys.night_mode=1
+   write /sys/devices/virtual/graphics/fb0/night_mode 1
+on property:sys.night_mode=0
+   write /sys/devices/virtual/graphics/fb0/night_mode 0
+on property:sys.automode=1
+   write /sys/devices/virtual/graphics/fb0/adaption_mode 1
+on property:sys.automode=0
+   write /sys/devices/virtual/graphics/fb0/adaption_mode 0
+#endif
