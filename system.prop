@@ -188,7 +188,7 @@ persist.ts.rtmakeup=false
 vendor.display.enable_default_color_mode=1
 
 #Expose aux camera for below packages
-vendor.camera.aux.packagelist=org.codeaurora.snapcam
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,com.android.engineeringmode
 
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro

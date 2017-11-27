@@ -152,11 +152,6 @@ on boot
    chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
 #endif
 
-
-#ifdef VENDOR_EDIT
-  setprop vendor.camera.aux.packagelist "org.codeaurora.snapcam,com.oneplus.camera,com.android.engineeringmode"									
-#endif
-
 #install video modules
    insmod /system/lib/modules/msm-vidc-vmem.ko
    insmod /system/lib/modules/msm-vidc.ko
