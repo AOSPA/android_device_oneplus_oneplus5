@@ -290,9 +290,6 @@
     <!--  Define Google play service package for FRP-->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
 
-    <!--  Define optional package verifier name -->
-    <string name="config_optionalPackageVerifierName" translatable="false">seemp.service</string>
-
     <!-- Enable overlay for all location components. -->
     <bool name="config_enableNetworkLocationOverlay" translatable="false">false</bool>
     <bool name="config_enableFusedLocationOverlay" translatable="false">false</bool>
