@@ -21,20 +21,20 @@
 // List thermal configs in format {name, algo_type}
 // This list is manually synced with the thermal config
 
-#define THERMAL_CONFIG_SYNCED 0
+#define THERMAL_CONFIG_SYNCED 1
 
 #if THERMAL_CONFIG_SYNCED
 
 #define NUM_NON_VR_CONFIGS 4
-static char *non_vr_thermal_configs[NUM_NON_VR_CONFIGS][2] =
-    {{"SKIN-HIGH-FLOOR",     "ss"},
-     {"SKIN-MID-FLOOR",      "ss"},
-     {"SKIN-LOW-FLOOR",      "ss"},
-     {"VIRTUAL-SS-GPU-SKIN", "ss"}};
+static thermal_algo_info_t non_vr_thermal_configs[NUM_NON_VR_CONFIGS] =
+    {{.config_name = "SKIN-HIGH-FLOOR", .algo_name = "ss"},
+     {.config_name = "SKIN-MID-FLOOR", .algo_name = "ss"},
+     {.config_name = "SKIN-LOW-FLOOR", .algo_name = "ss"},
+     {.config_name = "VIRTUAL-SS-GPU-SKIN", .algo_name = "ss"}};
 
 #define NUM_VR_CONFIGS 1
-static char *vr_thermal_configs[NUM_VR_CONFIGS][2] =
-    {{"VR-EMMC",     "monitor"}};
+static thermal_algo_info_t vr_thermal_configs[NUM_VR_CONFIGS] =
+    {{.config_name = "VR-EMMC", .algo_name = "monitor"}};
 
 int load_thermal_cfg_info(thermal_cfg_info_t *non_vr, thermal_cfg_info_t *vr) {
 
@@ -42,10 +42,10 @@ int load_thermal_cfg_info(thermal_cfg_info_t *non_vr, thermal_cfg_info_t *vr) {
         return -1;
 
     non_vr->num_cfgs = NUM_NON_VR_CONFIGS;
-    non_vr->cfgs = &non_vr_thermal_configs[0][0];
+    non_vr->cfgs = &non_vr_thermal_configs[0];
 
     vr->num_cfgs = NUM_VR_CONFIGS;
-    vr->cfgs = &vr_thermal_configs[0][0];
+    vr->cfgs = &vr_thermal_configs[0];
 
     return 0;
 }

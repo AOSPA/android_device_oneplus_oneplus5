@@ -1,6 +1,4 @@
 /*
- * Copyright (c) 2017, The Linux Foundation. All rights reserved.
- * Not a contribution
  * Copyright (C) 2016 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,7 +41,7 @@ static void (*p_thermal_client_config_cleanup)(struct config_instance *, unsigne
 static int max_string_size = 36;
 static int error_state = 0; //global error state - don't do anything if set!
 
-#define DEBUG 0
+#define DEBUG 1
 
 static thermal_cfg_info_t non_vr_thermal_cfgs;
 static thermal_cfg_info_t vr_thermal_cfgs;
@@ -146,8 +144,7 @@ static int load_thermal_client(void)
         ALOGE("unable to open %s", thermal_client_so);
         return -1;
     }
-
-    return 0;
+	return 0;
 
 error_handle:
     ALOGE("Error opening functions from %s", thermal_client_so);
@@ -160,73 +157,39 @@ error_handle:
 }
 
 /**
- *  Free the config_instance as allocated in allocate_config_instance
- */
-static void free_config_instance(struct config_instance *config){
-
-    if (config) {
-        if (config->fields) {
-            free(config->fields[0].data);
-            free(config->fields[0].field_name);
-            free(config->fields);
-        }
-        free(config->algo_type);
-        free(config->cfg_desc);
-        free(config);
-    }
-}
-
-/**
  *  Allocate a new struct config_instance for modifying the disable field
  */
 static struct config_instance *allocate_config_instance(){
     struct config_instance *config = (struct config_instance *)malloc(sizeof(struct config_instance));
-    if (!config) {
-        ALOGE("Unable to allocate memory for config");
-        return NULL;
-    }
     memset(config, 0, sizeof(*config));
 
     config->cfg_desc = (char *)malloc(sizeof(char) * max_string_size);
-    if (!config->cfg_desc) {
-        free_config_instance(config);
-        ALOGE("Unable to allocate memory for config->cfg_desc");
-        return NULL;
-    }
     memset(config->cfg_desc, 0, sizeof(char)*max_string_size);
 
     config->algo_type = (char *)malloc(sizeof(char) * max_string_size);
-    if (!config->algo_type) {
-        free_config_instance(config);
-        ALOGE("Unable to allocate memory for config->algo_type");
-        return NULL;
-    }
     memset(config->algo_type, 0, sizeof(char) * max_string_size);
 
     config->fields = (struct field_data *)malloc(sizeof(struct field_data));
-    if (!config->fields) {
-        free_config_instance(config);
-        ALOGE("Unable to allocate memory for config->fields");
-        return NULL;
-    }
     memset(config->fields, 0, sizeof(*config->fields));
 
     config->fields[0].field_name = (char*)malloc(sizeof(char) * max_string_size);
-    if (!config->fields[0].field_name) {
-        free_config_instance(config);
-        ALOGE("Unable to allocate memory for config->fields[0].field_name");
-        return NULL;
-    }
     memset(config->fields[0].field_name, 0, sizeof(char) * max_string_size);
 
     config->fields[0].data = (void*)malloc(sizeof(int));
-    if (!config->fields[0].data) {
-        free_config_instance(config);
-        ALOGE("Unable to allocate memory for config->fields[0].data");
-        return NULL;
-    }
 
     return config;
+}
+/**
+ *  Free the config_instance as allocated in allocate_config_instance
+ */
+static void free_config_instance(struct config_instance *config){
+
+    free(config->fields[0].data);
+    free(config->fields[0].field_name);
+    free(config->fields);
+    free(config->algo_type);
+    free(config->cfg_desc);
+    free(config);
 }
 
 /**
@@ -239,9 +202,6 @@ static int disable_config(char *config_name, char *algo_type){
         return 0;
     }
     struct config_instance *config = allocate_config_instance();
-    if (!config) {
-        return 0;
-    }
     strlcpy(config->cfg_desc, config_name, max_string_size);
     strlcpy(config->algo_type, algo_type, max_string_size);
     strlcpy(config->fields[0].field_name, "disable", max_string_size);
@@ -272,9 +232,6 @@ static int enable_config(char *config_name, char *algo_type){
         return 0;
     }
     struct config_instance *config = allocate_config_instance();
-    if (!config) {
-        return 0;
-    }
     strlcpy(config->cfg_desc, config_name, max_string_size);
     strlcpy(config->algo_type, algo_type, max_string_size);
     strlcpy(config->fields[0].field_name, "disable", max_string_size);
@@ -303,12 +260,12 @@ static int enable_config(char *config_name, char *algo_type){
 static void error_cleanup(){
     //disable VR configs, best-effort so ignore return values
     for (unsigned int i = 0; i < vr_thermal_cfgs.num_cfgs; i++) {
-        disable_config(&vr_thermal_cfgs.cfgs[i][0], &vr_thermal_cfgs.cfgs[i][1]);
+        disable_config(vr_thermal_cfgs.cfgs[i].config_name, vr_thermal_cfgs.cfgs[i].algo_name);
     }
 
     // enable non-VR profile, best-effort so ignore return values
     for (unsigned int i = 0; i < non_vr_thermal_cfgs.num_cfgs; i++) {
-        enable_config(&non_vr_thermal_cfgs.cfgs[i][0], &non_vr_thermal_cfgs.cfgs[i][1]);
+        enable_config(non_vr_thermal_cfgs.cfgs[i].config_name, non_vr_thermal_cfgs.cfgs[i].algo_name);
     }
 
     // set global error flag
@@ -323,19 +280,20 @@ static void set_vr_thermal_configuration() {
     if (error_state) {
         return;
     }
-
     //disable non-VR configs
     for (unsigned int i = 0; i < non_vr_thermal_cfgs.num_cfgs; i++) {
-        result = disable_config(&non_vr_thermal_cfgs.cfgs[i][0], &non_vr_thermal_cfgs.cfgs[i][1]);
-        if (result != 1) {
-            goto error;
-        }
+          result = disable_config(non_vr_thermal_cfgs.cfgs[i].config_name, non_vr_thermal_cfgs.cfgs[i].algo_name);
+          if (result != 1)
+          {
+             goto error;
+          }
     }
 
     //enable VR configs
     for (unsigned int i = 0; i < vr_thermal_cfgs.num_cfgs; i++) {
-        result = enable_config(&vr_thermal_cfgs.cfgs[i][0], &vr_thermal_cfgs.cfgs[i][1]);
-        if (result != 1) {
+        result = enable_config(vr_thermal_cfgs.cfgs[i].config_name, vr_thermal_cfgs.cfgs[i].algo_name);
+        if (result != 1)
+        {
             goto error;
         }
     }
@@ -362,7 +320,7 @@ static void unset_vr_thermal_configuration() {
 
     //disable VR configs
     for (unsigned int i = 0; i < vr_thermal_cfgs.num_cfgs; i++) {
-        result = disable_config(&vr_thermal_cfgs.cfgs[i][0], &vr_thermal_cfgs.cfgs[i][1]);
+        result = disable_config(vr_thermal_cfgs.cfgs[i].config_name, vr_thermal_cfgs.cfgs[i].algo_name);
         if (result != 1) {
             goto error;
         }
@@ -370,7 +328,7 @@ static void unset_vr_thermal_configuration() {
 
     // enable non-VR profile
     for (unsigned int i = 0; i < non_vr_thermal_cfgs.num_cfgs; i++) {
-        result = enable_config(&non_vr_thermal_cfgs.cfgs[i][0], &non_vr_thermal_cfgs.cfgs[i][1]);
+        result = enable_config(non_vr_thermal_cfgs.cfgs[i].config_name, non_vr_thermal_cfgs.cfgs[i].algo_name);
         if (result != 1) {
             goto error;
         }
@@ -387,7 +345,8 @@ error:
     return;
 }
 
-static void vr_init(struct vr_module *module) {
+static void vr_init(struct vr_module *module) 
+{
     int success = load_thermal_client();
     if (success != 0) {
         ALOGE("failed to load thermal client");
@@ -401,7 +360,8 @@ static void vr_init(struct vr_module *module) {
 
 }
 
-static void vr_set_vr_mode(struct vr_module *module, bool enabled) {
+static void vr_set_vr_mode(struct vr_module *module, bool enabled) 
+{
     if (enabled) {
         set_vr_thermal_configuration();
     } else {

@@ -27,7 +27,11 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+typedef struct _thermal_algo_info{
+   char * config_name;
+   char * algo_name;
+}thermal_algo_info_t;
 typedef struct _thermal_cfg_info {
     unsigned int num_cfgs;
-    char ** cfgs;
+    thermal_algo_info_t * cfgs;
 }thermal_cfg_info_t;
