@@ -40,7 +40,6 @@ const char * __attribute__ ((weak)) get_cpu_label(unsigned int cpu_num) {
 }
 
 size_t __attribute__ ((weak)) get_num_cpus() {
-
     FILE *file;
     char *line = NULL;
     size_t len = 0;
@@ -176,7 +175,7 @@ thermal_module_t HAL_MODULE_INFO_SYM = {
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = THERMAL_HARDWARE_MODULE_ID,
         .name = "Thermal HAL",
-        .author = "Code Aurora Forum",
+        .author = "The Android Open Source Project",
         .methods = &thermal_module_methods,
     },
     .getTemperatures = get_temperatures,
