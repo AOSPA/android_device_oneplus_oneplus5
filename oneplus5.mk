@@ -250,5 +250,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/power/power_profile.xml:system/vendor/etc/power_profile.xml \
+    $(LOCAL_PATH)/power/power_profile_5t.xml:system/vendor/etc/power_profile_5t.xml
+
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)

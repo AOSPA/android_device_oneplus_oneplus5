@@ -40,11 +40,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     std::string rf_version = android::base::GetProperty("ro.boot.rf_version", "");
 
     if (project_name == "17801") {
-        property_set("ro.power_profile", "/system/etc/power_profile_5t.xml");
+        property_set("ro.power_profile", "/system/vendor/etc/power_profile_5t.xml");
         property_set("ro.product.device", "OnePlus5T");
         }
    } else {
-        property_set("ro.power_profile", "/system/etc/power_profile.xml");
+        property_set("ro.power_profile", "/system/vendor/etc/power_profile.xml");
         property_set("ro.product.device", "OnePlus5");
         }
    }
