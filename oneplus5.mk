@@ -22,10 +22,10 @@ TARGET_COPY_OUT_VENDOR := system/vendor
 
 # Video codec configuration files
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/media_profiles.xml:system/etc/media_profiles.xml \
-    device/oneplus/oneplus5/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
-    device/oneplus/oneplus5/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
-    device/oneplus/oneplus5/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
+    device/oneplus/oneplus5/media/media_profiles.xml:system/etc/media_profiles.xml \
+    device/oneplus/oneplus5/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml \
+    device/oneplus/oneplus5/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
+    device/oneplus/oneplus5/media/media_codecs_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_performance.xml
 
 # Power
 PRODUCT_PACKAGES += \
@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
 
 # Add support for whitelisted apps
-PRODUCT_COPY_FILES += device/oneplus/oneplus5/whitelistedapps.xml:system/etc/whitelistedapps.xml
+# PRODUCT_COPY_FILES += device/oneplus/oneplus5/whitelistedapps.xml:system/etc/whitelistedapps.xml
 
 #QTIC flag
 -include $(QCPATH)/common/config/qtic-config.mk

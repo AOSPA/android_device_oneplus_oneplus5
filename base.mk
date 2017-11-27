@@ -207,8 +207,8 @@ FASTPOWERON := FastBoot
 FM := qcom.fmradio
 FM += libqcomfm_jni
 FM += libfmjni
-FM += fm_helium
-FM += libfm-hci
+#FM += fm_helium
+#FM += libfm-hci
 
 #GPS
 GPS_HARDWARE := gps.conf
