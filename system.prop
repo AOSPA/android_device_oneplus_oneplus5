@@ -52,7 +52,8 @@ media.settings.xml=/vendor/etc/media_profiles_vendor.xml
 
 #13631487 is decimal sum of supported codecs in AAL
 #codecs:(PARSER_)AAC AC3 AMR_NB AMR_WB ASF AVI DTS FLV 3GP 3G2 MKV MP2PS MP2TS MP3 OGG QCP WAV FLAC AIFF APE DSD
-mm.enable.qcom_parser=13631487
+#lifei@OnePlus.MultiMediaService, 2016/12/13,temporary remove ogg
+mm.enable.qcom_parser=16760831
 persist.mm.enable.prefetch=true
 
 # Additional buffers shared between Camera and Video
@@ -197,3 +198,23 @@ persist.backup.ntpServer="0.pool.ntp.org"
 
 #Disable Skip Validate
 sdm.debug.disable_skip_validate=1
+
+#VENDOR_EDIT chenzhongping add it
+persist.vendor.radio.ignore_dom_time=10
+persist.vendor.radio.rat_on=combine
+persist.data.iwlan.enable=true
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.data_con_rprt=1
+#end
+
+#ifdef VENDOR_EDIT by zhouhanxin keep O dpm config same with N
+# system props for the cne module #
+# 4  enable NSRM adb root
+# 1  Only CnE is enabled; NSRM, FMC, and WQE are disabled
+# 0  Disables
+persist.vendor.dpm.feature=11
+#endif
+
+#wangdongdong@MultiMediaService,2017/03/06,modify to enabling aanc feature
+persist.vendor.audio.aanc.enable=true
+
