@@ -18,6 +18,8 @@ BOARD_FRP_PARTITION_NAME := frp
 # enable the SVA in UI area
 TARGET_USE_UI_SVA := true
 
+TARGET_COPY_OUT_VENDOR := system/vendor
+
 # Video codec configuration files
 PRODUCT_COPY_FILES += \
     device/oneplus/oneplus5/media_profiles.xml:system/etc/media_profiles.xml \
@@ -59,8 +61,8 @@ WLAN_CHIPSET := qca_cld3
 PRODUCT_PROPERTY_OVERRIDES += \
     qcom.bluetooth.soc=cherokee
 
-DEVICE_MANIFEST_FILE := device/qcom/msm8998/manifest.xml
-DEVICE_MATRIX_FILE   := device/qcom/common/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE := device/oneplus/oneplus5/manifest.xml
+DEVICE_MATRIX_FILE   := device/oneplus/oneplus5/compatibility_matrix.xml
 
 # Audio configuration file
 -include $(TOPDIR)hardware/qcom/audio/configs/msm8998/msm8998.mk
@@ -85,7 +87,7 @@ PRODUCT_COPY_FILES += \
 
 # Exclude TOF sensor from InputManager
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8998/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+    device/oneplus/oneplus5/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
 # QPerformance
 PRODUCT_BOOT_JARS += QPerformance

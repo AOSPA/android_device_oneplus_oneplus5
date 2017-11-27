@@ -31,4 +31,4 @@ endif
 
 # whitelisted app
 PRODUCT_COPY_FILES += \
-    device/qcom/common/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml
+    device/oneplus/oneplus5/qti_whitelist.xml:system/etc/sysconfig/qti_whitelist.xml

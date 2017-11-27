@@ -28,11 +28,7 @@ QSD8K_BOARD_PLATFORMS := qsd8k
 
 TARGET_USE_VENDOR_CAMERA_EXT := true
 
-#List of targets that use video hw
-MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8937 msm8953 msm8998 apq8098_latv sdm660 sdm845 msmpeafowl
-
-#List of targets that use master side content protection
-MASTER_SIDE_CP_TARGET_LIST := msm8996 msm8998 sdm660 sdm845 apq8098_latv
+TARGET_COPY_OUT_VENDOR := system/vendor
 
 # Below projects/packages with LOCAL_MODULEs will be used by
 # PRODUCT_PACKAGES to build LOCAL_MODULEs that are tagged with
@@ -931,9 +927,7 @@ PRODUCT_BOOT_JARS += QPerformance
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=true
 
-ifeq ($(TARGET_USES_QCOM_BSP_ATEL),true)
-    PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
-endif
+PRODUCT_PROPERTY_OVERRIDES += persist.radio.multisim.config=dsds
 
 # VNDK-SP:
 PRODUCT_PACKAGES += \
@@ -946,7 +940,7 @@ PRODUCT_PACKAGES += \
 # have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
 DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
 ifeq ($(wildcard $(DEVICE_CONFIG_DIR)/android_filesystem_config.h),)
-  TARGET_FS_CONFIG_GEN := device/qcom/common/config.fs
+  TARGET_FS_CONFIG_GEN := device/oneplus/oneplus5/config.fs
 else
   $(warning **********)
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
