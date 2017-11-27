@@ -159,7 +159,7 @@ BT += libbt-vendor
 BT += libbthost_if
 BT += libbt-logClient
 BT += bt_logger
-BT += libbt-hidlclient
+#BT += libbt-hidlclient
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
