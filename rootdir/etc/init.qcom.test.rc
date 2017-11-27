@@ -30,9 +30,6 @@ on post-fs-data
     # Create directory for Graphics applications
     mkdir /data/vendor/gpu 0777 system system
 
-write /proc/sys/kernel/kptr_restrict 0
-
-
 #testscript domains
 service qti-testscripts   /system/etc/init.qcom.testscripts.sh
     class late_start
