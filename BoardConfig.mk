@@ -47,7 +47,7 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x04000000
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
-TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/recovery_non-AB_non-split_variant.fstab
+TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/rootdir/etc/fstab.qcom
 
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
 BOARD_USERDATAIMAGE_PARTITION_SIZE :=  32212254720
@@ -138,8 +138,6 @@ TARGET_USES_IMS := true
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/oneplus/oneplus5/init/init_oneplus5.cpp
-
-TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/rootdir/etc/fstab.qcom
 
 CAMERA_DAEMON_NOT_PRESENT := true
 BOARD_USES_QCNE := true
