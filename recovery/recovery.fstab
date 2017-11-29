@@ -35,4 +35,4 @@
 /dev/block/mmcblk0p1                       /sdcard         vfat    nosuid,nodev                                                    wait
 /dev/block/bootdevice/by-name/boot         /boot           emmc    defaults                                                        defaults
 /dev/block/bootdevice/by-name/recovery     /recovery       emmc    defaults                                                        defaults
-/dev/block/bootdevice/by-name/misc         /misc           emmc    defaults
+/dev/block/bootdevice/by-name/misc         /misc           emmc    defaults                                                        defaults
