@@ -259,4 +259,4 @@ PRODUCT_PACKAGES += \
     kernel_loggy.sh
 
 # Call the proprietary setup
-$(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
+$(call inherit-product, vendor/oneplus/prebuilt.mk)
