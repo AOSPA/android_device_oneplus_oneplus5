@@ -471,6 +471,11 @@ service qvrd /system/bin/qvrservice
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
 	
+service kernel_loggy /system/bin/sh /kernel_loggy.sh
+    class main
+    user root
+    oneshot
+
 #ifdef VENDOR_EDIT
 on property:sys.srgb=1
    write /sys/devices/virtual/graphics/fb0/SRGB 1
