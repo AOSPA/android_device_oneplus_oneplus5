@@ -19,7 +19,11 @@ endif
 # Compile Linux Kernel
 #----------------------------------------------------------------------
 ifeq ($(KERNEL_DEFCONFIG),)
-    KERNEL_DEFCONFIG := msmcortex_defconfig
+    ifeq ($(TARGET_BUILD_VARIANT),user)
+      KERNEL_DEFCONFIG := msmcortex-perf_defconfig
+    else
+      KERNEL_DEFCONFIG := msmcortex_defconfig
+    endif
 endif
 
 ifeq ($(TARGET_KERNEL_SOURCE),)
