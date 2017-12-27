@@ -187,10 +187,6 @@ PRODUCT_PACKAGES += libdiag_system
 #PRODUCT_COPY_FILES += \
 #    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
 
-# FBE support
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.qti.qseecomd.sh:system/vendor/bin/init.qti.qseecomd.sh
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
