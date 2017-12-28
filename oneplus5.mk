@@ -255,4 +255,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/power_profile_5t.xml:system/vendor/etc/power_profile_5t.xml
 
 # Call the proprietary setup
-$(call inherit-product, vendor/oneplus/prebuilt.mk)
+$(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
