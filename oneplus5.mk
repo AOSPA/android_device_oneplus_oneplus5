@@ -254,9 +254,5 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/power/power_profile.xml:system/vendor/etc/power_profile.xml \
     $(LOCAL_PATH)/power/power_profile_5t.xml:system/vendor/etc/power_profile_5t.xml
 
-# Kernel loggy
-PRODUCT_PACKAGES += \
-    kernel_loggy.sh
-
 # Call the proprietary setup
 $(call inherit-product, vendor/oneplus/prebuilt.mk)
