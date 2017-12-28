@@ -167,12 +167,11 @@ CHROMIUM += libwebviewchromium_plat_support
 #CIMAX
 CIMAX := libcimax_spi
 
+ifneq ($(TARGET_HAS_LOW_RAM),true)
 #CM
 CM :=CMFileManager
 #CM += Trebuchet
-
-#Default Launcher
-DELAUN := Launcher3
+endif
 
 #CONNECTIVITY
 CONNECTIVITY := libcnefeatureconfig
@@ -647,6 +646,11 @@ STMLOG := libstm-log
 
 #THERMAL_HAL
 THERMAL_HAL := thermal.msm8998
+THERMAL_HAL += thermal.sdm845
+THERMAL_HAL += thermal.sdm660
+THERMAL_HAL += thermal.msm8996
+THERMAL_HAL += thermal.msm8953
+THERMAL_HAL += thermal.msm8937
 
 #TSLIB_EXTERNAL
 TSLIB_EXTERNAL := corgi
@@ -733,6 +737,18 @@ WIGIG += libwigig_flashaccess
 WIGIG += libwigig_pciaccess
 
 PRODUCT_PACKAGES += netutils-wrapper-1.0
+
+ifeq ($(TARGET_HAS_LOW_RAM),true)
+    DELAUN := Launcher3Go
+else
+    # Live Wallpapers
+    PRODUCT_PACKAGES += \
+            LiveWallpapers \
+            LiveWallpapersPicker \
+            VisualizationWallpapers
+
+    DELAUN := Launcher3
+endif
 
 PRODUCT_PACKAGES += $(ALSA_HARDWARE)
 PRODUCT_PACKAGES += $(ALSA_UCM)
@@ -832,6 +848,18 @@ PRODUCT_PACKAGES += android.hidl.manager@1.0-java
 PRODUCT_PACKAGES += android.hardware.drm@1.0-impl
 PRODUCT_PACKAGES += android.hardware.drm@1.0-service
 PRODUCT_PACKAGES += android.hardware.drm@1.0-service.widevine
+PRODUCT_PACKAGES += librs_jni
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    setup_fs
+
+# Qcril configuration file
+PRODUCT_PACKAGES += qcril.db
+
+# MSM updater library
+#PRODUCT_PACKAGES += librecovery_updater_msm
 
 # vcard jar
 PRODUCT_PACKAGES += vcard
