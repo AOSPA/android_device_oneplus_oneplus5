@@ -7,6 +7,14 @@ type dashd, domain;
 # Write to /dev/kmsg
 allow dashd kmsg_device:chr_file rw_file_perms;
 
+allow ueventd sysfs:chr_file { create setattr };
+allow sysfs tmpfs:filesystem associate;
+allow dashd sysfs_battery_supply:dir { search };
+allow dashd sysfs_battery_supply:file { open read };
+allow dashd sysfs_usb_supply:dir { search read };
+allow dashd sysfs_usb_supply:file { open read };
+allow dashd self:netlink_kobject_uevent_socket { read create setopt bind };
+
 ###
 ### dashd: charger mode
 ###
