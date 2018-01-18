@@ -1,34 +1,4 @@
-# Board platforms lists to be used for
-# TARGET_BOARD_PLATFORM specific featurization
-QCOM_BOARD_PLATFORMS += msm8974
-QCOM_BOARD_PLATFORMS += msm8610
-QCOM_BOARD_PLATFORMS += msm8226
-QCOM_BOARD_PLATFORMS += apq8084
-QCOM_BOARD_PLATFORMS += mpq8092
-QCOM_BOARD_PLATFORMS += msm_bronze
-QCOM_BOARD_PLATFORMS += msm8916
-QCOM_BOARD_PLATFORMS += msm8916_32
-QCOM_BOARD_PLATFORMS += msm8916_32_512
-QCOM_BOARD_PLATFORMS += msm8916_64
-QCOM_BOARD_PLATFORMS += msm8994
-QCOM_BOARD_PLATFORMS += msm8909
-QCOM_BOARD_PLATFORMS += msm8909_512
-QCOM_BOARD_PLATFORMS += msm8992
-QCOM_BOARD_PLATFORMS += msm8996
-QCOM_BOARD_PLATFORMS += msm8952
-QCOM_BOARD_PLATFORMS += msm8937
-QCOM_BOARD_PLATFORMS += msm8953
-QCOM_BOARD_PLATFORMS += msm8998
-QCOM_BOARD_PLATFORMS += apq8098_latv
-QCOM_BOARD_PLATFORMS += sdm660
-QCOM_BOARD_PLATFORMS += sdm845
-QCOM_BOARD_PLATFORMS += msmpeafowl
-
-QSD8K_BOARD_PLATFORMS := qsd8k
-
 TARGET_USE_VENDOR_CAMERA_EXT := true
-
-TARGET_COPY_OUT_VENDOR := system/vendor
 
 # Below projects/packages with LOCAL_MODULEs will be used by
 # PRODUCT_PACKAGES to build LOCAL_MODULEs that are tagged with
@@ -908,7 +878,7 @@ PRODUCT_COPY_FILES := \
 
 # gps/location secuity configuration file
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus5/sec_config:system/vendor/etc/sec_config
+    $(LOCAL_PATH)/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 #copy codecs_xxx.xml to (TARGET_COPY_OUT_VENDOR)/etc/
 PRODUCT_COPY_FILES += \
@@ -963,7 +933,7 @@ PRODUCT_PACKAGES += \
 
 # Temporary handling
 #
-# Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
+# Include config.fs get only if legacy device/oneplus/<target>/android_filesystem_config.h
 # does not exist as they are mutually exclusive.  Once all target's android_filesystem_config.h
 # have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
 DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
