@@ -248,7 +248,7 @@ case "$target" in
     "msm8998" | "apq8098_latv")
         case "$soc_hwplatform" in
             *)
-                setprop ro.sf.lcd_density 480
+                setprop ro.sf.lcd_density 560
                 if [ ! -e /dev/kgsl-3d0 ]; then
                     setprop persist.sys.force_sw_gles 1
                     setprop sdm.idle_time 0

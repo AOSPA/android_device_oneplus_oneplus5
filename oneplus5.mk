@@ -177,6 +177,10 @@ PRODUCT_PACKAGES += libdiag_system
 #PRODUCT_COPY_FILES += \
 #    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml
 
+# FBE support
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.qti.qseecomd.sh:system/vendor/bin/init.qti.qseecomd.sh
+
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf

@@ -35,7 +35,6 @@ on early-init
     write /proc/sys/kernel/sched_boost 1
 
 on init
-    export LD_SHIM_LIBS /system/lib/hw/camera.msm8998.so|libop5_cam.so
     write /dev/stune/foreground/schedtune.sched_boost_no_override 1
     write /dev/stune/top-app/schedtune.sched_boost_no_override 1
     write /dev/stune/schedtune.colocate 0
@@ -43,6 +42,7 @@ on init
     write /dev/stune/system-background/schedtune.colocate 0
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
     write /sys/class/power_supply/usb/otg_switch 1
 
 on fs
@@ -56,26 +56,14 @@ on fs
     # results in failure to launch late-start class.
 
     restorecon_recursive /persist
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     mkdir /persist/data 0700 system system
-#ifdef VENDOR_EDIT
-#### zhiguang.su,make adsp boot faster.
-	write /sys/kernel/boot_adsp/boot 1
-#endif
 
-    mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
-    mount ext4 /dev/block/bootdevice/by-name/dsp_a /dsp ro nosuid nodev barrier=1
 on post-fs
     start qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
     write /dev/ipa 1
 
 on post-fs-data
-    mkdir /data/fpc_images 0770 system system
-    mkdir /data/fpc_images/verify 0770 system system
-    mkdir /data/fpc_images/enroll 0770 system system
-    mkdir /data/fpc 0770 system system
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -83,27 +71,14 @@ on post-fs-data
     mkdir /tombstones/dsps 0771 system system
     mkdir /data/vendor/hbtp 0750 system system
     mkdir /data/misc/qvr 0770 system system
+    mkdir /data/fpc_images 0770 system system
+    mkdir /data/fpc_images/verify 0770 system system
+    mkdir /data/fpc_images/enroll 0770 system system
+    mkdir /data/fpc 0770 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
 on boot
-    chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_key
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_key
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
-    chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-    #chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
-    #chown system system /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
-    chmod 0666 /dev/qseecom
     start rmt_storage
     start rfs_access
     write /dev/cpuset/top-app/cpus 0-3
@@ -120,7 +95,7 @@ on boot
    # Add a cpuset for the camera daemon
    # We want all cores for camera
    mkdir /dev/cpuset/camera-daemon
-   write /dev/cpuset/camera-daemon/cpus 0-7
+   write /dev/cpuset/camera-daemon/cpus 0-3
    write /dev/cpuset/camera-daemon/mems 0
    chown cameraserver cameraserver /dev/cpuset/camera-daemon
    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
@@ -143,14 +118,24 @@ on boot
    chown system system /persist/speccfg/vendor_persist.prop
    chown system system /persist/speccfg/submask
    chown system system /persist/speccfg/partition
-#ifdef VENDOR_EDIT
-   chmod 0666 /sys/devices/virtual/graphics/fb0/SRGB
-   chmod 0666 /sys/devices/virtual/graphics/fb0/DCI_P3
-   chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
-   chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
-   chmod 0666 /sys/devices/virtual/graphics/fb0/panel_serial_number
-   chmod 0666 /sys/devices/virtual/graphics/fb0/adaption_mode
-#endif
+
+   chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
+   chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
+   chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_key
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/report_key
+   chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
+   chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
+   chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
+   chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
+   chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+   chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+   #chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
+   #chown system system /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
+   chmod 0666 /dev/qseecom
 
 #install video modules
    insmod /system/lib/modules/msm-vidc-vmem.ko
@@ -159,8 +144,7 @@ on boot
    insmod /system/lib/modules/msm-vidc-table-gov.ko
 
 #Load WLAN driver
-#   insmod /wlan_aging.ko
-#   insmod /vendor/lib/modules/qca_cld3_wlan.ko
+   insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
@@ -182,7 +166,8 @@ on property:sys.shutdown.requested=*
     stop per_proxy
 
 on charger
-#    start hvdcp_opti
+    start dashd
+    start hvdcp_opti
     setprop sys.usb.configfs 1
 
 #on post-fs
@@ -470,29 +455,10 @@ service qvrd /system/bin/qvrservice
     group system camera graphics
     socket qvrservice stream 0666 system system
     capabilities SYS_NICE
-	
-#ifdef VENDOR_EDIT
-on property:sys.srgb=1
-   write /sys/devices/virtual/graphics/fb0/SRGB 1
-on property:sys.srgb=0
-   write /sys/devices/virtual/graphics/fb0/SRGB 0
 
-on property:sys.dci3p=1
-   write /sys/devices/virtual/graphics/fb0/DCI_P3 1
-on property:sys.dci3p=0
-   write /sys/devices/virtual/graphics/fb0/DCI_P3 0
-
-on property:sys.hbm=1
-   write /sys/devices/virtual/graphics/fb0/hbm 1
-on property:sys.hbm=0
-   write /sys/devices/virtual/graphics/fb0/hbm 0
-
-on property:sys.night_mode=1
-   write /sys/devices/virtual/graphics/fb0/night_mode 1
-on property:sys.night_mode=0
-   write /sys/devices/virtual/graphics/fb0/night_mode 0
-on property:sys.automode=1
-   write /sys/devices/virtual/graphics/fb0/adaption_mode 1
-on property:sys.automode=0
-   write /sys/devices/virtual/graphics/fb0/adaption_mode 0
-#endif
+#david.liu@bsp, 20160926 Add dash charging
+service dashd /sbin/dashd
+    class core
+    critical
+    seclabel u:r:dashd:s0
+    group root system
