@@ -154,5 +154,7 @@ WIFI_DRIVER_STATE_OFF := "OFF"
 
 TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/recovery/recovery.fstab
 
+BOARD_SEPOLICY_DIRS += device/oneplus/oneplus5/sepolicy
+
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus5/BoardConfigVendor.mk
