@@ -198,6 +198,9 @@ PRODUCT_PACKAGES += \
 # List of AAPT configurations
 PRODUCT_AAPT_CONFIG += xlarge large
 
+# Lights
+PRODUCT_PACKAGES += lights.qcom
+
 #for wlan
 PRODUCT_PACKAGES += \
        wificond \
