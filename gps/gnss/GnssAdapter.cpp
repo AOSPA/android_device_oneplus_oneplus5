@@ -50,14 +50,6 @@
 
 using namespace loc_core;
 
-/* Method to fetch status cb from loc_net_iface library */
-typedef AgpsCbInfo& (*LocAgpsGetAgpsCbInfo)(LocAgpsOpenResultCb openResultCb,
-        LocAgpsCloseResultCb closeResultCb, void* userDataPtr);
-
-static void agpsOpenResultCb (bool isSuccess, AGpsExtType agpsType, const char* apn,
-        AGpsBearerType bearerType, void* userDataPtr);
-static void agpsCloseResultCb (bool isSuccess, AGpsExtType agpsType, void* userDataPtr);
-
 GnssAdapter::GnssAdapter() :
     LocAdapterBase(0,
                    LocDualContext::getLocFgContext(NULL,
@@ -82,7 +74,6 @@ GnssAdapter::GnssAdapter() :
     mUlpPositionMode.mode = LOC_POSITION_MODE_INVALID;
     readConfigCommand();
     setConfigCommand();
-    initDefaultAgpsCommand();
 }
 
 void
@@ -2407,57 +2398,6 @@ GnssAdapter::reportSvPolynomialEvent(GnssSvPolynomial &svPolynomial)
     mUlpProxy->reportSvPolynomial(svPolynomial);
 }
 
-void GnssAdapter::initDefaultAgps() {
-    LOC_LOGD("%s]: ", __func__);
-
-    LocationCapabilitiesMask mask = getCapabilities();
-    if (!(mask & LOCATION_CAPABILITIES_GNSS_MSB_BIT) &&
-            !(mask & LOCATION_CAPABILITIES_GNSS_MSA_BIT)) {
-        LOC_LOGI("%s]: Target does not support MSB and MSA.", __func__);
-        return;
-    }
-
-    void *handle = nullptr;
-    if ((handle = dlopen("libloc_net_iface.so", RTLD_NOW)) == nullptr) {
-        LOC_LOGE("%s]: libloc_net_iface.so not found !", __func__);
-        return;
-    }
-
-    LocAgpsGetAgpsCbInfo getAgpsCbInfo = (LocAgpsGetAgpsCbInfo)
-            dlsym(handle, "LocNetIfaceAgps_getAgpsCbInfo");
-    if (getAgpsCbInfo == nullptr) {
-        LOC_LOGE("%s]: Failed to get method LocNetIfaceAgps_getStatusCb", __func__);
-        return;
-    }
-
-    AgpsCbInfo& cbInfo = getAgpsCbInfo(agpsOpenResultCb, agpsCloseResultCb, this);
-
-    if (cbInfo.statusV4Cb == nullptr) {
-        LOC_LOGE("%s]: statusV4Cb is nullptr!", __func__);
-        return;
-    }
-
-    initAgpsCommand(cbInfo);
-}
-
-void GnssAdapter::initDefaultAgpsCommand() {
-    LOC_LOGD("%s]: ", __func__);
-
-    struct MsgInitDefaultAgps : public LocMsg {
-        GnssAdapter& mAdapter;
-        inline MsgInitDefaultAgps(GnssAdapter& adapter) :
-            LocMsg(),
-            mAdapter(adapter) {
-                LOC_LOGV("MsgInitDefaultAgps");
-            }
-        inline virtual void proc() const {
-            mAdapter.initDefaultAgps();
-        }
-    };
-
-    sendMsg(new MsgInitDefaultAgps(*this));
-}
-
 /* INIT LOC AGPS MANAGER */
 void GnssAdapter::initAgpsCommand(const AgpsCbInfo& cbInfo){
 
@@ -2520,7 +2460,7 @@ void GnssAdapter::initAgpsCommand(const AgpsCbInfo& cbInfo){
 
         AgpsManager* mAgpsManager;
 
-        AgnssStatusIpV4Cb mFrameworkStatusV4Cb;
+        AgpsFrameworkInterface::AgnssStatusIpV4Cb mFrameworkStatusV4Cb;
 
         AgpsAtlOpenStatusCb mAtlOpenStatusCb;
         AgpsAtlCloseStatusCb mAtlCloseStatusCb;
@@ -2535,7 +2475,7 @@ void GnssAdapter::initAgpsCommand(const AgpsCbInfo& cbInfo){
         GnssAdapter& mAdapter;
 
         inline AgpsMsgInit(AgpsManager* agpsManager,
-                AgnssStatusIpV4Cb frameworkStatusV4Cb,
+                AgpsFrameworkInterface::AgnssStatusIpV4Cb frameworkStatusV4Cb,
                 AgpsAtlOpenStatusCb atlOpenStatusCb,
                 AgpsAtlCloseStatusCb atlCloseStatusCb,
                 AgpsDSClientInitFn dsClientInitFn,
@@ -2587,7 +2527,7 @@ void GnssAdapter::initAgpsCommand(const AgpsCbInfo& cbInfo){
     /* Send message to initialize AGPS Manager */
     sendMsg(new AgpsMsgInit(
                 &mAgpsManager,
-                (AgnssStatusIpV4Cb)cbInfo.statusV4Cb,
+                (AgpsFrameworkInterface::AgnssStatusIpV4Cb)cbInfo.statusV4Cb,
                 atlOpenStatusCb, atlCloseStatusCb,
                 dsClientInitFn, dsClientOpenAndStartDataCallFn,
                 dsClientStopDataCallFn, dsClientCloseDataCallFn,
@@ -2719,7 +2659,7 @@ bool GnssAdapter::reportDataCallClosed(){
 
 void GnssAdapter::dataConnOpenCommand(
         AGpsExtType agpsType,
-        const char* apnName, int apnLen, AGpsBearerType bearerType){
+        const char* apnName, int apnLen, LocApnIpType ipType){
 
     LOC_LOGI("GnssAdapter::frameworkDataConnOpen");
 
@@ -2729,12 +2669,12 @@ void GnssAdapter::dataConnOpenCommand(
         AGpsExtType mAgpsType;
         char* mApnName;
         int mApnLen;
-        AGpsBearerType mBearerType;
+        LocApnIpType mIpType;
 
         inline AgpsMsgAtlOpenSuccess(AgpsManager* agpsManager, AGpsExtType agpsType,
-                const char* apnName, int apnLen, AGpsBearerType bearerType) :
+                const char* apnName, int apnLen, LocApnIpType ipType) :
                 LocMsg(), mAgpsManager(agpsManager), mAgpsType(agpsType), mApnName(
-                        new char[apnLen + 1]), mApnLen(apnLen), mBearerType(bearerType) {
+                        new char[apnLen + 1]), mApnLen(apnLen), mIpType(ipType) {
 
             LOC_LOGV("AgpsMsgAtlOpenSuccess");
             if (mApnName == nullptr) {
@@ -2752,12 +2692,13 @@ void GnssAdapter::dataConnOpenCommand(
         inline virtual void proc() const {
 
             LOC_LOGV("AgpsMsgAtlOpenSuccess::proc()");
-            mAgpsManager->reportAtlOpenSuccess(mAgpsType, mApnName, mApnLen, mBearerType);
+            mAgpsManager->reportAtlOpenSuccess(mAgpsType, mApnName, mApnLen,
+                    mIpType);
         }
     };
 
     sendMsg( new AgpsMsgAtlOpenSuccess(
-            &mAgpsManager, agpsType, apnName, apnLen, bearerType));
+            &mAgpsManager, (AGpsExtType)agpsType, apnName, apnLen, ipType));
 }
 
 void GnssAdapter::dataConnClosedCommand(AGpsExtType agpsType){
@@ -3096,36 +3037,3 @@ GnssAdapter::getAgcInformation(GnssMeasurementsNotification& measurements, int m
     }
 }
 
-/* Callbacks registered with loc_net_iface library */
-static void agpsOpenResultCb (bool isSuccess, AGpsExtType agpsType, const char* apn,
-        AGpsBearerType bearerType, void* userDataPtr) {
-    LOC_LOGD("%s]: ", __func__);
-    if (userDataPtr == nullptr) {
-        LOC_LOGE("%s]: userDataPtr is nullptr.", __func__);
-        return;
-    }
-    if (apn == nullptr) {
-        LOC_LOGE("%s]: apn is nullptr.", __func__);
-        return;
-    }
-    GnssAdapter* adapter = (GnssAdapter*)userDataPtr;
-    if (isSuccess) {
-        adapter->dataConnOpenCommand(agpsType, apn, strlen(apn), bearerType);
-    } else {
-        adapter->dataConnFailedCommand(agpsType);
-    }
-}
-
-static void agpsCloseResultCb (bool isSuccess, AGpsExtType agpsType, void* userDataPtr) {
-    LOC_LOGD("%s]: ", __func__);
-    if (userDataPtr == nullptr) {
-        LOC_LOGE("%s]: userDataPtr is nullptr.", __func__);
-        return;
-    }
-    GnssAdapter* adapter = (GnssAdapter*)userDataPtr;
-    if (isSuccess) {
-        adapter->dataConnClosedCommand(agpsType);
-    } else {
-        adapter->dataConnFailedCommand(agpsType);
-    }
-}
