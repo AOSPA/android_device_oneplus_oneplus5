@@ -74,11 +74,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 
-
-# Sensor HAL conf file
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sensors/hals.conf:system/vendor/sensors/hals.conf
-
 # Exclude TOF sensor from InputManager
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
