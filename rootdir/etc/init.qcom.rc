@@ -63,6 +63,7 @@ on early-boot
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
     exec u:r:qti_init_shell:s0 -- /vendor/bin/init.qcom.early_boot.sh
+    chown root audio /sys/kernel/boot_adsp/boot
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -433,6 +434,10 @@ service qcomsysd /system/vendor/bin/qcom-system-daemon
     class main
     user root
     group root diag
+    disabled
+
+on property:persist.vendor.qcomsysd.enabled=1
+    start qcomsysd
 
 service ssr_setup /system/vendor/bin/ssr_setup
     oneshot
@@ -1036,17 +1041,17 @@ on property:sys.qbcharger.enable=true
 on property:sys.qbcharger.enable=false
     stop qbcharger
 
-service diag_mdlog_start /system/bin/diag_mdlog
+service diag_mdlog_start /system/vendor/bin/diag_mdlog
     class late_start
     user shell
-    group system diag sdcard_rw sdcard_r media_rw
+    group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
-service diag_mdlog_stop /system/bin/diag_mdlog -k
+service diag_mdlog_stop /system/vendor/bin/diag_mdlog -k
     class late_start
     user shell
-    group system diag sdcard_rw sdcard_r media_rw
+    group system oem_2901 sdcard_rw sdcard_r media_rw
     disabled
     oneshot
 
@@ -1120,6 +1125,10 @@ service poweroffhandler /system/vendor/bin/poweroffhandler
     group graphics audio
     disabled
     oneshot
+
+on property:init.svc.surfaceflinger=restarting
+    stop hwcomposer-2-1
+    start hwcomposer-2-1
 
 # Logcat dump daemon, dumps logs to logdump partition
 #service logdumpd /system/bin/logcat -b all -v threadtime -D -w /dev/block/bootdevice/by-name/logdump
