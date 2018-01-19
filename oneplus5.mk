@@ -194,6 +194,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
+# NFC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/vendor/etc/libnfc-nxp.conf
+
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/powerhint.xml:system/vendor/etc/powerhint.xml
