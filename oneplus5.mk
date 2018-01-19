@@ -190,6 +190,11 @@ PRODUCT_PACKAGES += libdiag_system
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qti.qseecomd.sh:system/vendor/bin/init.qti.qseecomd.sh
 
+# Keylayouts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    $(LOCAL_PATH)/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
+
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
