@@ -25,7 +25,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 
-TARGET_OTA_ASSERT_DEVICE := OnePlus5,oneplus5,OnePlus5T,oneplus5t
+TARGET_OTA_ASSERT_DEVICE := OnePlus5,oneplus5,cheeseburguer,OnePlus5T,oneplus5t,dumpling
 
 -include $(QCPATH)/common/msm8998/BoardConfigVendor.mk
 
