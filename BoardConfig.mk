@@ -156,5 +156,9 @@ TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/recovery/recovery.fstab
 
 BOARD_SEPOLICY_DIRS += device/oneplus/oneplus5/sepolicy
 
+# Temporary
+WITH_DEXPREOPT := false
+WITH_DEXPREOPT_PIC := false
+
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus5/BoardConfigVendor.mk
