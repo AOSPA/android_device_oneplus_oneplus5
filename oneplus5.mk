@@ -127,6 +127,8 @@ PRODUCT_PACKAGES += \
     vendor.display.color@1.0-service \
     vendor.display.color@1.0-impl
 
+PRODUCT_PACKAGES += libdisplayconfig
+
 # Android_net
 PRODUCT_PACKAGES += \
     libandroid_net \
