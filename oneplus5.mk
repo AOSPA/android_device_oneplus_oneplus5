@@ -75,6 +75,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:system/vendor/etc/mixer_paths_tasha.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_tasha_op5t.xml:system/vendor/etc/mixer_paths_tasha_op5t.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/vendor/etc/audio_platform_info.xml
 
 PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
@@ -195,6 +196,7 @@ PRODUCT_COPY_FILES += \
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    $(LOCAL_PATH)/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl \
     $(LOCAL_PATH)/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
 # MSM IRQ Balancer configuration file
