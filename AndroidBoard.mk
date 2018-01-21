@@ -20,6 +20,8 @@ include $(CLEAR_VARS)
 target_firmware_path := $(ANDROID_BUILD_TOP)/vendor/oneplus/oneplus5/firmware_images/
 
 # Oneplus 5
+# static_nvbk file
+$(call add-firmware-file,$(target_firmware_path)/static_nvbk.bin-op5)
 # Radio fusion file
 $(call add-firmware-file,$(target_firmware_path)/NON-HLOS.bin-op5)
 # Bluetooth file
@@ -46,6 +48,8 @@ $(call add-firmware-file,$(target_firmware_path)/keymaster.mbn-op5)
 $(call add-firmware-file,$(target_firmware_path)/xbl.elf-op5)
 
 # Oneplus 5T
+# static_nvbk file
+$(call add-firmware-file,$(target_firmware_path)/static_nvbk.bin-op5t)
 # Radio fusion file
 $(call add-firmware-file,$(target_firmware_path)/NON-HLOS.bin-op5t)
 # Bluetooth file
