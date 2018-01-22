@@ -186,7 +186,7 @@ persist.ts.rtmakeup=false
 vendor.display.enable_default_color_mode=1
 
 #Expose aux camera for below packages
-vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,com.android.engineeringmode
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,co.paranoidandroid.camera
 
 # Use HAL1 for the next applications
 camera.hal1.packagelist=com.whatsapp,com.instagram.android
