@@ -21,7 +21,27 @@
 
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
-#define BTM_DEF_LOCAL_NAME   "OnePlus 5"
+
+#include <cutils/properties.h>
+#include <string.h>
+
+static inline const char* BtmGetDefaultName()
+{
+
+    char project_name[PROPERTY_VALUE_MAX];
+    property_get("ro.boot.project_name", project_name, "");
+
+    if (strstr(project_name, "17801")) {
+        return "OnePlus 5T";
+    } else {
+        return "OnePlus 5";
+    }
+
+    // Fallback to ro.product.model
+    return "";
+}
+
+#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 // Disables read remote device feature
 #define MAX_ACL_CONNECTIONS   16
 #define MAX_L2CAP_CHANNELS    20
