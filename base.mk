@@ -958,3 +958,11 @@ else
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
   $(warning **********)
 endif
+
+ifeq ($(TARGET_HAS_LOW_RAM),true)
+    PRODUCT_PROPERTY_OVERRIDES += \
+        persist.vendor.qcomsysd.enabled=0
+else
+    PRODUCT_PROPERTY_OVERRIDES += \
+        persist.vendor.qcomsysd.enabled=1
+endif
