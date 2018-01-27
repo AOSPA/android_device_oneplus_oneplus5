@@ -43,13 +43,13 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     if (project_name == "17801") {
         property_set("ro.vendor.power_profile", "/system/vendor/etc/power_profile_5t.xml");
         property_set("ro.product.device", "OnePlus5T");
-        property_set("ro.product.model", "ONEPLUS A5010");
+        property_set("ro.product.model", "OnePlus 5T");
         property_set("qemu.hw.mainkeys", "0");
         property_set("ro.hardware.fingerprint", "msm8998.gf");
         property_set("ro.vendor.audio.location.mixer_path", "/system/vendor/etc/mixer_paths_tasha_op5t.xml");
    } else {
         property_set("ro.product.device", "OnePlus5");
-        property_set("ro.product.model", "ONEPLUS A5000");
+        property_set("ro.product.model", "OnePlus 5");
         property_set("ro.vendor.settings.ui.navigationkeys.enabled", "false");
    }
 }
