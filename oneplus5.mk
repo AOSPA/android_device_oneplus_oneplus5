@@ -84,9 +84,6 @@ PRODUCT_PACKAGES += android.hardware.media.omx@1.0-impl
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
 
-# QPerformance
-PRODUCT_BOOT_JARS += QPerformance
-
 # WLAN driver configuration file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/vendor/etc/wifi/WCNSS_qcom_cfg.ini \

@@ -161,9 +161,17 @@ TARGET_RECOVERY_FSTAB := device/oneplus/oneplus5/recovery/recovery.fstab
 
 BOARD_SEPOLICY_DIRS += device/oneplus/oneplus5/sepolicy
 
-# Temporary
-WITH_DEXPREOPT := false
-WITH_DEXPREOPT_PIC := false
+# Enable dex pre-opt to speed up initial boot
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+    WITH_DEXPREOPT_PIC := true
+    ifneq ($(TARGET_BUILD_VARIANT),user)
+      # Retain classes.dex in APK's for non-user builds
+      DEX_PREOPT_DEFAULT := nostripping
+    endif
+  endif
+endif
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus5/BoardConfigVendor.mk
