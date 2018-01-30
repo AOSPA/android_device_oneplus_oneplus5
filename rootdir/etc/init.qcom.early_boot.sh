@@ -245,6 +245,14 @@ case "$target" in
                 ;;
         esac
         ;;
+    "msm8916")
+        case "$soc_hwplatform" in
+            *)
+                setprop persist.graphics.vulkan.disable true
+                setprop ro.opengles.version 196608
+                ;;
+        esac
+        ;;
     "msm8998" | "apq8098_latv")
         case "$soc_hwplatform" in
             *)
