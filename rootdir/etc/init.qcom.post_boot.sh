@@ -1365,6 +1365,10 @@ case "$target" in
             hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
 
+        if [ -f /sys/devices/soc0/platform_subtype_id ]; then
+            platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
+        fi
+
         case "$soc_id" in
             "293" | "304" | "338" | "351" )
 
@@ -1379,6 +1383,16 @@ case "$target" in
                         fi
                         ;;
                 esac
+
+                if [ $soc_id -eq "338" ]; then
+                    case "$hw_platform" in
+                        "QRD" )
+                            if [ $platform_subtype_id -eq "1" ]; then
+                               start_hbtp
+                            fi
+                            ;;
+                    esac
+                fi
 
                 #scheduler settings
                 echo 3 > /proc/sys/kernel/sched_window_stats_policy
