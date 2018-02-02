@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2018, The Paranoid Android Project
+** Copyright 2016, The Paranoid Android Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -18,9 +18,7 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Whether device has dash charging support -->
-    <bool name="config_hasDashCharger">true</bool>
-
-    <!-- Whether device has fysical tri state switch -->
-    <bool name="config_hasAlertSlider">true</bool>
+    <!-- Alert slider proc nodes paths. -->
+    <string name="alert_slider_state_path">/sys/class/switch/tri-state-key/state</string>
+    <string name="alert_slider_uevent_match_path">DEVPATH=/devices/virtual/switch/tri-state-key</string>
 </resources>
