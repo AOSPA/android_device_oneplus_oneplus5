@@ -138,14 +138,17 @@ on boot
    #chown system system /sys/devices/soc/soc:fpc_fpc1020/wakeup_enable
    chmod 0666 /dev/qseecom
 
+   # Wifi firmware reload path
+   chown wifi wifi /sys/module/wlan/parameters/fwpath
+   chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
+   chmod 0660 /sys/module/wlan/parameters/fwpath
+   chmod 0660 /sys/kernel/boot_wlan/boot_wlan
+
 #install video modules
    insmod /system/lib/modules/msm-vidc-vmem.ko
    insmod /system/lib/modules/msm-vidc.ko
    insmod /system/lib/modules/msm-vidc-dyn-gov.ko
    insmod /system/lib/modules/msm-vidc-table-gov.ko
-
-#Load WLAN driver
-   insmod /vendor/lib/modules/qca_cld3_wlan.ko
 
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
