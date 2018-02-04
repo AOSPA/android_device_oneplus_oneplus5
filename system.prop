@@ -26,7 +26,6 @@ debug.gralloc.enable_fb_ubwc=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 sdm.debug.disable_partial_split=1
-ro.sf.lcd_density=480
 
 #property to specify the number of frames to skip before setting hint
 sdm.perf_hint_window=50
