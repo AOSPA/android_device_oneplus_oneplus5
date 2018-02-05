@@ -437,7 +437,10 @@ service qcomsysd /system/vendor/bin/qcom-system-daemon
     disabled
 
 on property:persist.vendor.qcomsysd.enabled=1
-    start qcomsysd
+    enable qcomsysd
+
+on property:persist.vendor.qcomsysd.enabled=0
+    stop qcomsysd
 
 service ssr_setup /system/vendor/bin/ssr_setup
     oneshot
@@ -1156,6 +1159,13 @@ service vppservice /vendor/bin/vppservice
     user media
     group camera
 
+service chre /vendor/bin/chre
+    class late_start
+    user system
+    group system
+    socket chre seqpacket 0660 root system
+    shutdown critical
+
 # Set vendor-ril lib path based on Meta version
 on property:vendor.rild.libpath=*
     setprop rild.libpath ${vendor.rild.libpath}
@@ -1170,3 +1180,9 @@ service power_off_alarm /vendor/bin/power_off_alarm
     group system
     disabled
     oneshot
+
+service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 114 115 116
