@@ -329,6 +329,11 @@ else
         fi
     fi
 
+    #Enable oom_reaper
+    if [ -f /sys/module/lowmemorykiller/parameters/oom_reaper ]; then
+        echo 1 > /sys/module/lowmemorykiller/parameters/oom_reaper
+    fi
+
     configure_zram_parameters
 
     SWAP_ENABLE_THRESHOLD=1048576
@@ -2986,6 +2991,9 @@ case "$target" in
 	echo 1574400 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq
 	echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
 	echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
+
+        # Enable oom_reaper for sdm845
+        echo 1 > /sys/module/lowmemorykiller/parameters/oom_reaper
 
         # Enable bus-dcvs
         for cpubw in /sys/class/devfreq/*qcom,cpubw*
