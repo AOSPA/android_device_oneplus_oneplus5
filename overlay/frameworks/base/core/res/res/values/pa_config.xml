@@ -23,4 +23,7 @@
 
     <!-- Whether device has fysical tri state switch -->
     <bool name="config_hasAlertSlider">true</bool>
+
+    <!-- sRGB sysfs path -->
+    <string name="config_srgb_path">/sys/devices/virtual/graphics/fb0/SRGB</string>
 </resources>

@@ -218,6 +218,10 @@ on boot
     # load WIGIG platform driver
     insmod /vendor/lib/modules/msm_11ad_proxy.ko
 
+    # Allow access to display modes
+    chown system graphics /sys/devices/virtual/graphics/fb0/SRGB
+    chmod 0664 /sys/devices/virtual/graphics/fb0/SRGB
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
