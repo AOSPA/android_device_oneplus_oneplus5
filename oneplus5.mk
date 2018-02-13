@@ -247,6 +247,11 @@ PRODUCT_PACKAGES += \
     fingerprintd \
     android.hardware.biometrics.fingerprint@2.1-service
 
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.manager@1.0-java
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/vendor/etc/permissions/android.hardware.fingerprint.xml
 
