@@ -84,7 +84,7 @@ start_msm_irqbalance_8939()
 {
 	if [ -f /system/vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "293" | "294" | "295" | "304" | "313")
+		    "239" | "293" | "294" | "295" | "304" | "313" | "338" | "351" )
 			start vendor.msm_irqbalance;;
 		esac
 	fi
