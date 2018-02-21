@@ -16,8 +16,8 @@ android_app {
     name: "TriStateHandler",
     srcs: ["src/**/*.java"],
     certificate: "platform",
+    platform_apis: true,
     privileged: true,
-    sdk_version: "current",
     system_ext_specific: true,
     optimize: {
         enabled: false,
