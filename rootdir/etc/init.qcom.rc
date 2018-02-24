@@ -763,12 +763,6 @@ service wifi_ftmd /system/vendor/bin/wifi_ftmd
     disabled
     oneshot
 
-service cnss_diag /system/vendor/bin/cnss_diag -q -f
-    class main
-    user system
-    group system wifi inet net_admin sdcard_rw media_rw diag
-    oneshot
-
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
     user system
