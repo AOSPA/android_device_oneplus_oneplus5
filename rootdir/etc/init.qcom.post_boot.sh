@@ -149,10 +149,11 @@ echo 0-2 > /dev/cpuset/system-background/cpus
 echo 0-2,4-7 > /dev/cpuset/foreground/cpus
 echo 0 > /proc/sys/kernel/sched_boost
 
-# Set read_ahead_kb to 128 and scheduler to cfq
+# Set block tunables
 for block_device in /sys/block/*
 do
     echo 128 > $block_device/queue/read_ahead_kb
+    echo 256 > $block_device/queue/nr_requests
     echo cfq > $block_device/queue/scheduler
 done
 
