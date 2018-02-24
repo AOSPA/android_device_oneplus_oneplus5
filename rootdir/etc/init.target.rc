@@ -144,12 +144,6 @@ on boot
    chmod 0660 /sys/module/wlan/parameters/fwpath
    chmod 0660 /sys/kernel/boot_wlan/boot_wlan
 
-#install video modules
-   insmod /system/lib/modules/msm-vidc-vmem.ko
-   insmod /system/lib/modules/msm-vidc.ko
-   insmod /system/lib/modules/msm-vidc-dyn-gov.ko
-   insmod /system/lib/modules/msm-vidc-table-gov.ko
-
 #Peripheral manager
 service per_mgr /vendor/bin/pm-service
     class core
