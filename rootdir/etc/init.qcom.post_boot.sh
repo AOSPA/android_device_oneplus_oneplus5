@@ -68,6 +68,7 @@ echo 19000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 79000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
 echo 518400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction
 # online CPU4
 echo 1 > /sys/devices/system/cpu/cpu4/online
 # configure governor settings for big cluster
@@ -84,6 +85,7 @@ echo 19000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
 echo 79000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
 echo 806400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
 echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif
+echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction
 
 # re-enable thermal and BCL hotplug
 echo 1 > /sys/module/msm_thermal/core_control/enabled
