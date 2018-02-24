@@ -89,8 +89,11 @@ echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_noti
 echo 1 > /sys/module/msm_thermal/core_control/enabled
 
 # Enable input boost configuration
-echo "0:1324800" > /sys/module/cpu_boost/parameters/input_boost_freq
-echo 120 > /sys/module/cpu_boost/parameters/input_boost_ms
+echo "1248000 1344000" > /sys/module/cpu_boost/parameters/input_boost_freq
+echo 90 > /sys/module/cpu_boost/parameters/input_boost_ms
+echo "1171200 1190400" > /sys/module/cpu_boost/parameters/input_boost_freq_s2
+echo 150 > /sys/module/cpu_boost/parameters/input_boost_ms_s2
+
 # Enable bus-dcvs
 for cpubw in /sys/class/devfreq/*qcom,cpubw*
 do
