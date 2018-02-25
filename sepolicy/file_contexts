@@ -8,3 +8,6 @@
 /dev/dash                                                       u:object_r:sysfs:s0
 
 /dev/goodix_fp                                                  u:object_r:fingerprintd_device:s0
+
+/sys/kernel/boot_wlan(/.*)?                                     u:object_r:sysfs_wifi:s0	
+
