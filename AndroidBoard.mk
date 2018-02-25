@@ -19,6 +19,11 @@ include $(CLEAR_VARS)
 # Set the firmware path in the environment
 target_firmware_path := $(ANDROID_BUILD_TOP)/vendor/oneplus/oneplus5/firmware_images/
 
+$(shell for i in `ls $(target_firmware_path)`; do \
+	if [[ $$i == *".zip" ]]; then \
+		unzip -qq -o $(target_firmware_path)/$$i -d $(target_firmware_path)/; \
+	fi; done)
+
 # Oneplus 5
 # static_nvbk file
 $(call add-firmware-file,$(target_firmware_path)/static_nvbk.bin-op5)
