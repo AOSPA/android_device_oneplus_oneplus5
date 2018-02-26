@@ -250,7 +250,8 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.manager@1.0-java
+    android.hidl.manager@1.0-java \
+    android.hidl.manager@1.0
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/vendor/etc/permissions/android.hardware.fingerprint.xml
