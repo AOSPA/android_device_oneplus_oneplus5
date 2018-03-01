@@ -170,6 +170,9 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
+    chown root system /dev/block/bootdevice/by-name/config -p /dev/block/
+    chmod 0660 /dev/block/bootdevice/by-name/config -p /dev/block/
+
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
 
