@@ -29,11 +29,7 @@ QSD8K_BOARD_PLATFORMS := qsd8k
 TARGET_USE_VENDOR_CAMERA_EXT := true
 
 #List of targets that use video hw
-MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8953 msm8998 apq8098_latv sdm660 sdm845 msmpeafowl
-
-ifneq ($(TARGET_KERNEL_VERSION), 4.9)
-MSM_VIDC_TARGET_LIST += msm8937
-endif
+MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8937 msm8953 msm8998 apq8098_latv sdm660 sdm845 msmpeafowl
 
 #List of targets that use master side content protection
 MASTER_SIDE_CP_TARGET_LIST := msm8996 msm8998 sdm660 sdm845 apq8098_latv
