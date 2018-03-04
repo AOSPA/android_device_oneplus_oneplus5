@@ -29,10 +29,10 @@ QSD8K_BOARD_PLATFORMS := qsd8k
 TARGET_USE_VENDOR_CAMERA_EXT := true
 
 #List of targets that use video hw
-MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8937 msm8998 apq8098_latv sdm660 sdm845 msmpeafowl
+MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8953 msm8998 apq8098_latv sdm660 sdm845 msmpeafowl
 
 ifneq ($(TARGET_KERNEL_VERSION), 4.9)
-MSM_VIDC_TARGET_LIST += msm8953
+MSM_VIDC_TARGET_LIST += msm8937
 endif
 
 #List of targets that use master side content protection
@@ -609,6 +609,7 @@ NQ_NFC += com.nxp.nfc.nq.xml
 NQ_NFC += libpn547_fw.so
 NQ_NFC += libpn548ad_fw.so
 NQ_NFC += libnfc-brcm.conf
+NQ_NFC += libnfc-brcm_NCI2_0.conf
 NQ_NFC += libnfc-nxp_default.conf
 NQ_NFC += nqnfcee_access.xml
 NQ_NFC += nqnfcse_access.xml
@@ -1099,3 +1100,5 @@ else
     PRODUCT_PROPERTY_OVERRIDES += \
         persist.vendor.qcomsysd.enabled=1
 endif
+
+PRODUCT_PACKAGES_DEBUG += sl4a
