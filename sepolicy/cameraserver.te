@@ -1,3 +1,4 @@
 allow cameraserver hal_perf_hwservice:hwservice_manager { find };
 allow cameraserver hal_perf_default:binder { call };
-allow cameraserver persist_file:file { read write };
+allow cameraserver persist_file:file { read write open getattr setattr };
+allow cameraserver shell_exec:file { read open execute };
