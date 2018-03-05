@@ -1,2 +1,6 @@
 # Allow hostapd to connect to mutualex using control socket
 allow hal_wifi_hostapd_default vendor_mutualex:unix_dgram_socket sendto;
+
+# Allow hostapd to access/write /data/vendor/ partition
+allow hal_wifi_hostapd_default wifi_vendor_data_file:dir rw_dir_perms;
+allow hal_wifi_hostapd_default wifi_vendor_data_file:file create_file_perms;
