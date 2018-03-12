@@ -1564,7 +1564,7 @@ case "$target" in
         fi
 
         case "$soc_id" in
-            "293" | "304" | "338" | "351" )
+            "293" | "304" | "338" | "351" | "349" | "350")
 
                 # Start Host based Touch processing
                 case "$hw_platform" in
@@ -1587,6 +1587,14 @@ case "$target" in
                             ;;
                     esac
                 fi
+
+                case "$soc_id" in
+                    "349" | "350" )
+                        if [ $hw_platform -eq "QRD" ]; then
+                            start_hbtp
+                        fi
+                        ;;
+                esac
 
                 #init task load, restrict wakeups to preferred cluster
                 echo 15 > /proc/sys/kernel/sched_init_task_load
