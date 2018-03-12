@@ -287,7 +287,7 @@ case "$target" in
         esac
         ;;
     "msm8953")
-        cap_ver=`cat /sys/devices/soc/1d00000.qcom,vidc/capability_version` 2> /dev/null
+        cap_ver=`cat /sys/devices/platform/soc/1d00000.qcom,vidc/capability_version` 2> /dev/null
         if [ $cap_ver -eq 1 ]; then
             setprop media.msm8953.version 1
         fi
