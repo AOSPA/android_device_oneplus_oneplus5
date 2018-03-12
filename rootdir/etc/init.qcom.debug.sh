@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 
-# Copyright (c) 2014-2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2014-2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -1438,6 +1438,13 @@ enable_msm8953_dcc_config()
     echo  0 > $DCC_PATH/enable
     echo cap > $DCC_PATH/func_type
     echo sram > $DCC_PATH/data_sink
+    echo  1 > $DCC_PATH/config_reset
+
+    #APC CPR
+    echo 0xb1d2c18 1 > $DCC_PATH/config
+    echo 0xb1d2900 1 > $DCC_PATH/config
+    echo 0xb1112b0 1 > $DCC_PATH/config
+    echo 0xb018798 1 > $DCC_PATH/config
 
     #GCC_GPLL0
     echo 0x1821000 0x9 > $DCC_PATH/config
