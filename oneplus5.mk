@@ -17,6 +17,9 @@ NQ3XX_PRESENT := true
 # enable the SVA in UI area
 TARGET_USE_UI_SVA := true
 
+# No external storage
+PRODUCT_CHARACTERISTICS := nosdcard
+
 # Video codec configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
