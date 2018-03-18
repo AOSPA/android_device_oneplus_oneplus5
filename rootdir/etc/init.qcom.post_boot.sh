@@ -123,12 +123,6 @@ do
 done
 echo "cpufreq" > /sys/class/devfreq/soc:qcom,mincpubw/governor
 
-# Start the Host based Touch processing but not in the power off mode.
-bootmode=`getprop ro.bootmode`
-if [ "charger" != $bootmode ]; then
-    start hbtp
-fi
-
 echo N > /sys/module/lpm_levels/system/pwr/cpu0/ret/idle_enabled
 echo N > /sys/module/lpm_levels/system/pwr/cpu1/ret/idle_enabled
 echo N > /sys/module/lpm_levels/system/pwr/cpu2/ret/idle_enabled
