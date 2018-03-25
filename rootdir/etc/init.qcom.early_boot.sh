@@ -242,6 +242,7 @@ case "$target" in
         case "$soc_hwplatform" in
             *)
                 setprop persist.graphics.vulkan.disable true
+                setprop ro.opengles.version 196608
                 ;;
         esac
         ;;
