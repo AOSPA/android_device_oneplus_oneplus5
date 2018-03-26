@@ -1890,11 +1890,10 @@ case "$target" in
         fi
 
         case "$soc_id" in
-           "303" | "307" | "308" | "309" | "320" )
-
+           "303" | "307" | "308" | "309" | "320" | "294")
                   # Start Host based Touch processing
                   case "$hw_platform" in
-                    "MTP" )
+                    "MTP" | "QRD" )
 			start_hbtp
                         ;;
                   esac
