@@ -1,6 +1,6 @@
 #! /vendor/bin/sh
 
-# Copyright (c) 2012-2013, 2016-2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2013, 2016-2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -1564,7 +1564,7 @@ case "$target" in
         fi
 
         case "$soc_id" in
-            "293" | "304" | "338" | "351" | "349" | "350")
+            "293" | "304" | "338" | "351")
 
                 # Start Host based Touch processing
                 case "$hw_platform" in
@@ -1587,14 +1587,6 @@ case "$target" in
                             ;;
                     esac
                 fi
-
-                case "$soc_id" in
-                    "349" | "350" )
-                        if [ $hw_platform -eq "QRD" ]; then
-                            start_hbtp
-                        fi
-                        ;;
-                esac
 
                 #init task load, restrict wakeups to preferred cluster
                 echo 15 > /proc/sys/kernel/sched_init_task_load
@@ -1657,29 +1649,6 @@ case "$target" in
                 do
                     echo 40 > $gpu_bimc_io_percent
                 done
-
-		# Configure DCC module to capture critical register contents when device crashes
-		for DCC_PATH in /sys/bus/platform/devices/*.dcc*
-		do
-			echo  0 > $DCC_PATH/enable
-			echo cap >  $DCC_PATH/func_type
-			echo sram > $DCC_PATH/data_sink
-			echo  1 > $DCC_PATH/config_reset
-
-			# Register specifies APC CPR closed-loop settled voltage for current voltage corner
-			echo 0xb1d2c18 1 > $DCC_PATH/config
-
-			# Register specifies SW programmed open-loop voltage for current voltage corner
-			echo 0xb1d2900 1 > $DCC_PATH/config
-
-			# Register specifies APM switch settings and APM FSM state
-			echo 0xb1112b0 1 > $DCC_PATH/config
-
-			# Register specifies CPR mode change state and also #online cores input to CPR HW
-			echo 0xb018798 1 > $DCC_PATH/config
-
-			echo  1 > $DCC_PATH/enable
-		done
 
                 # disable thermal & BCL core_control to update interactive gov settings
                 echo 0 > /sys/module/msm_thermal/core_control/enabled
@@ -1750,9 +1719,156 @@ case "$target" in
 
                 # Set Memory parameters
                 configure_memory_parameters
-	;;
-	esac
-	;;
+            ;;
+        esac
+        case "$soc_id" in
+            "349" | "350")
+
+            # Start Host based Touch processing
+            case "$hw_platform" in
+                 "MTP" | "Surf" | "RCM" | "QRD" )
+                          start_hbtp
+                    ;;
+            esac
+
+            for devfreq_gov in /sys/class/devfreq/qcom,mincpubw*/governor
+            do
+                echo "cpufreq" > $devfreq_gov
+            done
+            for cpubw in /sys/class/devfreq/*qcom,cpubw*
+            do
+                echo "bw_hwmon" > $cpubw/governor
+                echo 50 > $cpubw/polling_interval
+                echo "1611 3221 5859 6445 7104" > $cpubw/bw_hwmon/mbps_zones
+                echo 4 > $cpubw/bw_hwmon/sample_ms
+                echo 34 > $cpubw/bw_hwmon/io_percent
+                echo 20 > $cpubw/bw_hwmon/hist_memory
+                echo 0 > $cpubw/bw_hwmon/hyst_length
+                echo 0 > $cpubw/bw_hwmon/guard_band_mbps
+                echo 250 > $cpubw/bw_hwmon/up_scale
+                echo 1600 > $cpubw/bw_hwmon/idle_mbps
+            done
+
+            # Configure DCC module to capture critical register contents when device crashes
+            for DCC_PATH in /sys/bus/platform/devices/*.dcc*
+            do
+                echo  0 > $DCC_PATH/enable
+                echo cap >  $DCC_PATH/func_type
+                echo sram > $DCC_PATH/data_sink
+                echo  1 > $DCC_PATH/config_reset
+
+                # Register specifies APC CPR closed-loop settled voltage for current voltage corner
+                echo 0xb1d2c18 1 > $DCC_PATH/config
+
+                # Register specifies SW programmed open-loop voltage for current voltage corner
+                echo 0xb1d2900 1 > $DCC_PATH/config
+
+                # Register specifies APM switch settings and APM FSM state
+                echo 0xb1112b0 1 > $DCC_PATH/config
+
+                # Register specifies CPR mode change state and also #online cores input to CPR HW
+                echo 0xb018798 1 > $DCC_PATH/config
+
+                echo  1 > $DCC_PATH/enable
+            done
+
+            # disable thermal & BCL core_control to update interactive gov settings
+            echo 0 > /sys/module/msm_thermal/core_control/enabled
+            for mode in /sys/devices/soc.0/qcom,bcl.*/mode
+            do
+                echo -n disable > $mode
+            done
+            for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
+            do
+                bcl_hotplug_mask=`cat $hotplug_mask`
+                echo 0 > $hotplug_mask
+            done
+            for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
+            do
+                bcl_soc_hotplug_mask=`cat $hotplug_soc_mask`
+                echo 0 > $hotplug_soc_mask
+            done
+            for mode in /sys/devices/soc.0/qcom,bcl.*/mode
+            do
+                echo -n enable > $mode
+            done
+
+            # configure governor settings for little cluster
+            echo 1 > /sys/devices/system/cpu/cpu0/online
+            echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+            echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us
+            echo 1363200 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
+            #default value for hispeed_load is 90, for sdm632 it should be 85
+            echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load
+            # sched_load_boost as -6 is equivalent to target load as 85.
+            echo -6 > /sys/devices/system/cpu/cpu0/sched_load_boost
+
+            # configure governor settings for big cluster
+            echo 1 > /sys/devices/system/cpu/cpu4/online
+            echo "schedutil" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+            echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/rate_limit_us
+            echo 1401600 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq
+            #default value for hispeed_load is 90, for sdm632 it should be 85
+            echo 85 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load
+            # sched_load_boost as -6 is equivalent to target load as 85.
+            echo -6 >  /sys/devices/system/cpu/cpu4/sched_load_boost
+
+            echo 614400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+            echo 1094400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+
+            # cpuset settings
+            echo 0-3 > /dev/cpuset/background/cpus
+            echo 0-3 > /dev/cpuset/system-background/cpus
+            # choose idle CPU for top app tasks
+            echo 1 > /dev/stune/top-app/schedtune.prefer_idle
+
+            # re-enable thermal & BCL core_control now
+            echo 1 > /sys/module/msm_thermal/core_control/enabled
+            for mode in /sys/devices/soc.0/qcom,bcl.*/mode
+            do
+                echo -n disable > $mode
+            done
+            for hotplug_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_mask
+            do
+                echo $bcl_hotplug_mask > $hotplug_mask
+            done
+            for hotplug_soc_mask in /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask
+            do
+                echo $bcl_soc_hotplug_mask > $hotplug_soc_mask
+            done
+            for mode in /sys/devices/soc.0/qcom,bcl.*/mode
+            do
+                echo -n enable > $mode
+            done
+
+            # Disable Core control
+            echo 0 > /sys/devices/system/cpu/cpu0/core_ctl/enable
+            echo 0 > /sys/devices/system/cpu/cpu4/core_ctl/enable
+
+            # Bring up all cores online
+            echo 1 > /sys/devices/system/cpu/cpu1/online
+            echo 1 > /sys/devices/system/cpu/cpu2/online
+            echo 1 > /sys/devices/system/cpu/cpu3/online
+            echo 1 > /sys/devices/system/cpu/cpu4/online
+            echo 1 > /sys/devices/system/cpu/cpu5/online
+            echo 1 > /sys/devices/system/cpu/cpu6/online
+            echo 1 > /sys/devices/system/cpu/cpu7/online
+
+            # Enable low power modes
+            echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
+
+            # Set Memory parameters
+            configure_memory_parameters
+
+            # Setting b.L scheduler parameters
+            echo 76 > /proc/sys/kernel/sched_downmigrate
+            echo 86 > /proc/sys/kernel/sched_upmigrate
+            echo 80 > /proc/sys/kernel/sched_group_downmigrate
+            echo 90 > /proc/sys/kernel/sched_group_upmigrate
+
+            ;;
+        esac
+    ;;
 esac
 
 case "$target" in
