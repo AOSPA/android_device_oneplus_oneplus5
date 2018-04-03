@@ -373,7 +373,7 @@ case "$target" in
         fi
 	if [ "$low_ram" != "true" ]; then
              case "$soc_id" in
-                  "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320")
+                  "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320" | "353")
                        case "$hw_platform" in
                             "Surf")
                                     setprop qemu.hw.mainkeys 0
