@@ -829,6 +829,7 @@ service cnss_diag /system/vendor/bin/cnss_diag -q -f
     user system
     group system wifi inet net_admin sdcard_rw media_rw diag
     oneshot
+    capabilities NET_ADMIN
 
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
