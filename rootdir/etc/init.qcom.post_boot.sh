@@ -1743,6 +1743,7 @@ case "$target" in
                 echo 4 > $cpubw/bw_hwmon/sample_ms
                 echo 34 > $cpubw/bw_hwmon/io_percent
                 echo 20 > $cpubw/bw_hwmon/hist_memory
+                echo 80 > $cpubw/bw_hwmon/down_thres
                 echo 0 > $cpubw/bw_hwmon/hyst_length
                 echo 0 > $cpubw/bw_hwmon/guard_band_mbps
                 echo 250 > $cpubw/bw_hwmon/up_scale
@@ -1802,6 +1803,9 @@ case "$target" in
             echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load
             # sched_load_boost as -6 is equivalent to target load as 85.
             echo -6 > /sys/devices/system/cpu/cpu0/sched_load_boost
+            echo -6 > /sys/devices/system/cpu/cpu1/sched_load_boost
+            echo -6 > /sys/devices/system/cpu/cpu2/sched_load_boost
+            echo -6 > /sys/devices/system/cpu/cpu3/sched_load_boost
 
             # configure governor settings for big cluster
             echo 1 > /sys/devices/system/cpu/cpu4/online
@@ -1812,6 +1816,9 @@ case "$target" in
             echo 85 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load
             # sched_load_boost as -6 is equivalent to target load as 85.
             echo -6 >  /sys/devices/system/cpu/cpu4/sched_load_boost
+            echo -6 > /sys/devices/system/cpu/cpu5/sched_load_boost
+            echo -6 > /sys/devices/system/cpu/cpu7/sched_load_boost
+            echo -6 > /sys/devices/system/cpu/cpu6/sched_load_boost
 
             echo 614400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
             echo 1094400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
