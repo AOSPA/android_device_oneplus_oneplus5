@@ -1563,6 +1563,8 @@ case "$target" in
             platform_subtype_id=`cat /sys/devices/soc0/platform_subtype_id`
         fi
 
+        echo 0 > /proc/sys/kernel/sched_boost
+
         case "$soc_id" in
             "293" | "304" | "338" | "351")
 
