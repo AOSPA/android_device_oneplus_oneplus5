@@ -1893,7 +1893,7 @@ case "$target" in
         fi
 
         case "$soc_id" in
-           "303" | "307" | "308" | "309" | "320" | "353")
+           "303" | "307" | "308" | "309" | "320" )
 
                   # Start Host based Touch processing
                   case "$hw_platform" in
@@ -2083,6 +2083,119 @@ case "$target" in
             ;;
             *)
 
+            ;;
+        esac
+
+        case "$soc_id" in
+             "354" | "364" | "353" | "363" )
+
+                # Start Host based Touch processing
+                case "$hw_platform" in
+                    "MTP" | "Surf" | "RCM" | "QRD" )
+                    start_hbtp
+                ;;
+                esac
+
+                # Apply settings for sdm429/sda429/sdm439/sda439
+
+                for cpubw in /sys/class/devfreq/*qcom,mincpubw*
+                do
+                    echo "cpufreq" > $cpubw/governor
+                done
+
+                for cpubw in /sys/class/devfreq/*qcom,cpubw*
+                do
+                    echo "bw_hwmon" > $cpubw/governor
+                    echo 20 > $cpubw/bw_hwmon/io_percent
+                    echo 30 > $cpubw/bw_hwmon/guard_band_mbps
+                done
+
+                for gpu_bimc_io_percent in /sys/class/devfreq/soc:qcom,gpubw/bw_hwmon/io_percent
+                do
+                    echo 40 > $gpu_bimc_io_percent
+                done
+
+                case "$soc_id" in
+                     "353" | "363" )
+                     # Apply settings for sdm439/sda439
+                     # configure schedutil governor settings
+                     # enable governor for perf cluster
+                     echo 1 > /sys/devices/system/cpu/cpu0/online
+                     echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                     echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us
+                     #set the hispeed_freq
+                     echo 1497600 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
+                     #default value for hispeed_load is 90, for sdm439 it should be 85
+                     echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load
+                     echo 1305600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+
+                     ## enable governor for power cluster
+                     echo 1 > /sys/devices/system/cpu/cpu4/online
+                     echo "schedutil" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+                     echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/rate_limit_us
+                     #set the hispeed_freq
+                     echo 998400 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq
+                     #default value for hispeed_load is 90, for sdm439 it should be 85
+                     echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load
+                     echo 768000 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
+
+
+                     # EAS scheduler (big.Little cluster related) settings
+                     echo 93 > /proc/sys/kernel/sched_upmigrate
+                     echo 83 > /proc/sys/kernel/sched_downmigrate
+                     #echo 140 > /proc/sys/kernel/sched_group_upmigrate
+                     #echo 120 > /proc/sys/kernel/sched_group_downmigrate
+
+                     # cpuset settings
+                     #echo 0-3 > /dev/cpuset/background/cpus
+                     #echo 0-3 > /dev/cpuset/system-background/cpus
+
+                     # Bring up all cores online
+                     echo 1 > /sys/devices/system/cpu/cpu1/online
+                     echo 1 > /sys/devices/system/cpu/cpu2/online
+                     echo 1 > /sys/devices/system/cpu/cpu3/online
+                     echo 1 > /sys/devices/system/cpu/cpu4/online
+                     echo 1 > /sys/devices/system/cpu/cpu5/online
+                     echo 1 > /sys/devices/system/cpu/cpu6/online
+                     echo 1 > /sys/devices/system/cpu/cpu7/online
+
+                     # Enable core control
+                     echo 2 > /sys/devices/system/cpu/cpu0/core_ctl/min_cpus
+                     echo 4 > /sys/devices/system/cpu/cpu0/core_ctl/max_cpus
+                     echo 68 > /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres
+                     echo 40 > /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres
+                     echo 100 > /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms
+                     echo 1 > /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster
+                 ;;
+                 *)
+                     # Apply settings for sdm429/sda429
+                     # configure schedutil governor settings
+                     echo 1 > /sys/devices/system/cpu/cpu0/online
+                     echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                     echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us
+                     #set the hispeed_freq
+                     echo 1305600 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
+                     #default value for hispeed_load is 90, for sdm429 it should be 85
+                     echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load
+                     echo 960000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+
+                     # Bring up all cores online
+                     echo 1 > /sys/devices/system/cpu/cpu1/online
+                     echo 1 > /sys/devices/system/cpu/cpu2/online
+                     echo 1 > /sys/devices/system/cpu/cpu3/online
+                 ;;
+                esac
+
+                # Set Memory parameters
+                configure_memory_parameters
+
+                #disable sched_boost
+                echo 0 > /proc/sys/kernel/sched_boost
+
+                # Enable low power modes
+                echo 1 > /sys/module/lpm_levels/parameters/sleep_disabled
             ;;
         esac
     ;;
