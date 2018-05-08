@@ -2206,8 +2206,14 @@ case "$target" in
                 #disable sched_boost
                 echo 0 > /proc/sys/kernel/sched_boost
 
+                # Disable L2-GDHS low power modes
+                echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/idle_enabled
+                echo N > /sys/module/lpm_levels/system/pwr/pwr-l2-gdhs/suspend_enabled
+                echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/idle_enabled
+                echo N > /sys/module/lpm_levels/system/perf/perf-l2-gdhs/suspend_enabled
+
                 # Enable low power modes
-                echo 1 > /sys/module/lpm_levels/parameters/sleep_disabled
+                echo 0 > /sys/module/lpm_levels/parameters/sleep_disabled
             ;;
         esac
     ;;
