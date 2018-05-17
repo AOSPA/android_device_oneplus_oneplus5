@@ -1885,6 +1885,7 @@ case "$target" in
             echo 86 > /proc/sys/kernel/sched_upmigrate
             echo 80 > /proc/sys/kernel/sched_group_downmigrate
             echo 90 > /proc/sys/kernel/sched_group_upmigrate
+            echo 1 > /proc/sys/kernel/sched_walt_rotate_big_tasks
 
             ;;
         esac
