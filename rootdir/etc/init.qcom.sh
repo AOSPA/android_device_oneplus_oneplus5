@@ -84,8 +84,10 @@ start_msm_irqbalance_8939()
 {
 	if [ -f /system/vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
-		    "239" | "293" | "294" | "295" | "304" | "313" | "338" | "351" )
+		    "239" | "293" | "294" | "295" | "304" | "313" | "338" | "351" | "353" | "354" | "363" | "364")
 			start vendor.msm_irqbalance;;
+		    "349" | "350" )
+			start vendor.msm_irqbal_lb;;
 		esac
 	fi
 }
@@ -368,7 +370,7 @@ case "$target" in
         fi
 	if [ "$low_ram" != "true" ]; then
              case "$soc_id" in
-                  "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320")
+                  "294" | "295" | "303" | "307" | "308" | "309" | "313" | "320" | "353" | "354" | "363" | "364")
                        case "$hw_platform" in
                             "Surf")
                                     setprop qemu.hw.mainkeys 0
