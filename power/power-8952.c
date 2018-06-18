@@ -229,14 +229,14 @@ static void process_video_encode_hint(void *metadata)
             strlen(SCHEDUTIL_GOVERNOR)) == 0) &&
             (strlen(governor) == strlen(SCHEDUTIL_GOVERNOR))) {
             if(is_target_SDM439()) {
-                /* sample_ms = 10mS
+                /* sample_ms = 50mS
                 * SLB for Core0 = -6
                 * SLB for Core1 = -6
                 * SLB for Core2 = -6
                 * SLB for Core3 = -6
                 * hispeed load = 95
                 * hispeed freq = 998Mhz */
-                int res[] = {0x41820000, 0xa,
+                int res[] = {0x41820000, 0x32,
                              0x40c68100, 0xfffffffa,
                              0x40c68110, 0xfffffffa,
                              0x40c68120, 0xfffffffa,
