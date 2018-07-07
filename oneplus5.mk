@@ -372,6 +372,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # tri-state key
 PRODUCT_PACKAGES += \
+    tri-state-key_daemon \
     TriStateHandler
 
 # Verity

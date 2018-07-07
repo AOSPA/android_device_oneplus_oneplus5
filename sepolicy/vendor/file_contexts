@@ -1,3 +1,6 @@
+# Alert Slider
+/vendor/bin/tri-state-key_daemon                                 u:object_r:tri-state-key_daemon_exec:s0
+
 # Block devices
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_dycnvbk       u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc/1da4000\.ufshc/by-name/oem_stanvbk       u:object_r:modem_efs_partition_device:s0
