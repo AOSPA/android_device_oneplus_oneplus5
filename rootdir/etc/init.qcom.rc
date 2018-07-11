@@ -348,6 +348,9 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+    #Create a folder for SRS to be able to create a usercfg file
+    #mkdir /data/data/media 0770 media media
+
     #Create FM dir for patchdownloader
     mkdir /data/misc/fm 0770 system system
     chmod 0770 /data/misc/fm
@@ -754,7 +757,7 @@ service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     group system inet net_admin wifi
     capabilities NET_ADMIN
 
-on property:sys.shutdown.requested=*
+on property:sys.powerctl=*
     stop cnss-daemon
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
