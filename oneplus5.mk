@@ -253,6 +253,7 @@ PRODUCT_PACKAGES += \
 
 # Overlay
 PRODUCT_PACKAGES += \
+    AOSPAOnePlus5SeriesFrameworks \
     FrameworksResTarget \
     OnePlus5SeriesFrameworks \
     OnePlus5Settings \
@@ -368,6 +369,10 @@ PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 # Time
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.timed.enable=true
+
+# tri-state key
+PRODUCT_PACKAGES += \
+    TriStateHandler
 
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
