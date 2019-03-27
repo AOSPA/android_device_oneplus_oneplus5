@@ -95,7 +95,6 @@ on fs
 on post-fs
     # Wait for qseecomd started
     wait_for_prop vendor.sys.listeners.registered true
-    write /dev/ipa 1
 
     chown system system /dev/param
     chown system system /proc/ship_mode
@@ -110,6 +109,7 @@ on post-fs-data
     mkdir /data/vendor/nfc 0770 nfc nfc
 
 on early-boot
+    write /dev/ipa 1
     write /sys/kernel/boot_slpi/boot 1
 
 on boot
