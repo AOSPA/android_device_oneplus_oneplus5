@@ -222,6 +222,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/nfc/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -346,6 +350,10 @@ PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 # Time
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.timed.enable=true
+
+# Verity
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
+$(call inherit-product, build/target/product/verity.mk)
 
 # WLAN
 PRODUCT_COPY_FILES += \
