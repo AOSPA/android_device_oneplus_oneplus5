@@ -373,9 +373,7 @@ function configure_read_ahead_kb_values() {
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
     MemTotal=${MemTotalStr:16:8}
 
-    # Set 128 for <= 3GB &
-    # set 512 for >= 4GB targets.
-    if [ $MemTotal -le 3145728 ]; then
+        # Set 128 for all targets
         echo 128 > /sys/block/mmcblk0/bdi/read_ahead_kb
         echo 128 > /sys/block/mmcblk0/queue/read_ahead_kb
         echo 128 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
@@ -383,15 +381,8 @@ function configure_read_ahead_kb_values() {
         echo 128 > /sys/block/dm-0/queue/read_ahead_kb
         echo 128 > /sys/block/dm-1/queue/read_ahead_kb
         echo 128 > /sys/block/dm-2/queue/read_ahead_kb
-    else
-        echo 512 > /sys/block/mmcblk0/bdi/read_ahead_kb
-        echo 512 > /sys/block/mmcblk0/queue/read_ahead_kb
-        echo 512 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
-        echo 512 > /sys/block/mmcblk0rpmb/queue/read_ahead_kb
-        echo 512 > /sys/block/dm-0/queue/read_ahead_kb
-        echo 512 > /sys/block/dm-1/queue/read_ahead_kb
-        echo 512 > /sys/block/dm-2/queue/read_ahead_kb
-    fi
+        echo 128 > /sys/block/sda/queue/read_ahead_kb
+        echo 128 > /sys/block/sda/queue/nr_requests
 }
 
 function disable_core_ctl() {
