@@ -5170,7 +5170,7 @@ case "$target" in
 	echo 500 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
 	echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
 	echo 518400 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 
+	echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 
         # online CPU4
         echo 1 > /sys/devices/system/cpu/cpu4/online
 	# configure governor settings for big cluster
@@ -5178,7 +5178,7 @@ case "$target" in
 	echo 500 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us
 	echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us
 	echo 806400 > /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq
-    echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/iowait_boost_enable 
+	echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/iowait_boost_enable 
 
         # re-enable thermal and BCL hotplug
         echo 1 > /sys/module/msm_thermal/core_control/enabled
@@ -5278,8 +5278,9 @@ case "$target" in
 	echo N > /sys/module/lpm_levels/system/perf/perf-l2-ret/idle_enabled
 	echo N > /sys/module/lpm_levels/parameters/sleep_disabled
 
-        echo 0-3 > /dev/cpuset/background/cpus
-        echo 0-3 > /dev/cpuset/system-background/cpus
+        echo 0-1 > /dev/cpuset/background/cpus
+        echo 0-2 > /dev/cpuset/system-background/cpus
+        echo 0-3 > /dev/cpuset/restricted/cpus
         echo 0 > /proc/sys/kernel/sched_boost
 
         # Set Memory parameters
