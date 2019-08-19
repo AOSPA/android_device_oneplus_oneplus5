@@ -17,6 +17,10 @@
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/oneplus/msm8998-common/msm8998-common-vendor.mk)
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-pa
+
 # Properties
 -include $(LOCAL_PATH)/common-props.mk
 
@@ -86,6 +90,12 @@ PRODUCT_PACKAGES += \
 -include vendor/qcom/common/av/qti-av.mk
 -include vendor/qcom/common/bt/qti-bt.mk
 -include vendor/qcom/common/perf/qti-perf.mk
+
+
+# tri-state-key
+PRODUCT_PACKAGES += \
+    TriStateHandler \
+    tri-state-key_daemon
 
 # VNDK-SP
 PRODUCT_PACKAGES += \
