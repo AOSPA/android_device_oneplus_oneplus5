@@ -20,6 +20,7 @@ COMMON_PATH := device/oneplus/oneplus5
 
 # Asserts
 TARGET_BOARD_INFO_FILE := $(COMMON_PATH)/board-info.txt
+TARGET_OTA_ASSERT_DEVICE := OnePlus5,oneplus5,cheeseburger,OnePlus5T,oneplus5t,dumpling
 
 # Architecture
 TARGET_ARCH := arm64
