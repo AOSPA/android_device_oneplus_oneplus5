@@ -50,7 +50,8 @@ PRODUCT_PACKAGES += \
 
 # Custom init script
 PRODUCT_PACKAGES += \
-    init.pa.rc
+    init.pa.rc \
+    ueventd.qcom.rc
 
 # Display
 PRODUCT_PACKAGES += \

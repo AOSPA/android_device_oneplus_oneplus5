@@ -1,0 +1,2 @@
+# Add device block for FRP
+/dev/block/platform/soc/1da4000.ufshc/by-name/config    0600   system     system
