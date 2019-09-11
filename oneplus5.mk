@@ -71,6 +71,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
     $(LOCAL_PATH)/rootdir/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
+# Lights
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service.oneplus_msm8998
+
 # NFC
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0 \
