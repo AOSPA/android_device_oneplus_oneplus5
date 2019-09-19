@@ -91,11 +91,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.qcom
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:system/etc/permissions/android.hardware.telephony.ims.xml
+
 # QTI common
 -include vendor/qcom/common/av/qti-av.mk
 -include vendor/qcom/common/bt/qti-bt.mk
 -include vendor/qcom/common/perf/qti-perf.mk
-
 
 # tri-state-key
 PRODUCT_PACKAGES += \
