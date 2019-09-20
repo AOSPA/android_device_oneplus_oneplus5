@@ -49,6 +49,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.qcom
 
+# QTI common
+-include vendor/qcom/common/av/qti-av.mk
+-include vendor/qcom/common/bt/qti-bt.mk
+-include vendor/qcom/common/perf/qti-perf.mk
+
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk-sp
