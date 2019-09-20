@@ -31,15 +31,6 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.ims.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/permissions/android.hardware.telephony.ims.xml \
-    frameworks/native/data/etc/android.hardware.sensor.assist.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/permissions/android.hardware.sensor.assist.xml \
-    frameworks/native/data/etc/android.hardware.wifi.passpoint.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/permissions/android.hardware.wifi.passpoint.xml
-
-# VNDK
-PRODUCT_TARGET_VNDK_VERSION := 28
-
 # AID/fs configs
 PRODUCT_PACKAGES += \
     fs_config_files
@@ -109,6 +100,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     TriStateHandler \
     tri-state-key_daemon
+
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 28
 
 # VNDK-SP
 PRODUCT_PACKAGES += \
