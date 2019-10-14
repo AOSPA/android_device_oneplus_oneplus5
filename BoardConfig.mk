@@ -181,6 +181,10 @@ DISABLE_EAP_PROXY                := true
 CONFIG_ACS                       := true
 CONFIG_IEEE80211AC               := true
 
+# Vendor init
+TARGET_INIT_VENDOR_LIB := libinit_oneplus5
+TARGET_RECOVERY_DEVICE_MODULES := libinit_oneplus5
+
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus5/BoardConfigVendor.mk
 
