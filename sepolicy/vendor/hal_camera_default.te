@@ -9,3 +9,6 @@ r_dir_file(hal_camera_default, camera_data_file)
 get_prop(hal_camera_default, bootanim_system_prop)
 get_prop(hal_camera_default, vendor_system_prop)
 set_prop(hal_camera_default, camera_prop)
+
+# Allow hal_camera_default to read sysfs
+allow hal_camera_default sysfs:file r_file_perms;
