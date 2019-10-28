@@ -1,3 +1,10 @@
+on init
+    mkdir /dev/cpuset/little
+    copy /dev/cpuset/cpus /dev/cpuset/little/cpus
+    copy /dev/cpuset/mems /dev/cpuset/little/mems
+    chown system system /dev/cpuset/little/tasks
+    chmod 0664 /dev/cpuset/little/tasks
+
 on post-fs-data
     # For oneplus camera hal
     mkdir /data/misc/camera 775 system system
