@@ -249,7 +249,7 @@ persist.vendor.sensors.direct_channel=true
 persist.debug.coresight.config=stm-events
 
 #Expose aux camera for below packages
-vendor.camera.aux.packagelist=org.codeaurora.snapcam
+vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,com.google.android.googlecamera
 
 #Whitelisting the below packages
 persist.vendor.camera.privapp.list=org.codeaurora.snapcam
