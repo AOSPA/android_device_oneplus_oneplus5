@@ -119,3 +119,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# ParanoidDoze
+ PRODUCT_PACKAGES += ParanoidDoze
