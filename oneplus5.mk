@@ -254,6 +254,7 @@ PRODUCT_PACKAGES += \
 # Overlay
 PRODUCT_PACKAGES += \
     AOSPAOnePlus5SeriesFrameworks \
+    AOSPAOnePlus5SeriesSystemUI \
     FrameworksResTarget \
     OnePlus5SeriesFrameworks \
     OnePlus5Settings \
