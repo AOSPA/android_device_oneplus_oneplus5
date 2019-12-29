@@ -74,6 +74,16 @@ static void set_fingerprint()
 		property_override("ro.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:9/PKQ1.180716.001/1912311102:user/release-keys");
 		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:9/PKQ1.180716.001/1912311102:user/release-keys");
 	}
+
+	// Common Properties
+
+	// Dalvik
+	property_override_dual("dalvik.vm.heapstartsize", "dalvik.vm.heapstartsize", "16m");
+	property_override_dual("dalvik.vm.heapgrowthlimit", "dalvik.vm.heapgrowthlimit", "256m");
+	property_override_dual("dalvik.vm.heapsize", "dalvik.vm.heapsize", "512m");
+	property_override_dual("dalvik.vm.heaptargetutilization", "dalvik.vm.heaptargetutilization", "0.5");
+	property_override_dual("dalvik.vm.heapminfree", "dalvik.vm.heapminfree", "8m");
+	property_override_dual("dalvik.vm.heapmaxfree", "dalvik.vm.heapmaxfree", "32m");
 }
 
 void vendor_load_properties()
