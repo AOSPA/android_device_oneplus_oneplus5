@@ -35,6 +35,19 @@ PRODUCT_TARGET_VNDK_VERSION := 28
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Audio
+PRODUCT_PACKAGES += \
+    android.hardware.audio@5.0 \
+    android.hardware.audio.common@5.0 \
+    android.hardware.audio.common@5.0-util \
+    android.hardware.audio.effect@5.0 \
+    libaudio-resampler
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbluetooth_qti \
+    libbt-logClient.so
+
 # Display
 PRODUCT_PACKAGES += \
     libdisplayconfig \
@@ -50,6 +63,21 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
     $(LOCAL_PATH)/rootdir/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
+# NFC
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0 \
+    android.hardware.nfc@1.1 \
+    android.hardware.nfc@1.2 \
+    android.hardware.secure_element@1.0 \
+    com.android.nfc_extras \
+    Tag \
+    vendor.nxp.nxpese@1.0 \
+    vendor.nxp.nxpnfc@1.0
+
+# NN
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full
+
 # Power
 PRODUCT_PACKAGES += \
     power.qcom
@@ -62,3 +90,11 @@ PRODUCT_PACKAGES += \
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk-sp
+
+# WFD
+PRODUCT_PACKAGES += \
+    libnl \
+    libwfdaac
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
