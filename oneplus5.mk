@@ -17,6 +17,11 @@
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/oneplus/msm8998-common/msm8998-common-vendor.mk)
 
+# Properties
+-include $(LOCAL_PATH)/common-props.mk
+
+PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/permissions/android.hardware.telephony.ims.xml \
