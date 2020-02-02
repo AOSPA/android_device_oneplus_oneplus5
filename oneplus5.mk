@@ -24,6 +24,7 @@ $(call inherit-product-if-exists, vendor/oneplus/msm8998-common/msm8998-common-v
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-pa
 
 # Properties
