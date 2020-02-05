@@ -1,5 +1,1 @@
-allow init ipa_dev:chr_file write;
-allow init persist_file:lnk_file read;
-allow init proc:file write;
-allow init sysfs_poweron_alarm:file write;
-allow init vendor_file:file execute;
+allow init vendor_overlay_file:file mounton;
