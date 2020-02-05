@@ -83,6 +83,7 @@ PRODUCT_PACKAGES += \
 
 # Common RRO Overlays
 PRODUCT_PACKAGES += \
+    EmptyOverlay \
     MSM8998CommonBluetoothRes \
     MSM8998CommonCarrierConfigRes \
     MSM8998CommonFrameworkRes \
