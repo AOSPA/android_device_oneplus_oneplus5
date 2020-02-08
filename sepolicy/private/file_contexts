@@ -1,0 +1,10 @@
+# Files in rootfs
+/bt_firmware(/.*)?       u:object_r:bt_firmware_file:s0
+/firmware(/.*)?          u:object_r:firmware_file:s0
+
+# Lights
+/sys/devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:gpio-leds/leds(/.*)? u:object_r:sysfs_leds:s0
+/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/android\.hardware\.light@2\.0-service    u:object_r:hal_light_default_exec:s0
+
+# tri-state-key
+/system/bin/tri-state-key_daemon          u:object_r:tri-state-key_daemon_exec:s0
