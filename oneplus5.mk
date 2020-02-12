@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
@@ -59,11 +59,6 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libqdMetaData.system
 
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0
-
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
@@ -97,9 +92,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:system/etc/permissions/android.hardware.telephony.ims.xml
 
 # QTI common
--include vendor/qcom/common/av/qti-av.mk
--include vendor/qcom/common/bt/qti-bt.mk
--include vendor/qcom/common/perf/qti-perf.mk
+-include vendor/qcom/common/*/qti-*.mk
 
 # tri-state-key
 PRODUCT_PACKAGES += \
@@ -113,13 +106,5 @@ PRODUCT_TARGET_VNDK_VERSION := 28
 PRODUCT_PACKAGES += \
     vndk-sp
 
-# WFD
-PRODUCT_PACKAGES += \
-    libnl \
-    libwfdaac
-
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
 # ParanoidDoze
- PRODUCT_PACKAGES += ParanoidDoze
+PRODUCT_PACKAGES += ParanoidDoze
