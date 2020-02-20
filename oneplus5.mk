@@ -318,6 +318,9 @@ PRODUCT_ODM_PROPERTIES += \
     persist.vendor.radio.enableadvancedscan=false \
     ro.telephony.default_network=22,20
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qmi_fw.conf:$(TARGET_COPY_OUT_VENDOR)/etc/qmi_fw.conf
+
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
