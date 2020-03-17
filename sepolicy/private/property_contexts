@@ -23,3 +23,6 @@ persist.sys.oem.region            u:object_r:exported_system_prop:s0
 
 # Thermal
 sys.thermal.para                  u:object_r:exported_system_prop:s0
+
+# USB OTG
+persist.sys.oem.otg_support       u:object_r:exported_system_prop:s0
