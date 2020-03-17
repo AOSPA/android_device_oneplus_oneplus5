@@ -296,3 +296,6 @@ debug.sf.latch_unsignaled=1
 # OnePlus sensors
 ro.sensor.pickup=com.oneplus.sensor.pickup
 ro.sensor.pocket=com.oneplus.sensor.pocket
+
+# USB OTG
+persist.sys.oem.otg_support=true
