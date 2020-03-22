@@ -58,24 +58,25 @@ void property_override_dual(char const system_prop[], char const vendor_prop[], 
 }
 
 
-static void set_fingerprint()
+void vendor_load_properties()
 {
 	std::string variant = GetProperty(PROP_VARIANT, "");
 	if (variant == "OnePlus5") {
 		property_override("ro.product.system.device", "oneplus5");
 		property_override("ro.product.system.model", "OnePlus 5");
 		property_override("ro.product.device", "OnePlus5");
-		property_override("ro.build.fingerprint", "OnePlus/OnePlus5/OnePlus5:9/PKQ1.180716.001/1912311102:user/release-keys");
-		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5/OnePlus5:9/PKQ1.180716.001/1912311102:user/release-keys");
-    } else if (variant == "OnePlus5T") {
-                property_override("ro.product.system.device", "oneplus5t");
-                property_override("ro.product.system.model", "OnePlus 5T");
-                property_override("ro.product.device", "OnePlus5T");
-		property_override("ro.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:9/PKQ1.180716.001/1912311102:user/release-keys");
-		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:9/PKQ1.180716.001/1912311102:user/release-keys");
+		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2004201749:user/release-keys");
+	} else if (variant == "OnePlus5T") {
+		property_override("ro.product.system.device", "oneplus5t");
+		property_override("ro.product.system.model", "OnePlus 5T");
+		property_override("ro.product.device", "OnePlus5T");
+		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:10/QKQ1.191014.012/2004201751:user/release-keys");
 	}
 
 	// Common Properties
+
+	// Fingerprint
+	property_override("ro.build.fingerprint", "google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/release-keys");
 
 	// Dalvik
 	property_override_dual("dalvik.vm.heapstartsize", "dalvik.vm.heapstartsize", "16m");
@@ -84,9 +85,4 @@ static void set_fingerprint()
 	property_override_dual("dalvik.vm.heaptargetutilization", "dalvik.vm.heaptargetutilization", "0.5");
 	property_override_dual("dalvik.vm.heapminfree", "dalvik.vm.heapminfree", "8m");
 	property_override_dual("dalvik.vm.heapmaxfree", "dalvik.vm.heapmaxfree", "32m");
-}
-
-void vendor_load_properties()
-{
-	set_fingerprint();
 }

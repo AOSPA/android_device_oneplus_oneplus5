@@ -44,19 +44,19 @@ TARGET_HW_DISK_ENCRYPTION := true
 
 # Kernel
 BOARD_KERNEL_BASE        := 0x00000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.usbconfigfs=true androidboot.usbcontroller=a800000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7 androidboot.configfs=true
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.usbconfigfs=true androidboot.usbcontroller=a800000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME  := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE    := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_ROOT_EXTRA_FOLDERS := oem
 BOARD_ROOT_EXTRA_SYMLINKS := /vendor/bt_firmware:/bt_firmware /vendor/dsp:/dsp /vendor/firmware_mnt:/firmware /mnt/vendor/persist:/persist
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := paranoid_defconfig
-TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_NEW_GCC_COMPILE := true
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8998
@@ -77,9 +77,6 @@ USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
 TARGET_USE_QTI_BT_STACK := true
-
-# Camera
-USE_CAMERA_STUB := true
 
 # Charger Mode
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -137,36 +134,10 @@ USE_SENSOR_MULTI_HAL := true
 
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Treble
 BOARD_VNDK_VERSION := current
-BOARD_SYSTEMSDK_VERSIONS := 28
-PRODUCT_EXTRA_VNDK_VERSIONS := 28
-
-# Wifi
-TARGET_USES_QCOM_WCNSS_QMI       := false
-BOARD_HAS_QCOM_WLAN              := true
-BOARD_WLAN_DEVICE                := qcwcn
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WIFI_DRIVER_FW_PATH_STA          := "sta"
-WIFI_DRIVER_FW_PATH_AP           := "ap"
-WIFI_DRIVER_FW_PATH_P2P          := "p2p"
-#WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
-#WIFI_DRIVER_MODULE_NAME          := "wlan"
-#WIFI_DRIVER_MODULE_ARG           := ""
-WIFI_DRIVER_STATE_CTRL_PARAM     := "/dev/wlan"
-WIFI_DRIVER_STATE_ON             := "ON"
-WIFI_DRIVER_STATE_OFF            := "OFF"
-WIFI_DRIVER_BUILT                := qca_cld3
-WIFI_DRIVER_DEFAULT              := qca_cld3
-#WIFI_HIDL_FEATURE_AWARE          := true
-#WIFI_DRIVER_LOAD_DELAY           := true
-CONFIG_ACS                       := true
-CONFIG_IEEE80211AC               := true
 
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_oneplus5

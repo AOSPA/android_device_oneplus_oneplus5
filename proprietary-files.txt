@@ -1,0 +1,172 @@
+# Alarm
+product/framework/vendor.qti.hardware.alarm-V1.0-java.jar
+product/lib64/vendor.qti.hardware.alarm@1.0.so
+product/lib/vendor.qti.hardware.alarm@1.0.so
+
+# ANT+
+-app/AntHalService/AntHalService.apk
+-lib/libantradio.so
+-lib64/libantradio.so
+-product/lib64/com.qualcomm.qti.ant@1.0.so
+-product/lib/com.qualcomm.qti.ant@1.0.so
+
+# Audio
+etc/permissions/audiosphere.xml
+framework/audiosphere.jar
+lib64/libadsprpc_system.so
+lib64/libcdsprpc_system.so
+lib64/libmdsprpc_system.so
+lib64/libsdsprpc_system.so
+lib/libadsprpc_system.so
+lib/libcdsprpc_system.so
+lib/libmdsprpc_system.so
+lib/libsdsprpc_system.so
+product/framework/vendor.qti.voiceprint-V1.0-java.jar
+product/lib64/vendor.qti.voiceprint@1.0.so
+product/lib/vendor.qti.voiceprint@1.0.so
+
+# Camera / DSP - Hexagon libraries
+lib/rfsa/adsp/libsns_low_lat_stream_skel.so
+
+# Camera Firmware
+etc/firmware/cpp_firmware_v1_5_1.fw
+etc/firmware/cpp_firmware_v1_5_0.fw
+etc/firmware/cpp_firmware_v1_12_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw
+etc/firmware/cpp_firmware_v1_10_0.fw
+etc/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_5_2.fw
+etc/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_8_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw
+etc/firmware/cpp_firmware_v1_2_0.fw
+
+# CVP
+product/lib64/vendor.qti.hardware.cvp@1.0-adapter-helper.so
+product/lib64/vendor.qti.hardware.cvp@1.0.so
+product/lib/vendor.qti.hardware.cvp@1.0-adapter-helper.so
+product/lib/vendor.qti.hardware.cvp@1.0.so
+
+# DRM
+product/lib64/libGPQTEEC_system.qti.so
+product/lib64/libGPTEE_system.qti.so
+product/lib64/libQTEEConnector_system.so
+product/lib64/libsecureui_svcsock_system.so
+product/lib/libGPQTEEC_system.qti.so
+product/lib/libGPTEE_system.qti.so
+product/lib/libQTEEConnector_system.so
+product/lib/libsecureui_svcsock_system.so
+
+# Fingerprint
+product/framework/vendor.qti.hardware.fingerprint-V1.0-java.jar
+product/lib64/vendor.qti.hardware.fingerprint@1.0.so
+product/lib/vendor.qti.hardware.fingerprint@1.0.so
+
+# Firmware
+etc/firmware/mbn_ota/mbn_ota.txt
+etc/firmware/tp/fw_synaptics_17801.img
+etc/firmware/tp/fw_synaptics_16859.img
+
+# FM
+product/lib64/vendor.qti.hardware.fm@1.0.so
+product/lib/vendor.qti.hardware.fm@1.0.so
+
+# GPS
+etc/permissions/com.qti.location.sdk.xml
+etc/permissions/com.qualcomm.location.xml
+etc/permissions/izat.xt.srv.xml
+etc/permissions/privapp-permissions-com.qualcomm.location.xml
+framework/com.qti.location.sdk.jar
+framework/izat.xt.srv.jar
+lib64/liblocationservice_jni.so
+lib64/libxt_native.so
+lib/liblocationservice_jni.so
+lib/libxt_native.so
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk
+product/lib64/vendor.qti.gnss@1.0.so
+product/lib64/vendor.qti.gnss@1.1.so
+product/lib64/vendor.qti.gnss@1.2.so
+product/lib64/vendor.qti.gnss@2.0.so
+product/lib64/vendor.qti.gnss@2.1.so
+product/lib64/vendor.qti.gnss@3.0.so
+product/lib/vendor.qti.gnss@1.0.so
+product/lib/vendor.qti.gnss@1.1.so
+product/lib/vendor.qti.gnss@1.2.so
+product/lib/vendor.qti.gnss@2.0.so
+product/lib/vendor.qti.gnss@2.1.so
+product/lib/vendor.qti.gnss@3.0.so
+
+# Graphics
+etc/permissions/com.qti.snapdragon.sdk.display.xml
+framework/com.qti.snapdragon.sdk.display.jar
+lib64/libOpenCL_system.so
+lib/libOpenCL_system.so
+lib64/libsdm-disp-apis.so
+lib/libsdm-disp-apis.so
+product/lib64/libsd_sdk_display.so
+product/lib64/vendor.display.color@1.0.so
+product/lib64/vendor.display.color@1.1.so
+product/lib64/vendor.display.color@1.2.so
+product/lib64/vendor.display.postproc@1.0.so
+product/lib/libsd_sdk_display.so
+product/lib/vendor.display.color@1.0.so
+product/lib/vendor.display.color@1.1.so
+product/lib/vendor.display.color@1.2.so
+product/lib/vendor.display.postproc@1.0.so
+
+# NFC
+-app/NxpNfcNci/NxpNfcNci.apk|683f26e17a1e3547a821925e8a212720cb4992f6
+-app/NxpSecureElement/NxpSecureElement.apk
+etc/nfcee_access.xml|6621fa1927720008fc0bdf47d259b18c871c2c79
+etc/permissions/com.nxp.nfc.xml
+framework/com.nxp.nfc.jar
+lib64/libnxpnfc_nci_jni.so
+lib64/libnxpnfc-nci.so
+
+# SecureMSM
+product/lib64/libseccam.so
+product/lib64/vendor.qti.hardware.qdutils_disp@1.0.so
+product/lib64/vendor.qti.hardware.qteeconnector@1.0.so
+product/lib64/vendor.qti.hardware.seccam@1.0.so
+product/lib64/vendor.qti.hardware.tui_comm@1.0.so
+product/lib/libseccam.so
+product/lib/vendor.qti.hardware.qdutils_disp@1.0.so
+product/lib/vendor.qti.hardware.qteeconnector@1.0.so
+product/lib/vendor.qti.hardware.seccam@1.0.so
+product/lib/vendor.qti.hardware.tui_comm@1.0.so
+
+# Sensors
+lib64/libsensor1.so
+lib/libsensor1.so
+lib64/libsns_low_lat_stream_stub.so
+lib/libsns_low_lat_stream_stub.so
+product/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
+product/lib64/vendor.qti.hardware.sensorscalibrate@1.0.so
+product/lib/vendor.qti.hardware.sensorscalibrate@1.0.so
+
+# Soter
+-app/SoterService/SoterService.apk
+product/framework/vendor.qti.hardware.soter-V1.0-java.jar
+product/lib64/vendor.qti.hardware.soter@1.0.so
+product/lib/vendor.qti.hardware.soter@1.0.so
+
+# SVCE
+product/lib64/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so
+product/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
+product/lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
+product/lib64/vendor.qti.hardware.scve.panorama@1.0.so
+product/lib/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so
+product/lib/vendor.qti.hardware.scve.objecttracker@1.0.so
+product/lib/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
+product/lib/vendor.qti.hardware.scve.panorama@1.0.so
+
+# Touch
+lib64/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
+lib/vendor.qti.hardware.improvetouch.touchcompanion@1.0.so
+
+# VPP
+product/lib64/vendor.qti.hardware.vpp@1.1.so
+product/lib/vendor.qti.hardware.vpp@1.1.so
+
+# Wi-Fi
+lib64/vendor.qti.hardware.wifi.keystore@1.0.so
