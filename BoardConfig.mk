@@ -104,6 +104,9 @@ TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
 # Gestures
 TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
