@@ -22,11 +22,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Get non-open-source specific aspects
 $(call inherit-product-if-exists, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-pa
-
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # AID/fs configs
@@ -90,6 +85,16 @@ PRODUCT_PACKAGES += \
 # NN
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full
+
+# Common RRO Overlays
+PRODUCT_PACKAGES += \
+    MSM8998CommonBluetoothRes \
+    MSM8998CommonCarrierConfigRes \
+    MSM8998CommonFrameworkRes \
+    MSM8998CommonFrameworkPARes \
+    MSM8998CommonSystemUIRes \
+    MSM8998CommonSystemUIPARes \
+    MSM8998CommonTelephonyRes
 
 # Power
 PRODUCT_PACKAGES += \
