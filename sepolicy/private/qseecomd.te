@@ -1,0 +1,1 @@
+allow hal_camera persist_file:lnk_file { read };
