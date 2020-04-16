@@ -58,6 +58,7 @@ PRODUCT_PACKAGES += \
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    $(LOCAL_PATH)/rootdir/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl \
     $(LOCAL_PATH)/rootdir/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
 # Lights
