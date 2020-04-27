@@ -175,7 +175,7 @@ persist.vendor.radio.data_ltd_sys_ind=1
 persist.vendor.radio.data_con_rprt=1
 # Modify by Rad for setting DATA_REGISTRATION_STATE radioTech by IMS registration tech @20180730 --
 
-persist.radio.efssync=true
+persist.vendor.radio.efssync=true
 persist.vendor.radio.bar_fake_gcell=1
 persist.vendor.data.iwlan.enable=true
 persist.vendor.radio.arfcn_test_mode=3
@@ -277,6 +277,8 @@ ro.vendor.qti.sys.fw.bservice_enable=true
 ro.vendor.qti.sys.fw.bservice_limit=5
 ro.vendor.qti.sys.fw.bservice_age=5000
 #endif/*VENDOR_EDIT*/
+
+persist.vendor.nfc.delayese=true
 
 # PA properties
 

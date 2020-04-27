@@ -115,7 +115,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
     bt \
     perf \
     telephony \
-    wfd
+    wfd-legacy
 
 # tri-state-key
 PRODUCT_PACKAGES += \
