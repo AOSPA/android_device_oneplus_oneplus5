@@ -1,7 +1,3 @@
-# /data/misc/camera/client_package_name
-allow hal_camera camera_data_file:dir { search };
-allow hal_camera camera_data_file:file { r_file_perms };
-
 allow hal_camera persist_file:dir w_dir_perms;
 allow hal_camera persist_file:file create_file_perms;
 allow hal_camera persist_file:lnk_file { read };
