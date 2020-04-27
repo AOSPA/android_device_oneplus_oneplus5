@@ -1,2 +1,2 @@
-require version-baseband=2.0.c4.7-00070-8998_GEN_PACK-2.132073.1.179387.1
-require version-vendor=1570536121
+require version-baseband=2.0.c4.7-00070-8998_GEN_PACK-2.271073.1.277412.1
+require version-vendor=1589298204|1589301122

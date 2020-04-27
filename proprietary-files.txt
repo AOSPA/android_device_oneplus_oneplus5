@@ -25,6 +25,10 @@ product/framework/vendor.qti.voiceprint-V1.0-java.jar
 product/lib64/vendor.qti.voiceprint@1.0.so
 product/lib/vendor.qti.voiceprint@1.0.so
 
+# Blueooth
+-etc/bluetooth/interop_database.conf
+-etc/bluetooth/bt_profile.conf
+
 # Camera / DSP - Hexagon libraries
 lib/rfsa/adsp/libsns_low_lat_stream_skel.so
 
@@ -113,6 +117,12 @@ product/lib/vendor.display.color@1.0.so
 product/lib/vendor.display.color@1.1.so
 product/lib/vendor.display.color@1.2.so
 product/lib/vendor.display.postproc@1.0.so
+
+# IMS
+product/framework/uimgbalibrary.jar
+product/framework/uimgbamanagerlibrary.jar
+product/etc/permissions/UimGbaManager.xml
+product/etc/permissions/UimGba.xml
 
 # NFC
 -app/NxpNfcNci/NxpNfcNci.apk|683f26e17a1e3547a821925e8a212720cb4992f6
