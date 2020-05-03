@@ -120,7 +120,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 
 # Recovery
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/recovery.fstab
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_USES_MKE2FS := true
 
 # Power
