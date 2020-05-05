@@ -293,6 +293,10 @@ TARGET_COMMON_QTI_COMPONENTS := \
     wfd-legacy \
     wlan
 
+# Remove unwanted packages
+PRODUCT_PACKAGES += \
+    RemovePackages
+
 # RIL - IMS
 PRODUCT_PACKAGES += \
     libxml2
