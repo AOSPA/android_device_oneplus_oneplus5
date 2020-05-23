@@ -48,6 +48,8 @@ PRODUCT_PACKAGES += \
 # Custom init script
 PRODUCT_PACKAGES += \
     init.pa.rc \
+    init.target.rc \
+    init.qcom.post_boot.sh \
     ueventd.qcom.rc
 
 # Display
@@ -107,7 +109,9 @@ PRODUCT_COPY_FILES += \
 
 # Perf
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perfconfigstore.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/perfconfigstore.xml
+    $(LOCAL_PATH)/configs/perfconfigstore.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/perfconfigstore.xml \
+    $(LOCAL_PATH)/configs/targetresourceconfigs.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/targetresourceconfigs.xml \
+    $(LOCAL_PATH)/configs/perfboostsconfig.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/perfboostsconfig.xml
 
 # QTI common
 TARGET_COMMON_QTI_COMPONENTS := \
