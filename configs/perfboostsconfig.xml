@@ -52,12 +52,6 @@
         <!-- SCHEDBOOST resource opcode, value-->
         <!-- MPCTLV3_MIN_ONLINE_CPU_CLUSTER_BIG resource opcode, value-->
         <!-- MPCTLV3_MIN_ONLINE_CPU_CLUSTER_LITTLE resource opcode, value-->
-        <!-- MPCTLV3_GO_HISPEED_LOAD_INTERACTIVE_CLUSTER_BIG resource opcode, value-->
-        <!-- MPCTLV3_GO_HISPEED_LOAD_INTERACTIVE_CLUSTER_LITTLE resource opcode, value-->
-        <!-- MPCTLV3_HISPEED_FREQ_INTERACTIVE_CLUSTER_BIG resource opcode, value-->
-        <!-- MPCTLV3_HISPEED_FREQ_INTERACTIVE_CLUSTER_LITTLE resource opcode, value-->
-        <!-- SCHED DOWNMIGRATE resource opcode, value-->
-        <!-- SCHED UPMIGRATE resource opcode, value-->
         <!-- MPCTLV3_L2_MEMLAT_RATIO_CEIL_0 resource opcode, value-->
         <!-- MPCTLV3_L2_MEMLAT_RATIO_CEIL_1 resource opcode, value-->
         <!-- MPCTLV3_LPM_LEVELS_REF_STDDEV resource opcode, value-->
@@ -68,9 +62,6 @@
             Id="0x00001081" Type="4" Enable="true" Timeout="2000" Target="msm8998"
             Resources="0x40C00000, 0x2,
                        0x41000000, 0x4, 0x41000100, 0x4,
-                       0x41410000, 0x28, 0x41410100, 0x28,
-                       0x41414000, 0xFFF, 0x41414100, 0xFFF,
-                       0x40C20000, 0x28, 0x40C1C000, 0x32,
                        0x43404000, 0x2710, 0x43408000, 0x2710,
                        0x4040C000, 0x1F4, 0x40410000, 0x3E8" />
 
