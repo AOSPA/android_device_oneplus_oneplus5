@@ -31,27 +31,21 @@ as anyway perflock calls of these resources would fail. -->
         <Config MajorValue="0x3" MinorValue="0x19" Supported="no" /> <!-- sched_initial_task_util -->
         <Config MajorValue="0x3" MinorValue="0x1A" Supported="no" /> <!-- sched_load_boost -->
 
-        <!-- For INTERACTIVE major, all the interactive minors are not supported
-        by default as the recent target moved to schedutil. So, for older targets
-        where interactive minors are supported they need to be enabled and schedutil
-        minors are disabled. -->
-        <Config MajorValue="0x5" MinorValue="0x0" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay" /> <!-- above_hispeed_delay -->
-        <Config MajorValue="0x5" MinorValue="0x1" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/boost" /> <!-- boost -->
-        <Config MajorValue="0x5" MinorValue="0x3" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration" /> <!-- boostpulse_duration -->
-        <Config MajorValue="0x5" MinorValue="0x4" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load" /> <!-- go_hispeed_load -->
-        <Config MajorValue="0x5" MinorValue="0x5" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq" /> <!-- hispeed_freq -->
-        <Config MajorValue="0x5" MinorValue="0x6" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy" /> <!-- io_is_busy -->
-        <Config MajorValue="0x5" MinorValue="0x7" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time" /> <!-- min_sample_time -->
-        <Config MajorValue="0x5" MinorValue="0x8" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads" /><!-- target_loads -->
-        <Config MajorValue="0x5" MinorValue="0x9" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate" /> <!-- timer_rate -->
-        <Config MajorValue="0x5" MinorValue="0xA" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_slack" /> <!-- timer_slack -->
-        <Config MajorValue="0x5" MinorValue="0xB" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis" /> <!-- max_freq_hysteresis -->
-        <Config MajorValue="0x5" MinorValue="0xC" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load" /> <!-- use_sched_load -->
-        <Config MajorValue="0x5" MinorValue="0xD" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif" /> <!-- use_migration_notif -->
-        <Config MajorValue="0x5" MinorValue="0xE" Node="/sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif" /> <!-- ignore_hispeed_on_notif -->
-        <Config MajorValue="0x5" MinorValue="0xF" Supported="no" /> <!-- schedutil/hispeed_freq -->
-        <Config MajorValue="0x5" MinorValue="0x10" Supported="no" /> <!-- schedutil/hispeed_load -->
-        <Config MajorValue="0x5" MinorValue="0x11" Supported="no" /> <!-- schedutil/pl -->
+        <!-- Disable interactive governor -->
+        <Config MajorValue="0x5" MinorValue="0x0" Supported="no" /> <!-- above_hispeed_delay -->
+        <Config MajorValue="0x5" MinorValue="0x1" Supported="no" /> <!-- boost -->
+        <Config MajorValue="0x5" MinorValue="0x3" Supported="no" /> <!-- boostpulse_duration -->
+        <Config MajorValue="0x5" MinorValue="0x4" Supported="no" /> <!-- go_hispeed_load -->
+        <Config MajorValue="0x5" MinorValue="0x5" Supported="no" /> <!-- hispeed_freq -->
+        <Config MajorValue="0x5" MinorValue="0x6" Supported="no" /> <!-- io_is_busy -->
+        <Config MajorValue="0x5" MinorValue="0x7" Supported="no" /> <!-- min_sample_time -->
+        <Config MajorValue="0x5" MinorValue="0x8" Supported="no" /><!-- target_loads -->
+        <Config MajorValue="0x5" MinorValue="0x9" Supported="no" /> <!-- timer_rate -->
+        <Config MajorValue="0x5" MinorValue="0xA" Supported="no" /> <!-- timer_slack -->
+        <Config MajorValue="0x5" MinorValue="0xB" Supported="no" /> <!-- max_freq_hysteresis -->
+        <Config MajorValue="0x5" MinorValue="0xC" Supported="no" /> <!-- use_sched_load -->
+        <Config MajorValue="0x5" MinorValue="0xD" Supported="no" /> <!-- use_migration_notif -->
+        <Config MajorValue="0x5" MinorValue="0xE" Supported="no" /> <!-- ignore_hispeed_on_notif -->
 
         <Config MajorValue="0xB" MinorValue="0x6" Supported="no" /> <!-- enable_process_reclaim -->
 
