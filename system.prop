@@ -292,5 +292,5 @@ debug.sf.enable_gl_backpressure=1
 debug.sf.latch_unsignaled=1
 
 # OnePlus sensors
-ro.sensor.pickup=oneplus.sensor.pickup
-ro.sensor.pocket=oneplus.sensor.pocket
+ro.sensor.pickup=com.oneplus.sensor.pickup
+ro.sensor.pocket=com.oneplus.sensor.pocket
