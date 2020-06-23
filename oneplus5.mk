@@ -60,35 +60,26 @@ PRODUCT_PACKAGES += \
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
-    $(LOCAL_PATH)/rootdir/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl \
-    $(LOCAL_PATH)/rootdir/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
+    $(LOCAL_PATH)/rootdir/keylayout/fpc1020.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/fpc1020.kl \
+    $(LOCAL_PATH)/rootdir/keylayout/gf_input.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gf_input.kl \
+    $(LOCAL_PATH)/rootdir/keylayout/synaptics.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/synaptics.kl
 
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.oneplus_msm8998
 
 # Media
-PRODUCT_PACKAGES += \
-    libmediaplayerservice
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/rootdir/etc/media_profiles.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_profiles.xml
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0 \
-    android.hardware.nfc@1.1 \
     android.hardware.nfc@1.2 \
     android.hardware.secure_element@1.0 \
     com.android.nfc_extras \
     Tag \
     vendor.nxp.nxpese@1.0 \
     vendor.nxp.nxpnfc@1.0
-
-# NN
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full
 
 # Common RRO Overlays
 PRODUCT_PACKAGES += \
@@ -100,19 +91,15 @@ PRODUCT_PACKAGES += \
     MSM8998CommonSystemUIPARes \
     MSM8998CommonTelephonyRes
 
-# Power
-PRODUCT_PACKAGES += \
-    power.qcom
-
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.ims.xml:system/etc/permissions/android.hardware.telephony.ims.xml
+    frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml
 
 # Perf
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perfconfigstore.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/perfconfigstore.xml \
-    $(LOCAL_PATH)/configs/targetresourceconfigs.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/targetresourceconfigs.xml \
-    $(LOCAL_PATH)/configs/perfboostsconfig.xml:system/product/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/perf/perfboostsconfig.xml
+    $(LOCAL_PATH)/configs/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR_OVERLAY)/etc/perf/perfconfigstore.xml \
+    $(LOCAL_PATH)/configs/targetresourceconfigs.xml:$(TARGET_COPY_OUT_VENDOR_OVERLAY)/etc/perf/targetresourceconfigs.xml \
+    $(LOCAL_PATH)/configs/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR_OVERLAY)/etc/perf/perfboostsconfig.xml
 
 # QTI common
 TARGET_COMMON_QTI_COMPONENTS := \
