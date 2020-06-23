@@ -93,17 +93,12 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 USE_OPENGL_RENDERER := true
 
-# DRM
-TARGET_ENABLE_MEDIADRM_64 := true
-
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/config.fs
-
 # Gestures
 TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
 
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
+# Init
+TARGET_INIT_VENDOR_LIB := libinit_oneplus5
+TARGET_RECOVERY_DEVICE_MODULES := libinit_oneplus5
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -122,7 +117,6 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
-TARGET_USES_MKE2FS := true
 
 # Power
 TARGET_OVERLAYS_POWERHAL := true
@@ -131,9 +125,6 @@ TARGET_USES_INTERACTION_BOOST := true
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
-# Sensors
-USE_SENSOR_MULTI_HAL := true
-
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 
@@ -141,10 +132,6 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 BOARD_VNDK_VERSION := current
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_TARGET_VNDK_VERSION := 29
-
-# Vendor init
-TARGET_INIT_VENDOR_LIB := libinit_oneplus5
-TARGET_RECOVERY_DEVICE_MODULES := libinit_oneplus5
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus5/BoardConfigVendor.mk
