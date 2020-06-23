@@ -149,7 +149,7 @@ persist.hwc.enable_vds=1
 # vendor_edit modify by chengbiao.hu@20190226
 # System props for telephony
 # System prop to turn on CdmaLTEPhone always
-telephony.lteOnCdmaDevice=1
+telephony.lteOnCdmaDevice=0
 
 #VENDOR_EDIT BillZhang 2018/5/4 start
 #mbn ota config
