@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32b8b98_f6ba9247",
+        "filename": "oneplus5.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2020-06-23T15:48:52Z",
+      "side": 1,
+      "message": "for these you can probably use TARGET_COPY_OUT_VENDOR_OVERLAY",
+      "revId": "e9bf9c296fc41e5a8b1afbb5a56a521b0fffc95e",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": true
+    }
+  ]
+}
