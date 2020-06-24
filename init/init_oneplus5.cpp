@@ -1,5 +1,6 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
+   Copyright (c) 2020, Paranoid Android
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -65,13 +66,13 @@ void vendor_load_properties()
 		property_override("ro.product.system.device", "oneplus5");
 		property_override("ro.product.system.model", "OnePlus 5");
 		property_override("ro.product.device", "OnePlus5");
-		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2005122320:user/release-keys");
+		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2006012143:user/release-keys");
 		property_override("ro.vendor.settings.ui.navigationkeys.enabled", "false");
 	} else if (variant == "OnePlus5T") {
 		property_override("ro.product.system.device", "oneplus5t");
 		property_override("ro.product.system.model", "OnePlus 5T");
 		property_override("ro.product.device", "OnePlus5T");
-		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:10/QKQ1.191014.012/2005130017:user/release-keys");
+		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:10/QKQ1.191014.012/2006012146:user/release-keys");
 		property_override("ro.vendor.settings.ui.hardwarekeys.present", "false");
 	}
 
