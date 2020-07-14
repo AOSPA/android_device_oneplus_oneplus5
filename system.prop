@@ -268,9 +268,6 @@ persist.vendor.btstack.enable.splita2dp=true
 
 persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac
 
-# Disable AAC Whitelist for AAC HD
-persist.vendor.bt.a2dp.aac_whitelist=false
-
 #changke.chen set max call volume
 ro.config.vc_call_vol_steps=6
 
