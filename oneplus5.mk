@@ -91,6 +91,11 @@ PRODUCT_PACKAGES += \
     MSM8998CommonSystemUIPARes \
     MSM8998CommonTelephonyRes
 
+# Per-device RRO Overlays
+PRODUCT_PACKAGES += \
+    OnePlus5FrameworksPA \
+    OnePlus5TFrameworks
+
 # Power
 PRODUCT_PACKAGES += \
     power.qcom
