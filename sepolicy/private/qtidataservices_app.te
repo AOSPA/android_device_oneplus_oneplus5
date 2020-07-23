@@ -1,0 +1,5 @@
+type qtidataservices_app, domain;
+app_domain(qtidataservices_app);
+
+allow qtidataservices_app self:socket create;
+binder_call(qtidataservices_app, hal_perf_default)
