@@ -1,0 +1,2 @@
+allow qtidataservices_app self:socket create;
+binder_call(qtidataservices_app, hal_perf_default)

@@ -1,3 +1,6 @@
+# Dev nodes
+/dev/cpu_dma_latency     u:object_r:device_latency:s0
+
 # Files in rootfs
 /bt_firmware(/.*)?       u:object_r:bt_firmware_file:s0
 /dsp(/.*)?               u:object_r:adsprpcd_file:s0
@@ -5,7 +8,15 @@
 /persist(/.*)?           u:object_r:persist_file:s0
 
 # Lights
-/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/android\.hardware\.light@2\.0-service    u:object_r:hal_light_default_exec:s0
+/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/android\.hardware\.light@2\.0-service            u:object_r:hal_light_default_exec:s0
+
+# Performance
+/sys/devices(/platform)?/soc/[a-f0-9]+.ufshc/clkscale_enable                                            u:object_r:sysfs_scsi_host:s0
+/sys/module/msm_performance(/.*)?                                                                       u:object_r:sysfs_msm_perf:s0
+/sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/min_freq                                         u:object_r:sysfs_devfreq:s0
+/sys/devices/soc/soc:qcom,cpubw/devfreq/soc:qcom,cpubw/bw_hwmon/hyst_trigger_count                      u:object_r:sysfs_devfreq:s0
+/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/vendor\.qti\.hardware\.perf@2\.0-service       u:object_r:hal_perf_default_exec:s0
+/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/vendor\.qti\.hardware\.iop@2\.0-service        u:object_r:hal_iop_default_exec:s0
 
 # tri-state-key
 /system/bin/tri-state-key_daemon          u:object_r:tri-state-key_daemon_exec:s0
