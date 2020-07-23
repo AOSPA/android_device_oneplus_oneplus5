@@ -1,0 +1,1 @@
+allow bluetooth hal_perf_hwservice:hwservice_manager find;

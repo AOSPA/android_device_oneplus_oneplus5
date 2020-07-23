@@ -7,6 +7,11 @@
 # Lights
 /(product|system/product)/vendor_overlay/[0-9]+/bin/hw/android\.hardware\.light@2\.0-service    u:object_r:hal_light_default_exec:s0
 
+# Performance
+/(product|system/product)/vendor_overlay/[0-9]+/bin/msm_irqbalance       u:object_r:msm_irqbalanced_exec:s0
+/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/vendor\.qti\.hardware\.perf@2\.0-service       u:object_r:hal_perf_default_exec:s0
+/(product|system/product)/vendor_overlay/[0-9]+/bin/hw/vendor\.qti\.hardware\.iop@2\.0-service        u:object_r:hal_iop_default_exec:s0
+
 # tri-state-key
 /system/bin/tri-state-key_daemon          u:object_r:tri-state-key_daemon_exec:s0
 
