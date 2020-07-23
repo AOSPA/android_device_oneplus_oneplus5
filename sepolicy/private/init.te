@@ -1,1 +1,4 @@
 allow init vendor_overlay_file:file mounton;
+allow init hal_perf_hwservice:hwservice_manager { add find };
+allow init hal_iop_hwservice:hwservice_manager { add find };
+allow init hidl_base_heservice:hwservice_manager { add find };

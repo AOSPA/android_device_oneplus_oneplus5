@@ -26,5 +26,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Vendor
+vendor.qti.hardware.iop::IIop                                u:object_r:hal_iop_hwservice:s0
 vendor.qti.hardware.perf::IPerf                              u:object_r:hal_perf_hwservice:s0
 vendor.qti.hardware.slmadapter::ISlmAdapter                  u:object_r:hal_slmadapter_hwservice:s0
