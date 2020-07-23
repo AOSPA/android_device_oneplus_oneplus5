@@ -1,0 +1,4 @@
+allow qtidataservices_app hal_perf_hwservice:hwservice_manager find;
+allow qtidataservices_app self:socket create;
+
+get_prop(qtidataservices_app, boottime_prop)
