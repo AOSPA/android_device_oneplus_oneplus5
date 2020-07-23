@@ -26,3 +26,5 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 dontaudit mediaprovider hal_perf_hwservice:hwservice_manager find;
+
+binder_call(mediaprovider, hal_perf_default)
