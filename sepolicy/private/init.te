@@ -16,3 +16,6 @@ allow init {
 
 allow init device_latency:chr_file rw_file_perms;
 allow init iop_data_file:file { lock ioctl };
+allow init hal_perf_hwservice:hwservice_manager { add find };
+allow init hal_iop_hwservice:hwservice_manager { add find };
+allow init hidl_base_heservice:hwservice_manager { add find };
