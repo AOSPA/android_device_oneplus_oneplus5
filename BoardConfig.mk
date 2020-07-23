@@ -93,6 +93,9 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 USE_OPENGL_RENDERER := true
 
+# HIDL
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(COMMON_PATH)/framework_manifest.xml
+
 # Gestures
 TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
 
