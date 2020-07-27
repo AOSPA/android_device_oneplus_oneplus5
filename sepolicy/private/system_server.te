@@ -1,0 +1,1 @@
+allow system_server proc_flickerfree:file { search rw_file_perms };

@@ -6,6 +6,7 @@ type persist_file, file_type;
 
 # proc
 type proc_touchpanel, fs_type, proc_type;
+type proc_flickerfree, fs_type, proc_type;
 
 # sys
 type sysfs_diag, fs_type, sysfs_type;
