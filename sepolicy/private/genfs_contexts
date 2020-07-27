@@ -1,4 +1,5 @@
 genfscon proc  /touchpanel u:object_r:proc_touchpanel:s0
+genfscon proc  /flicker_free u:object_r:proc_flickerfree:s0
 
 #pmic sysfs_nodes
 genfscon sysfs /devices/soc/800f000.qcom,spmi/spmi-0/spmi0-02/800f000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/battery u:object_r:sysfs_battery_supply:s0
