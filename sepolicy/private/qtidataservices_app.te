@@ -1,5 +1,6 @@
 allow qtidataservices_app hal_perf_hwservice:hwservice_manager find;
 allow qtidataservices_app self:socket create;
+allow qtidataservices_app self:socket ioctl;
 
 binder_call(qtidataservices_app, hal_perf_default)
 
