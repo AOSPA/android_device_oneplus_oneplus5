@@ -1,0 +1,1 @@
+allow mediaserver vendor_default_prop:file read;
