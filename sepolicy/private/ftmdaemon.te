@@ -1,0 +1,4 @@
+type ftmdaemon, domain;
+type ftmdaemon_exec, exec_type, file_type;
+
+allow ftmdaemon wifi_vendor_data_file:file { read setattr };
