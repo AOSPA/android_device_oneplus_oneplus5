@@ -49,7 +49,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.pa.rc \
-    init.target.rc \
     init.qcom.post_boot.sh \
     ueventd.qcom.rc
 
