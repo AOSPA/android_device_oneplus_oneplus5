@@ -5,6 +5,13 @@ on init
     mount none /product/overlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_squircle/OnePlusIconShapeSquircleOverlay.apk bind
     mount none /product/overlay/EmptyOverlay.apk /vendor/overlay/oneplus_shape_teardrop/OnePlusIconShapeTeardropOverlay.apk bind
 
+    # Set boottime stune value
+    write /dev/stune/schedtune.boost 100
+    # set default schedTune value for foreground/top-app
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/top-app/schedtune.prefer_idle 1
+
 on post-fs-data
     # For oneplus camera hal
     mkdir /data/misc/camera 775 system system
