@@ -11,6 +11,7 @@ type proc_touchpanel, fs_type, proc_type;
 
 # sys
 type sysfs_devfreq, fs_type, sysfs_type;
+type sysfs_display, sysfs_type, fs_type;
 type sysfs_scsi_host, fs_type, sysfs_type;
 type sysfs_msm_perf, fs_type, sysfs_type;
 type sysfs_graphics, sysfs_type, fs_type;
