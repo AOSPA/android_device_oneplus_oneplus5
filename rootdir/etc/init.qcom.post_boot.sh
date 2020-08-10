@@ -5284,6 +5284,13 @@ case "$target" in
         echo 0-3 > /dev/cpuset/little/cpus
         echo 0 > /proc/sys/kernel/sched_boost
 
+        # Setup final blkio
+        # value for group_idle is us
+        echo 1000 > /dev/blkio/blkio.weight
+        echo 500 > /dev/blkio/background/blkio.weight
+        echo 0 > /dev/blkio/blkio.group_idle
+        echo 0 > /dev/blkio/background/blkio.group_idle
+
         # Set Memory parameters
         configure_memory_parameters
 
