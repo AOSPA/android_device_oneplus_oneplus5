@@ -251,10 +251,6 @@ persist.debug.coresight.config=stm-events
 #Expose aux camera for below packages
 vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera,com.google.android.GoogleCamera
 
-#Whitelisting the below packages
-persist.vendor.camera.privapp.list=org.codeaurora.snapcam
-persist.camera.privapp.list=org.codeaurora.snapcam
-
 #enable IZat OptInApp overlay
 persist.vendor.overlay.izat.optin=rro
 
