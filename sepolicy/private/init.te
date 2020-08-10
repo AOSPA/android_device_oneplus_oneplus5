@@ -17,3 +17,4 @@ allow init {
 allow init iop_data_file:file { lock ioctl };
 allow init hal_perf_hwservice:hwservice_manager { find };
 allow init hal_iop_hwservice:hwservice_manager { find };
+allow init sysfs_display:file create_file_perms;
