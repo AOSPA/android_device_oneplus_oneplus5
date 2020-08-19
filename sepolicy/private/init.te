@@ -1,1 +1,19 @@
+allow init proc:file write;
 allow init vendor_overlay_file:file mounton;
+
+allow init {
+     sysfs_devfreq
+     sysfs_scsi_host
+     sysfs_msm_perf
+     sysfs_graphics
+}:dir r_dir_perms;
+
+allow init {
+     sysfs_devfreq
+     sysfs_scsi_host
+     sysfs_msm_perf
+     sysfs_graphics
+}:file rw_file_perms;
+
+allow init device_latency:chr_file rw_file_perms;
+allow init iop_data_file:file { lock ioctl };
