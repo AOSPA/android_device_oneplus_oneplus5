@@ -1,2 +1,0 @@
-# diag device node access is restricted to untrusted_app
-neverallow untrusted_app_all diag_device:chr_file rw_file_perms;

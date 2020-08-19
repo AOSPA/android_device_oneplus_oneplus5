@@ -45,6 +45,7 @@ TARGET_HW_DISK_ENCRYPTION := true
 # Kernel
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.usbconfigfs=true androidboot.usbcontroller=a800000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME  := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -124,6 +125,7 @@ TARGET_OVERLAYS_POWERHAL := true
 TARGET_USES_INTERACTION_BOOST := false
 
 # Sepolicy
+TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 
 # Treble
