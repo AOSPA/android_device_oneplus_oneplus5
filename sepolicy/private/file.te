@@ -4,10 +4,14 @@ type bt_firmware_file, file_type, contextmount_type, vendor_file_type;
 type firmware_file, file_type, contextmount_type, vendor_file_type;
 type persist_file, file_type;
 
+type iop_data_file, file_type, data_file_type;
+
 # proc
 type proc_touchpanel, fs_type, proc_type;
 
 # sys
-type sysfs_diag, fs_type, sysfs_type;
+type sysfs_devfreq, fs_type, sysfs_type;
+type sysfs_scsi_host, fs_type, sysfs_type;
+type sysfs_msm_perf, fs_type, sysfs_type;
+type sysfs_graphics, sysfs_type, fs_type;
 type sysfs_oem, sysfs_type, fs_type;
-type sysfs_battery_supply, sysfs_type, fs_type;
