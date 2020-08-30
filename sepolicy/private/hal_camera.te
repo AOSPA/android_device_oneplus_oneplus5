@@ -1,3 +1,11 @@
+type hal_camera_op, domain;
+hal_server_domain(hal_camera_op, hal_camera_default)
+typeattribute hal_camera_op data_between_core_and_vendor_violators;
+
+# /data/misc/camera/client_package_name
+allow hal_camera_op camera_data_file:dir { search };
+allow hal_camera_op camera_data_file:file { r_file_perms };
+
 allow hal_camera persist_file:dir w_dir_perms;
 allow hal_camera persist_file:file create_file_perms;
 allow hal_camera persist_file:lnk_file { read };
