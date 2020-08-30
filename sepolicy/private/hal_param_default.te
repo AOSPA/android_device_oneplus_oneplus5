@@ -1,0 +1,1 @@
+allow hal_param_default sysfs_data:file read;
