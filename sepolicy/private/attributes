@@ -30,6 +30,9 @@ attribute hal_iop;
 attribute hal_iop_client;
 attribute hal_iop_server;
 
+attribute hal_param;
+attribute hal_param_server;
+
 attribute hal_perf_client;
 attribute hal_perf_server;
 attribute hal_perf;

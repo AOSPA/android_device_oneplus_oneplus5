@@ -66,13 +66,16 @@ void vendor_load_properties()
 		property_override("ro.product.system.device", "oneplus5");
 		property_override("ro.product.system.model", "OnePlus 5");
 		property_override("ro.product.device", "OnePlus5");
-		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5/OnePlus5:10/QKQ1.191014.012/2006012143:user/release-keys");
 	} else if (variant == "OnePlus5T") {
 		property_override("ro.product.system.device", "oneplus5t");
 		property_override("ro.product.system.model", "OnePlus 5T");
 		property_override("ro.product.device", "OnePlus5T");
-		property_override("ro.system.build.fingerprint", "OnePlus/OnePlus5T/OnePlus5T:10/QKQ1.191014.012/2006012146:user/release-keys");
 	}
+
+	// Fingerprint
+	property_override("ro.build.fingerprint", "google/coral/coral:11/RP1A.200720.009/6720564:user/release-keys");
+	property_override("ro.system.build.fingerprint", "google/coral/coral:11/RP1A.200720.009/6720564:user/release-keys");
+	property_override_dual("ro.vendor.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:11/RP1A.200720.009/6720564:user/release-keys");
 
 	// Common Properties
 	// Dalvik
