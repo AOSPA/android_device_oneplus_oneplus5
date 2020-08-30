@@ -1,3 +1,4 @@
+allow init proc:file write;
 allow init vendor_overlay_file:file mounton;
 
 allow init {
@@ -17,3 +18,5 @@ allow init {
 allow init iop_data_file:file { lock ioctl };
 allow init hal_perf_hwservice:hwservice_manager { find };
 allow init hal_iop_hwservice:hwservice_manager { find };
+allow init device_latency:chr_file rw_file_perms;
+allow init hidl_base_hwservice:hwservice_manager { add };
