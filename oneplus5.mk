@@ -39,6 +39,9 @@ PRODUCT_PACKAGES += \
     libaudiohal_deathhandler \
     libstagefright_softomx
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR_OVERLAY)/etc/audio/audio_policy_configuration.xml
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbluetooth_qti \
