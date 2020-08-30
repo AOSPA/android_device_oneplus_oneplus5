@@ -56,7 +56,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := paranoid_defconfig
 TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := proton
+TARGET_KERNEL_CLANG_VERSION := r349610
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8998
@@ -126,13 +126,16 @@ TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.qcom
 TARGET_OVERLAYS_POWERHAL := true
 TARGET_USES_INTERACTION_BOOST := false
 
+# Properties
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 
 # Treble
 BOARD_VNDK_VERSION := current
-PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_TARGET_VNDK_VERSION := 29
+PRODUCT_SEPOLICY_SPLIT := true
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus5/BoardConfigVendor.mk
