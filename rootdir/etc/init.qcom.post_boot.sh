@@ -5188,6 +5188,9 @@ case "$target" in
         echo 0 > /dev/stune/schedtune.prefer_idle
         echo 0 > /dev/stune/schedtune.boost
 
+        # Restore contexts from vendor
+        restorecon_recursive /vendor/bin/hw
+
         for cpubw in /sys/class/devfreq/*qcom,cpubw*
         do
             echo "bw_hwmon" > $cpubw/governor
