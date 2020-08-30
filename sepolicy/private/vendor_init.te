@@ -1,0 +1,13 @@
+typeattribute vendor_init data_between_core_and_vendor_violators;
+
+allow vendor_init anr_data_file:dir setattr;
+allow vendor_init nfc_data_file:dir setattr;
+allow vendor_init persist_file:lnk_file read;
+allow vendor_init proc_cmdline:file getattr;
+allow vendor_init system_data_file:dir { setattr read write };
+
+# allow vendor_init to write into /data/vendor/tombstones
+userdebug_or_eng(`
+  allow vendor_init tombstone_data_file:dir rw_dir_perms;
+  allow vendor_init tombstone_data_file:file create_file_perms;
+')
