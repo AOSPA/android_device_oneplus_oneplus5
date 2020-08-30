@@ -1,4 +1,7 @@
+allow init proc:file write;
 allow init vendor_overlay_file:file mounton;
+allow init vendor_configs_file:dir mounton;
+allow init mnt_vendor_file:dir mounton;
 
 allow init {
      sysfs_devfreq
@@ -18,3 +21,6 @@ allow init iop_data_file:file { lock ioctl };
 allow init hal_perf_hwservice:hwservice_manager { find };
 allow init hal_iop_hwservice:hwservice_manager { find };
 allow init sysfs_display:file create_file_perms;
+
+allow init device_latency:chr_file rw_file_perms;
+allow init hidl_base_hwservice:hwservice_manager { add };
