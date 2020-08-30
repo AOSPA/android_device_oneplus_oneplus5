@@ -1,0 +1,11 @@
+typeattribute vendor_init data_between_core_and_vendor_violators;
+
+allow vendor_init anr_data_file:dir { setattr read open ioctl };
+allow vendor_init apk_data_file:dir create;
+allow vendor_init devpts:chr_file { read write };
+allow vendor_init nfc_data_file:dir { setattr read open ioctl };
+allow vendor_init persist_file:lnk_file read;
+allow vendor_init proc_cmdline:file getattr;
+allow vendor_init system_data_file:dir { setattr read write open add_name ioctl create };
+allow vendor_init qvrd_data_file:dir { setattr create };
+allow vendor_init tombstone_data_file:dir setattr;
