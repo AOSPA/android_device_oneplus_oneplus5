@@ -44,6 +44,10 @@ public class TriStateHandler implements DeviceKeyHandler {
     }
 
     public KeyEvent handleKeyEvent(KeyEvent event) {
+        if (event.getAction() != KeyEvent.ACTION_DOWN) {
+            return event;
+        }
+
         final int scanCode = event.getScanCode();
         final int currentRingerMode = mAudioManager.getRingerModeInternal();
 
