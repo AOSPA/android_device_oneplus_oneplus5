@@ -120,6 +120,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
+# Factory Reset Protection
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.frp.pst=/dev/block/bootdevice/by-name/config
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
@@ -139,8 +143,9 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.oneplus.perf.rc \
     init.oneplus.post_boot.sh \
-    init.target.rc
-    
+    init.target.rc \
+    ueventd.oneplus.rc
+
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.post_boot.custom=true
 
