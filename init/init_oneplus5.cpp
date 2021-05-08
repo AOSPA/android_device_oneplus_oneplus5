@@ -49,17 +49,18 @@
 #include "property_service.h"
 
 using android::base::Trim;
+using android::base::GetProperty;
 using android::base::ReadFileToString;
 
-void property_override(char const prop[], char const value[], bool add = true)
+void property_override(char const prop[], char const value[])
 {
-    auto pi = (prop_info *) __system_property_find(prop);
+    prop_info *pi;
 
-    if (pi != nullptr) {
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
         __system_property_update(pi, value, strlen(value));
-    } else if (add) {
+    else
         __system_property_add(prop, strlen(prop), value, strlen(value));
-    }
 }
 
 void load_dalvikvm_properties()
@@ -150,9 +151,19 @@ void init_alarm_boot_properties()
     }
 }
 
-void vendor_load_properties() {
-    LOG(INFO) << "Loading vendor specific properties";
-    init_alarm_boot_properties();
+void vendor_load_properties()
+{
+int project_name = stoi(android::base::GetProperty("ro.boot.project_name", ""));
+switch(project_name){
+case 16859:
+/* OnePlus 5 */
+property_override("ro.hardware.fingerprint", "fpc");
+break;
+case 17801:
+/* OnePlus 5T */
+property_override("ro.hardware.fingerprint", "goodix");
+break;
+}
+    property_override("vendor.boot.project_name", std::to_string(project_name).c_str());
     load_dalvikvm_properties();
 }
-
