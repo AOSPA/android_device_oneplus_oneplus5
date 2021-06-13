@@ -62,7 +62,7 @@ public class TriStateHandler implements DeviceKeyHandler {
                 break;
             case MODE_VIBRATION:
                 if (currentRingerMode != AudioManager.RINGER_MODE_VIBRATE) {
-                    doHapticFeedback(VibrationEffect.EFFECT_THUD);
+                    doHapticFeedback(VibrationEffect.EFFECT_HEAVY_CLICK);
                     mAudioManager.setRingerModeInternal(AudioManager.RINGER_MODE_VIBRATE);
                 } else {
                     return event;
