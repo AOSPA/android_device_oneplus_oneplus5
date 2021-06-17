@@ -99,6 +99,7 @@ PRODUCT_COMPRESSED_APEX := false
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.sf.native_mode=2 \
     vendor.display.disable_skip_validate=1
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
