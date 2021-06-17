@@ -157,6 +157,7 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.oneplus.display.rc \
     init.oneplus.perf.rc \
     init.oneplus.post_boot.sh \
     init.target.rc \
