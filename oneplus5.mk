@@ -51,8 +51,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 TARGET_BOARD_PLATFORM := msm8998
 
 # Button Settings
+ifeq ($(TARGET_PRODUCT), aospa_oneplus5)
 PRODUCT_PACKAGES += \
     ButtonSettings
+endif
 
 # Camera
 PRODUCT_PACKAGES += \
