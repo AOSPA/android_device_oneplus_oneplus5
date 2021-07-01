@@ -24,12 +24,13 @@
         <!-- CPUBW_MIN_FREQ resource opcode, value-->
         <!-- POWER COLLAPSE resource opcode, value-->
         <!-- STORAGE CLK SCALING resource opcode, value-->
+        <!-- GPU MIN_FREQUENCY resource opcode, value-->
 
         <!-- Type="1", main launch boost of 2sec -->
         <Config
             Id="0x00001081" Type="1" Enable="true" Timeout="2000" Target="msm8998"
             Resources="0x40C00000, 0x1, 0x40804000, 0x939, 0x40804100, 0xFFF, 0x40800000, 0xFFF,
-                       0x40800100, 0xFFF, 0x41800000, 140, 0x40400000, 0x1, 0x42C10000, 0x1" />
+                       0x40800100, 0xFFF, 0x41800000, 140, 0x40400000, 0x1, 0x42C10000, 0x1, 0x4280C000, 670" />
 
     <!--app lauch boost (disabling packing)-->
 
@@ -70,11 +71,12 @@
         <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
         <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
         <!-- SCHEDBOOST resource opcode, value-->
+        <!-- GPU MIN_FREQUENCY resource opcode, value-->
 
         <!-- Type="1", Vertical Scroll boost -->
         <Config
             Id="0x00001080" Type="1" Enable="true" Target="msm8998"
-            Resources="0x41800000, 0x33, 0x40800000, 1497, 0x40800100, 1555, 0x40C00000, 0x2" />
+            Resources="0x41800000, 0x33, 0x40800000, 1497, 0x40800100, 1555, 0x40C00000, 0x2, 0x4280C000, 596" />
 
     <!--Horizontal Scroll boost-->
         <!-- CPUBW_MIN_FREQ resource opcode, value-->
