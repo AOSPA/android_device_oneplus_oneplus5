@@ -74,15 +74,18 @@
         <!-- Type="1", Vertical Scroll boost -->
         <Config
             Id="0x00001080" Type="1" Enable="true" Target="msm8998"
-            Resources="0x41800000, 0x33, 0x40800000, 1000, 0x40800100, 1000, 0x40C00000, 0x2" />
+            Resources="0x41800000, 0x33, 0x40800000, 1497, 0x40800100, 1555, 0x40C00000, 0x2" />
 
     <!--Horizontal Scroll boost-->
+        <!-- CPUBW_MIN_FREQ resource opcode, value-->
+        <!-- CPUBOOST_MIN_FREQ BIG CORE resource opcode, value -->
+        <!-- CPUBOOST_MIN_FREQ LITTLE Core resource opcode, value -->
         <!-- SCHEDBOOST resource opcode, value-->
 
         <!-- Type="2", Horizontal Scroll boost -->
         <Config
             Id="0x00001080" Type="2" Enable="true" Target="msm8998"
-            Resources="0x40C00000, 0x2" />
+            Resources="0x41800000, 0x33, 0x40800000, 1497, 0x40800100, 1555, 0x40C00000, 0x2" />
 
     <!--Pre-Fling boost-->
         <!-- CPUBW_MIN_FREQ resource opcode, value-->
@@ -93,7 +96,7 @@
         <!-- Type="4", Pre-Fling boost -->
         <Config
             Id="0x00001080" Type="4" Enable="true" Timeout="80" Target="msm8998"
-            Resources="0x41800000, 0x33, 0x40800000, 1000, 0x40800100, 1000, 0x40C00000, 0x2" />
+            Resources="0x41800000, 0x33, 0x40800000, 1497, 0x40800100, 1555, 0x40C00000, 0x2" />
 
     <!--PackageInstall boost-->
         <!-- SCHEDBOOST resource opcode, value-->
