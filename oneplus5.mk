@@ -22,6 +22,7 @@ TARGET_KERNEL_VERSION := 4.4
 PRODUCT_PACKAGES += \
     FrameworksResTarget \
     OnePlus5SeriesFrameworks \
+    OnePlus5Settings \
     WifiResTarget
 
 # Public Libraries
