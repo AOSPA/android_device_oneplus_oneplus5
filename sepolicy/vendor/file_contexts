@@ -1,0 +1,3 @@
+# Keylayout
+/vendor/usr/keylayout/fpc1020.kl                                u:object_r:vendor_keylayout_file:s0
+/vendor/usr/keylayout/synaptics_s3320.kl                        u:object_r:vendor_keylayout_file:s0
