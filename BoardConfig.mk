@@ -88,7 +88,7 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/fstab.qcom
 BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
 
 # Symlinks
-TARGET_MOUNT_POINTS_SYMLINKS := true
+BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
 
 # Treble
 BOARD_VNDK_VERSION := current
