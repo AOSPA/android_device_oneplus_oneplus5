@@ -328,6 +328,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.multishake=true \
     persist.vendor.sensors.direct_channel=true
 
+# Soc
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.soc.model=MSM8998 \
+    ro.soc.manufacturer=Qualcomm
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
