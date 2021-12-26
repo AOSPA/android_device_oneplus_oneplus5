@@ -130,6 +130,8 @@ PRODUCT_COPY_FILES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0 \
+    android.hidl.allocator@1.0.vendor \
     libhwbinder \
     libhidltransport \
     libhwbinder.vendor \
