@@ -14,3 +14,6 @@
 
 # Factory Reset Protection
 /dev/block/platform/soc/1da4000.ufshc/by-name/config   0600   system  system
+
+# the DIAG device node is not world writable/readable.
+/dev/diag                 0666   system     oem_2901
