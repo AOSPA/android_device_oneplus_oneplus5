@@ -309,6 +309,11 @@ PRODUCT_ODM_PROPERTIES += \
     persist.vendor.radio.enableadvancedscan=false \
     ro.telephony.default_network=22,20
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qmi_fw.conf:$(TARGET_COPY_OUT_VENDOR)/etc/qmi_fw.conf
 
