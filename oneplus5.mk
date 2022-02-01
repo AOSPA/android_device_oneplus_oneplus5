@@ -21,6 +21,9 @@ PRODUCT_PACKAGES += \
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Disable APEX compression
+PRODUCT_COMPRESSED_APEX := false
+
 # IPC router config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
