@@ -9,6 +9,12 @@ $(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Adreno
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.egl=adreno \
+    ro.hardware.vulkan=msm8998 \
+    ro.opengles.version=196610
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
