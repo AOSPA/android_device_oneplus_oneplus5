@@ -1,3 +1,6 @@
+# Init
+/vendor/bin/init.oneplus.post_boot.sh                           u:object_r:vendor_qti_init_shell_exec:s0
+
 # Keylayout
 /vendor/usr/keylayout/fpc1020.kl                                u:object_r:vendor_keylayout_file:s0
 /vendor/usr/keylayout/synaptics_s3320.kl                        u:object_r:vendor_keylayout_file:s0

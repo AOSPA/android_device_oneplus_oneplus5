@@ -45,7 +45,12 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.oneplus.perf.rc \
+    init.oneplus.post_boot.sh \
     init.target.rc
+    
+PRODUCT_PROPERTY_OVERRIDES += \
+    vendor.post_boot.custom=true
 
 # IPC router config
 PRODUCT_COPY_FILES += \
