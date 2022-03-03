@@ -10,7 +10,7 @@ PRODUCT_PACKAGES += \
     fs_config_files
 
 # Adreno
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.hardware.egl=adreno \
     ro.hardware.vulkan=msm8998 \
     ro.opengles.version=196610
@@ -33,7 +33,7 @@ PRODUCT_ODM_PROPERTIES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
     persist.bluetooth.a2dp_offload.disabled=false \
     persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
@@ -44,7 +44,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.bluetooth.wipower=false \
     vendor.qcom.bluetooth.soc=cherokee
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.bt.a2dp.aac_disable=true \
     persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     persist.vendor.btstack.enable.splita2dp=true \
@@ -64,7 +64,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-service \
     vendor.qti.hardware.camera.device@1.0
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     vendor.camera.aux.packagelist=com.android.camera,com.oneplus.camera,org.codeaurora.snapcam \
     camera.disable_zsl_mode=1 \
     persist.camera.gyro.disable=0 \
@@ -72,7 +72,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.camera.stats.debugexif=3080192
 
 # Charger
-PRODUCT_PRODUCT_PROPERTIES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.charger.enable_suspend=true
 
 # Codec2 modules
@@ -89,11 +89,11 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_COMPRESSED_APEX := false
 
 # Display
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.sf.native_mode=2 \
     vendor.display.disable_skip_validate=1
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     debug.sf.enable_hwc_vds=1 \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
@@ -105,7 +105,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     vendor.display.disable_skip_validate=1
 
 # DPM
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.dpmhalservice.enable=1
 
 # DRM
@@ -113,11 +113,11 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
     android.hardware.drm@1.4-service.clearkey
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     drm.service.enabled=true
 
 # Factory Reset Protection
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # Fingerprint
@@ -155,7 +155,7 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     ueventd.oneplus.rc
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     vendor.post_boot.custom=true
 
 # IPC router config
@@ -189,11 +189,8 @@ PRODUCT_PACKAGES += \
     libstagefright_enc_common \
     libavmediaserviceextensions
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     debug.stagefright.omx_default_rank=0
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    media.stagefright.thumbnail.prefer_hw_codecs=true
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
@@ -319,7 +316,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
 PRODUCT_PACKAGES += \
     libxml2
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.radio.mt_sms_ack=30 \
     ro.telephony.iwlan_operation_mode=legacy
 
@@ -342,7 +339,7 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \
     libsensorndkbridge
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.sensors.dev_ori=true \
     ro.vendor.sensors.pmd=true \
     ro.vendor.sensors.sta_detect=true \
@@ -355,7 +352,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SHIPPING_API_LEVEL := 25
 
 # Soc
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.soc.model=MSM8998 \
     ro.soc.manufacturer=Qualcomm
 
@@ -363,7 +360,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
 # Time
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.timed.enable=true
 
 # tri-state key
