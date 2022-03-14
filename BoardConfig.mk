@@ -60,6 +60,7 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 KERNEL_DEFCONFIG := vendor/paranoid_defconfig
+KERNEL_CUSTOM_LLVM := true
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := cheeseburger,OnePlus5,oneplus5
