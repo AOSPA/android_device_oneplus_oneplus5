@@ -7,5 +7,8 @@
 # Board Platform
 TARGET_BOARD_PLATFORM := msm8998
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
 # Inherit the proprietary files
 $(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
