@@ -7,6 +7,9 @@
 # Board Platform
 TARGET_BOARD_PLATFORM := msm8998
 
+# Kernel
+TARGET_KERNEL_VERSION := 4.4
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 

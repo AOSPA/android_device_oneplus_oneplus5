@@ -33,6 +33,18 @@ TARGET_SCREEN_DENSITY := 420
 # GPS
 LOC_HIDL_VERSION := 4.0
 
+# Kernel
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
+BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048 loop.max_part=7
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
+TARGET_KERNEL_CONFIG := paranoid_defconfig
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
