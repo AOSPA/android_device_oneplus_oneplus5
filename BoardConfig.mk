@@ -33,6 +33,15 @@ TARGET_SCREEN_DENSITY := 420
 # GPS
 LOC_HIDL_VERSION := 4.0
 
+# HIDL
+DEVICE_MANIFEST_FILE += \
+    $(PLATFORM_PATH)/manifest.xml \
+    $(PLATFORM_PATH)/oneplus_manifest.xml
+DEVICE_MATRIX_FILE += device/qcom/common/compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    $(PLATFORM_PATH)/oneplus_vendor_framework_compatibility_matrix.xml \
+    vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
