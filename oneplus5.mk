@@ -84,10 +84,15 @@ PRODUCT_COPY_FILES += \
 # QTI common
 TARGET_COMMON_QTI_COMPONENTS := \
     media-legacy \
-    overlay
+    overlay \
+    wlan
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
+# WLAN
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wlan/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
