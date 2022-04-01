@@ -8,6 +8,20 @@
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Audio
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio/audio_output_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_output_policy.conf \
+    $(LOCAL_PATH)/configs/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/configs/audio/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
+    $(LOCAL_PATH)/configs/audio/audio_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/audio_tuning_mixer.txt \
+    $(LOCAL_PATH)/configs/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    $(LOCAL_PATH)/configs/audio/mixer_paths_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.audio.fluence.voicerec=true \
+    ro.vendor.audio.sdk.fluencetype=fluencepro
+
 # Board Platform
 TARGET_BOARD_PLATFORM := msm8998
 
@@ -89,6 +103,7 @@ PRODUCT_COPY_FILES += \
 
 # QTI common
 TARGET_COMMON_QTI_COMPONENTS := \
+    audio \
     media-legacy \
     overlay \
     wlan
