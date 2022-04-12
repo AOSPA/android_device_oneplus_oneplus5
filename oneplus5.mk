@@ -74,6 +74,10 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.camera.mobicat=2 \
     persist.camera.stats.debugexif=3080192
 
+# Charger
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.charger.enable_suspend=true
+
 # Codec2 modules
 PRODUCT_PACKAGES += \
     com.android.media.swcodec \
