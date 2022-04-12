@@ -109,6 +109,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
 
+# HIDL
+PRODUCT_PACKAGES += \
+    libhwbinder \
+    libhidltransport \
+    libhwbinder.vendor \
+    libhidltransport.vendor
+
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/init.class_main.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.class_main.sh
