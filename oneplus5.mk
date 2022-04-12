@@ -95,6 +95,16 @@ PRODUCT_COMPRESSED_APEX := false
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.dpmhalservice.enable=1
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl:64 \
+    android.hardware.drm@1.0-service \
+    android.hardware.drm@1.4.vendor \
+    android.hardware.drm@1.4-service.clearkey
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf
