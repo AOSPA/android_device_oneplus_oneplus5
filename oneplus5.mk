@@ -305,6 +305,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
+# Time
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.timed.enable=true
+
 # WLAN
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wlan/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
