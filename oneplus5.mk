@@ -26,6 +26,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Board Platform
 TARGET_BOARD_PLATFORM := msm8998
 
+# Camera
+PRODUCT_PACKAGES += \
+    android.hardware.camera.device@3.4:64 \
+    android.hardware.camera.provider@2.4-impl:32 \
+    android.hardware.camera.provider@2.4-service \
+    vendor.qti.hardware.camera.device@1.0
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    vendor.camera.aux.packagelist=com.android.camera,com.oneplus.camera,org.codeaurora.snapcam \
+    camera.disable_zsl_mode=1 \
+    persist.camera.gyro.disable=0 \
+    persist.camera.mobicat=2 \
+    persist.camera.stats.debugexif=3080192
+
 # Codec2 modules
 PRODUCT_PACKAGES += \
     com.android.media.swcodec \
