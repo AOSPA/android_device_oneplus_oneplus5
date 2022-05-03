@@ -18,9 +18,19 @@ PRODUCT_COPY_FILES += \
 # Kernel
 TARGET_KERNEL_VERSION := 4.4
 
+# Overlay
+PRODUCT_PACKAGES += \
+    FrameworksResTarget \
+    OnePlus5SeriesFrameworks \
+    WifiResTarget
+
 # Public Libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+
+# QTI common
+TARGET_COMMON_QTI_COMPONENTS := \
+    overlay
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
