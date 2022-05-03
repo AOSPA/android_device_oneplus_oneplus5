@@ -1,0 +1,272 @@
+# Copyright (c) 2009-2012, 2014-2018, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#       notice, this list of conditions and the following disclaimer in the
+#       documentation and/or other materials provided with the distribution.
+#     * Neither the name of The Linux Foundation nor
+#       the names of its contributors may be used to endorse or promote
+#       products derived from this software without specific prior written
+#       permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+    chmod 0755 /sys/kernel/debug
+
+    write /proc/sys/kernel/sched_boost 1
+
+on init
+    write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
+    # QSEE rpmb listener needs symlink for bootdevice
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+    # qseecomd needs /dev/block/bootdevice
+    # vold needs keymaster that needs qseecomd
+    start vendor.qseecomd
+
+    # Set boottime stune value
+    write /dev/stune/schedtune.prefer_idle 1
+    write /dev/stune/schedtune.boost 100
+
+    # set default schedTune value for foreground/top-app
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/top-app/schedtune.prefer_idle 1
+
+    # create necessary cpusets
+    mkdir /dev/cpuset/camera-daemon 0750 cameraserver cameraserver
+    write /dev/cpuset/camera-daemon/cpus 0
+    write /dev/cpuset/camera-daemon/mems 0
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
+    chmod 0660 /dev/cpuset/camera-daemon/tasks
+
+    # Setup all the sub-system as related
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys4/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys5/restart_level RELATED
+    write /sys/bus/msm_subsys/devices/subsys6/restart_level RELATED
+
+on fs
+    mount_all /vendor/etc/fstab.qcom --early
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+
+    # create a empty file for wifi hal to write mac address
+    write /mnt/vendor/persist/wlan_mac.bin ""
+    chown wifi wifi /mnt/vendor/persist/wlan_mac.bin
+
+    mkdir /mnt/vendor/persist/alarm 0770 system system
+    mkdir /mnt/vendor/persist/bluetooth 0770 bluetooth bluetooth
+    mkdir /mnt/vendor/persist/dual_camera_calibration 0777 system system
+    mkdir /mnt/vendor/persist/goodix 0777 system system
+    mkdir /mnt/vendor/persist/hdcp 775 media mediadrm
+    mkdir /mnt/vendor/persist/hdcp/media_dump 0770 mediaex mediadrm
+
+    chown system system /mnt/vendor/persist/sensors
+    chown system system /mnt/vendor/persist/sensors/sns.reg
+    chown system system /mnt/vendor/persist/sensors/sensors_list.txt
+    chown system system /mnt/vendor/persist/sensors/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry
+    chown system system /mnt/vendor/persist/sensors/registry/registry/sensors_registry
+    chown system system /mnt/vendor/persist/sensors/sensors_settings
+    chown system system /mnt/vendor/persist/sensors/registry/sns_reg_config
+    chown system system /mnt/vendor/persist/sensors/registry/config
+    chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
+
+on post-fs
+    # Wait for qseecomd started
+    wait_for_prop vendor.sys.listeners.registered true
+    write /dev/ipa 1
+
+    chown system system /dev/param
+    chown system system /proc/ship_mode
+    chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
+
+on late-fs
+    # Mount RW partitions which need to run fsck
+    mount_all /vendor/etc/fstab.qcom --late
+
+on post-fs-data
+    # Nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
+
+on early-boot
+    write /sys/kernel/boot_slpi/boot 1
+
+on boot
+    # Fingerprint detect
+    chmod 0660 /sys/devices/soc/soc:fingerprint_detect/sensor_version
+    chown system system /sys/devices/soc/soc:fingerprint_detect/sensor_version
+
+    # FPC Fingerprint (oneplus5)
+    chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_key
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_key
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+
+    # Goodix Fingerprint (oneplus5t)
+    chmod 0666 /dev/goodix_fp
+
+    # DASH charger
+    chmod 0666 /dev/dash
+    restorecon /dev/dash
+
+    # Touch panel (oneplus5)
+    chown system system /proc/touchpanel/gesture_enable
+    chown system system /proc/touchpanel/gesture_switch
+    chown system system /proc/touchpanel/key_switch
+    chown system system /proc/touchpanel/key_disable
+    chown system system /proc/touchpanel/tpedge_limit_enable
+    chown system system /proc/touchpanel/tp_debug_log
+
+    # Hardware nav keys (oneplus5)
+    chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
+    chmod 0666 /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log
+
+    # Set TCP MTU probing to automatic
+    write /proc/sys/net/ipv4/tcp_mtu_probing 1
+
+    #USB controller configuration
+    setprop vendor.usb.rndis.func.name "gsi"
+    setprop vendor.usb.rmnet.func.name "gsi"
+    setprop vendor.usb.rmnet.inst.name "rmnet"
+    setprop vendor.usb.dpl.inst.name "dpl"
+    setprop vendor.usb.qdss.inst.name "qdss"
+    setprop sys.usb.configfs 1
+
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
+    # Proximity state
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+    chown system system /sys/devices/soc/soc:goodix_fp/proximity_state
+    chmod 0660 /sys/devices/soc/soc:goodix_fp/proximity_state
+
+    # For KeyDisabler
+    chown system system /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+    chmod 0666 /sys/module/fpc1020_tee/parameters/ignor_home_for_ESD
+
+on charger
+    start dashd
+    start vendor.power_off_alarm
+    setprop sys.usb.configfs 1
+
+on property:sys.boot_completed=1
+    # Set runtime stune value
+    write /dev/stune/schedtune.prefer_idle 0
+    write /dev/stune/schedtune.boost 0
+
+    # Setup final cpuset
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0-3,6-7
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-3
+
+service vendor.adsprpcd /vendor/bin/adsprpcd
+    class main
+    user media
+    group media
+
+service dashd /vendor/xbin/dashd
+     class core
+     critical
+     seclabel u:r:dashd:s0
+     group root system
+
+service vendor.pd_mapper /vendor/bin/pd-mapper
+     class core
+
+service vendor.per_mgr /vendor/bin/pm-service
+    class core
+    user system
+    group system
+    ioprio rt 4
+
+service vendor.per_proxy /vendor/bin/pm-proxy
+    class core
+    user system
+    group system
+    disabled
+
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
+
+on property:sys.shutdown.requested=*
+    stop vendor.cnss-daemon
+    stop vendor.per_proxy
+
+service vendor.ppd /vendor/bin/mm-pp-dpps
+    class late_start
+    user system
+    group system graphics
+    socket pps stream 0660 system system
+    disabled
+
+on property:init.svc.surfaceflinger=stopped
+    stop vendor.ppd
+
+on property:init.svc.surfaceflinger=running
+    start vendor.ppd
+
+on property:init.svc.surfaceflinger=restarting
+    stop vendor.ppd
+
+on property:init.svc.zygote=stopped
+    stop vendor.ppd
+
+on property:init.svc.zygote=running
+    start vendor.ppd
+
+on property:init.svc.zygote=restarting
+    stop vendor.ppd
+
+service vendor.qseecomd /vendor/bin/qseecomd
+    class core
+    user root
+    group root
+
+service vendor.sensors.qti /vendor/bin/sensors.qti
+    class core
+    user system
+    group system
+
+service vendor.thermal-engine /vendor/bin/thermal-engine
+    class main
+    user root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
+    socket thermal-send-rule stream 0660 system system
+    group root

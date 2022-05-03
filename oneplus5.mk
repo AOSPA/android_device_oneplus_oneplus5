@@ -3,6 +3,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
+$(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -37,6 +38,14 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Disable APEX compression
 PRODUCT_COMPRESSED_APEX := false
+
+# Init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.class_main.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.class_main.sh
+
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.target.rc
 
 # IPC router config
 PRODUCT_COPY_FILES += \
@@ -158,6 +167,3 @@ PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 # WLAN
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wlan/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
-
-# Inherit the proprietary files
-$(call inherit-product, vendor/oneplus/oneplus5/oneplus5-vendor.mk)

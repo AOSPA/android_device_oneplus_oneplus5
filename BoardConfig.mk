@@ -74,6 +74,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 TARGET_COPY_OUT_VENDOR := vendor
 
+# Recovery
+TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/fstab.qcom
+
 # Symlinks
 TARGET_MOUNT_POINTS_SYMLINKS := true
 
