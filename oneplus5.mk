@@ -104,8 +104,18 @@ PRODUCT_COPY_FILES += \
 # QTI common
 TARGET_COMMON_QTI_COMPONENTS := \
     audio \
+    av \
+    bt \
+    display \
+    gps \
+    init \
     media-legacy \
     overlay \
+    perf \
+    telephony \
+    usb \
+    vibrator \
+    wfd-legacy \
     wlan
 
 # Soong namespaces
