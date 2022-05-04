@@ -145,6 +145,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
+# NFC
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2-service \
+    com.android.nfc_extras \
+    libchrome.vendor \
+    NfcNci \
+    SecureElement \
+    Tag
+
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/nfc/,$(TARGET_COPY_OUT_VENDOR)/etc)
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
