@@ -87,6 +87,10 @@ PRODUCT_CHARACTERISTICS := nosdcard
 # Disable APEX compression
 PRODUCT_COMPRESSED_APEX := false
 
+# DPM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.dpmhalservice.enable=1
+
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init/init.class_main.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.class_main.sh
@@ -213,6 +217,25 @@ TARGET_COMMON_QTI_COMPONENTS := \
     vibrator \
     wfd-legacy \
     wlan
+
+# RIL - IMS
+PRODUCT_PACKAGES += \
+    android.hardware.radio@1.5.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
+    android.hardware.radio.config@1.2.vendor \
+    android.hardware.secure_element@1.2.vendor \
+    libxml2
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.radio.enableadvancedscan=false \
+    persist.vendor.radio.mt_sms_ack=30 \
+    ro.telephony.iwlan_operation_mode=legacy
+
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    persist.data.iwlan.enable=true \
+    persist.vendor.data.iwlan.enable=true \
+    persist.vendor.radio.atfwd.start=true \
+    ro.telephony.default_network=22,20
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
