@@ -237,6 +237,21 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.vendor.radio.atfwd.start=true \
     ro.telephony.default_network=22,20
 
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl:64 \
+    android.hardware.sensors@1.0-service \
+    libsensorndkbridge
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.sensors.dev_ori=true \
+    ro.vendor.sensors.pmd=true \
+    ro.vendor.sensors.sta_detect=true \
+    ro.vendor.sensors.mot_detect=true \
+    ro.vendor.sensors.dpc=true \
+    ro.vendor.sensors.multishake=true \
+    persist.vendor.sensors.direct_channel=true
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
