@@ -1,0 +1,2 @@
+# allow platform_app to interact with pasr hal
+hal_client_domain(platform_app, hal_pasrmanager)

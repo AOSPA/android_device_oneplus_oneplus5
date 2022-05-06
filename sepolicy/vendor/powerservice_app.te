@@ -1,0 +1,15 @@
+# Define Domain for Power service
+type vendor_powerservice_app, domain;
+app_domain(vendor_powerservice_app);
+
+# Allow invoking activity of vendor_powerservice_app
+allow vendor_powerservice_app { activity_service }:service_manager find;
+
+# Allow Power service to read vendor_pasr_prop
+get_prop(vendor_powerservice_app, vendor_pasr_prop)
+
+# allow Power service to interact with pasr memory hal
+hal_client_domain(vendor_powerservice_app, hal_pasrmanager_memory)
+
+# Allow Power service to access perf hal
+hal_client_domain(vendor_powerservice_app, hal_perf)

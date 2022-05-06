@@ -19,6 +19,10 @@ ro.build.expect.                       u:object_r:exported_default_prop:s0
 # Mediacodec
 gpu.stats.debug.level                  u:object_r:vendor_video_prop:s0
 
+# PASR
+vendor.pasr.                                  u:object_r:vendor_pasr_prop:s0
+ro.vendor.pasr.                               u:object_r:vendor_pasr_prop:s0
+
 # RIL
 persist.sys.assert.panic               u:object_r:radio_control_prop:s0
 persist.sys.oem.region                 u:object_r:radio_control_prop:s0

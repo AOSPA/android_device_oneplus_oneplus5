@@ -1,0 +1,12 @@
+# Policy for PSI service
+type hal_psiservice, domain;
+type hal_psiservice_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(hal_psiservice)
+
+# Allow PSI Service to be a client of PASR HAL
+hal_client_domain(hal_psiservice, hal_pasrmanager_memory)
+
+# For reading "vendor.pasr." properties
+get_prop(hal_psiservice, vendor_pasr_prop)

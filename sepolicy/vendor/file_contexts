@@ -27,6 +27,9 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-custom    u:object_r:hal_fingerprint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.oneplus_msm8998            u:object_r:hal_light_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.oneplus\.camera\.CameraHIDL@1\.0-service                  u:object_r:hal_cameraHIDL_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.memory\.pasrmanager\@1\.0-service                    u:object_r:hal_pasrmanager_memory_qti_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.psiclient\@1\.0-service                              u:object_r:hal_psiservice_exec:s0
+/(vendor|system/vendor)/bin/vendor\.qti\.qspmhal@1\.0-service                                    u:object_r:hal_qspmhal_default_exec:s0
 
 # Init
 /vendor/bin/init.oneplus.post_boot.sh                           u:object_r:vendor_qti_init_shell_exec:s0
