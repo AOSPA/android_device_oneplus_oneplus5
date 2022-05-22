@@ -350,6 +350,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.vendor.radio.atfwd.start=true \
     ro.telephony.default_network=22,20
 
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl:64 \
