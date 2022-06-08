@@ -42,6 +42,9 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(PLATFORM_PATH)/oneplus_vendor_framework_compatibility_matrix.xml \
     vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(PLATFORM_PATH):libinit_oneplus5
+
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
