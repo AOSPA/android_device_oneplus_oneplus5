@@ -77,6 +77,9 @@ TARGET_COPY_OUT_VENDOR := vendor
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/fstab.qcom
 
+# SELinux
+BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
+
 # Symlinks
 TARGET_MOUNT_POINTS_SYMLINKS := true
 
