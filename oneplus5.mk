@@ -23,6 +23,40 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicerec=true \
     ro.vendor.audio.sdk.fluencetype=fluencepro
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
+    android.hardware.bluetooth@1.0 \
+    android.hardware.bluetooth@1.0.vendor \
+    android.hardware.bluetooth.audio@2.0-impl \
+    com.dsi.ant@1.0.vendor \
+    com.qualcomm.qti.bluetooth_audio@1.0.vendor \
+    libbluetooth_audio_session \
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
+    vendor.qti.hardware.btconfigstore@1.0.vendor \
+    vendor.qti.hardware.btconfigstore@2.0.vendor
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
+    persist.bluetooth.a2dp_offload.disabled=false \
+    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
+    persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
+    persist.vendor.qcom.bluetooth.enable.splita2dp=true \
+    persist.vendor.qcom.bluetooth.soc=cherokee \
+    ro.bluetooth.a2dp_offload.supported=true \
+    ro.vendor.bluetooth.wipower=false \
+    vendor.qcom.bluetooth.soc=cherokee
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.bt.a2dp.aac_disable=true \
+    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
+    persist.vendor.btstack.enable.splita2dp=true \
+    ro.bluetooth.a4wp=false \
+    ro.bluetooth.a2dp_offload.supported=true \
+    ro.bluetooth.emb_wp_mode=true \
+    ro.bluetooth.wipower=false \
+    vendor.bluetooth.soc=cherokee
+
 # Board Platform
 TARGET_BOARD_PLATFORM := msm8998
 
