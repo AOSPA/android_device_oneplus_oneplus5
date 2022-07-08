@@ -367,6 +367,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.multishake=true \
     persist.vendor.sensors.direct_channel=true
 
+# Shipping API
+PRODUCT_SHIPPING_API_LEVEL := 25
+
 # Soc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.soc.model=MSM8998 \
