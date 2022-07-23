@@ -155,9 +155,6 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor
 
 # Init
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/init/init.class_main.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.class_main.sh
-
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.oneplus.perf.rc \
