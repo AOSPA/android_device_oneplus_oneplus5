@@ -31,16 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    audio.bluetooth.default \
-    android.hardware.bluetooth@1.0 \
-    android.hardware.bluetooth@1.0.vendor \
-    android.hardware.bluetooth.audio@2.0-impl \
-    com.dsi.ant@1.0.vendor \
-    com.qualcomm.qti.bluetooth_audio@1.0.vendor \
-    libbluetooth_audio_session \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@2.0.vendor
+    android.hardware.bluetooth.audio@2.0-impl
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
@@ -213,10 +204,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_profiles.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_V1_0.xml \
     $(LOCAL_PATH)/configs/media/media_profiles_vendor.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_profiles_vendor.xml
 
-# Net
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor
-
 # Neuralnetworks
 PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
@@ -330,10 +317,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
 
 # RIL - IMS
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.5.vendor \
-    android.hardware.radio.deprecated@1.0.vendor \
-    android.hardware.radio.config@1.2.vendor \
-    android.hardware.secure_element@1.2.vendor \
     libxml2
 
 PRODUCT_PROPERTY_OVERRIDES += \
