@@ -164,6 +164,9 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    # default country code
+    setprop ro.boot.wificountrycode 00
+
     # Proximity state
     chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
