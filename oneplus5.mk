@@ -25,7 +25,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     $(LOCAL_PATH)/configs/audio/mixer_paths_tasha.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tasha.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_ODM_PROPERTIES += \
     persist.vendor.audio.fluence.voicerec=true \
     ro.vendor.audio.sdk.fluencetype=fluencepro
 
@@ -320,14 +320,16 @@ PRODUCT_PACKAGES += \
     libxml2
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.radio.enableadvancedscan=false \
     persist.vendor.radio.mt_sms_ack=30 \
     ro.telephony.iwlan_operation_mode=legacy
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     persist.data.iwlan.enable=true \
     persist.vendor.data.iwlan.enable=true \
-    persist.vendor.radio.atfwd.start=true \
+    persist.vendor.radio.atfwd.start=true
+
+PRODUCT_ODM_PROPERTIES += \
+    persist.vendor.radio.enableadvancedscan=false \
     ro.telephony.default_network=22,20
 
 # Screen density
