@@ -64,5 +64,5 @@ prebuilt_etc {
     name: "ueventd.oneplus.rc",
     filename: "ueventd.rc",
     src: "ueventd.oneplus.rc",
-    vendor: true,
+    device_specific: true,
 }
