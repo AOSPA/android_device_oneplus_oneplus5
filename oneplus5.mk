@@ -36,7 +36,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_VENDOR_PROPERTIES += \
     persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac \
     persist.bluetooth.a2dp_offload.disabled=false \
-    persist.vendor.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxhd-aac-ldac \
     persist.vendor.qcom.bluetooth.enable.splita2dp=true \
     persist.vendor.qcom.bluetooth.soc=cherokee \
