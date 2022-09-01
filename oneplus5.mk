@@ -233,6 +233,7 @@ PRODUCT_PACKAGES += \
 
 # Overlay
 PRODUCT_PACKAGES += \
+    AOSPAOnePlus5Frameworks \
     AOSPAOnePlus5SeriesFrameworks \
     AOSPAOnePlus5SeriesSystemUI \
     FrameworksResTarget \
