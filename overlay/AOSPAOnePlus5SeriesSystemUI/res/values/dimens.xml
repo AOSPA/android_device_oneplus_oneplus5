@@ -31,7 +31,4 @@
     <dimen name="tri_state_up_bottom_left_radius">0.0dip</dimen>
     <dimen name="tri_state_up_bottom_right_radius">24.0dip</dimen>
 
-    <!-- The rounded corner content padding. -->
-    <dimen name="rounded_corner_content_padding">8dp</dimen>
-
 </resources>
