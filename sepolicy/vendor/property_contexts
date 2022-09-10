@@ -1,33 +1,33 @@
 # Bluetooth
-ro.vendor.bt.bdaddr_path               u:object_r:vendor_bluetooth_prop:s0
+ro.vendor.bt.bdaddr_path               	u:object_r:vendor_bluetooth_prop:s0
 
 # Camera
-camera.on                              u:object_r:camera_prop:s0
-persist.camera.                        u:object_r:camera_prop:s0
-persist.vendor.camera.                 u:object_r:camera_prop:s0
-vendor.camera.                         u:object_r:camera_prop:s0
+camera.on                              	u:object_r:camera_prop:s0
+persist.camera.                        	u:object_r:camera_prop:s0
+persist.vendor.camera.                 	u:object_r:camera_prop:s0
+vendor.camera.                         	u:object_r:camera_prop:s0
 
 # Display
-sdm.disable_hdr_lut_gen                u:object_r:vendor_display_prop:s0
+sdm.disable_hdr_lut_gen                	u:object_r:vendor_display_prop:s0
 
 # Fingerprint
-gf.debug.dump_data                     u:object_r:vendor_default_prop:s0
+gf.debug.dump_data                     	u:object_r:vendor_default_prop:s0
 
 # Firmware
-ro.build.expect.                       u:object_r:exported_default_prop:s0
+ro.build.expect.                       	u:object_r:exported_default_prop:s0
 
 # Mediacodec
-gpu.stats.debug.level                  u:object_r:vendor_video_prop:s0
+gpu.stats.debug.level                  	u:object_r:vendor_video_prop:s0
 
 # PASR
-vendor.pasr.                                  u:object_r:vendor_pasr_prop:s0
-ro.vendor.pasr.                               u:object_r:vendor_pasr_prop:s0
+vendor.pasr.                         	u:object_r:vendor_pasr_prop:s0
+ro.vendor.pasr.                   	u:object_r:vendor_pasr_prop:s0
 
 # RIL
-persist.sys.assert.panic               u:object_r:radio_control_prop:s0
-persist.sys.oem.region                 u:object_r:radio_control_prop:s0
-vendor.oem.device.imeicache0           u:object_r:vendor_radio_prop:s0
-vendor.oem.device.imeicache1           u:object_r:vendor_radio_prop:s0
+persist.sys.assert.panic          	u:object_r:radio_control_prop:s0
+persist.sys.oem.region                 	u:object_r:radio_control_prop:s0
+vendor.oem.device.imeicache0           	u:object_r:vendor_radio_prop:s0
+vendor.oem.device.imeicache1           	u:object_r:vendor_radio_prop:s0
 
 # Thermal
-sys.thermal.                           u:object_r:thermal_engine_prop:s0
+sys.thermal.                           	u:object_r:thermal_engine_prop:s0

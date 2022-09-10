@@ -25,3 +25,5 @@ allow vendor_mutualex hostapd_data_file:sock_file create_file_perms;
 allow vendor_mutualex { hal_wifi_hostapd_default }:unix_dgram_socket sendto;
 
 wakelock_use(vendor_mutualex)
+
+allow vendor_mutualex self:socket create;
