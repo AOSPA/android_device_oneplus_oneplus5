@@ -129,4 +129,5 @@
     </array>
     <allow-in-power-save package="com.google.android.gms" />
     <allow-in-data-usage-save package="com.google.android.gms" />
+    <item name="bluetooth.controller.voltage">3300</item>
 </device>

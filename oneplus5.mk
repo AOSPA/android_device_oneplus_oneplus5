@@ -44,6 +44,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.qcom.bluetooth.soc=cherokee
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    bluetooth.hardware.power.operating_voltage_mv=3300 \
     persist.bt.a2dp.aac_disable=true \
     persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac \
     persist.vendor.btstack.enable.splita2dp=true \
