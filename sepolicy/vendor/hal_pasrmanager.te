@@ -15,7 +15,7 @@ binder_call(hal_pasrmanager_memory_client, hal_pasrmanager_memory_server)
 # For reading "vendor.pasr." properties
 get_prop(hal_pasrmanager_memory_qti, vendor_pasr_prop)
 
-allow hal_pasrmanager_memory_qti sysfs:dir { read };
+allow hal_pasrmanager_memory_qti sysfs:dir read;
 
 add_hwservice(hal_pasrmanager_memory_qti, hal_pasrmanager_memory_hwservice)
 allow hal_pasrmanager_memory_qti hal_pasrmanager_memory_hwservice:hwservice_manager find;
