@@ -1,6 +1,5 @@
 # NFC
-vendor.nxp.nxpese::INxpEse                     		u:object_r:hal_nxpese_hwservice:s0
-vendor.nxp.nxpnfc::INxpNfc                  		u:object_r:hal_nxpnfc_hwservice:s0
+vendor.nxp.nxpnfc::INxpNfc 						u:object_r:hal_nxpnfc_hwservice:s0
 
 # Oneplus Camera
 vendor.oneplus.camera.CameraHIDL::IOnePlusCameraProvider		u:object_r:hal_cameraHIDL_hwservice:s0
@@ -9,4 +8,4 @@ vendor.oneplus.camera.CameraHIDL::IOnePlusCameraProvider		u:object_r:hal_cameraH
 vendor.oneplus.fingerprint.extension::IVendorFingerprintExtensions	u:object_r:hal_fingerprint_hwservice:s0
 
 # QSPM
-vendor.qti.qspmhal::IQspmhal                         	u:object_r:hal_qspmhal_hwservice:s0
+vendor.qti.qspmhal::IQspmhal                         			u:object_r:hal_qspmhal_hwservice:s0
