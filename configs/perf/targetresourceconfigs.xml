@@ -28,6 +28,8 @@ as anyway perflock calls of these resources would fail. -->
         <Config MajorValue="0x1" MinorValue="0x2" Supported="no" /> <!-- lpm_bias_hyst -->
 
         <Config MajorValue="0x3" MinorValue="0x3" Supported="no" /> <!-- sched_small_task -->
+        <Config MajorValue="0x3" MinorValue="0x15" Supported="no" /> <!-- sched_group_upmigrate -->
+        <Config MajorValue="0x3" MinorValue="0x16" Supported="no" /> <!-- sched_group_downmigrate -->
         <Config MajorValue="0x3" MinorValue="0x19" Supported="no" /> <!-- sched_initial_task_util -->
         <Config MajorValue="0x3" MinorValue="0x1A" Supported="no" /> <!-- sched_load_boost -->
 
