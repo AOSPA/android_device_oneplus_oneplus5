@@ -60,8 +60,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     vendor.camera.aux.packagelist=com.android.camera,com.oneplus.camera,org.codeaurora.snapcam \
     camera.disable_zsl_mode=1 \
-    persist.camera.gyro.disable=0 \
-    persist.camera.mobicat=2 \
     persist.camera.stats.debugexif=3080192
 
 # Charger
