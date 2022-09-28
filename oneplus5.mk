@@ -302,13 +302,10 @@ PRODUCT_PACKAGES += \
     libxml2
 
 PRODUCT_VENDOR_PROPERTIES += \
+    persist.vendor.data.iwlan.enable=true \
+    persist.vendor.radio.atfwd.start=true \
     persist.vendor.radio.mt_sms_ack=30 \
     ro.telephony.iwlan_operation_mode=legacy
-
-PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    persist.data.iwlan.enable=true \
-    persist.vendor.data.iwlan.enable=true \
-    persist.vendor.radio.atfwd.start=true
 
 PRODUCT_ODM_PROPERTIES += \
     persist.vendor.radio.enableadvancedscan=false \
