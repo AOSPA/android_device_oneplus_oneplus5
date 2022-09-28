@@ -82,18 +82,15 @@ PRODUCT_COMPRESSED_APEX := false
 # Display
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.sf.native_mode=2 \
-    vendor.display.disable_skip_validate=1
+    vendor.display.disable_skip_validate=1 \
+    vendor.display.enable_default_color_mode=0 \
+    vendor.gralloc.enable_fb_ubwc=1
 
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     debug.sf.enable_hwc_vds=1 \
     debug.sf.hw=1 \
     debug.sf.latch_unsignaled=1 \
-    persist.demo.hdmirotationlock=false \
-    persist.hwc.enable_vds=1 \
-    sdm.debug.disable_skip_validate=1 \
-    vendor.display.enable_default_color_mode=0 \
-    vendor.gralloc.enable_fb_ubwc=1 \
-    vendor.display.disable_skip_validate=1
+    persist.demo.hdmirotationlock=false
 
 # DPM
 PRODUCT_VENDOR_PROPERTIES += \
