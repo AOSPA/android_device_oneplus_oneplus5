@@ -59,9 +59,7 @@ BOARD_KERNEL_CMDLINE += service_locator.enable=1 swiotlb=2048 loop.max_part=7 kp
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
-TARGET_KERNEL_CONFIG := paranoid_defconfig
+KERNEL_DEFCONFIG := vendor/paranoid_defconfig
 
 # OTA
 TARGET_OTA_ASSERT_DEVICE := cheeseburger,OnePlus5,oneplus5
