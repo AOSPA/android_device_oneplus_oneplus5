@@ -993,15 +993,9 @@ vendor/bin/rmt_storage|5ee4fca4b5d914e28d0f3ce6a0df273fa14227e0
 vendor/etc/init/vendor.qti.rmt_storage.rc|bc212c6353c2ded44ae4d759605fbbe55aa4fa3f
 
 # Sensors
-lib/libsensor1.so
-lib/libsensor_reg_system.so
-lib64/libsensor1.so
-lib64/libsensor_reg_system.so
-product/framework/vendor.qti.hardware.sensorscalibrate-V1.0-java.jar
 vendor/bin/hw/vendor.qti.hardware.sensorscalibrate@1.0-service
 vendor/bin/sensors.qti
 vendor/etc/init/vendor.qti.hardware.sensorscalibrate@1.0-service.rc
-vendor/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml:product/etc/permissions/vendor-qti-hardware-sensorscalibrate.xml
 vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sensor_def_qcomdev.conf
 vendor/lib/hw/vendor.qti.hardware.sensorscalibrate@1.0-impl.so
