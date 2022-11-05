@@ -66,13 +66,6 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.charger.enable_suspend=true
 
-# Codec2 modules
-PRODUCT_PACKAGES += \
-    com.android.media.swcodec \
-    libsfplugin_ccodec \
-    android.hardware.media.c2@1.0.vendor \
-    android.hardware.media.c2@1.1.vendor
-
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
@@ -170,7 +163,6 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
-    android.hardware.media.omx@1.0-impl \
     mediametrics \
     libmediametrics \
     libregistermsext \
