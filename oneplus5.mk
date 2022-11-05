@@ -82,14 +82,6 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     debug.sf.latch_unsignaled=1 \
     persist.demo.hdmirotationlock=false
 
-# Doze
-PRODUCT_PACKAGES += \
-    ParanoidDoze
-
-PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    ro.sensor.proximity=true \
-    ro.sensor.pickup=android.sensor.tilt_detector
-
 # DPM
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.dpmhalservice.enable=1
