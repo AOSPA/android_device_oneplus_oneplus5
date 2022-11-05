@@ -76,9 +76,6 @@ PRODUCT_PACKAGES += \
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Disable APEX compression
-PRODUCT_COMPRESSED_APEX := false
-
 # Display
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.sf.native_mode=2 \
