@@ -88,7 +88,6 @@ on post-fs
 
     chown system system /dev/param
     chown system system /proc/ship_mode
-    chown system system /sys/class/kgsl/kgsl-3d0/min_pwrlevel
 
 on late-fs
     mount_all /vendor/etc/fstab.qcom --late
