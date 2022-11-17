@@ -7,7 +7,7 @@ typeattribute hal_fingerprint_default data_between_core_and_vendor_violators;
 allow hal_fingerprint_default fingerprintd_data_file:dir rw_dir_perms;
 allow hal_fingerprint_default fingerprintd_data_file:file create_file_perms;
 
-allow hal_fingerprint_default sysfs_fpc:file r_file_perms;
+allow hal_fingerprint_default sysfs_fp_detect:file r_file_perms;
 allow hal_fingerprint_default sysfs_fpc_key:file rw_file_perms;
 allow hal_fingerprint_default sysfs_fpc_irq:file rw_file_perms;
 allow hal_fingerprint_default sysfs_fpc_screen:file rw_file_perms;
