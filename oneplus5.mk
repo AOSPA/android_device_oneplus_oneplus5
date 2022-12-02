@@ -120,6 +120,10 @@ PRODUCT_PACKAGES += \
     libhidltransport.vendor
 
 # Init
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.qcom.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.sh
+
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.oneplus.display.rc \
