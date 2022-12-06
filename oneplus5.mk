@@ -280,13 +280,13 @@ TARGET_COMMON_QTI_COMPONENTS := \
     display \
     gps \
     init \
-    media-legacy \
+    media \
     overlay \
     perf \
     telephony \
     usb \
     vibrator \
-    wfd-legacy \
+    wfd \
     wlan
 
 # Remove unwanted packages
