@@ -181,14 +181,7 @@ PRODUCT_PACKAGES += \
     android.hardware.neuralnetworks@1.3.vendor
 
 # NFC
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2-service \
-    com.android.nfc_extras \
-    libchrome.vendor \
-    NfcNci \
-    SecureElement \
-    Tag
-
+TARGET_USES_NQ_NFC := false
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/nfc/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
@@ -280,6 +273,7 @@ TARGET_COMMON_QTI_COMPONENTS := \
     gps \
     init \
     media \
+    nfc \
     overlay \
     perf \
     telephony \
