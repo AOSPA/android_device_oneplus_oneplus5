@@ -587,9 +587,8 @@ vendor/lib64/vendor.oneplus.fingerprint.extension@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
 # Gatekeeper - from LA.UM.8.2.r1-07500-sdm660.0
-vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti|14751f15eba2a00f20a39d1ec4fccbacb819ab34
-vendor/etc/init/android.hardware.gatekeeper@1.0-service-qti.rc|1b8d5f58fe0a57906acf72b862c16a2521daa97b
-vendor/lib64/hw/android.hardware.gatekeeper@1.0-impl-qti.so|a2c1df2d53f2f69e1be478fa99d7e85dd46afc63
+vendor/lib/hw/gatekeeper.msm8998.so
+vendor/lib64/hw/gatekeeper.msm8998.so
 
 # GPS - from LA.UM.9.12.r1-13700.03-SMxx50.QSSI12.0
 vendor/bin/garden_app|987a4b0d1f2fc446e384f1d68b041819c8221d07
@@ -773,14 +772,11 @@ vendor/firmware/ipa_fws.b04
 vendor/firmware/ipa_fws.elf
 vendor/firmware/ipa_fws.mdt
 
-# Keymaster - from LA.UM.8.2.r1-07500-sdm660.0
-vendor/bin/hw/android.hardware.keymaster@3.0-service-qti|de22b6873a674d48959ac5885b49cbff417b287a
-vendor/etc/init/android.hardware.keymaster@3.0-service-qti.rc|bfa493f5b07850b3c8f96b3e036a25bc7923b89c
-vendor/lib/hw/android.hardware.keymaster@3.0-impl-qti.so|1dbe1bbde146e124897ff70b8c884ebb276ef570
-vendor/lib64/hw/android.hardware.keymaster@3.0-impl-qti.so|56fbac8b3bb05f2587e86525db3ecc1f6047750f
-vendor/lib64/libkeymasterdeviceutils.so|ea44915adfee57f1bd813b2184987565d396ab82
-vendor/lib64/libkeymasterprovision.so|25505bda86672a5ae31f75b8f8af0a3560ef648f
-vendor/lib64/libkeymasterutils.so|2791994395cd10eb1092b8bd8fea15987e17421d
+# Keymaster
+vendor/lib64/hw/keystore.msm8998.so
+vendor/lib64/libkeymasterdeviceutils.so
+vendor/lib64/libkeymasterprovision.so
+vendor/lib64/libkeymasterutils.so
 
 # Listen - from phoenix_lao_com-user-11-RKQ1.201123.002
 vendor/lib/hw/sound_trigger.primary.msm8998.so|b638abab6bf2d3935257537f0f8bfcdf5ac66a45
