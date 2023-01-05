@@ -87,6 +87,7 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/init/fstab.qcom
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/vendor
+PRODUCT_PRIVATE_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/private
 
 # Symlinks
 BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
