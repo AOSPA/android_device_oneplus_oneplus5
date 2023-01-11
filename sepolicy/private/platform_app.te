@@ -1,2 +1,0 @@
-set_prop(platform_app, wfd_service_prop)
-allow platform_app wfdservice_service:service_manager find;
