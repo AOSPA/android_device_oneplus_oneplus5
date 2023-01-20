@@ -1,1 +1,1 @@
-binder_call(hal_perf_default, hal_pasrmanager_memory)
+binder_call(vendor_hal_perf_default, hal_pasrmanager_memory)
