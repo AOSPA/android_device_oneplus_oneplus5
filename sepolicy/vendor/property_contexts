@@ -7,6 +7,9 @@ persist.camera.                        	u:object_r:camera_prop:s0
 persist.vendor.camera.                 	u:object_r:camera_prop:s0
 vendor.camera.                         	u:object_r:camera_prop:s0
 
+# Capacitive Buttons
+persist.qemu.hw.mainkeys		u:object_r:exported_system_prop:s0 exact string
+
 # Display
 sdm.disable_hdr_lut_gen                	u:object_r:vendor_display_prop:s0
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:key="general_preference_screen"
+	android:id="@+id/menu">
+
+	<PreferenceCategory
+		android:key="main_menu"
+		android:title="Key Layout">
+
+		<SwitchPreference
+			android:key="buttonSwap"
+			android:title="Swap back and recent capacitive buttons"
+			android:defaultValue="false"/>
+
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:key="misc_menu"
+		android:title="Misc">
+
+		<SwitchPreference
+			android:key="buttonsBacklightEnabledForced"
+			android:title="Keep capacitive buttons backlight always on"
+			android:disableDependentsState="true"
+			android:defaultValue="false"/>
+
+		<SwitchPreference
+			android:key="buttonsBacklightEnabled"
+			android:title="Enable capacitive buttons backlight"
+			app:dependency="buttonsBacklightEnabledForced"
+			app:summary="Enable capacitive buttons backlight when buttons are pressed"
+			android:defaultValue="true"/>
+
+		<Preference
+			app:key="capacitive_buttons_timeout"
+			app:title="Buttons backlight timeout"
+			app:dependency="buttonsBacklightEnabled"
+			app:summary="Set capacitive buttons backlight timeout in ms"/>
+
+		<SwitchPreference
+			android:key="navBarEnabled"
+			android:title="Enable 3-buttons navigation bar"
+			android:defaultValue="false"
+			app:summary="Enable on-screen navigation bar when gestures are disabled"/>
+
+        </PreferenceCategory>
+
+</PreferenceScreen>

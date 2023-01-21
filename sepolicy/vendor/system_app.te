@@ -4,3 +4,16 @@ allow system_app proc_vmallocinfo:file r_file_perms;
 # Zram Access
 allow system_app sysfs_zram:dir search;
 allow system_app sysfs_zram:file r_file_perms;
+
+allow system_app proc_touchpanel:dir { search };
+allow system_app proc_touchpanel:file { rw_file_perms };
+allow system_app qemu_hw_prop:file { getattr open read };
+allow system_app sysfs_fpc_key:file rw_file_perms;
+binder_call(system_app, hal_power_default)
+binder_call(system_app, hal_vibrator_default)
+binder_call(system_app, hal_wifi_supplicant_default)
+
+dontaudit system_app {
+  system_suspend_control_internal_service
+  system_suspend_control_service
+}:service_manager find;

@@ -89,6 +89,12 @@ on post-fs
     chown system system /dev/param
     chown system system /proc/ship_mode
 
+on property:sys.button_backlight.on=true
+    write /sys/class/leds/button-backlight/brightness 255
+
+on property:sys.button_backlight.on=false
+    write /sys/class/leds/button-backlight/brightness 0
+
 on late-fs
     mount_all /vendor/etc/fstab.qcom --late
 
@@ -113,6 +119,9 @@ on early-boot
     chown system system /mnt/vendor/persist/sensors/sns.reg
     chown system system /mnt/vendor/persist/sensors/sensors_settings
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
+
+    # Capacitive Buttons
+    setprop qemu.hw.mainkeys ${persist.qemu.hw.mainkeys}
 
 on boot
     start vendor.rmt_storage
@@ -153,6 +162,8 @@ on boot
     chown system system /proc/touchpanel/key_disable
     chown system system /proc/touchpanel/tpedge_limit_enable
     chown system system /proc/touchpanel/tp_debug_log
+    chown system system /proc/s1302/key_rep
+    chmod 0660 /proc/s1302/key_rep
 
     # Hardware nav keys (oneplus5)
     chown system system /sys/bus/i2c/drivers/synaptics,s3320/tp_debug_log

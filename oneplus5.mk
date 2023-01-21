@@ -50,6 +50,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 # Board Platform
 TARGET_BOARD_PLATFORM := msm8998
 
+# Button Settings
+PRODUCT_PACKAGES += \
+    ButtonSettings
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.device@3.4:64 \
