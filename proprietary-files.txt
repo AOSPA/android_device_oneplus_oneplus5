@@ -586,7 +586,7 @@ vendor/lib64/fp_hal_extension.so
 vendor/lib64/vendor.oneplus.fingerprint.extension@1.0.so
 vendor/lib64/vendor.qti.hardware.fingerprint@1.0.so
 
-# Gatekeeper - from LA.UM.8.2.r1-07500-sdm660.0
+# Gatekeeper
 vendor/lib/hw/gatekeeper.msm8998.so
 vendor/lib64/hw/gatekeeper.msm8998.so
 
