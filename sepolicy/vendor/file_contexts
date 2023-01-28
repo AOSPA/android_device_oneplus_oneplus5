@@ -14,7 +14,6 @@
 
 # Devices
 /dev/dash                                                	u:object_r:dash_device:s0
-/dev/param                                                   	u:object_r:param_device:s0
 
 # Fingerprint
 /dev/fpc1020                                                 	u:object_r:fingerprint_device:s0

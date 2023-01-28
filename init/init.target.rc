@@ -86,7 +86,6 @@ on post-fs
     wait_for_prop vendor.sys.listeners.registered true
     write /dev/ipa 1
 
-    chown system system /dev/param
     chown system system /proc/ship_mode
 
 on property:sys.button_backlight.on=true
