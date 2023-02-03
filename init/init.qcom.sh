@@ -26,18 +26,6 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-oemdump=`getprop persist.vendor.oem.dump`
-buildtype=`getprop ro.vendor.build.release_type`
-if [ "$oemdump" == "" ]; then
-    case "$buildtype" in
-        "release" | "cta")
-           setprop persist.vendor.oem.dump 0
-           ;;
-        *)
-           setprop persist.vendor.oem.dump 1
-           ;;
-    esac
-fi
 
 target=`getprop ro.board.platform`
 low_ram=`getprop ro.config.low_ram`
