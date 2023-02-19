@@ -288,7 +288,6 @@ TARGET_COMMON_QTI_COMPONENTS := \
     telephony \
     usb \
     vibrator \
-    wfd \
     wlan
 
 # Remove unwanted packages
@@ -363,6 +362,10 @@ PRODUCT_PACKAGES += \
 # Verity
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 $(call inherit-product, build/target/product/verity.mk)
+
+# WFD
+PRODUCT_SYSTEM_PROPERTIES += \
+    persist.sys.wfd.virtual=0
 
 # WLAN
 PRODUCT_COPY_FILES += \
