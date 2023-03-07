@@ -41,13 +41,11 @@
 
     <!-- config_enableLaunchBoostv2-->
         <!-- SCHEDBOOST resource opcode, value-->
-        <!-- SCHED GROUP DOWNMIGRATE resource opcode, value-->
-        <!-- SCHED GROUP UPMIGRATE resource opcode, value-->
 
         <!-- Type="3", FA launch boost of 15sec -->
         <Config
             Id="0x00001081" Type="3" Enable="true" Timeout="15000" Target="msm8998"
-            Resources="0x40C00000, 0x3, 0x40C58000, 0x5A, 0x40C54000, 0x5F" />
+            Resources="0x40C00000, 0x3" />
 
     <!-- config_enableLaunchBoostv4-->
         <!-- SCHEDBOOST resource opcode, value-->
