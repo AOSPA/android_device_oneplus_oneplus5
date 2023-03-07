@@ -345,8 +345,7 @@ PRODUCT_SHIPPING_API_LEVEL := 25
 
 # Soc
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.soc.model=MSM8998 \
-    ro.soc.manufacturer=Qualcomm
+    ro.soc.model=MSM8998
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
