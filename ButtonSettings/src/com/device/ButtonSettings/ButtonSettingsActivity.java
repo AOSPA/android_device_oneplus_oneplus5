@@ -2,9 +2,10 @@ package src.com.device.ButtonSettings;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.widget.R;
 
-public class ButtonSettingsActivity extends AppCompatActivity {
+public class ButtonSettingsActivity extends CollapsingToolbarBaseActivity {
 
     private static String TAG = "ButtonsExtraActivity";
 

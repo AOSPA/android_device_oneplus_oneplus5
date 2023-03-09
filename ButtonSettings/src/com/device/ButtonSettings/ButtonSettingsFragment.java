@@ -2,7 +2,6 @@ package src.com.device.ButtonSettings;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.Preference.OnPreferenceChangeListener;

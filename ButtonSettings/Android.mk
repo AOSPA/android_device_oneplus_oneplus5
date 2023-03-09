@@ -23,9 +23,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    androidx.appcompat_appcompat \
     androidx.core_core \
-    androidx.preference_preference
+    androidx.preference_preference \
+    SettingsLib
 
 LOCAL_PACKAGE_NAME := ButtonSettings
 

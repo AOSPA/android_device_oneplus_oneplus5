@@ -10,7 +10,8 @@
         android:directBootAware="true"
         android:icon="@mipmap/ic_launcher"
         android:label="ButtonSettings"
-        android:persistent="true">
+        android:persistent="true"
+        android:theme="@style/Theme.SubSettingsBase">
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -22,7 +23,7 @@
         <activity
             android:name="src.com.device.ButtonSettings.ButtonSettingsActivity"
             android:label="@string/buttonsettings_display_title"
-            android:theme="@style/Theme.AppCompat">
+            android:theme="@style/Theme.SubSettingsBase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
