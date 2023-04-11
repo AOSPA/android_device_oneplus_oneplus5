@@ -68,10 +68,6 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
     camera.disable_zsl_mode=1 \
     persist.camera.stats.debugexif=3080192
 
-# Charger
-PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    ro.charger.enable_suspend=true
-
 # Default is nosdcard, S/W button enabled in resource
 PRODUCT_CHARACTERISTICS := nosdcard
 
