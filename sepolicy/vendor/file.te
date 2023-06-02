@@ -1,4 +1,3 @@
-type proc_alarm_boot, fs_type, proc_type;
 type proc_touchpanel, fs_type, proc_type;
 type sysfs_fp_detect, fs_type, sysfs_type;
 type sysfs_fpc_key, fs_type, sysfs_type;
