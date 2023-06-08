@@ -54,4 +54,15 @@
     <!-- Indicate the driver support NL80211_REG_CHANGED event. -->
     <bool translatable="false" name="config_wifiDriverSupportedNl80211RegChangedEvent">true</bool>
 
+    <!-- Wifi driver supports 6GHz band for softap -->
+    <bool translatable="false" name="config_wifiSoftap6ghzSupported">false</bool>
+
+    <!-- Wifi driver supports WPA3 Simultaneous Authentication of Equals (WPA3-SAE) for softap -->
+    <bool name="config_wifi_softap_sae_supported">false</bool>
+    <!-- Wifi driver supports WPA3 Opportunistic Wireless Encryption (WPA3-OWE) for softap -->
+    <bool name="config_vendor_wifi_softap_owe_supported">false</bool>
+
+    <!-- dual sap mode is supported on this device. -->
+    <bool name="config_wifi_dual_sap_mode_enabled">false</bool>
+
 </resources>
