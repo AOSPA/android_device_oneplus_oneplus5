@@ -34,9 +34,6 @@ TARGET_SCREEN_DENSITY := 420
 # Gestures
 TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
 
-# GPS
-LOC_HIDL_VERSION := 4.0
-
 # HIDL
 DEVICE_MANIFEST_FILE += \
     $(PLATFORM_PATH)/configs/vintf/manifest.xml \
