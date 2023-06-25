@@ -304,7 +304,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.telephony.iwlan_operation_mode=legacy
 
 PRODUCT_ODM_PROPERTIES += \
-    persist.vendor.radio.enableadvancedscan=false \
     ro.telephony.default_network=22,20
 
 PRODUCT_PRODUCT_PROPERTIES += \
